@@ -20,16 +20,22 @@
          </span>
             
       </div>
-      
+      <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+         <a th:href="@{/login?lang=en}">Login (English)</a>
+         &nbsp;|&nbsp;
+         <a th:href="@{/login?lang=fr}">Login (French)</a>
+         &nbsp;|&nbsp;
+         <a th:href="@{/login?lang=vi}">Login (Vietnamese)</a>
+      </div>
       <h3>Enter user name and password:</h3>
       <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
          <table>
             <tr>
-               <td>User:</td>
+               <td th:utext="#{label.userName}"></td>
                <td><input type='text' name='username' value=''></td>
             </tr>
             <tr>
-               <td>Password:</td>
+               <td th:utext="#{label.password}"></td>
                <td><input type='password' name='password' /></td>
             </tr>
             <tr>
@@ -37,7 +43,7 @@
                <td><input type="checkbox" name="remember-me" /></td>
             </tr>            
             <tr>
-               <td><input name="submit" type="submit" value="submit" /></td>
+               <td><input name="submit" type="submit" th:value="#{label.submit}" /></td>
             </tr>
          </table>
       </form>
