@@ -14,20 +14,19 @@ import com.sttt.ruby.util.WebUtils;
 @Controller
 public class MainController {
 
-	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
+	@RequestMapping(value ="/welcome", method = RequestMethod.GET)
 	public String welcomePage(Model model) {
 		model.addAttribute("title", "Welcome");
 		model.addAttribute("message", "This is welcome!");
 		return "welcomePage";
 	}
 
-//	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-//	public String adminPage(Model model, Principal principal) {
-//		User loginedUser = (User) ((Authentication) principal).getPrincipal();
-//		String userInfo = WebUtils.toString(loginedUser);
-//		model.addAttribute("userInfo", userInfo);
-//		return "adminPage";
-//	}
+	@RequestMapping(value = { "/", "/user" }, method = RequestMethod.GET)
+	public String userMasterPage(Model model) {
+		return "user/userMasterPage";
+	}
+	
+	
 //
 //	@RequestMapping(value = "/login", method = RequestMethod.GET)
 //	public String loginPage(Model model) {

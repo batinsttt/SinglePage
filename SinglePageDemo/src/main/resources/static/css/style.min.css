@@ -1,0 +1,84 @@
+body {
+	color: #656565;
+}
+
+body, div, h1, h2, h3, h4, h5, h6, p, form, dl, dl dt, dl dd, pre {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+	.marBottom5 {
+		margin-bottom: 5px;
+	}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.marBottom5 {
+		margin-bottom: 5px;
+	}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* Custom new style here -------------------------start ------------------ */
+.cus-home-img img{
+	width : 100%;
+	max-height: 200px;
+}
+.boxBaner {
+	position: relative;
+    background: #ffffff;
+    width: 100%;
+}
+.boxBaner img {
+	width : 100%;
+	max-height: 200px;
+	min-height: 130px;
+}
+.box-tile-Content {
+    font-size: 16px !important;
+    font-weight: normal;
+    color: #656565;
+    padding: 15px 0 0 0;
+}
+.tile-Content {
+	float: left;
+	font-size: 16px !important;
+    font-weight: normal;
+    color: #656565;
+    padding: 15px;
+}
+.custom-search {
+	padding-left: 10px;
+    color: #fff;
+}
+.custom-icon-S {
+	font-size: 15px !important;
+	padding-top: 10px;
+}
+.paddTop3 {
+	padding-top: 3px;
+}
+.cus-channel-header {
+	text-align: center;
+}
+.cus-channel-header .fa{
+	font-size: 35px;
+}
