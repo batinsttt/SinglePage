@@ -6,12 +6,12 @@
     
     app.config(function ($routeProvider){
         $routeProvider
-            .when('/',{
-                templateUrl:'home.jsp'
+            .when('/home',{
+                templateUrl:'/home'
             })
             .when('/service/channel',{
-                templateUrl:'/WEB-INF/jsp/user/service/about.html'
+                templateUrl:'/service/channel'
             })
-            .otherwise({ redirectTo:'/'});
+            .otherwise({ redirectTo:'/home'});
     });
 })();

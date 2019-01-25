@@ -17,7 +17,7 @@
 
 <script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getCssServerPath("/scripts/angular.js")%>" data-semver="1.4.9"></script>
 <script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getCssServerPath("/scripts/angular-route.js")%>" data-semver="1.4.9"></script>
-<script src="<%=ConfigurationPath.getCssServerPath("/scripts/forward.js")%>"></script>
+<script src="<%=ConfigurationPath.getCssServerPath("/scripts/forwardUserPage.js")%>"></script>
 <script src="<%=ConfigurationPath.getCssServerPath("/scripts/headerController.js")%>"></script>
     
 </head>
@@ -235,46 +235,33 @@
       </form>
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-<!--      	 <li class="treeview"> -->
-<!-- 		      <form action="#" method="get" class="sidebar-form"> -->
-<!-- 		        <div class="input-group"> -->
-		          
-<%-- 		          <span class="input-group-btn"> --%>
-<!-- 		                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i> -->
-<!-- 		                </button> -->
-<%-- 		              </span> --%>
-<!-- 		              <input type="text" name="q" class="form-control" placeholder="Tìm kiếm danh mục"> -->
-<!-- 		        </div> -->
-<!-- 		      </form> -->
-      
-<!--       </li> -->
+      <ul class="sidebar-menu">
      	 <li class="active treeview">
-          	<a href="#/">
+          	<a href="#/home">
            	 	<i class="fa fa-home" style="font-size: 18px;"></i> <span>Trang chủ</span>
          	</a>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="">
             <i class="fa fa-drivers-license"></i> <span>Dịch vụ đang sử dụng</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-down pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="#/service/channel"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
+            <li><a href="#/service/channel"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Vtracking</a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-tags"></i> <span>Khuyễn mãi cho bạn</span>
+          <a href="">
+            <i class="fa fa-tags"></i> <span>Khuyến mãi cho bạn</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-down pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
+            <li><a href="index.html"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Vtracking</a></li>
           </ul>
         </li>
@@ -315,9 +302,9 @@
 				</ul>
 			</div>
     <!-- Main content -->
-    <section ng-app="contentApp">
+    <div ng-app="contentApp">
     	<ng-view></ng-view>
-    </section>
+    </div>
     
   </div>
 
@@ -328,6 +315,43 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <script type="text/javascript">
+$(document).ready(function() {
+	$('.sidebar-menu .treeview a').click(function(){
+		if($(this).attr('href') == ""){
+			$(this).parent().addClass("menu-open");
+			$(this).parent().find(".treeview-menu").css("display", "block");
+		}
+	});
+	$('.sidebar .sidebar-menu li.treeview ul.treeview-menu li a').each(function(){
+		$(this).bind('click',function(){
+			var element = document.querySelectorAll('.sidebar-menu .active');
+			if(element != null && element.length > 0) {
+				[].forEach.call(element, function(el) {
+					el.classList.remove('active');
+				});
+			}
+			$(this).parent().addClass("active");
+			$(this).parent().parent().addClass('active');
+			$(this).parent().parent().parent().addClass('active');
+		});
+	});
+	$('.sidebar .sidebar-menu li.treeview a').each(function(){
+		$(this).bind('click',function(){
+			if(!$(this).parent().children().hasClass("treeview-menu") && !$(this).parent().parent().hasClass("treeview-menu")){
+				var element1 = document.querySelectorAll('.sidebar-menu .active');
+				if(element1 != null && element1.length > 0) {
+					[].forEach.call(element1, function(el) {
+						el.classList.remove('active');
+					});
+				}
+				$('.sidebar-menu .menu-open').find(".treeview-menu").css("display", "none");
+				$('.sidebar-menu .menu-open').removeClass("menu-open");
+				$(this).parent().addClass("active");
+			}
+		});
+	});
+});
+
 	$('#search-icon').click(function(){
 		$('.sidebar-form .input-group').addClass("openSearch");
 		$('#search-icon').hide();

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@page import="com.sttt.ruby.config.ConfigurationPath"%>
+ <section class="content">
 <!-- row -->
 <div class="row">
 	<div class="col-md-12">
 		<div class="boxBaner">
-			 <img src="resources/images/banner.png">
+			 <img src="<%=ConfigurationPath.getCssServerPath("/images/banner.png")%>">
 		</div>
 		<!-- /.col -->
 	</div>
@@ -20,13 +21,13 @@
 <!-- /.row -->
 <div class="row cus-home-img">
 	<div class="col-sm-4 marBottom5">
-		<img class="" src="resources/images/kt-dichvu.png">
+		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/kt-dichvu.png")%>">
 	</div>
 	<div class="col-sm-4 marBottom5">
-		<img class="" src="resources/images/kt-mayao.png">
+		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/kt-mayao.png")%>">
 	</div>
 	<div class="col-sm-4">
-		<img class="" src="resources/images/kt-kenhthue.png">
+		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/kt-kenhthue.png")%>">
 	</div>
 </div>
 <!-- /.row -->
@@ -40,10 +41,12 @@
 <!-- /.row -->
 <div class="row cus-home-img">
 	<div class="col-sm-4 marBottom5">
-		<img class="" src="resources/images/gp-mangao.png">
+		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/gp-mangao.png")%>">
 	</div>
 	<div class="col-sm-4 marBottom5">
-		<img class="" src="resources/images/gp-nhom.png">
+		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/gp-nhom.png")%>">
 	</div>
 </div>
 <!-- /.row -->
+
+</section>

@@ -21,9 +21,28 @@ public class MainController {
 		return "welcomePage";
 	}
 
+	/*
+	 * Use's master page
+	*/	
 	@RequestMapping(value = { "/", "/user" }, method = RequestMethod.GET)
 	public String userMasterPage(Model model) {
 		return "user/userMasterPage";
+	}
+	
+	/*
+	 * Use's home
+	*/	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String userHome(Model model) {
+		return "user/home";
+	}
+	
+	/*
+	 * Use's service channel
+	*/	
+	@RequestMapping(value = "/service/channel", method = RequestMethod.GET)
+	public String userServiceChannel(Model model) {
+		return "user/service/channel";
 	}
 	
 	

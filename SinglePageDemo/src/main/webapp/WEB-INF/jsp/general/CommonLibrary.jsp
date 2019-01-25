@@ -4,7 +4,7 @@
  <link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/css/style.min.css")%>">
 
  <!-- Bootstrap 3.3.7 -->
- <link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/bower_components/bootstrap/dist/css/bootstrap.min.css")%>">
+ 
  <!-- Font Awesome -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/bower_components/font-awesome/css/font-awesome.min.css")%>">
  <!-- Ionicons -->
@@ -13,6 +13,8 @@
  <link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/css/AdminLTE.min.css")%>">
  <!-- AdminLTE Skins -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/css/skins/_all-skins.min.css")%>">
+ 
+ <link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/css/components.min.css")%>">
  <!-- Morris chart -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/bower_components/morris.js/morris.css")%>">
  <!-- jvectormap -->
@@ -24,9 +26,22 @@
  <!-- bootstrap wysihtml5 - text editor -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/scripts/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")%>">
 
+<!-- Merge Ân ---------------------------------->
+<link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/bower_components/dataTables/dataTables.bootstrap4.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/bower_components/dataTables/bootstrap.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/bower_components/dataTables/dataTables.checkboxes.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/bower_components/dataTables/blue.css")%>">
+
+<script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/jquery.js")%>"></script>
+<script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/dataTables.js")%>"></script>
+<script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/dataTables.checkboxes.js")%>"></script>
+<script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/icheck.js")%>"></script>
+   
+<!--    End -->
+
  <!---------------------------------------- Scripts ------------------------------->
  <!-- jQuery 3 -->
-<script src="<%=ConfigurationPath.getCssServerPath("/bower_components/jquery/dist/jquery.min.js")%>"></script>
+<%-- <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/jquery/dist/jquery.min.js")%>"></script> --%>
 <!-- jQuery UI 1.11.4 -->
 <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/jquery-ui/jquery-ui.min.js")%>"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -53,15 +68,19 @@
 <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")%>"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="<%=ConfigurationPath.getCssServerPath("/scripts/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")%>"></script>
+<script src="<%=ConfigurationPath.getCssServerPath("/scripts/plugins/jquery.blockui.min.js")%>"></script>
+
 <!-- Slimscroll -->
 <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")%>"></script>
 <!-- FastClick -->
 <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/fastclick/lib/fastclick.js")%>"></script>
 <!-- AdminLTE App -->
 <script src="<%=ConfigurationPath.getCssServerPath("/scripts/adminlte.min.js")%>"></script>
+<!-- Metronic App -->
+<script src="<%=ConfigurationPath.getCssServerPath("/scripts/metronic.min.js")%>"></script>
 
-<script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/jquery.dataTables.min.js")%>"></script>
-<script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/dataTables.bootstrap4.min.js")%>"></script>
+<%-- <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/jquery.dataTables.min.js")%>"></script> --%>
+
 
 <script type="text/javascript">
 $.ajaxSetup({'cache':true});
