@@ -12,6 +12,6 @@
             .when('/service/channel',{
                 templateUrl:'/service/channel'
             })
-            .otherwise({ redirectTo:'/home'});
+//            .otherwise({ redirectTo:'/home'});
     });
 })();

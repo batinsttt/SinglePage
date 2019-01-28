@@ -83,7 +83,7 @@
 			</div>
 		</div>
 		<div class="portlet-body flip-scroll" style="display: block;">
-			<table id="example" class="table table-bordered table-striped table-condensed flip-content">
+			<table id="example" class="table table-striped table-bordered display">
 				<thead>
 					<tr>
 						<th></th>
@@ -114,7 +114,7 @@
          "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
          "scrollY": 350,
          "scrollX": true,
-         'ajax': 'http://www.json-generator.com/api/json/get/bUqxeTnTqW?indent=2',
+         'ajax': 'http://10.30.176.181:9006/ITSolWebService/login/authenticate',
          'drawCallback': function(){
             $('input[type="checkbox"]').iCheck({
                checkboxClass: 'icheckbox_flat-blue'

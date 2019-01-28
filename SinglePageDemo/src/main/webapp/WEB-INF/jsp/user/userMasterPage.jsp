@@ -48,7 +48,7 @@
         <ul class="nav navbar-nav">
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
             </a>
@@ -85,7 +85,7 @@
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
               <span class="label label-danger">9</span>
             </a>
@@ -163,7 +163,7 @@
           </li>
           <!-- User Account: style can be found in dropdown.less custon_Profile-->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle " data-toggle="dropdown">
+            <a href="" class="dropdown-toggle " data-toggle="dropdown">
               <img src="<%=ConfigurationPath.getCssServerPath("/images/user2-160x160.jpg")%>" class="user-image" alt="User Image">
               <span class="hidden-xs">Nguyễn Hoàng Tùng</span>
 <%--               <br/><small>Admin</small> --%>
@@ -235,7 +235,7 @@
       </form>
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
+      <ul class="sidebar-menu" ng-controller="HeaderController">
      	 <li class="active treeview">
           	<a href="#/home">
            	 	<i class="fa fa-home" style="font-size: 18px;"></i> <span>Trang chủ</span>
