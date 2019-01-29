@@ -2528,10 +2528,16 @@ th {
 	max-width: 100%;
 	margin-bottom: 1rem;
 	background-color: transparent;
+	font-size: 13px;
 }
 
-.table th, .table td {
-	padding: 0.75rem;
+.table th{
+	padding: 9px;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+}
+.table td {
+	padding: 8px;
 	vertical-align: top;
 	border-top: 1px solid #dee2e6;
 }
@@ -2540,6 +2546,21 @@ th {
 	vertical-align: bottom;
 	border-bottom: 2px solid #dee2e6;
 }
+
+/* Add mew by sinhtv*/
+.dataTables_scrollHeadInner .table thead tr{
+	background-color: #32c5d2;
+    color: #fff;
+}
+.dataTables_scrollHeadInner .table thead tr th{
+	text-align: center;
+}
+.dataTables_scrollHeadInner .table-bordered{
+	border: 0px !important;
+	border-left: 1px solid #32c5d2 !important;
+}
+
+/* End */
 
 .table tbody+tbody {
 	border-top: 2px solid #dee2e6;

@@ -12,6 +12,9 @@
             .when('/service/channel',{
                 templateUrl:'/service/channel'
             })
+             .when('/service/tracking',{
+                templateUrl:'/service/tracking'
+            })
 //            .otherwise({ redirectTo:'/home'});
     });
 })();

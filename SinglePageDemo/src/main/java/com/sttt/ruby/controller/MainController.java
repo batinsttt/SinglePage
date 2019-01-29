@@ -45,6 +45,13 @@ public class MainController {
 		return "user/service/channel";
 	}
 	
+	/*
+	 * Use's service Tracking
+	*/	
+	@RequestMapping(value = "/service/tracking", method = RequestMethod.GET)
+	public String userServiceTracking(Model model) {
+		return "user/service/tracking";
+	}
 	
 //
 //	@RequestMapping(value = "/login", method = RequestMethod.GET)

@@ -1,16 +1,7 @@
 /*
- * JavaScript file created by Rockstarapps Concatenation
+ * JavaScript file create by ITSOL_DN
 */
-
-/*
- * START OF FILE - /webapp.dms.lite.web/web/resources/scripts/utils/jquery.utils.js
- */
 var Utils = {
-	/**
-	 * su dung de lay ten model dinh nghia tren server
-	 * @author tuannd20
-	 * @date 19/06/2014
-	 */
 	VAR_NAME: "_varname_",
 	_SAVE_TYPE_CREATE: 1,
 	_SAVE_TYPE_UPDATE: 0,
@@ -40,10 +31,16 @@ var Utils = {
 	_PAYROLL:12,
 	_HOUR_TYPE: 13,
 	_STAFF_GROUP_NAME:14,
+	
+	/**
+	 * Validate phone number
+	 * Input : String
+	 * Return : String 
+	 * **/
 	formatPhoneNumberVietNam:function(value){
 		var result = '0';
 		var pos = value.search("84");
-		if(pos==0){ // neu bat dau la 84 --> xoa 84
+		if(pos==0){
 			value = value.slice(2);
 			result += value;
 			return result;
@@ -51,182 +48,14 @@ var Utils = {
 		
 		return value;
 	},
-	enterEvent:function(listButton) {
-        $(window).bind('keypress',function(event){
-            if (event.keyCode == keyCodes.ENTER) {
-                if (!UnitTreeCatalog._isShowDlg) {
-                    listButton.forEach(function(item){
-                    	if ($('#'+item).is(':focus')) {
-                    		if( $('.window-mask:not(:hidden)').length == 0){
-                            	$('#'+item).click();
-                    		}
-                        }
-                    	return false;
-                    });
-					if (!$('a').is(':focus')) {
-                        $('#'+listButton[0]).click();
-                        return false;
-                    }
-                }
-                return true;
-            }
-        });
-	},
-	enterEventDialog:function(idDialog,listButton) {
-		$('#'+idDialog+':not(hidden)').bind('keypress',function(event){
-		    if (event.keyCode == keyCodes.ENTER ) {
-		         if (!UnitTreeCatalog._isShowDlg) {
-		        	 listButton.forEach(function(item){
-	                 	if ($('#'+item).is(':focus')) {
-	                         $('#'+item).click();
-	                         return false;
-	                     }
-	                 });
-					if (!$('a').is(':focus')) {
-	                    $('#'+listButton[0]).click();
-	                    return false;
-	               	}
-		         }
-		         
-		     }
-		    return true;
-		});
-	},
-	distanceTwoPoint : function (lat1, lon1, lat2, lon2, unit) {
-		//unit :
-		//	'M' is statute miles (default) 
-		//	'K' is kilometers
-		//	'N' : miles 
-	    var radlat1 = Math.PI * lat1/180;
-	    var radlat2 = Math.PI * lat2/180;
-	    var radlon1 = Math.PI * lon1/180;
-	    var radlon2 = Math.PI * lon2/180;
-	    var theta = lon1-lon2;
-	    var radtheta = Math.PI * theta/180;
-	    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-	    dist = Math.acos(dist);
-	    dist = dist * 180/Math.PI;
-	    dist = dist * 60 * 1.1515;
-	    if (unit=="K") {
-	    	dist = dist * 1.609344; 
-	    }
-	    if (unit=="N") {
-	    	dist = dist * 0.8684 ;
-	    }
-	    return dist;
-	},
-	showMessage : function(message){
-		$('#commonMessage label').html(message);
-		$('#commonMessage').show();
-		window.scrollTo(500, 0);
-	},
-	hideMessage : function(){
-		$('#commonMessage').hide();
-	},
-	refreshCapcha : function() {
-		$("#imgCaptcha").attr("src",WEB_CONTEXT_PATH +"/captcha.jpeg?t= " + new Date().getMilliseconds());
-		return false;
-	},
-	bindFormatOnTextfieldEx1: function(id, formatType,prefix,errMsg,msg){
-		var reg = /[^0-9]/;
-		var regAll = /[^0-9]/g;
-		switch (formatType) {
-		case Utils._TF_A_Z:
-			reg = /[^A-Z]/;
-			regAll = /[^A-Za-z]/g; 
-			break;
-		case Utils._TF_NUMBER_DOT:
-			reg = /[^0-9.]/;
-			regAll = /[^0-9.]/g; 
-			break;
-		case Utils._TF_NUMBER:
-			reg = /[^0-9]/;
-			regAll = /[^0-9]/g; 
-			break;
-		case Utils._TF_NUMBER_COMMA:
-			reg = /[^0-9,]/;
-			regAll = /[^0-9,]/g; 
-			break;
-		case Utils._TF_NUMBER_SIGN:
-			reg = /[^0-9-]/;
-			regAll = /[^0-9-]/g; 
-			break;
-		case Utils._TF_NUMBER_CONVFACT:
-			reg = /[^0-9\/]/;
-			regAll = /[^0-9\/]/g; 
-			break;
-		case Utils._TF_NUMBER_COMMA_AND_DOT:
-			reg = /[^0-9.,]/;
-			regAll = /[^0-9.,]/g; 
-			break;
-		default:
-			break;
-		}
-		var prefixTmp ='';
-		if(prefix != undefined && prefix!= null && prefix != ''){
-			prefixTmp = prefix;
-		}
-		$(prefixTmp+'#' + id).bind('keyup', function(e){
-			var code;
-			if (!e) var e = window.event;
-			if (e.keyCode) code = e.keyCode;
-			else if (e.which) code = e.which;
-			if(code == keyCodes.CTRL){
-				Utils._CTRL_PRESS = false;
-			}
-			if(code == keyCodes.SHIFT) {
-				Utils._SHIFT_PRESS = false;
-			}
-		});
-		$(prefixTmp +'#' + id).bind('keydown', function(e){
-			var code;
-			if (!e) var e = window.event;
-			if (e.keyCode) code = e.keyCode;
-			else if (e.which) code = e.which;
-			if(code == null || code == undefined){
-				$(errMsg).html(msg).show();
-				// return false;
-			}
-			var character =(code == null || code == undefined)? fromKeyCode(32).split(' ')[0]:fromKeyCode(code).split(' ')[0];			
-			if ((code >=96 && code <= 105) || (code>=48 && code<=57) || code==null || code==0 || code== keyCodes.BACK_SPACE || 
-					code == keyCodes.TAB || code==keyCodes.ENTER || code==keyCodes.ESCAPE || code == keyCodes.DELETE ||
-					(Utils._SHIFT_PRESS && code == keyCodes.HOME) || code == keyCodes.SHIFT || code == keyCodes.HOME || code == keyCodes.END ||
-					code==keyCodes.CTRL || code == keyCodes.ARROW_LEFT || code == keyCodes.ARROW_RIGHT || code == keyCodes.ARROW_UP || code == keyCodes.ARROW_DOWN ||
-					(Utils._CTRL_PRESS && (character  == 'v' || character  == 'V'))){
-				if(code == keyCodes.CTRL){
-					Utils._CTRL_PRESS = true;
-				}
-				if(code == keyCodes.SHIFT) {
-					Utils._SHIFT_PRESS = true;
-				}
-				return true;
-			} else if (reg.test(character) || (Utils._SHIFT_PRESS && !/[^0-9]/.test(character))) {
-				return false;
-			}else{
-				return true;
-			}
-		});
-		$(prefixTmp+ '#' + id).bind('paste', function(){			
-			var tmAZ = setTimeout(function(){
-				$(prefixTmp+ '#' + id).val($(prefixTmp+ '#' + id).val().replace(regAll,''));
-				clearTimeout(tmAZ);
-			},200);
-		});
-	},
+	
 	/**
-	 * Validate so dien thoai
-	 * @author haupv3
-	 * @since 22/01/2015
+	 * Validate phone number
+	 * Input : String
+	 * Return : true if is phone 
 	 * **/
-    isValidPhoneNumber: function(phoneNumber, acceptEmpty) {
+    isValidPhoneNumber: function(phoneNumber) {
         phoneNumber = phoneNumber.trim();
-        if (acceptEmpty != undefined && phoneNumber == "") {
-            if (!acceptEmpty) {
-                return false;
-            } else {
-                return true;
-            }
-        }
         try {
        	 return phoneNumber.match(/^(((\+?84|0)(9|3|7|8|5)\d{8})|((\+?84|0)(1)\d{9})|(0[4|8][6|2]\d{7})|(0[2|3|5|6|7]\d{1,2}[6|2]\d{6}))$/);
         } catch (e) {
@@ -234,9 +63,9 @@ var Utils = {
         }
     },
     /**
-     * Tra ve so dien thoai thuc, bo ma quoc gia
-     * @author haupv3
-     * @since 26/01/2015
+     * Custom phone number
+     * Input : String
+	 * Return : String
      * **/
     getRealPhoneNumber : function(phoneNumber){
     	var countryCode = "84";
@@ -249,85 +78,13 @@ var Utils = {
 	    	}
     	}
     	return phoneNumber;
-    }
-    ,
-	showErrorNotify: function(msg, selector){
-		var s;
-		if (selector == null){
-			s = $('#errMsg');
-		}else{
-			s = selector;
-		}
-		s.html(msg).show();
-	},
-	showSuccessNotify: function(msg, selector){
-		var s;
-		if (selector == null){
-			s = $('#errMsg');
-		}else{
-			s = selector;
-		}
-		if (msg == undefined || msg == null){
-			msg = msgNotifySuccess;
-		}
-		s.html(msg).show();
-		setTimeout(function(){
-			s.html('').hide();
-		}, 10000);
-	},
-	hideErrorNotify: function(selector){
-		var s;
-		if (selector == null){
-			s = $('#errMsg');
-		}else{
-			s = selector;
-		}
-		s.html('').hide();
-	},
-	hidePopupNotify: function(){
-		$('#popupNotifyMessage').hide();
-		$('#popupNotifyMessage #popupMessageNotify').html('');
-	},
-	hideLeftPopupNotify: function(){
-		$('#leftPopupNotifyMessage').hide();
-		$('#leftPopupNotifyMessage #leftPopupMessageNotify').html('');
-	},
-	popupNotify: function(msg, isSuccess){
-		var timeHide = 5000;
-		$('#popupNotifyMessage').show(500);
-		if (isSuccess != null && isSuccess){
-			$('#popupNotifyMessage #popupMessageNotify').addClass('textColorBlue');
-			timeHide = 5000;
-		}else{
-			$('#popupNotifyMessage #popupMessageNotify').addClass('textColorRed');
-			timeHide = 10000;
-		}
-		$('#popupNotifyMessage #popupMessageNotify').html(msg);
-		setTimeout(function(){
-			$('#popupNotifyMessage').hide(3000);
-			$('#popupNotifyMessage #popupMessageNotify').html('');
-			$('#popupNotifyMessage #popupMessageNotify').removeClass('textColorRed');
-			$('#popupNotifyMessage #popupMessageNotify').removeClass('textColorBlue');
-		}, timeHide);
-	},
-	leftPopupNotify: function(msg, isSuccess){
-		var timeHide = 5000;
-		$('#leftPopupNotifyMessage').show(500);
-		if (isSuccess != null && isSuccess){
-			$('#leftPopupNotifyMessage #leftPopupMessageNotify').addClass('textColorBlue');
-			timeHide = 5000;
-		}else{
-			$('#leftPopupNotifyMessage #leftPopupMessageNotify').addClass('textColorRed');
-			timeHide = 10000;
-		}
-		$('#leftPopupNotifyMessage #leftPopupMessageNotify').html(msg);
-		setTimeout(function(){
-			$('#leftPopupNotifyMessage').hide(3000);
-			$('#leftPopupNotifyMessage #leftPopupMessageNotify').html('');
-			$('#leftPopupNotifyMessage #leftPopupMessageNotify').removeClass('textColorRed');
-			$('#leftPopupNotifyMessage #leftPopupMessageNotify').removeClass('textColorBlue');
-		}, timeHide);
-	},
+    },
+	
+    /**
+     * Check is null or blank
+     * Input : String
+     * Return : true if null or blank
+     * **/
 	isNullOrEmpty: function(stringInput){
 		stringInput += "";
 		var result = true;
@@ -336,6 +93,12 @@ var Utils = {
 		}
 		return result;
 	},
+	
+	/**
+     * Compare two date "dd/mm/yyyy"
+     * Input : String
+     * Return : true if start < end
+     * **/
 	compareDate: function(startDate, endDate){
 		 
 		if(startDate.length == 0 || endDate.length == 0){
@@ -350,7 +113,12 @@ var Utils = {
 		}
 		return true;
 	},
-	// Add new 17/11/2018 by pi xa
+	
+	/**
+     * Day number between two date
+     * Input : String "dd/mm/yyyy"
+     * Return : Mumber [Day number]
+     * **/
 	betweenTwoDate: function(startDate, endDate){
 		 
 		if(startDate.length == 0 || endDate.length == 0){
@@ -364,47 +132,52 @@ var Utils = {
 		
 		return Math.round(Math.abs((endDateObj.getTime() - startDateObj.getTime())/(oneDay)));;
 	},
-	checkFromDateAndToDateIsLargerOnceMonth: function(startDate, endDate){
-		if(startDate.length == 0 || endDate.length == 0){
-			return true;			
-		}
-		var arrStartDate = startDate.split('/');
-		var arrEndDate = endDate.split('/');
-		var startDateObj = dates.convert(arrStartDate[1] + '/' + arrStartDate[0] + '/' + arrStartDate[2]);
-		var endDateObj = dates.convert(arrEndDate[1] + '/' + arrEndDate[0] + '/' + arrEndDate[2]);
-		
-		 
-		startDateObj.setMonth(startDateObj.getMonth() + 1);
-				 
-		if(dates.compare(endDateObj,startDateObj) > 0){
-				
-			return false;
-		}
-		
-		return true;
-	},
+	
 	/**
-	 * So sanh giua hai ngay
-	 * @author haupv3
-	 * startDate vs endDate
-	 * return:
-	 * < : -1
-	 * > : 1
-	 * = : 0
-	 * **/
-	compareDate_V2: function(startDate, endDate){
-		if(startDate.length == 0 || endDate.length == 0){
-			return true;			
+     * Get current date from server side
+     * Input : 
+     * Return : Current date "dd/mm/yyyy"
+     * **/
+	getCurrentDateServerString: function(){
+		var currentTime = new Date(sysDateFromServer);
+		var month = currentTime.getMonth() + 1;
+		var day = currentTime.getDate();
+		var year = currentTime.getFullYear();
+		if(month < 10){
+			month = '0' + month;
 		}
-		var arrStartDate = startDate.split('/');
-		var arrEndDate = endDate.split('/');
-		var startDateObj = dates.convert(arrStartDate[1] + '/' + arrStartDate[0] + '/' + arrStartDate[2]);
-		var endDateObj = dates.convert(arrEndDate[1] + '/' + arrEndDate[0] + '/' + arrEndDate[2]);
-/*		if(dates.compare(startDateObj,endDateObj) > 0){
-			return false;
-		}*/
-		return dates.compare(startDateObj,endDateObj);
+		if(day < 10){
+			day = '0' + day;
+		}
+		return day + '/' + month + '/' + year;
 	},
+	
+	/**
+     * Get current month from server side
+     * Input : 
+     * Return : Current date "mm"
+     * **/
+	getCurrentMonthServerString: function(){
+		var currentTime = new Date(sysDateFromServer);
+		var month = currentTime.getMonth() + 1;
+		var year = currentTime.getFullYear();
+		if(month < 10){
+			month = '0' + month;
+		}
+		return month;
+	},
+	
+	/**
+     * Get current year from server side
+     * Input : 
+     * Return : Current date "yyyy"
+     * **/
+	getCurrentYearServerString: function(){
+		var currentTime = new Date(sysDateFromServer);
+		var year = currentTime.getFullYear();
+		return year;
+	},
+	
 	isDate:function(txtDate, separator) {
 	    var aoDate,           // needed for creating array and object
 	        ms,               // date in milliseconds

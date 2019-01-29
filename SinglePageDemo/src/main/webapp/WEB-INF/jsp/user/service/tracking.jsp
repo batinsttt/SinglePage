@@ -86,7 +86,6 @@
 			<table id="example" class="table table-striped table-bordered display">
 				<thead>
 					<tr>
-						<th></th>
 						<th id="inputCol">Name</th>
 						<th>Position</th>
 						<th>Office</th>
@@ -109,41 +108,64 @@
       var nNew = false;
       var countNew = 0;
       var countChecked = 1;
+      var jsonParam = JSON.stringify({id :"100000"});
       var table = $('#example').DataTable({
-         pagingType: "full_numbers",
-         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-         scrollY: 380,
-         scrollX: true,
-         ajax: 'http://www.json-generator.com/api/json/get/bUqxeTnTqW?indent=2',
-         drawCallback: function(){
-            $('input[type="checkbox"]').iCheck({
-               checkboxClass: 'icheckbox_flat-blue'
-            });
-         },
-         deferRender: true,
-//          rowId: 'extn',
-         select: true,
-//          dom: 'Bfrtip',
-         columnDefs: [
-            {
-               targets: 0,
-               checkboxes: {
-                  selectRow: true,
-                  selectCallback: function(nodes, selected){
-                     $('input[type="checkbox"]', nodes).iCheck('update');
-                  },
-                  selectAllCallback: function(nodes, selected, indeterminate){
-                     $('input[type="checkbox"]', nodes).iCheck('update');
+    	  "pagingType": "full_numbers",
+    	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    	  "scrollY": 380,
+          "scrollX": true,
+    	  "ajax": "http://www.json-generator.com/api/json/get/bVcUWQUjAO?indent=2",
+    	  "type": "POST",
+    	  "data": {
+              "id" : "100000",
+              "from": "29/01/2019",
+              "to"  : "30/01/2019"	
+          },
+          "columns": [
+              { "data": "name" },
+              { "data": "position" },
+              { "data": "office" },
+              { "data": "extn" },
+              { "data": "start_date" },
+              { "data": "salary" },
+              {
+                  data: null,
+                  defaultContent: '<a class="edit1" href="javascript:;"> Edit </a>',
+                  className: '',
+                  orderable: false
+              },
+              {
+                  data: null,
+                  defaultContent: '<a class="delete" href="javascript:;"> Delete </a>',
+                  className: '',
+                  orderable: false
+              },
+          ],
+          "drawCallback": function(){
+              $('input[type="checkbox"]').iCheck({
+                 "checkboxClass": 'icheckbox_flat-blue'
+              });
+           },
+           "columnDefs": [
+               {
+                  "targets": 0,
+                  "checkboxes": {
+                     "selectRow": true,
+                     "selectCallback": function(nodes, selected){
+                        $('input[type="checkbox"]', nodes).iCheck('update');
+                     },
+                     "selectAllCallback": function(nodes, selected, indeterminate){
+                        $('input[type="checkbox"]', nodes).iCheck('update');
+                     }
+                     
                   }
-                  
                }
-            }
-         ],
-         select: {
-            style: 'multi',
-            selector: 'td:first-child'
-         },
-         order: [[1, 'asc']]
+            ],
+            "select": {
+               "style": 'multi',
+               "selector": 'td:first-child'
+            },
+            "order": [[1, 'asc']]
       });
       // Handle iCheck change event for "select all" control
       $(table.table().container()).on('ifChanged', '.dt-checkboxes-select-all input[type="checkbox"]', function(event){
@@ -171,8 +193,9 @@
          ] ).draw( false );
          countNew++;
       } );
-      $('#example tbody').on( 'click', '.edit', function () {
+      $('#example tbody').on( 'click', '.edit1', function () {
          var data = table.row( $(this).parents('tr') ).data();
+         alert(data[1]);
          ($(this).parents('tr')).children().eq(1).html('<input type="text" class="form-control" value="' + data[1] + '">');
          ($(this).parents('tr')).children().eq(2).html('<input type="text" class="form-control" value="' + data[2] + '">');
          ($(this).parents('tr')).children().eq(3).html('<input type="text" class="form-control" value="' + data[3] + '">');

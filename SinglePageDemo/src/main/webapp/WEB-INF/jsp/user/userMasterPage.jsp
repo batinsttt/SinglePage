@@ -250,7 +250,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="#/service/channel"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Vtracking</a></li>
+            <li><a href="#/service/tracking"><i class="fa fa-circle-o"></i> Vtracking</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -362,5 +362,17 @@ $(document).ready(function() {
 		$('#remove-btn').hide();
 		$('#search-icon').show();
 	});
+	
+	$('#example tbody').on( 'click', '.edit', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        ($(this).parents('tr')).children().eq(1).html('<input type="text" class="form-control" value="' + data[1] + '">');
+        ($(this).parents('tr')).children().eq(2).html('<input type="text" class="form-control" value="' + data[2] + '">');
+        ($(this).parents('tr')).children().eq(3).html('<input type="text" class="form-control" value="' + data[3] + '">');
+        ($(this).parents('tr')).children().eq(4).html('<input type="text" class="form-control" value="' + data[4] + '">');
+        ($(this).parents('tr')).children().eq(5).html('<input type="text" class="form-control" value="' + data[5] + '">');
+        ($(this).parents('tr')).children().eq(6).html('<input type="text" class="form-control" value="' + data[6] + '">');
+        ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
+        ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
+     } );
 </script>
 </html>
