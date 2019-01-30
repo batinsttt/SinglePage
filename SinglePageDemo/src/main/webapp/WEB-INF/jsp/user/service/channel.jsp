@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-sm-3 cus-channel-header">
 				<a href="#" style="text-align: center;"> 
-					<span><i class="fa fa-search"></i></span><br> <span>Tra cứu thông tin</span>
+					<span><i class="fa fa-search"></i></span><br> <span>Tra cứu thông tin1</span>
 				</a>
 			</div>
 			<div class="col-sm-3 cus-channel-header">

@@ -5,7 +5,7 @@
 <html ng-app='contentApp'>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
 <meta name="description" content="Tem" />
 <link rel="icon" type="image/x-icon" href="<%=ConfigurationPath.getCssServerPath("/images/viettel.jpg")%>">
 
