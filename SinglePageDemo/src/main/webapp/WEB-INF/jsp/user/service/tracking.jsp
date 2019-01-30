@@ -105,6 +105,7 @@
 </section>
 <script type="text/javascript">
    $(document).ready(function() {
+	   
       var nEditing = null;
       var nNew = false;
       var countNew = 0;
