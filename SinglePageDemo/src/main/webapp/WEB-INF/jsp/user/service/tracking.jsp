@@ -86,6 +86,7 @@
 			<table id="example" class="table table-striped table-bordered display">
 				<thead>
 					<tr>
+               			<th></th>
 						<th id="inputCol">Name</th>
 						<th>Position</th>
 						<th>Office</th>
@@ -114,7 +115,7 @@
     	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     	  "scrollY": 380,
           "scrollX": true,
-    	  "ajax": "http://www.json-generator.com/api/json/get/bVcUWQUjAO?indent=2",
+    	  "ajax": "http://www.json-generator.com/api/json/get/crbSzecZnS?indent=2",
     	  "type": "POST",
     	  "data": {
               "id" : "100000",
@@ -122,6 +123,7 @@
               "to"  : "30/01/2019"	
           },
           "columns": [
+              { "data": "id" },
               { "data": "name" },
               { "data": "position" },
               { "data": "office" },
@@ -195,13 +197,12 @@
       } );
       $('#example tbody').on( 'click', '.edit1', function () {
          var data = table.row( $(this).parents('tr') ).data();
-         alert(data[1]);
-         ($(this).parents('tr')).children().eq(1).html('<input type="text" class="form-control" value="' + data[1] + '">');
-         ($(this).parents('tr')).children().eq(2).html('<input type="text" class="form-control" value="' + data[2] + '">');
-         ($(this).parents('tr')).children().eq(3).html('<input type="text" class="form-control" value="' + data[3] + '">');
-         ($(this).parents('tr')).children().eq(4).html('<input type="text" class="form-control" value="' + data[4] + '">');
-         ($(this).parents('tr')).children().eq(5).html('<input type="text" class="form-control" value="' + data[5] + '">');
-         ($(this).parents('tr')).children().eq(6).html('<input type="text" class="form-control" value="' + data[6] + '">');
+         ($(this).parents('tr')).children().eq(1).html('<input type="text" class="form-control" value="' + data['name'] + '">');
+         ($(this).parents('tr')).children().eq(2).html('<input type="text" class="form-control" value="' + data['position'] + '">');
+         ($(this).parents('tr')).children().eq(3).html('<input type="text" class="form-control" value="' + data['office'] + '">');
+         ($(this).parents('tr')).children().eq(4).html('<input type="text" class="form-control" value="' + data['extn'] + '">');
+         ($(this).parents('tr')).children().eq(5).html('<input type="text" class="form-control" value="' + data['start_date'] + '">');
+         ($(this).parents('tr')).children().eq(6).html('<input type="text" class="form-control" value="' + data['salary'] + '">');
          ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
          ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
       } );
@@ -211,13 +212,13 @@
             countNew--;
          } else {
             var data = table.row( $(this).parents('tr') ).data();
-            ($(this).parents('tr')).children().eq(1).html(data[1]);
-            ($(this).parents('tr')).children().eq(2).html(data[2]);
-            ($(this).parents('tr')).children().eq(3).html(data[3]);
-            ($(this).parents('tr')).children().eq(4).html(data[4]);
-            ($(this).parents('tr')).children().eq(5).html(data[5]);
-            ($(this).parents('tr')).children().eq(6).html(data[6]);
-            ($(this).parents('tr')).children().eq(7).html('<a class="edit" href="javascript:;">Edit</a>');
+            ($(this).parents('tr')).children().eq(1).html(data['name']);
+            ($(this).parents('tr')).children().eq(2).html(data['position']);
+            ($(this).parents('tr')).children().eq(3).html(data['office']);
+            ($(this).parents('tr')).children().eq(4).html(data['extn']);
+            ($(this).parents('tr')).children().eq(5).html(data['start_date']);
+            ($(this).parents('tr')).children().eq(6).html(data['salary']);
+            ($(this).parents('tr')).children().eq(7).html('<a class="edit1" href="javascript:;">Edit</a>');
             ($(this).parents('tr')).children().eq(8).html('<a class="delete" href="javascript:;">Delete</a>');
          }
         
