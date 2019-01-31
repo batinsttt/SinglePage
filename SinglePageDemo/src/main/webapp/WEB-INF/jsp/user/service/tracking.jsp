@@ -159,7 +159,7 @@
       var table = $('#example').DataTable({
     	  "pagingType": "full_numbers",
     	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    	  "scrollY": 380,
+    	  "scrollY": 'auto',
           "scrollX": true,
           "ajax": {
   		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
@@ -245,12 +245,12 @@
       } );
       $('#example tbody').on( 'click', '.edit1', function () {
          var data = table.row( $(this).parents('tr') ).data();
-         ($(this).parents('tr')).children().eq(1).html('<input type="text" class="form-control" value="' + data['name'] + '">');
-         ($(this).parents('tr')).children().eq(2).html('<input type="text" class="form-control" value="' + data['position'] + '">');
-         ($(this).parents('tr')).children().eq(3).html('<input type="text" class="form-control" value="' + data['office'] + '">');
-         ($(this).parents('tr')).children().eq(4).html('<input type="text" class="form-control" value="' + data['extn'] + '">');
-         ($(this).parents('tr')).children().eq(5).html('<input type="text" class="form-control" value="' + data['start_date'] + '">');
-         ($(this).parents('tr')).children().eq(6).html('<input type="text" class="form-control" value="' + data['salary'] + '">');
+         ($(this).parents('tr')).children().eq(1).html('<input type="text" style="width: '+($('thead th').eq(1).width()+23)+'px;" class="form-control form-control-sm" value="' + data['name'] + '">');
+         ($(this).parents('tr')).children().eq(2).html('<input type="text" style="width: '+($('thead th').eq(2).width()+23)+'px;" class="form-control form-control-sm" value="' + data['position'] + '">');
+         ($(this).parents('tr')).children().eq(3).html('<input type="text" style="width: '+($('thead th').eq(3).width()+23)+'px;" class="form-control form-control-sm" value="' + data['office'] + '">');
+         ($(this).parents('tr')).children().eq(4).html('<input type="text" style="width: '+($('thead th').eq(4).width()+23)+'px;" class="form-control form-control-sm" value="' + data['extn'] + '">');
+         ($(this).parents('tr')).children().eq(5).html('<input type="text" style="width: '+($('thead th').eq(5).width()+23)+'px;" class="form-control form-control-sm" value="' + data['start_date'] + '">');
+         ($(this).parents('tr')).children().eq(6).html('<input type="text" style="width: '+($('thead th').eq(6).width()+23)+'px;" class="form-control form-control-sm" value="' + data['salary'] + '">');
          ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
          ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
       } );
