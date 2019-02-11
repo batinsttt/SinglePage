@@ -217,10 +217,8 @@
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
      <!-- search form -->
-     
-      <form action="#" method="get" class="sidebar-form">
+      <div class="sidebar-form">
         <div class="input-group">
           	<span class="input-group-btn">
                 <a href="#" id="search-btn" class="btn btn-flat"><i class="fa fa-search paddTop3"></i></a>
@@ -232,11 +230,11 @@
                 <a href="#" id="search-btn2" class="btn btn-flat"><i class="fa fa-search paddTop3"></i></a>
              </span>
         </div>
-      </form>
+      </div>
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" ng-controller="HeaderController">
-     	 <li class="active treeview">
+      <ul class="sidebar-menu" ng-controller="HeaderController" data-widget="tree">
+     	 <li class="active oneLevel">
           	<a href="#/home">
            	 	<i class="fa fa-home" style="font-size: 18px;"></i> <span>Trang chủ</span>
          	</a>
@@ -261,16 +259,16 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Vtracking</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Vtracking</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="oneLevel">
           	<a href="#">
            	 	<i class="fa fa-credit-card"></i> <span>Thanh toán</span>
          	</a>
         </li>
-        <li class="treeview">
+        <li class="oneLevel">
           	<a href="#">
            	 	<i class="fa fa-gear custom-menu-fa"></i> <span>Cài đặt</span>
          	</a>
@@ -316,11 +314,16 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-	$('.sidebar-menu .treeview a').click(function(){
-		if($(this).attr('href') == ""){
-			$(this).parent().addClass("menu-open");
-			$(this).parent().find(".treeview-menu").css("display", "block");
-		}
+	$('.sidebar-menu .oneLevel a').click(function(){
+			$('.sidebar-menu .menu-open').find(".treeview-menu").css("display", "none");
+			$('.sidebar-menu .menu-open').removeClass("menu-open");
+			var element = document.querySelectorAll('.sidebar-menu .active');
+			if(element != null && element.length > 0) {
+				[].forEach.call(element, function(el) {
+					el.classList.remove('active');
+				});
+			}
+			$(this).parent().addClass("active");
 	});
 	$('.sidebar .sidebar-menu li.treeview ul.treeview-menu li a').each(function(){
 		$(this).bind('click',function(){
@@ -335,21 +338,7 @@ $(document).ready(function() {
 			$(this).parent().parent().parent().addClass('active');
 		});
 	});
-	$('.sidebar .sidebar-menu li.treeview a').each(function(){
-		$(this).bind('click',function(){
-			if(!$(this).parent().children().hasClass("treeview-menu") && !$(this).parent().parent().hasClass("treeview-menu")){
-				var element1 = document.querySelectorAll('.sidebar-menu .active');
-				if(element1 != null && element1.length > 0) {
-					[].forEach.call(element1, function(el) {
-						el.classList.remove('active');
-					});
-				}
-				$('.sidebar-menu .menu-open').find(".treeview-menu").css("display", "none");
-				$('.sidebar-menu .menu-open').removeClass("menu-open");
-				$(this).parent().addClass("active");
-			}
-		});
-	});
+	
 });
 
 	$('#search-icon').click(function(){
@@ -363,16 +352,5 @@ $(document).ready(function() {
 		$('#search-icon').show();
 	});
 	
-	$('#example tbody').on( 'click', '.edit', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        ($(this).parents('tr')).children().eq(1).html('<input type="text" class="form-control" value="' + data[1] + '">');
-        ($(this).parents('tr')).children().eq(2).html('<input type="text" class="form-control" value="' + data[2] + '">');
-        ($(this).parents('tr')).children().eq(3).html('<input type="text" class="form-control" value="' + data[3] + '">');
-        ($(this).parents('tr')).children().eq(4).html('<input type="text" class="form-control" value="' + data[4] + '">');
-        ($(this).parents('tr')).children().eq(5).html('<input type="text" class="form-control" value="' + data[5] + '">');
-        ($(this).parents('tr')).children().eq(6).html('<input type="text" class="form-control" value="' + data[6] + '">');
-        ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
-        ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
-     } );
 </script>
 </html>
