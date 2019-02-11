@@ -161,7 +161,7 @@
     	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     	  "scrollY": 'auto',
           "scrollX": true,
-          "ajax": {
+          /* "ajax": {
   		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
   		    "contentType": "application/json",
   		    "type": "POST",
@@ -169,7 +169,9 @@
   		        return JSON.stringify(obj);
   		      }
   		   
-  		  },
+  		  }, */
+    	  "ajax": "http://www.json-generator.com/api/json/get/crbSzecZnS?indent=2",
+    	  "type": "POST",
           "columns": [
               { "data": "id" },
               { "data": "name" },
@@ -254,6 +256,9 @@
          ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
          ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
       } );
+      $('#example tbody').on( 'click', '.delete', function () {
+          table.row($(this).parents('tr')).remove().draw( false );
+       } );
       $('#example tbody').on( 'click', '.cancel', function () {
          if (countNew > 0) {
             $('#example').DataTable().row($(this).parents('tr')).remove().draw();
