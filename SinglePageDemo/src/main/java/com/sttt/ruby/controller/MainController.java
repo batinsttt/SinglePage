@@ -53,50 +53,44 @@ public class MainController {
 		return "user/service/tracking";
 	}
 	
-//
-//	@RequestMapping(value = "/login", method = RequestMethod.GET)
-//	public String loginPage(Model model) {
-//		return "loginPage";
+	/*
+	 * Use's sales edit
+	*/	
+	@RequestMapping(value = "/sales/edit", method = RequestMethod.GET)
+	public String userSalesEdit(Model model) {
+		return "user/sales/edit";
+	}
+	
+	/*
+	 * Use's sales view
+	*/	
+	@RequestMapping(value = "/sales/view", method = RequestMethod.GET)
+	public String userSalesView(Model model) {
+		return "user/sales/view";
+	}
+	
+	/*
+	 * Use's sales edit
+	*/	
+	@RequestMapping(value = "/payment/view", method = RequestMethod.GET)
+	public String userPaymentView(Model model) {
+		return "user/payment/view";
+	}
+	
+	/*
+	 * Use's sales view
+	*/	
+	@RequestMapping(value = "/payment/eidt", method = RequestMethod.GET)
+	public String userPaymentEdit(Model model) {
+		return "user/payment/edit";
+	}
+	
+//	/*
+//	 * Use's payment
+//	*/	
+//	@RequestMapping(value = "/payment", method = RequestMethod.GET)
+//	public String userPayment(Model model) {
+//		return "user/payment/edit";
 //	}
-//
-//	@RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
-//	public String logoutSuccessfulPage(Model model) {
-//		model.addAttribute("title", "Logout");
-//		return "logoutSuccessfulPage";
-//	}
-//
-//	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-//	public String userInfo(Model model, Principal principal) {
-//
-//		// Sau khi user login thanh cong se co principal
-//		String userName = principal.getName();
-//
-//		System.out.println("User Name: " + userName);
-//
-//		User loginedUser = (User) ((Authentication) principal).getPrincipal();
-//
-//		String userInfo = WebUtils.toString(loginedUser);
-//		model.addAttribute("userInfo", userInfo);
-//
-//		return "userInfoPage";
-//	}
-//
-//	@RequestMapping(value = "/403", method = RequestMethod.GET)
-//	public String accessDenied(Model model, Principal principal) {
-//
-//		if (principal != null) {
-//			User loginedUser = (User) ((Authentication) principal).getPrincipal();
-//
-//			String userInfo = WebUtils.toString(loginedUser);
-//
-//			model.addAttribute("userInfo", userInfo);
-//
-//			String message = "Hi " + principal.getName() //
-//					+ "<br> You do not have permission to access this page!";
-//			model.addAttribute("message", message);
-//
-//		}
-//
-//		return "403Page";
-//	}
+	
 }

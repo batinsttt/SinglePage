@@ -15,6 +15,18 @@
              .when('/service/tracking',{
                 templateUrl:'/service/tracking'
             })
+            .when('/sales/edit',{
+                templateUrl:'/sales/edit'
+            })
+            .when('/sales/view',{
+                templateUrl:'/sales/view'
+            })
+            .when('/payment/view',{
+                templateUrl:'/payment/view'
+            })
+            .when('/payment/eidt',{
+                templateUrl:'/payment/eidt'
+            })
 //            .otherwise({ redirectTo:'/home'});
     });
 })();
