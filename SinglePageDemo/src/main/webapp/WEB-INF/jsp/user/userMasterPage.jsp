@@ -253,21 +253,33 @@
         </li>
         <li class="treeview">
           <a href="">
-            <i class="fa fa-tags"></i> <span>Khuyến mãi cho bạn</span>
+            <i class="fa fa-tags"></i> <span>Menu Tin Edit</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-down pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Vtracking</a></li>
+            <li><a href="#/sales/edit"><i class="fa fa-circle-o"></i> Edit page</a></li>
+            <li><a href="#/sales/view"><i class="fa fa-circle-o"></i> View page</a></li>
           </ul>
         </li>
-        <li class="oneLevel">
-          	<a href="#">
-           	 	<i class="fa fa-credit-card"></i> <span>Thanh toán</span>
-         	</a>
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-credit-card"></i> <span>Menu Ân</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#/payment/view"><i class="fa fa-circle-o"></i> Data page</a></li>
+            <li><a href="#/payment/eidt"><i class="fa fa-circle-o"></i> edit page</a></li>
+          </ul>
         </li>
+<!--         <li class="oneLevel"> -->
+<!--           	<a href="#payment"> -->
+<!--            	 	<i class="fa fa-credit-card"></i> <span>Menu Ân</span> -->
+<!--          	</a> -->
+<!--         </li> -->
         <li class="oneLevel">
           	<a href="#">
            	 	<i class="fa fa-gear custom-menu-fa"></i> <span>Cài đặt</span>
