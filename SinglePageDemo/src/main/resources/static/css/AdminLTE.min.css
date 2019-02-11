@@ -675,6 +675,9 @@ a:focus {
 .sidebar-collapse .sidebar-form  #search-icon{
 	display: block;
 }
+.sidebar-mini:not(.sidebar-collapse) #search-icon{
+	display: none !important;
+}
 @media (min-width:768px) {
 	.sidebar-mini.sidebar-collapse .content-wrapper,
 	.sidebar-mini.sidebar-collapse .right-side,
