@@ -208,3 +208,6 @@ footer ol {
 .dataTables_scrollHeadInner, .table-bordered{
 	width: 100% !important;
 }
+.dataTables_scrollBody {
+	overflow: overlay !important;
+}

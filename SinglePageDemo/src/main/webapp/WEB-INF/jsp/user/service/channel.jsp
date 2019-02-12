@@ -66,7 +66,7 @@
 		</div>
 		<div class="box-footer">
 			<button class="btn btn-green pull-right" data-toggle="modal" data-target="#myModal" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
-            <button type="submit" class="btn btn-blue pull-right"><i class="fa fa-search"></i>Tìm kiếm</button>
+            <button id="searchChannel" class="btn btn-blue pull-right" onclick="return Service.searchChannel();"><i class="fa fa-search"></i>Tìm kiếm</button>
 		</div>
 	</div>
 	<!-- /.box -->
@@ -83,7 +83,8 @@
 			</div>
 		</div>
 		<div class="portlet-body flip-scroll" style="display: block;">
-			<table id="example" class="table table-striped table-bordered display table-hover" style="width: 100%;">
+		 <div class="table-responsive"> 
+			<table id="example" class="table table-striped table-bordered display table-hover dt-responsive">
 				<thead>
 					<tr>
                			<th></th>
@@ -98,6 +99,7 @@
 					</tr>
 				</thead>
 			</table>
+			</div>
 		</div>
 	</div>
 </div>
@@ -144,24 +146,13 @@
 	  <!-- /.modal -->
 	<!-- 	End modal -->
 	
-	
-	
 <script type="text/javascript">
    $(document).ready(function() {
 	   $('.modal-content').resizable({
-			//alsoResize: ".modal-dialog",
 			minHeight: 300,
 			minWidth: 300
 		});
 		$('.modal-dialog').draggable();
-
-// 		$('#myModal').on('show.bs.modal', function () {
-// 			$(this).find('.modal-body').css({
-// 				'max-height':'100%'
-// 			});
-// 		});
-		
-		
 		
       var nEditing = null;
       var nNew = false;
@@ -175,7 +166,8 @@
 	  var obj = {name: "Test 1", id: 10000, list};
 	  var jsonParam = JSON.stringify(obj);
       var table = $('#example').DataTable({
-    	  "responsive": true,
+    	  "processing":true,
+    	   responsive: true,
     	  "autoWidth":true,
     	  "pagingType": "full_numbers",
     	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],

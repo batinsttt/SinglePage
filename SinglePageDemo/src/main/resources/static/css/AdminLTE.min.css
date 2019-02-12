@@ -658,6 +658,7 @@ a:focus {
 #remove-btn {
 	display: none;
 	background-color : #00918c;
+	margin-right: -3px;
 }
 #search-icon{
 	display: none;
@@ -3521,7 +3522,8 @@ table.text-center th {
 	border-radius: 0;
 	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
-	border: 0
+	border: 0;
+	min-width: 300px;
 }
 
 @media (min-width:768px) {

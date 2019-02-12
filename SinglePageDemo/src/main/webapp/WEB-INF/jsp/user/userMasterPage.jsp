@@ -221,13 +221,13 @@
       <div class="sidebar-form">
         <div class="input-group">
           	<span class="input-group-btn">
-                <a href="#" id="search-btn" class="btn btn-flat"><i class="fa fa-search paddTop3"></i></a>
-                <a href="#" id="remove-btn" class="btn btn-flat"><i class="fa fa-remove custom-icon-S"></i></a>
-                <a href="#" id="search-icon" class="btn btn-flat"><i class="fa fa-search paddTop3"></i></a>
+                <a href="" id="search-btn" class="btn btn-flat"><i class="fa fa-search paddTop3"></i></a>
+                <a href="" id="remove-btn" class="btn btn-flat"><i class="fa fa-remove custom-icon-S"></i></a>
+                <a href="" id="search-icon" class="btn btn-flat"><i class="fa fa-search paddTop3"></i></a>
              </span>
               <input type="text" name="q" class="form-control" placeholder="Tìm kiếm danh mục">
               <span class="input-group-btn cus-item-search">
-                <a href="#" id="search-btn2" class="btn btn-flat"><i class="fa fa-search paddTop3"></i></a>
+                <a href="" id="search-btn2" class="btn btn-flat"><i class="fa fa-search paddTop3"></i></a>
              </span>
         </div>
       </div>
@@ -324,45 +324,4 @@
   <!-- Add  after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-	$('.sidebar-menu .oneLevel a').click(function(){
-			$('.sidebar-menu .menu-open').find(".treeview-menu").css("display", "none");
-			$('.sidebar-menu .menu-open').removeClass("menu-open");
-			var element = document.querySelectorAll('.sidebar-menu .active');
-			if(element != null && element.length > 0) {
-				[].forEach.call(element, function(el) {
-					el.classList.remove('active');
-				});
-			}
-			$(this).parent().addClass("active");
-	});
-	$('.sidebar .sidebar-menu li.treeview ul.treeview-menu li a').each(function(){
-		$(this).bind('click',function(){
-			var element = document.querySelectorAll('.sidebar-menu .active');
-			if(element != null && element.length > 0) {
-				[].forEach.call(element, function(el) {
-					el.classList.remove('active');
-				});
-			}
-			$(this).parent().addClass("active");
-			$(this).parent().parent().addClass('active');
-			$(this).parent().parent().parent().addClass('active');
-		});
-	});
-	
-});
-
-	$('#search-icon').click(function(){
-		$('.sidebar-form .input-group').addClass("openSearch");
-		$('#search-icon').hide();
-		$('#remove-btn').show();
-	});
-	$('#remove-btn').click(function(){
-		$('.sidebar-form .input-group').removeClass("openSearch");
-		$('#remove-btn').hide();
-		$('#search-icon').show();
-	});
-	
-</script>
 </html>

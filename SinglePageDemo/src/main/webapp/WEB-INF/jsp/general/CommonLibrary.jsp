@@ -101,6 +101,8 @@
 
 <%-- <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/jquery.dataTables.min.js")%>"></script> --%>
 
+<!-- Business js -->
+<script src="<%=ConfigurationPath.getCssServerPath("/scripts/business/service/jquery.service.js")%>"></script>
 
 <script type="text/javascript">
 $.ajaxSetup({'cache':true});
