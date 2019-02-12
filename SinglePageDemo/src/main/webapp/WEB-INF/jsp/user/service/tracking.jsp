@@ -65,7 +65,7 @@
 			<!-- /.row -->
 		</div>
 		<div class="box-footer">
-			<button type="submit" class="btn btn-green pull-right" data-toggle="modal" data-target="#myModal" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
+			<button class="btn btn-green pull-right" data-toggle="modal" data-target="#myModal" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
             <button type="submit" class="btn btn-blue pull-right"><i class="fa fa-search"></i>Tìm kiếm</button>
 		</div>
 	</div>
@@ -103,31 +103,32 @@
 </div>
 
 </section>
-	<!-- Modal modal-sm modal-md modal-lg-->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		  </div>
-		  <div class="modal-body">
-			  <div class="form-group">
-				<label for="recipient-name" class="control-label">Recipient:</label>
-				<input type="text" class="form-control" id="recipient-name">
-			  </div>
-			  <div class="form-group">
-				<label for="message-text" class="control-label">Message:</label>
-				<textarea class="form-control" id="message-text"></textarea>
-			  </div>
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary">Save changes</button>
-		  </div>
-		</div>
+	<!-- Modal modal-sm modal-md modal-lg -->
+	 <!-- Modal -->
+	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	    <div class="modal-dialog">
+	      <div class="modal-content" style="overflow: hidden;">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	        </div>
+	        <div class="modal-body" style="max-height: 409px; overflow-y: auto;">
+	          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sed dolores iusto ab vero tempora in earum accusantium quas iure repellendus fugit ipsa reiciendis. Id illo natus sequi ex eveniet!</p>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-primary">Save changes</button>
+	        </div>
+	      </div>
+	      <!-- /.modal-content -->
+	    </div>
+	    <!-- /.modal-dialog -->
 	  </div>
-	</div>
+	  <!-- /.modal -->
+	<!-- 	End modal -->
+	
+	
+	
 <script type="text/javascript">
    $(document).ready(function() {
 	   $('.modal-content').resizable({
@@ -137,11 +138,11 @@
 		});
 		$('.modal-dialog').draggable();
 
-		$('#myModal').on('show.bs.modal', function () {
-			$(this).find('.modal-body').css({
-				'max-height':'100%'
-			});
-		});
+// 		$('#myModal').on('show.bs.modal', function () {
+// 			$(this).find('.modal-body').css({
+// 				'max-height':'100%'
+// 			});
+// 		});
 		
 		
 		
@@ -159,7 +160,7 @@
       var table = $('#example').DataTable({
     	  "pagingType": "full_numbers",
     	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    	  "scrollY": 'auto',
+    	  "scrollY": 380,
           "scrollX": true,
           /* "ajax": {
   		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
