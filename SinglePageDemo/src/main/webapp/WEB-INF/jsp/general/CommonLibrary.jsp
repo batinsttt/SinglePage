@@ -42,6 +42,19 @@
 <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/dataTables.checkboxes.js")%>"></script>
 <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/dataTables.bootstrap4.js")%>"></script>
 <script src="<%=ConfigurationPath.getCssServerPath("/bower_components/datatables/icheck.js")%>"></script>
+
+<!-- Multiselect -->
+<link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/css/multiselect/bootstrap-multiselect.css")%>">
+
+<script src="<%=ConfigurationPath.getCssServerPath("/scripts/multiselect/bootstrap-multiselect.js")%>"></script>
+
+<link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/css/multiselect/kendo.material.min.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getCssServerPath("/css/multiselect/kendo.common-material.min.css")%>">
+
+<script src="<%=ConfigurationPath.getCssServerPath("/scripts/multiselect/kendo.all.min.js")%>"></script>
+
+<!-- END Multiselect -->
+
    
 <!--    End -->
 
