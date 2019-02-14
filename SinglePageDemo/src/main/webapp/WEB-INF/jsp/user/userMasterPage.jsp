@@ -261,6 +261,7 @@
           <ul class="treeview-menu">
             <li><a href="#/sales/edit"><i class="fa fa-circle-o"></i> Edit page</a></li>
             <li><a href="#/sales/view"><i class="fa fa-circle-o"></i> View page</a></li>
+            <li><a href="#/sales/demo"><i class="fa fa-circle-o"></i> Demo</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -281,8 +282,8 @@
 <!--          	</a> -->
 <!--         </li> -->
         <li class="oneLevel">
-          	<a href="#">
-           	 	<i class="fa fa-gear custom-menu-fa"></i> <span>Cài đặt</span>
+          	<a href="#/tienDemo">
+           	 	<i class="fa fa-gear custom-menu-fa"></i> <span>Menu Tiến</span>
          	</a>
         </li>
        

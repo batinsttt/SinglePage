@@ -22,40 +22,58 @@ var Service = {
 	 * @author IT_SOL
 	 */
 	searchChannel: function() {
-		console.log("============okkkkkkkkkkkkkkkkkkkkk=====================");
 		var addressFm = $('#address').val().trim();
 		var phoneFm = $('#phone').val().trim();
-//		var contract= $('#valueType').val().trim();
 		
-		var params = new Object();
-		params.address = addressFm;
-		params.phone = phoneFm;
+		var arrParam = new Array();
+		var param = new Object();
+		param.name = "address";
+		param.value = addressFm;
+		arrParam.push(param);
 		
+		param = new Object();
+		param.name = "phone";
+		param.value = phoneFm;
 		
-		 var table1 = $('#example').DataTable();
-         table1.ajax.url("http://www.json-generator.com/api/json/get/cghrQawlbC?indent=2", params).load();
+		arrParam.push(param);
 		
-//		$('#example').DataTable( {
-//	        "processing": true,
-//	        "serverSide": true,
-//	        "ajax": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
-//	        "deferLoading": 57
-//	    } );
-//		$('#example').DataTable( {
-//	        "processing": true,
-//	        "serverSide": true,
-//	        "ajax": {
-//	  		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
-//	  		    "contentType": "application/json",
-//	  		    "type": "POST",
-//	  		    "data": function () {
-//	  		        return JSON.stringify(params);
-//	  		      }
-//	  		   
-//	  		  },
-//	        "deferLoading": 57
-//	    } );
-		
+		var table1 = $('#example').DataTable();
+		table1.ajax.url(Service.getUrlParam("http://10.30.176.198:9006/ITSolWebService/service/trackingSearch", arrParam)).load();
+		 
 	},	
+	
+		encodeChar: function(tst) {
+		var result = "";
+		if(tst!=null && tst!= undefined){
+			tst=tst.toString();
+			var char="!@#$%^&*()_+-:;<>?|\'\"\/";
+			for(var i=0;i<tst.length;i++){
+				if(char.indexOf(tst[i])!=-1){
+					if(escape(tst[i])==tst[i]){
+						result += encodeURIComponent(tst[i]);			
+					}else{
+						result += escape(tst[i]);
+					}
+				}else{
+					result += encodeURI(tst[i]);
+				}
+			}
+		}
+		return result;
+	},
+	
+	getUrlParam : function(url, params) {
+		var searchUrl = '';
+		var char = '?';
+		searchUrl = url;
+		if (params != null && params != undefined) {
+			for ( var i = 0; i < params.length; i++) {
+				searchUrl += i==0 : "?" + params[i].name + "=" + params[i].value;
+				char = "&";
+			}
+		}
+		return searchUrl;
+	},
+	
 	
 };

@@ -157,7 +157,14 @@
 	  	    { date: '13/1/2011', reading: 5, id: 20053 },
 	  	    { date: '14/1/2011', reading: 6, id: 45652 }
 	  		];
-		  var obj = {name: "Test 1", id: 10000, list};
+	      
+		  var obj = {outName: "Test 1", outId: 10000, list};
+			var addressFm = $('#address').val().trim();
+			var phoneFm = $('#phone').val().trim();
+			var params = new Object();
+			params.address = addressFm;
+			params.phone = "Đà Nẵng";
+
 		  var jsonParam = JSON.stringify(obj);
 	      var table = $('#example').DataTable({
 	    	  "processing":true,
@@ -168,13 +175,9 @@
 	    	  "scrollY": 380,
 	          "scrollX": true,
 	          "ajax": {
-	  		    "url": "http://www.json-generator.com/api/json/get/cfjRTiAuOG?indent=2",
-// 	  		    "contentType": "application/json",
-// 	  		    "type": "POST",
-// 	  		    "data": function () {
-// 	  		        return JSON.stringify(obj);
-// 	  		      }
-	  		   
+	  		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
+	  		    "type": "GET",
+	  		  	"data": params, 
 	  		  },
 	          "columns": [
 	              { "data": "id" },
