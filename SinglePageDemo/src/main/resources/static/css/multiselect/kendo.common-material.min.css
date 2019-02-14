@@ -471,7 +471,7 @@ html .k-error-colored {
 .k-widget *,
 .k-widget :before {
     box-sizing: content-box;
-    border-color: #eee;
+    border-color: #d2d6de;
 }
 
 .k-autocomplete,

@@ -1933,8 +1933,9 @@ html .km-pane-wrapper .km-widget {
 
 .k-multiselect-wrap.k-state-focused,
 .k-state-focused>.k-multiselect-wrap {
-    border-color: #f5f5f5;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .2), 0 2px 3px rgba(0, 0, 0, .05)
+    border-color: #d2d6de;
+/*     box-shadow: 0 2px 6px rgba(0, 0, 0, .2), 0 2px 3px rgba(0, 0, 0, .05) */
+	box-shadow: none;
 }
 
 .k-list-container {
