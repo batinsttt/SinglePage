@@ -48,7 +48,7 @@
 </section>
 <script type="text/javascript">
 $(document).ready(function() {
-	var url = 'http://localhost:8080/demo/sale/edit'
+	var url = 'http://10.30.176.198:9006/ITSolWebService/service/tracking'
 	var method = "GET";
 	$.ajax({
 		type : method,
