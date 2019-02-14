@@ -46,3 +46,29 @@
 		</div>
 </div>
 </section>
+<script type="text/javascript">
+$(document).ready(function() {
+	var url = 'http://localhost:8080/demo/sale/edit'
+	var method = "GET";
+	$.ajax({
+		type : method,
+		url : url,
+		dataType : "json",
+		headers : {
+			'Content-Type' : 'application/json; charset=utf-8'
+		},
+		success : function(data) {
+			$("#address").val(data[0].address);
+			$("#phone").val(data[0].phone);
+			var option = "";
+			for(var i = 0; i < data[0].birthday.length; i++){
+				option = "<option>"+data[0].birthday[i]+"</option>";
+				$("#birthday").append(option);
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+
+		}
+	});
+});
+</script>
