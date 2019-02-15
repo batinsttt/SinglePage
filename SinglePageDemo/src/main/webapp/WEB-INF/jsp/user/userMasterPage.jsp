@@ -327,7 +327,7 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-	var url = 'http://localhost:8080/demo/notify';
+	var url = 'http://10.30.176.198:9006/ITSolWebService/notify/show';
 	var method = "GET";
 	$.ajax({
 		type : method,
