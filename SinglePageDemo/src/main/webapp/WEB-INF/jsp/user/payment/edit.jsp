@@ -14,6 +14,9 @@
 						        $("#movies").kendoMultiSelect({
 						            dataTextField: "name",
 						            dataValueField: "abbreviation",
+// 			                        footerTemplate: 'Total #: instance.dataSource.total() # items found',
+// 			                        itemTemplate: '<b>#: data.name #</b></br>#: data.abbreviation #',
+// 			                        tagTemplate:  '<span>#:data.name#</span>',
 						            dataSource: {
 						                transport: {
 						                    read: {
@@ -22,8 +25,10 @@
 						                }
 						            },
 						            value: [
-						                { name: "Alberta", abbreviation: 'AB' }
-						            ]
+						                { abbreviation: 'AB' },
+						                { abbreviation: 'BC' }
+						            ],
+						            autoClose: false,
 						        });
 						
 						        $("#filter").kendoDropDownList({
