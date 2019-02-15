@@ -30,28 +30,11 @@
 	<div class="box">
 		<div class="box-body">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<input type="text" class="form-control" id="address"
-							placeholder="Địa chỉ">
-					</div>
-					<!-- /.form-group -->
-				</div>
-				<!-- /.col -->
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<input type="text" class="form-control" id="phone"
-							placeholder="Điện thoại">
-					</div>
-					<!-- /.form-group -->
-				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<div class="form-group">
 						<select class="form-control select2 select2-hidden-accessible"
 							style="width: 100%;" aria-hidden="true">
-							<option selected="selected">Hợp đồng</option>
+							<option selected="selected">Tất cả</option>
 							<option>Alaska</option>
 							<option>Tennessee</option>
 							<option>Texas</option>
@@ -60,12 +43,72 @@
 					</div>
 					<!-- /.form-group -->
 				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<select class="form-control select2 select2-hidden-accessible"
+							style="width: 100%;" aria-hidden="true">
+							<option selected="selected">Hoạt động</option>
+							<option>Alaska</option>
+							<option>Tennessee</option>
+							<option>Texas</option>
+							<option>Washington</option>
+						</select>
+					</div>
+					<!-- /.form-group -->
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<input type="text" class="form-control" id="idNamePhone"
+							placeholder="Mã, Tên, Số điện thoại">
+					</div>
+					<!-- /.form-group -->
+				</div>
 				<!-- /.col -->
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<input type="text" class="form-control" id="customerId"
+							placeholder="Mã KH">
+					</div>
+					<!-- /.form-group -->
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<input type="text" class="form-control" id="namePhone"
+							placeholder="Tên/SĐT">
+					</div>
+					<!-- /.form-group -->
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<input type="text" class="form-control" id="address"
+							placeholder="Địa chỉ">
+					</div>
+					<!-- /.form-group -->
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<select class="form-control select2 select2-hidden-accessible"
+							style="width: 100%;" aria-hidden="true">
+							<option selected="selected"></option>
+							<option>Alaska</option>
+							<option>Tennessee</option>
+							<option>Texas</option>
+							<option>Washington</option>
+						</select>
+					</div>
+					<!-- /.form-group -->
+				</div>
 			</div>
 			<!-- /.row -->
 		</div>
 		<div class="box-footer">
-			<button class="btn btn-green pull-right" data-toggle="modal" data-target="#myModal" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
+			<!-- <button class="btn btn-green pull-right" data-toggle="modal" data-target="#myModal" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button> -->
             <button id="searchChannel"  onclick="return Service.searchChannel();" class="btn btn-blue pull-right"><i class="fa fa-search"></i>Tìm kiếm</button>
 		</div>
 	</div>
@@ -76,34 +119,28 @@
 				<div class="caption">
 					<i class="fa fa-cogs"></i>Responsive Flip Scroll Tables
 				</div>
-			<div class="tools">
-				<a href="javascript:;" class="collapse" data-original-title=""
-					title="Show or Hide table"> </a> <a href="javascript:;"
-					class="reload" data-original-title="" title="Reload data"> </a>
+				<div class="tools">
+					<a href="javascript:;" class="collapse" data-original-title=""
+						title="Show or Hide table"> </a> <a href="javascript:;"
+						class="reload" data-original-title="" title="Reload data"> </a>
+				</div>
 			</div>
-		</div>
-		<div class="portlet-body flip-scroll" style="display: block;">
-		 <div class="table-responsive"> 
-			<table id="example" class="table table-striped table-bordered display table-hover dt-responsive">
-				<thead>
-					<tr>
-               			<th></th>
-						<th id="inputCol">Name</th>
-						<th>Position</th>
-						<th>Office</th>
-						<th>Extn.</th>
-						<th>Start date</th>
-						<th>Salary</th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</tr>
-				</thead>
-			</table>
+			<div class="portlet-body flip-scroll" style="display: block;">
+				<div class="table-responsive"> 
+					<table id="example" class="table table-striped table-bordered display table-hover dt-responsive">
+						<thead>
+							<tr>
+							    <th>STT</th>
+								<th>Tài Khoản</th>
+								<th>Địa chỉ</th>
+								<th>Thao tác</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
 </section>
 	<!-- Modal modal-sm modal-md modal-lg -->
 	 <!-- Modal -->
@@ -116,30 +153,24 @@
 	        </div>
 	        <div class="modal-body" style="max-height: 409px; overflow-y: auto;">
 	        	<div class="form-group row">
-				    <label for="inputEmail3" class="col-sm-3 col-form-label">Mã yêu cầu</label>
+				    <label for="inputEmail3" class="col-sm-3 col-form-label">Tài khoản</label>
 				    <div class="col-sm-9">
-				      <input type="email" class="form-control" placeholder="Mã yêu cầu">
+				      <input type="text" name="account" class="form-control" placeholder="Tài khoản">
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="inputPassword3" class="col-sm-3 col-form-label">Tên yên cầu</label>
+				    <label for="inputPassword3" class="col-sm-3 col-form-label">Địa chỉ</label>
 				    <div class="col-sm-9">
-				      <input type="password" class="form-control" placeholder="Tên yêu cầu">
+				      <input type="text" name="address" class="form-control" placeholder="Địa chỉ">
 				    </div>
 				 </div>
-				 <div class="form-group row">
-				    <label for="inputPassword3" class="col-sm-3 col-form-label">Nội dung</label>
-				    <div class="col-sm-9">
-				      <textarea class="form-control" rows="3" placeholder="Nội dung yêu cầu"></textarea>
-				    </div>
-				 </div>	
 	        </div>
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	          <button type="button" class="btn btn-primary">Save changes</button>
 	        </div>
 	      </div>
-	      <!-- /.modal-content -->
+	    <!-- /.modal-content -->
 	    </div>
 	    <!-- /.modal-dialog -->
 	  </div>
@@ -148,139 +179,67 @@
 	
 <script type="text/javascript">
    $(document).ready(function() {
-	   var nEditing = null;
-	      var nNew = false;
-	      var countNew = 0;
-	      var countChecked = 1;
-	      var list = [
-	  	    { date: '12/1/2011', reading: 3, id: 20055 },
-	  	    { date: '13/1/2011', reading: 5, id: 20053 },
-	  	    { date: '14/1/2011', reading: 6, id: 45652 }
-	  		];
-	      
-		  var obj = {outName: "Test 1", outId: 10000, list};
-			var addressFm = $('#address').val().trim();
-			var phoneFm = $('#phone').val().trim();
-			var params = new Object();
-			params.address = addressFm;
-			params.phone = "Đà Nẵng";
+		var addressFm = $('#address').val().trim();
+		var params = new Object();
+		params.address = addressFm;
+		params.phone = "Đà Nẵng";
 
-		  var jsonParam = JSON.stringify(obj);
-	      var table = $('#example').DataTable({
+	    var table = $('#example').DataTable({
 	    	  "processing":true,
-	    	   responsive: true,
+	    	  responsive: true,
 	    	  "autoWidth":true,
 	    	  "pagingType": "full_numbers",
 	    	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 	    	  "scrollY": 380,
 	          "scrollX": true,
 	          "ajax": {
-	  		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
+	  		    "url": "http://www.json-generator.com/api/json/get/cqyMaUVPYi?indent=2",
 	  		    "type": "GET",
-	  		  	"data": params, 
+	  		  	"data": params,
 	  		  },
 	          "columns": [
-	              { "data": "id" },
-	              { "data": "name" },
-	              { "data": "position" },
-	              { "data": "office" },
-	              { "data": "extn" },
-	              { "data": "start_date" },
-	              { "data": "salary" },
+	        	  { "data": null },
+	              { "data": "account" },
+	              { "data": "address" },
 	              {
 	                  data: null,
-	                  defaultContent: '<a class="edit1" href="javascript:;"> Edit </a>',
+	                  render: function ( data, type, row ) {
+	                	  return  '<a class="edit1" href="javascript:void(0)" onclick="showModal('+data.id+')"><i class="fa fa-edit"></i></a>';
+	                   },
 	                  className: '',
 	                  orderable: false
-	              },
-	              {
-	                  data: null,
-	                  defaultContent: '<a class="delete" href="javascript:;"> Delete </a>',
-	                  className: '',
-	                  orderable: false
-	              },
+	              }
 	          ],
-	          "drawCallback": function(){
-	              $('input[type="checkbox"]').iCheck({
-	                 "checkboxClass": 'icheckbox_flat-blue'
-	              });
-	           },
-	           "columnDefs": [
-	               {
-	                  "targets": 0,
-	                  "checkboxes": {
-	                     "selectRow": true,
-	                     "selectCallback": function(nodes, selected){
-	                        $('input[type="checkbox"]', nodes).iCheck('update');
-	                     },
-	                     "selectAllCallback": function(nodes, selected, indeterminate){
-	                        $('input[type="checkbox"]', nodes).iCheck('update');
-	                     }
-	                     
-	                  }
-	               }
-	            ],
-	            "select": {
-	               "style": 'multi',
-	               "selector": 'td:first-child'
-	            },
-	            "order": [[1, 'asc']]
-	      });
-//	       table.columns.adjust().draw();
-	      // Handle iCheck change event for "select all" control
-	      $(table.table().container()).on('ifChanged', '.dt-checkboxes-select-all input[type="checkbox"]', function(event){
-	         var col = table.column($(this).closest('th'));
-	         col.checkboxes.select(this.checked);
+	          "columnDefs": [ {
+	              "searchable": false,
+	              "orderable": false,
+	              "targets": 0
+	          } ],
+	          "order": [[ 1, 'asc' ]]
 	      });
 
-	      // Handle iCheck change event for checkboxes in table body
-	      $(table.table().container()).on('ifChanged', '.dt-checkboxes', function(event){
-	         var cell = table.cell($(this).closest('td'));
-	         cell.checkboxes.select(this.checked);
-	      });
-
-	      $('#addRow').on( 'click', function () {
-	         $('#example').DataTable().row.add( [
-	            '',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<a class="save" href="javascript:;">Save</a>',
-	            '<a class="cancel" href="javascript:;">Cancel</a>'
-	         ] ).draw( false );
-	         countNew++;
-	      } );
-	      $('#example tbody').on( 'click', '.edit1', function () {
-	         var data = table.row( $(this).parents('tr') ).data();
-	         ($(this).parents('tr')).children().eq(1).html('<input type="text" style="width: '+($('thead th').eq(1).width()+23)+'px;" class="form-control form-control-sm" value="' + data['name'] + '">');
-	         ($(this).parents('tr')).children().eq(2).html('<input type="text" style="width: '+($('thead th').eq(2).width()+23)+'px;" class="form-control form-control-sm" value="' + data['position'] + '">');
-	         ($(this).parents('tr')).children().eq(3).html('<input type="text" style="width: '+($('thead th').eq(3).width()+23)+'px;" class="form-control form-control-sm" value="' + data['office'] + '">');
-	         ($(this).parents('tr')).children().eq(4).html('<input type="text" style="width: '+($('thead th').eq(4).width()+23)+'px;" class="form-control form-control-sm" value="' + data['extn'] + '">');
-	         ($(this).parents('tr')).children().eq(5).html('<input type="text" style="width: '+($('thead th').eq(5).width()+23)+'px;" class="form-control form-control-sm" value="' + data['start_date'] + '">');
-	         ($(this).parents('tr')).children().eq(6).html('<input type="text" style="width: '+($('thead th').eq(6).width()+23)+'px;" class="form-control form-control-sm" value="' + data['salary'] + '">');
-	         ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
-	         ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
-	      } );
-	      $('#example tbody').on( 'click', '.cancel', function () {
-	         if (countNew > 0) {
-	            $('#example').DataTable().row($(this).parents('tr')).remove().draw();
-	            countNew--;
-	         } else {
-	            var data = table.row( $(this).parents('tr') ).data();
-	            ($(this).parents('tr')).children().eq(1).html(data['name']);
-	            ($(this).parents('tr')).children().eq(2).html(data['position']);
-	            ($(this).parents('tr')).children().eq(3).html(data['office']);
-	            ($(this).parents('tr')).children().eq(4).html(data['extn']);
-	            ($(this).parents('tr')).children().eq(5).html(data['start_date']);
-	            ($(this).parents('tr')).children().eq(6).html(data['salary']);
-	            ($(this).parents('tr')).children().eq(7).html('<a class="edit1" href="javascript:;">Edit</a>');
-	            ($(this).parents('tr')).children().eq(8).html('<a class="delete" href="javascript:;">Delete</a>');
-	         }
-	        
-	    } );
+	    table.on('order.dt search.dt', function () {
+            table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                cell.innerHTML = i + 1;
+            });
+        }).draw();
    });
+
+   function showModal(rowId){     
+       $.ajax({
+           type: 'GET',
+           url: 'http://www.json-generator.com/api/json/get/cqyMaUVPYi?indent=2',
+           success: function(response) {
+               var dataJson = response.data;
+               var res = dataJson.filter(function(row) {
+                   return row.id == rowId;
+                 }).pop();
+               $('input[name="account"]').val(res.account);
+               $('input[name="address"]').val(res.address);
+           }
+       });
+       
+ 	  $('#myModal').modal('show');
+   }
 
 </script>
