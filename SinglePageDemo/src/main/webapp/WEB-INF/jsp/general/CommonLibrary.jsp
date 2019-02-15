@@ -36,6 +36,7 @@
 <%-- <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/bootstrap.css")%>"> --%>
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/dataTables.checkboxes.css")%>">
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/blue.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/common.css")%>">
 
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/jquery.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/dataTables.js")%>"></script>
