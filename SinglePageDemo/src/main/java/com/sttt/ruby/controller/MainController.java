@@ -1,15 +1,13 @@
 package com.sttt.ruby.controller;
 
-import java.security.Principal;
+import java.util.Date;
 
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.security.core.Authentication;
 
-import com.sttt.ruby.util.WebUtils;
+import com.sttt.ruby.util.DateUtil;
 
 @Controller
 public class MainController {
@@ -66,6 +64,7 @@ public class MainController {
 	*/	
 	@RequestMapping(value = "/sales/view", method = RequestMethod.GET)
 	public String userSalesView(Model model) {
+		model.addAttribute("dates", DateUtil.toDateString(new Date(), "MM/dd/yyyy"));
 		return "user/sales/view";
 	}
 	

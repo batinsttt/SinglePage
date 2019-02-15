@@ -181,7 +181,12 @@
          }
         
     } );
-        
+      var sysdateFromDB = null;
+      sysDateFromDB = '${dates}';
+      if (sysDateFromDB == null){
+      	sysDateFromDB = new Date();
+      }
+      
    });
 
 </script>
