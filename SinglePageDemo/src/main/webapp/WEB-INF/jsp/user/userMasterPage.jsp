@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
 <meta name="description" content="Tem" />
-<link rel="icon" type="image/x-icon" href="<%=ConfigurationPath.getCssServerPath("/images/viettel.jpg")%>">
+<link rel="icon" type="image/x-icon" href="<%=ConfigurationPath.getResourceServerPath("/images/viettel.jpg")%>">
 
 <!-- <tiles:insertTemplate template="CommonLibrary.jsp" /> -->
 <jsp:include page="/WEB-INF/jsp/general/CommonLibrary.jsp" />
@@ -15,10 +15,10 @@
 <link rel="stylesheet" id="hashone-fonts-css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=latin,latin-ext" type="text/css" media="all">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getCssServerPath("/scripts/angular.js")%>" data-semver="1.4.9"></script>
-<script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getCssServerPath("/scripts/angular-route.js")%>" data-semver="1.4.9"></script>
-<script src="<%=ConfigurationPath.getCssServerPath("/scripts/forwardUserPage.js")%>"></script>
-<script src="<%=ConfigurationPath.getCssServerPath("/scripts/headerController.js")%>"></script>
+<script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/scripts/angular.js")%>" data-semver="1.4.9"></script>
+<script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/scripts/angular-route.js")%>" data-semver="1.4.9"></script>
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/forwardUserPage.js")%>"></script>
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/headerController.js")%>"></script>
     
 </head>
 <body>
@@ -31,7 +31,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini">
       </span>
-      <img class="custom_Logo" src="<%=ConfigurationPath.getCssServerPath("/images/viettel_Logo.png")%>"  alt="Viettel Solution">
+      <img class="custom_Logo" src="<%=ConfigurationPath.getResourceServerPath("/images/viettel_Logo.png")%>"  alt="Viettel Solution">
       
     </a>
      <a href="" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -164,7 +164,7 @@
           <!-- User Account: style can be found in dropdown.less custon_Profile-->
           <li class="dropdown user user-menu">
             <a href="" class="dropdown-toggle " data-toggle="dropdown">
-              <img src="<%=ConfigurationPath.getCssServerPath("/images/user2-160x160.jpg")%>" class="user-image" alt="User Image">
+              <img src="<%=ConfigurationPath.getResourceServerPath("/images/user2-160x160.jpg")%>" class="user-image" alt="User Image">
               <span class="hidden-xs">Nguyễn Hoàng Tùng</span>
 <%--               <br/><small>Admin</small> --%>
               <i class="fa fa-angle-down"></i>
@@ -172,7 +172,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<%=ConfigurationPath.getCssServerPath("/images/user2-160x160.jpg")%>" class="img-circle" alt="User Image">
+                <img src="<%=ConfigurationPath.getResourceServerPath("/images/user2-160x160.jpg")%>" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer

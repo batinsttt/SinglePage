@@ -5,10 +5,10 @@
 <html ng-app='contentApp'>
 
 <head>
-    <script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getCssServerPath("/resources/scripts/angular.js")%>" data-semver="1.4.9"></script>
-    <script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getCssServerPath("/resources/scripts/angular-route.js")%>" data-semver="1.4.9"></script>
-    <script src="<%=ConfigurationPath.getCssServerPath("/resources/scripts/script.js")%>"></script>
-    <script src="<%=ConfigurationPath.getCssServerPath("/resources/scripts/headerController.js")%>"></script>
+    <script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/resources/scripts/angular.js")%>" data-semver="1.4.9"></script>
+    <script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/resources/scripts/angular-route.js")%>" data-semver="1.4.9"></script>
+    <script src="<%=ConfigurationPath.getResourceServerPath("/resources/scripts/script.js")%>"></script>
+    <script src="<%=ConfigurationPath.getResourceServerPath("/resources/scripts/headerController.js")%>"></script>
 </head>
 
 <body>
