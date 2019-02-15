@@ -85,6 +85,14 @@ public class MainController {
 		return "user/payment/edit";
 	}
 	
+	/*
+	 * Use's 
+	*/	
+	@RequestMapping(value = "/tienDemo", method = RequestMethod.GET)
+	public String userServiceError(Model model) {
+		return "user/service/noticeError";
+	}
+	
 //	/*
 //	 * Use's payment
 //	*/	

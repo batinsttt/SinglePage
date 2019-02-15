@@ -27,6 +27,9 @@
             .when('/payment/eidt',{
                 templateUrl:'/payment/eidt'
             })
+            .when('/tienDemo',{
+                templateUrl:'/tienDemo'
+            })
 //            .otherwise({ redirectTo:'/home'});
     });
 })();
