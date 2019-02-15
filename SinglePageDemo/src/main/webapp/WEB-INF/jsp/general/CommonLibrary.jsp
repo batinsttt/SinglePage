@@ -48,9 +48,7 @@
 
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/multiselect/bootstrap-multiselect.js")%>"></script>
 
-<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/multiselect/kendo.material.min.css")%>">
-<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/multiselect/kendo.common-material.min.css")%>">
-
+<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/multiselect/kendo.bootstrap-v4.min.css")%>">
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/multiselect/kendo.all.min.js")%>"></script>
 
 <!-- END Multiselect -->
