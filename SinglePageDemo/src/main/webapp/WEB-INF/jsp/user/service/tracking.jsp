@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.sttt.ruby.config.ConfigurationPath"%>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
 <section class="content">
 	<div class="box box-danger">
 		<div class="row">
@@ -152,20 +150,7 @@
 	      var nNew = false;
 	      var countNew = 0;
 	      var countChecked = 1;
-	      var list = [
-	  	    { date: '12/1/2011', reading: 3, id: 20055 },
-	  	    { date: '13/1/2011', reading: 5, id: 20053 },
-	  	    { date: '14/1/2011', reading: 6, id: 45652 }
-	  		];
-	      
-		  var obj = {outName: "Test 1", outId: 10000, list};
-			var addressFm = $('#address').val().trim();
-			var phoneFm = $('#phone').val().trim();
-			var params = new Object();
-			params.address = addressFm;
-			params.phone = "Đà Nẵng";
 
-		  var jsonParam = JSON.stringify(obj);
 	      var table = $('#example').DataTable({
 	    	  "processing":true,
 	    	   responsive: true,
@@ -177,7 +162,9 @@
 	          "ajax": {
 	  		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
 	  		    "type": "GET",
-	  		  	"data": params, 
+				"data": function ( d ) {
+				        return Service.getPramSearchChannel();
+				    }
 	  		  },
 	          "columns": [
 	              { "data": "id" },
