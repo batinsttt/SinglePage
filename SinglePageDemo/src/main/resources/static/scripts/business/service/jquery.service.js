@@ -17,63 +17,60 @@ var Service = {
 	_REJECT : "REJECT",
 	
 /*--------------------Business service ------------------------------------*/
+	
+	/*Start Search channel*/
 	/**
 	 * Search channel
 	 * @author IT_SOL
 	 */
-	searchChannel: function() {
+	getPramSearchChannel: function() {
+		var params = new Object();
+		
 		var addressFm = $('#address').val().trim();
 		var phoneFm = $('#phone').val().trim();
 		
-		var arrParam = new Array();
-		var param = new Object();
-		param.name = "address";
-		param.value = addressFm;
-		arrParam.push(param);
+		params.address = addressFm;
+		params.phone = phoneFm;
 		
-		param = new Object();
-		param.name = "phone";
-		param.value = phoneFm;
-		
-		arrParam.push(param);
-		
-		var table1 = $('#example').DataTable();
-		table1.ajax.url(Service.getUrlParam("http://10.30.176.198:9006/ITSolWebService/service/trackingSearch", arrParam)).load();
-		 
-	},	
-	
-		encodeChar: function(tst) {
-		var result = "";
-		if(tst!=null && tst!= undefined){
-			tst=tst.toString();
-			var char="!@#$%^&*()_+-:;<>?|\'\"\/";
-			for(var i=0;i<tst.length;i++){
-				if(char.indexOf(tst[i])!=-1){
-					if(escape(tst[i])==tst[i]){
-						result += encodeURIComponent(tst[i]);			
-					}else{
-						result += escape(tst[i]);
-					}
-				}else{
-					result += encodeURI(tst[i]);
-				}
-			}
-		}
-		return result;
+		return params;
 	},
 	
-	getUrlParam : function(url, params) {
-		var searchUrl = '';
-		var char = '?';
-		searchUrl = url;
-		if (params != null && params != undefined) {
-			for ( var i = 0; i < params.length; i++) {
-				searchUrl += i==0 : "?" + params[i].name + "=" + params[i].value;
+	searchChannel: function() {
+		var table1 = $('#example').DataTable();
+		table1.ajax.url("http://10.30.176.198:9006/ITSolWebService/service/trackingSearch").load();
+	},	
+
+	
+	/*End Search channel*/
+	
+	getUrlParam : function(url, arrParam) {
+		var searchUrl = url;
+		var char = "?";
+		if (arrParam != null && arrParam != undefined) {
+			for ( var i = 0; i < arrParam.length; i++) {
+				searchUrl += char + arrParam[i].name + "=" + arrParam[i].value.trim();
 				char = "&";
 			}
 		}
 		return searchUrl;
 	},
 	
-	
+	validate : function() {
+		$('#errMsg').html('').hide();
+		var msg = '';
+		if (msg.length == 0) {
+			msg = ValidateUtils.getMessageOfRequireCheck('address', jspCustomerAttributeCode);
+		}
+		if(msg.length ==0){
+			msg = ValidateUtils.getMessageOfSpecialCharactersValidate('address', jspCustomerAttributeCode,Utils._CODE);
+		}
+		if(!Utils.isValidPhoneNumber(stPhone)){
+			msg += msgInvalidPhoneNumber;
+		}
+		
+		if(msg.length > 0){
+			$('#errMsg').html(msg).show();
+			return false;
+		}
+	}
 };

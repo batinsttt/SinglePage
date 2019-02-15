@@ -48,7 +48,7 @@
 </section>
 <script type="text/javascript">
 $(document).ready(function() {
-	var url = 'http://10.30.176.198:9006/ITSolWebService/service/tracking'
+	var url = 'http://10.30.176.198:9006/ITSolWebService/sales/edit'
 	var method = "GET";
 	$.ajax({
 		type : method,
@@ -58,11 +58,11 @@ $(document).ready(function() {
 			'Content-Type' : 'application/json; charset=utf-8'
 		},
 		success : function(data) {
-			$("#address").val(data[0].address);
-			$("#phone").val(data[0].phone);
+			$("#address").val(data.address);
+			$("#phone").val(data.phone);
 			var option = "";
-			for(var i = 0; i < data[0].birthday.length; i++){
-				option = "<option>"+data[0].birthday[i]+"</option>";
+			for(var i = 0; i < data.birthday.length; i++){
+				option = "<option>"+data.birthday[i]+"</option>";
 				$("#birthday").append(option);
 			}
 		},

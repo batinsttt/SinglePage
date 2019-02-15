@@ -26,7 +26,18 @@
 			</div>
 		</div>
 	</div>
-		
+	<div>
+		<div class="ErrorMsg">
+			<p class="ErrorMsgPadding10">ABC</p>
+			<p class="ErrorMsgPadding15">ABC</p>
+			<p class="ErrorMsgPadding30">ABC</p>
+		</div>
+		<div class="SuccessMsg">
+			<p class="SuccessMsgPadding10">ABC</p>
+			<p class="SuccessMsgPadding15">ABC</p>
+			<p class="SuccessMsgPadding30">ABC</p>
+		</div>
+	</div>
 <script type="text/javascript">
    $(document).ready(function() {
 	   $('.modal-content').resizable({
@@ -170,7 +181,12 @@
          }
         
     } );
-        
+      var sysdateFromDB = null;
+      sysDateFromDB = '${dates}';
+      if (sysDateFromDB == null){
+      	sysDateFromDB = new Date();
+      }
+      
    });
 
 </script>

@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="boxBaner">
-			 <img src="<%=ConfigurationPath.getCssServerPath("/images/banner.png")%>">
+			 <img src="<%=ConfigurationPath.getResourceServerPath("/images/banner.png")%>">
 		</div>
 		<!-- /.col -->
 	</div>
