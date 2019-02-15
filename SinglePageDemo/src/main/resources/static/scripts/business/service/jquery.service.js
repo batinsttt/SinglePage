@@ -16,11 +16,11 @@ var Service = {
 	_WAITING : "WAITING",
 	_REJECT : "REJECT",
 	
-/*--------------------Business service ------------------------------------*/
+/*=========================== Business service ===========================*/
 	
-	/*Start Search channel*/
+	/*-----Start Search channel-----*/
 	/**
-	 * Search channel
+	 * Get parameter for search channel
 	 * @author IT_SOL
 	 */
 	getPramSearchChannel: function() {
@@ -35,13 +35,52 @@ var Service = {
 		return params;
 	},
 	
+	/**
+	 * Execute search channel
+	 * @author IT_SOL
+	 */
 	searchChannel: function() {
 		var table1 = $('#example').DataTable();
 		table1.ajax.url("http://10.30.176.198:9006/ITSolWebService/service/trackingSearch").load();
 	},	
 
 	
-	/*End Search channel*/
+	
+	
+	/*-----End Search channel-----*/
+	
+	
+	
+/*=========================== Business service End ===========================*/
+/*=========================== Template Validate ===========================*/
+	
+	/**
+	 * Validate template
+	 * @author IT_SOL
+	 */
+	validate : function() {
+		$('#errMsg').html('').hide();
+		var msg = '';
+		if (msg.length == 0) {
+			// Check require
+			msg = ValidateUtils.getMessageOfRequireCheck('address', jspCustomerAttributeCode);
+		}
+		if(msg.length ==0){
+			// Check Special Characters
+			msg = ValidateUtils.getMessageOfSpecialCharactersValidate('address', jspCustomerAttributeCode,Utils._CODE);
+		}
+		// Check phone number
+		if(msg.length ==0 && !CommonUtils.isValidPhoneNumber(stPhone)){
+			msg += msgInvalidPhoneNumber;
+		}
+		
+		if(msg.length > 0){
+			$('#errMsg').html(msg).show();
+			return false;
+		}
+	},
+	
+/*=========================== End Template Validate ===========================*/
 	
 	getUrlParam : function(url, arrParam) {
 		var searchUrl = url;
@@ -54,23 +93,4 @@ var Service = {
 		}
 		return searchUrl;
 	},
-	
-	validate : function() {
-		$('#errMsg').html('').hide();
-		var msg = '';
-		if (msg.length == 0) {
-			msg = ValidateUtils.getMessageOfRequireCheck('address', jspCustomerAttributeCode);
-		}
-		if(msg.length ==0){
-			msg = ValidateUtils.getMessageOfSpecialCharactersValidate('address', jspCustomerAttributeCode,Utils._CODE);
-		}
-		if(!Utils.isValidPhoneNumber(stPhone)){
-			msg += msgInvalidPhoneNumber;
-		}
-		
-		if(msg.length > 0){
-			$('#errMsg').html(msg).show();
-			return false;
-		}
-	}
 };

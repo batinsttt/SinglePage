@@ -21,13 +21,13 @@
 <!-- /.row -->
 <div class="row cus-home-img">
 	<div class="col-sm-4 marBottom5">
-		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/kt-dichvu.png")%>">
+		<img class="" src="<%=ConfigurationPath.getResourceServerPath("/images/kt-dichvu.png")%>">
 	</div>
 	<div class="col-sm-4 marBottom5">
-		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/kt-mayao.png")%>">
+		<img class="" src="<%=ConfigurationPath.getResourceServerPath("/images/kt-mayao.png")%>">
 	</div>
 	<div class="col-sm-4">
-		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/kt-kenhthue.png")%>">
+		<img class="" src="<%=ConfigurationPath.getResourceServerPath("/images/kt-kenhthue.png")%>">
 	</div>
 </div>
 <!-- /.row -->
@@ -41,10 +41,10 @@
 <!-- /.row -->
 <div class="row cus-home-img">
 	<div class="col-sm-4 marBottom5">
-		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/gp-mangao.png")%>">
+		<img class="" src="<%=ConfigurationPath.getResourceServerPath("/images/gp-mangao.png")%>">
 	</div>
 	<div class="col-sm-4 marBottom5">
-		<img class="" src="<%=ConfigurationPath.getCssServerPath("/images/gp-nhom.png")%>">
+		<img class="" src="<%=ConfigurationPath.getResourceServerPath("/images/gp-nhom.png")%>">
 	</div>
 </div>
 <!-- /.row -->

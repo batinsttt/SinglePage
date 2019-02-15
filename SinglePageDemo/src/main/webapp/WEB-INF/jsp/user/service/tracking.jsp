@@ -85,6 +85,7 @@
 			<table id="example" class="table table-striped table-bordered display table-hover dt-responsive">
 				<thead>
 					<tr>
+						<th>STT</th>
                			<th></th>
 						<th id="inputCol">Name</th>
 						<th>Position</th>
@@ -150,7 +151,6 @@
 	      var nNew = false;
 	      var countNew = 0;
 	      var countChecked = 1;
-
 	      var table = $('#example').DataTable({
 	    	  "processing":true,
 	    	   responsive: true,
@@ -167,6 +167,12 @@
 				    }
 	  		  },
 	          "columns": [
+	        	  {
+	                  data: null,
+	                  defaultContent: 0,
+	                  className: 'textCenter',
+	                  orderable: false
+	              },
 	              { "data": "id" },
 	              { "data": "name" },
 	              { "data": "position" },
@@ -176,7 +182,9 @@
 	              { "data": "salary" },
 	              {
 	                  data: null,
-	                  defaultContent: '<a class="edit1" href="javascript:;"> Edit </a>',
+					render: function ( data, type, row ) {
+                    	return  '<a class="edit1" href="javascript:void(0)" onclick="showModal('+data.id+')"><i class="fa fa-edit"></i></a>';
+                	},
 	                  className: '',
 	                  orderable: false
 	              },
@@ -194,7 +202,7 @@
 	           },
 	           "columnDefs": [
 	               {
-	                  "targets": 0,
+	                  "targets": 1,
 	                  "checkboxes": {
 	                     "selectRow": true,
 	                     "selectCallback": function(nodes, selected){
@@ -211,9 +219,15 @@
 	               "style": 'multi',
 	               "selector": 'td:first-child'
 	            },
-	            "order": [[1, 'asc']]
+	            "order": [[3, 'asc']]
 	      });
-//	       table.columns.adjust().draw();
+	      
+	      table.on( 'order.dt search.dt', function () {
+	    	  table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+	              cell.innerHTML = i+1;
+	          } );
+	      } ).draw();
+	      
 	      // Handle iCheck change event for "select all" control
 	      $(table.table().container()).on('ifChanged', '.dt-checkboxes-select-all input[type="checkbox"]', function(event){
 	         var col = table.column($(this).closest('th'));
@@ -227,45 +241,13 @@
 	      });
 
 	      $('#addRow').on( 'click', function () {
-	         $('#example').DataTable().row.add( [
-	            '',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<input type="text" class="form-control">',
-	            '<a class="save" href="javascript:;">Save</a>',
-	            '<a class="cancel" href="javascript:;">Cancel</a>'
-	         ] ).draw( false );
-	         countNew++;
+	         
 	      } );
 	      $('#example tbody').on( 'click', '.edit1', function () {
-	         var data = table.row( $(this).parents('tr') ).data();
-	         ($(this).parents('tr')).children().eq(1).html('<input type="text" style="width: '+($('thead th').eq(1).width()+23)+'px;" class="form-control form-control-sm" value="' + data['name'] + '">');
-	         ($(this).parents('tr')).children().eq(2).html('<input type="text" style="width: '+($('thead th').eq(2).width()+23)+'px;" class="form-control form-control-sm" value="' + data['position'] + '">');
-	         ($(this).parents('tr')).children().eq(3).html('<input type="text" style="width: '+($('thead th').eq(3).width()+23)+'px;" class="form-control form-control-sm" value="' + data['office'] + '">');
-	         ($(this).parents('tr')).children().eq(4).html('<input type="text" style="width: '+($('thead th').eq(4).width()+23)+'px;" class="form-control form-control-sm" value="' + data['extn'] + '">');
-	         ($(this).parents('tr')).children().eq(5).html('<input type="text" style="width: '+($('thead th').eq(5).width()+23)+'px;" class="form-control form-control-sm" value="' + data['start_date'] + '">');
-	         ($(this).parents('tr')).children().eq(6).html('<input type="text" style="width: '+($('thead th').eq(6).width()+23)+'px;" class="form-control form-control-sm" value="' + data['salary'] + '">');
-	         ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
-	         ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
+	         
 	      } );
 	      $('#example tbody').on( 'click', '.cancel', function () {
-	         if (countNew > 0) {
-	            $('#example').DataTable().row($(this).parents('tr')).remove().draw();
-	            countNew--;
-	         } else {
-	            var data = table.row( $(this).parents('tr') ).data();
-	            ($(this).parents('tr')).children().eq(1).html(data['name']);
-	            ($(this).parents('tr')).children().eq(2).html(data['position']);
-	            ($(this).parents('tr')).children().eq(3).html(data['office']);
-	            ($(this).parents('tr')).children().eq(4).html(data['extn']);
-	            ($(this).parents('tr')).children().eq(5).html(data['start_date']);
-	            ($(this).parents('tr')).children().eq(6).html(data['salary']);
-	            ($(this).parents('tr')).children().eq(7).html('<a class="edit1" href="javascript:;">Edit</a>');
-	            ($(this).parents('tr')).children().eq(8).html('<a class="delete" href="javascript:;">Delete</a>');
-	         }
+	        
 	        
 	    } );
    });
