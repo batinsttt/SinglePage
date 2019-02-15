@@ -78,7 +78,10 @@
 							        $('#multiCheckbox option[value=MB]').attr('selected','selected');
 						        	$('#multiCheckbox').multiselect({
 					                    includeSelectAllOption: true,
-					                    buttonWidth: '100%'
+					                    buttonWidth: '100%',
+					                    maxHeight: 200,
+					                    //buttonClass: 'form-control select2 select2-hidden-accessible',
+					                    numberDisplayed: 1000,
 					                });
 							    }); 
 						    });
@@ -89,7 +92,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<select id="normalComboBox" class="form-control select2 select2-hidden-accessible"
-							style="width: 100%;" aria-hidden="true">
+							style="width: 100%;max-height: 60px;" aria-hidden="true">
 							<option selected="selected">Combobox thường</option>
 						</select>
 					   	<script type="text/javascript">
