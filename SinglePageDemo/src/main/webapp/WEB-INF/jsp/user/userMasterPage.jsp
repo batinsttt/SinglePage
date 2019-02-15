@@ -19,7 +19,7 @@
 <script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/scripts/angular-route.js")%>" data-semver="1.4.9"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/forwardUserPage.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/headerController.js")%>"></script>
-    
+
 </head>
 <body>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -50,37 +50,37 @@
           <li class="dropdown notifications-menu">
             <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning" id="number"></span>
             </a>
-            <ul class="dropdown-menu">
-              <li class="header"><i class="fa fa-bell-o"></i> You have 10 notifications</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li>
+            <ul class="dropdown-menu" id="menuNotify">
+<!--               <li class="header"><i class="fa fa-bell-o"></i> You have 10 notifications</li> -->
+              		<li>
+<!--                 inner menu: contains the actual data -->
+                <ul class="menu" id="subMenu">
+<!--                   <li> -->
+<!--                     <a href="#"> -->
+<!--                       <i class="fa fa-users text-aqua"></i> 5 new members joined today -->
+<!--                     </a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#"> -->
+<!--                       <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the -->
+<!--                       page and may cause design problems -->
+<!--                     </a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#"> -->
+<!--                       <i class="fa fa-users text-red"></i> 5 new members joined -->
+<!--                     </a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#"> -->
+<!--                       <i class="fa fa-shopping-cart text-green"></i> 25 sales made -->
+<!--                     </a> -->
+<!--                   </li> -->
                 </ul>
               </li>
-              <li class="footer"><a href="#">View All Notifications <i class="fa fa-angle-right"></i></a></li>
+<!--               <li class="footer"><a href="#">View All Notifications <i class="fa fa-angle-right"></i></a></li> -->
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
@@ -325,4 +325,34 @@
   <!-- Add  after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+	var url = 'http://localhost:8080/demo/notify';
+	var method = "GET";
+	$.ajax({
+		type : method,
+		url : url,
+		dataType : "json",
+		headers : {
+			'Content-Type' : 'application/json; charset=utf-8'
+		},
+		success : function(data) {
+			console.log(data);
+			$("#number").text(data[0].number);
+			for(var i = 0; i < data[0].number; i++){
+				if(i == 0){
+					$("#menuNotify").prepend("<li class='header'><i class='fa fa-bell-o'></i>"+data[0].notify[i].error+"</li>");
+				} else {
+					$("#subMenu").append("<li><a href='/error?id="+data[0].id+"'><i class='fa fa-users text-aqua'></i>"+data[0].notify[i].error+"</a></li>");
+				}
+				
+			}
+			$("#menuNotify").append("<li class='footer'><a href='#'>View All Notifications<i class='fa fa-angle-right'></i></a></li>");
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+
+		}
+	});
+});
+</script>
 </html>
