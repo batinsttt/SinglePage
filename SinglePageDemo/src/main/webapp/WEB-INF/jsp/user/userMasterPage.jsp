@@ -1,7 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%-- <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%> --%>
+<%-- <%@page contentType="text/html" pageEncoding="UTF-8"%> --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page import="com.sttt.ruby.config.ConfigurationPath"%>
-<!-- <html> -->
 <html ng-app='contentApp'>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,7 +10,6 @@
 <meta name="description" content="Tem" />
 <link rel="icon" type="image/x-icon" href="<%=ConfigurationPath.getResourceServerPath("/images/viettel.jpg")%>">
 
-<!-- <tiles:insertTemplate template="CommonLibrary.jsp" /> -->
 <jsp:include page="/WEB-INF/jsp/general/CommonLibrary.jsp" />
 <jsp:include page="/WEB-INF/jsp/general/ServerInfo.jsp" />
 
@@ -42,7 +42,7 @@
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
      <div class="tile-Content">
-     	Tra cứu thông tin dịch vụ
+     	 <spring:message code="user.menu.searchService" text="default text" />
      </div>
 
       <div class="navbar-custom-menu">
