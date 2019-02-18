@@ -211,3 +211,6 @@ footer ol {
 .dataTables_scrollBody {
 	overflow: overlay !important;
 }
+.textCenter {
+	text-align: center;
+}
