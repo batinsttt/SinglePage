@@ -147,24 +147,6 @@
 	<!-- 	End modal -->
 	
 <script type="text/javascript">
-	//Generate BreadCumb
-	function genBreadCumb(){
-		$('#breadCumb').empty();
-		var arrBrCb = new Array();
-		for(var i in arguments){
-			arrBrCb.push(arguments[i]);
-		  }
-	  	var contentHTML = '<ul class="page-breadcrumb">'
-	  		+ '<li><i class="fa fa-home"></i> <a href="#">Home</a> </li>';
-  		arrBrCb.forEach(function(brCb) {
-  			// brCb[1] is URL, brCb[0] is text
-	  		var element = '<li><i class="fa fa-angle-right"></i><a href="'+brCb[1]+'">'+ brCb[0] +'</a></li>';
-	  		contentHTML = contentHTML.concat(element);
-  		});
-	  	contentHTML.concat('</ul>');
-
-	  	$('#breadCumb').append(contentHTML);
-	  };
    $(document).ready(function() {
 	   //Generate breadCumb
 	   var breadCumb_1 = ['DV đang sử dụng1', '#/service/channel'];
@@ -222,7 +204,10 @@
               },
               {
                   data: null,
-                  defaultContent: '<a class="delete" href="javascript:;"> Delete </a>',
+//                   defaultContent: '<a class="delete" href="javascript:;" onclick="deleteModal()"> Delete </a>',
+                  render: function ( data, type, row ) {
+                	  return  '<a class="edit1" href="javascript:void(0)" onclick="deleteModal('+data.id+')"><i class="fa fa-trash-o"></i></a>';
+                   },
                   className: '',
                   orderable: false
               },
@@ -266,49 +251,59 @@
          cell.checkboxes.select(this.checked);
       });
 
-      $('#addRow').on( 'click', function () {
-         $('#example').DataTable().row.add( [
-            '',
-            '<input type="text" class="form-control">',
-            '<input type="text" class="form-control">',
-            '<input type="text" class="form-control">',
-            '<input type="text" class="form-control">',
-            '<input type="text" class="form-control">',
-            '<input type="text" class="form-control">',
-            '<a class="save" href="javascript:;">Save</a>',
-            '<a class="cancel" href="javascript:;">Cancel</a>'
-         ] ).draw( false );
-         countNew++;
-      } );
-      $('#example tbody').on( 'click', '.edit1', function () {
-         var data = table.row( $(this).parents('tr') ).data();
-         ($(this).parents('tr')).children().eq(1).html('<input type="text" style="width: '+($('thead th').eq(1).width()+23)+'px;" class="form-control form-control-sm" value="' + data['name'] + '">');
-         ($(this).parents('tr')).children().eq(2).html('<input type="text" style="width: '+($('thead th').eq(2).width()+23)+'px;" class="form-control form-control-sm" value="' + data['position'] + '">');
-         ($(this).parents('tr')).children().eq(3).html('<input type="text" style="width: '+($('thead th').eq(3).width()+23)+'px;" class="form-control form-control-sm" value="' + data['office'] + '">');
-         ($(this).parents('tr')).children().eq(4).html('<input type="text" style="width: '+($('thead th').eq(4).width()+23)+'px;" class="form-control form-control-sm" value="' + data['extn'] + '">');
-         ($(this).parents('tr')).children().eq(5).html('<input type="text" style="width: '+($('thead th').eq(5).width()+23)+'px;" class="form-control form-control-sm" value="' + data['start_date'] + '">');
-         ($(this).parents('tr')).children().eq(6).html('<input type="text" style="width: '+($('thead th').eq(6).width()+23)+'px;" class="form-control form-control-sm" value="' + data['salary'] + '">');
-         ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
-         ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
-      } );
-      $('#example tbody').on( 'click', '.cancel', function () {
-         if (countNew > 0) {
-            $('#example').DataTable().row($(this).parents('tr')).remove().draw();
-            countNew--;
-         } else {
-            var data = table.row( $(this).parents('tr') ).data();
-            ($(this).parents('tr')).children().eq(1).html(data['name']);
-            ($(this).parents('tr')).children().eq(2).html(data['position']);
-            ($(this).parents('tr')).children().eq(3).html(data['office']);
-            ($(this).parents('tr')).children().eq(4).html(data['extn']);
-            ($(this).parents('tr')).children().eq(5).html(data['start_date']);
-            ($(this).parents('tr')).children().eq(6).html(data['salary']);
-            ($(this).parents('tr')).children().eq(7).html('<a class="edit1" href="javascript:;">Edit</a>');
-            ($(this).parents('tr')).children().eq(8).html('<a class="delete" href="javascript:;">Delete</a>');
-         }
+//       $('#addRow').on( 'click', function () {
+//          $('#example').DataTable().row.add( [
+//             '',
+//             '<input type="text" class="form-control">',
+//             '<input type="text" class="form-control">',
+//             '<input type="text" class="form-control">',
+//             '<input type="text" class="form-control">',
+//             '<input type="text" class="form-control">',
+//             '<input type="text" class="form-control">',
+//             '<a class="save" href="javascript:;">Save</a>',
+//             '<a class="cancel" href="javascript:;">Cancel</a>'
+//          ] ).draw( false );
+//          countNew++;
+//       } );
+//       $('#example tbody').on( 'click', '.edit1', function () {
+//          var data = table.row( $(this).parents('tr') ).data();
+//          ($(this).parents('tr')).children().eq(1).html('<input type="text" style="width: '+($('thead th').eq(1).width()+23)+'px;" class="form-control form-control-sm" value="' + data['name'] + '">');
+//          ($(this).parents('tr')).children().eq(2).html('<input type="text" style="width: '+($('thead th').eq(2).width()+23)+'px;" class="form-control form-control-sm" value="' + data['position'] + '">');
+//          ($(this).parents('tr')).children().eq(3).html('<input type="text" style="width: '+($('thead th').eq(3).width()+23)+'px;" class="form-control form-control-sm" value="' + data['office'] + '">');
+//          ($(this).parents('tr')).children().eq(4).html('<input type="text" style="width: '+($('thead th').eq(4).width()+23)+'px;" class="form-control form-control-sm" value="' + data['extn'] + '">');
+//          ($(this).parents('tr')).children().eq(5).html('<input type="text" style="width: '+($('thead th').eq(5).width()+23)+'px;" class="form-control form-control-sm" value="' + data['start_date'] + '">');
+//          ($(this).parents('tr')).children().eq(6).html('<input type="text" style="width: '+($('thead th').eq(6).width()+23)+'px;" class="form-control form-control-sm" value="' + data['salary'] + '">');
+//          ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
+//          ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
+//       } );
+//       $('#example tbody').on( 'click', '.cancel', function () {
+//          if (countNew > 0) {
+//             $('#example').DataTable().row($(this).parents('tr')).remove().draw();
+//             countNew--;
+//          } else {
+//             var data = table.row( $(this).parents('tr') ).data();
+//             ($(this).parents('tr')).children().eq(1).html(data['name']);
+//             ($(this).parents('tr')).children().eq(2).html(data['position']);
+//             ($(this).parents('tr')).children().eq(3).html(data['office']);
+//             ($(this).parents('tr')).children().eq(4).html(data['extn']);
+//             ($(this).parents('tr')).children().eq(5).html(data['start_date']);
+//             ($(this).parents('tr')).children().eq(6).html(data['salary']);
+//             ($(this).parents('tr')).children().eq(7).html('<a class="edit1" href="javascript:;">Edit</a>');
+//             ($(this).parents('tr')).children().eq(8).html('<a class="delete" href="javascript:;">Delete</a>');
+//          }
         
-    } );
+//     } );
         
    });
+   
+   function deleteModal(rowId){    
+	   $('#confirm-modal').modal('show');
+	   $('#btn-confirm-delete').attr('href', "#/home");
+	   $('#btn-confirm-delete').on( 'click', function () {
+		   	
+	         $('#confirm-modal').modal('hide');
+	      } );
+       
+   }
  
 </script>

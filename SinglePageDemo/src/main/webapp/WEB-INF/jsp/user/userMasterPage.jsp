@@ -10,8 +10,9 @@
 <meta name="description" content="Tem" />
 <link rel="icon" type="image/x-icon" href="<%=ConfigurationPath.getResourceServerPath("/images/viettel.jpg")%>">
 
-<jsp:include page="/WEB-INF/jsp/general/CommonLibrary.jsp" />
-<jsp:include page="/WEB-INF/jsp/general/ServerInfo.jsp" />
+<jsp:include page="/WEB-INF/jsp/general/commonLibrary.jsp" />
+<jsp:include page="/WEB-INF/jsp/general/serverInfo.jsp" />
+<jsp:include page="/WEB-INF/jsp/general/commonModal.jsp" />
 
 <link rel="stylesheet" id="hashone-fonts-css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=latin,latin-ext" type="text/css" media="all">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -297,21 +298,21 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="page-bar">
-				<ul class="page-breadcrumb">
-					<li>
-						<i class="fa fa-home"></i>
-						<a href="index.html">Home</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						<a href="#">Data Tables</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						<a href="#">Editable Datatables</a>
-					</li>
-				</ul>
+    <div class="page-bar" id="breadCumb">
+<!-- 				<ul class="page-breadcrumb"> -->
+<!-- 					<li> -->
+<!-- 						<i class="fa fa-home"></i> -->
+<!-- 						<a href="index.html">Home</a> -->
+<!-- 						<i class="fa fa-angle-right"></i> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 						<a href="#">Data Tables</a> -->
+<!-- 						<i class="fa fa-angle-right"></i> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 						<a href="#">Editable Datatables</a> -->
+<!-- 					</li> -->
+<!-- 				</ul> -->
 			</div>
     <!-- Main content -->
     <div ng-app="contentApp">
