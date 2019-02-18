@@ -7,8 +7,6 @@
  
  <!-- Font Awesome -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/bootstrap/dist/css/bootstrap.min.css")%>">
-<%--  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/dataTables.bootstrap4.css")%>"> --%>
-<%-- <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/bootstrap.css")%>"> --%>
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/dataTables.bootstrap4.css")%>">
  
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/font-awesome/css/font-awesome.min.css")%>">
@@ -31,9 +29,7 @@
  <!-- bootstrap wysihtml5 - text editor -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/scripts/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")%>">
 
-<!-- Merge Ân ---------------------------------->
-<%-- <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/dataTables.bootstrap4.css")%>"> --%>
-<%-- <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/bootstrap.css")%>"> --%>
+<!-- checkbox datatables---------------------------------->
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/dataTables.checkboxes.css")%>">
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/blue.css")%>">
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/common.css")%>">
@@ -53,7 +49,6 @@
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/multiselect/kendo.all.min.js")%>"></script>
 
 <!-- END Multiselect -->
-
    
 <!--    End -->
 
@@ -85,9 +80,6 @@
 <!-- Bootstrap WYSIHTML5 -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/plugins/jquery.blockui.min.js")%>"></script>
-
-
-
 
 <!-- Slimscroll -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")%>"></script>
