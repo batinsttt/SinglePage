@@ -1,3 +1,4 @@
+
 package com.sttt.ruby.controller;
 
 import java.util.Date;
@@ -24,6 +25,7 @@ public class MainController {
 	*/	
 	@RequestMapping(value = { "/", "/user" }, method = RequestMethod.GET)
 	public String userMasterPage(Model model) {
+		model.addAttribute("dates", DateUtil.toDateString(new Date(), "MM/dd/yyyy"));
 		return "user/userMasterPage";
 	}
 	

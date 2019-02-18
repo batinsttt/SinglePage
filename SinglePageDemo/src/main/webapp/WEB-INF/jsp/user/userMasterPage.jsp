@@ -11,6 +11,7 @@
 
 <!-- <tiles:insertTemplate template="CommonLibrary.jsp" /> -->
 <jsp:include page="/WEB-INF/jsp/general/CommonLibrary.jsp" />
+<jsp:include page="/WEB-INF/jsp/general/ServerInfo.jsp" />
 
 <link rel="stylesheet" id="hashone-fonts-css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=latin,latin-ext" type="text/css" media="all">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
