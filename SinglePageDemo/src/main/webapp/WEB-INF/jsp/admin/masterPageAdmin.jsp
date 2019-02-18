@@ -291,21 +291,21 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="page-bar">
-				<ul class="page-breadcrumb">
-					<li>
-						<i class="fa fa-home"></i>
-						<a href="index.html">Home</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						<a href="#">Data Tables</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						<a href="#">Editable Datatables</a>
-					</li>
-				</ul>
+    <div class="page-bar" id="breadCumb">
+<!-- 				<ul class="page-breadcrumb"> -->
+<!-- 					<li> -->
+<!-- 						<i class="fa fa-home"></i> -->
+<!-- 						<a href="index.html">Home</a> -->
+<!-- 						<i class="fa fa-angle-right"></i> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 						<a href="#">Data Tables</a> -->
+<!-- 						<i class="fa fa-angle-right"></i> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 						<a href="#">Editable Datatables</a> -->
+<!-- 					</li> -->
+<!-- 				</ul> -->
 			</div>
     <!-- Main content -->
     <section class="content">
@@ -320,6 +320,7 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <script type="text/javascript">
+
 	$('#search-icon').click(function(){
 		$('.sidebar-form .input-group').addClass("openSearch");
 		$('#search-icon').hide();
