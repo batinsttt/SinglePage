@@ -147,7 +147,31 @@
 	<!-- 	End modal -->
 	
 <script type="text/javascript">
+	//Generate BreadCumb
+	function genBreadCumb(){
+		$('#breadCumb').empty();
+		var arrBrCb = new Array();
+		for(var i in arguments){
+			arrBrCb.push(arguments[i]);
+		  }
+	  	var contentHTML = '<ul class="page-breadcrumb">'
+	  		+ '<li><i class="fa fa-home"></i> <a href="#">Home</a> </li>';
+  		arrBrCb.forEach(function(brCb) {
+  			// brCb[1] is URL, brCb[0] is text
+	  		var element = '<li><i class="fa fa-angle-right"></i><a href="'+brCb[1]+'">'+ brCb[0] +'</a></li>';
+	  		contentHTML = contentHTML.concat(element);
+  		});
+	  	contentHTML.concat('</ul>');
+
+	  	$('#breadCumb').append(contentHTML);
+	  };
    $(document).ready(function() {
+	   //Generate breadCumb
+	   var breadCumb_1 = ['DV đang sử dụng1', '#/service/channel'];
+	   var breadCumb_2 = ['DV đang sử dụng2', '#/service/tracking'];
+	   var breadCumb_3 = ['DV đang sử dụng3', '#/sales/edit'];
+	   CommonUtils.genBreadCumb(breadCumb_1, breadCumb_2, breadCumb_3);
+		
 	   $('.modal-content').resizable({
 			minHeight: 300,
 			minWidth: 300
@@ -286,5 +310,5 @@
     } );
         
    });
-
+ 
 </script>

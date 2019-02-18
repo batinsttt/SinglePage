@@ -94,7 +94,8 @@
 
 <!-- Business js -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/business/service/jquery.service.js")%>"></script>
-
+<!-- Common Utils -->
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/common.js")%>"></script>
 <script type="text/javascript">
 $.ajaxSetup({'cache':true});
 </script>
