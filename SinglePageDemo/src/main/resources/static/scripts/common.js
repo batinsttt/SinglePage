@@ -1257,7 +1257,7 @@ var CommonUtils = {
 		if(date.length == 0) {
 			return false;
 		}
-		var now = new Date(sysDateFromDB);
+		var now = new Date(sysDateFromServer);
 		var cYear = now.getFullYear();
 		var cMonth = now.getMonth() + 1;
 		var cDate = now.getDate();
@@ -2025,7 +2025,7 @@ function applyMonthPicker(selector,prefix) {
 	if(prefix!=null && prefix!=undefined){
 		uPrefix = prefix;
 	}
-	var date = new Date(sysDateFromDB);
+	var date = new Date(sysDateFromServer);
 	var cYear = date.getFullYear();
 	var options = {
 	    selectedYear: cYear,
@@ -2071,7 +2071,7 @@ function applyDateTimePicker(selector, dateFormat, hideYear, memuMonthShow, menu
 	}	
 	var yearRange = null;
 	if (yearRangeFlag != null && yearRangeFlag != undefined) {
-		var now = new Date(sysDateFromDB);
+		var now = new Date(sysDateFromServer);
 		var t = now.getFullYear();
 		var f = t -100;
 		if(yearRangeFuture != null && yearRangeFuture != undefined){
@@ -3090,7 +3090,7 @@ function applyDateTimePickerWithCallback(selector, dateFormat, hideYear, memuMon
 	}
 	var yearRange = null;
 	if (yearRangeFlag != null && yearRangeFlag != undefined) {
-		var now = new Date(sysDateFromDB);
+		var now = new Date(sysDateFromServer);
 		var t = now.getFullYear();
 		var f = t -100;
 		if(yearRangeFuture != null && yearRangeFuture != undefined){
@@ -3163,12 +3163,12 @@ function applyDateTimePickerWithCallback(selector, dateFormat, hideYear, memuMon
 	}
 }
 function getCurrentDate(){
-	var d=new Date(sysDateFromDB);
+	var d=new Date(sysDateFromServer);
 	var dStr= (d.getDate().toString().length>1?d.getDate():'0'+d.getDate())+'/'+((d.getMonth()+1).toString().length>1?(d.getMonth()+1):'0'+(d.getMonth()+1))+'/'+d.getFullYear();
 	return dStr;
 }
 function getLastWeek(){
-    var today = new Date(sysDateFromDB);
+    var today = new Date(sysDateFromServer);
     var d = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
     var dStr= (d.getDate().toString().length>1?d.getDate():'0'+d.getDate())+'/'+((d.getMonth()+1).toString().length>1?(d.getMonth()+1):'0'+(d.getMonth()+1))+'/'+d.getFullYear();
 	return dStr;
@@ -3486,7 +3486,7 @@ var ValidateUtils = {
 						}
 						
 					}else{
-						var currentTime = sysDateFromDB;
+						var currentTime = sysDateFromServer;
 						var month = currentTime.getMonth() + 1;
 						var day = currentTime.getDate();
 						var year = currentTime.getFullYear();
@@ -3500,7 +3500,7 @@ var ValidateUtils = {
 				if(selector.hasClass('CompareDate') && msg.length == 0){
 					var valueFromDate = selector.val().trim();
 					if(valueFromDate!=null && valueFromDate!=''){
-						var currentTime = sysDateFromDB;
+						var currentTime = sysDateFromServer;
 						var month = currentTime.getMonth() + 1;
 						var day = currentTime.getDate();
 						var year = currentTime.getFullYear();
@@ -3763,7 +3763,7 @@ var DateUtils = {
 	     * Return : Current date "dd/mm/yyyy"
 	     * **/
 		getLastWeek : function(){
-			var d = new Date(sysDateFromDB);
+			var d = new Date(sysDateFromServer);
 			var previousWeek= new Date(d.getTime() - 7 * 24 * 60 * 60 * 1000);
 			var lastWeek= (previousWeek.getDate().toString().length>1?previousWeek.getDate():'0'+previousWeek.getDate())+'/'+((previousWeek.getMonth()+1).toString().length>1?(previousWeek.getMonth()+1):'0'+(previousWeek.getMonth()+1))+'/'+previousWeek.getFullYear();
 			return lastWeek;
@@ -3961,7 +3961,7 @@ var DateUtils = {
 				return '';
 			}
 			if(year == null || year == undefined || year == ''){
-				var currentDate =new Date(sysDateFromDB);
+				var currentDate =new Date(sysDateFromServer);
 				dateTmp = new Date (currentDate.getFullYear(),0,1);
 			} else{
 				dateTmp = new Date(year.toString(),0,1); // toString first so it parses correctly year numbers
