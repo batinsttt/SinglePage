@@ -1921,14 +1921,13 @@ var CommonUtils = {
 			}
 		},
 		// End
-		genBreadCumb: function() {
+		genBreadCumb: function(...arrBrCb) {
+			// Clean children of container div
 		    $('#breadCumb').empty();
-		    var arrBrCb = new Array();
-		    for (var i in arguments) {
-		        arrBrCb.push(arguments[i]);
-		    }
+		    // Add element "Home"
 		    var contentHTML = '<ul class="page-breadcrumb">' +
 		        '<li><i class="fa fa-home"></i> <a href="#">Home</a> </li>';
+		    // Add custom element
 		    arrBrCb.forEach(function(brCb) {
 		        // brCb[1] is URL, brCb[0] is text
 		        var element = '<li><i class="fa fa-angle-right"></i><a href="' + brCb[1] + '">' + brCb[0] + '</a></li>';
