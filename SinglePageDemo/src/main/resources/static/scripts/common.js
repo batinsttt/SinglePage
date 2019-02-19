@@ -33,6 +33,16 @@ var CommonUtils = {
 	_STAFF_GROUP_NAME:14,
 	
 	/**
+	 * Show modal confirm
+	 * Input : title, message modal
+	 * Return : display modal 
+	 * **/
+	confimModalDisplay: function(title, message){
+		$('#myModaltitle').text(title);
+		$('#myModalmsg').text(message);
+		$('#confirm-modal').modal('show');
+	},
+	/**
 	 * Validate phone number
 	 * Input : String
 	 * Return : String 

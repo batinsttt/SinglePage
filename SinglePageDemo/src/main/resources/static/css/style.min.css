@@ -126,6 +126,9 @@ footer ol {
 	.marBottom5 {
 		margin-bottom: 5px;
 	}
+	.dataTables_scrollHeadInner, .table-bordered{
+/* 		width: auto !important; */
+	}
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -133,21 +136,30 @@ footer ol {
 	.marBottom5 {
 		margin-bottom: 5px;
 	}
+	.dataTables_scrollHeadInner, .table-bordered{
+/* 		width: auto !important; */
+	}
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-
+	.dataTables_scrollHeadInner, .table-bordered{
+/* 		width: auto !important; */
+	}
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-
+	.dataTables_scrollHeadInner, .table-bordered{
+		width: 100% !important;
+	}
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
+	.dataTables_scrollHeadInner, .table-bordered{
+		width: 100% !important;
+	}
 }
 
 /* Custom new style here -------------------------start ------------------ */
@@ -205,9 +217,6 @@ footer ol {
 .form-group textarea {
 	resize: vertical;
 }
-.dataTables_scrollHeadInner, .table-bordered{
-	width: 100% !important;
-}
 .dataTables_scrollBody {
 	overflow: overlay !important;
 	max-height: 380px;
@@ -220,4 +229,10 @@ footer ol {
 }
 .colorMenu {
 	color: #00918c;
+}
+.dataTables_scrollHeadInner tr {
+	height: 40px;
+}
+.dataTables_paginate .fa {
+	font-size: 20px;
 }
