@@ -9,50 +9,6 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						<select id="movies" data-placeholder="Select movie..."></select>
-						<script>
-					        $(document).ready(function() {
-						        $("#movies").kendoMultiSelect({
-						            dataTextField: "name",
-						            dataValueField: "abbreviation",
-// 			                        footerTemplate: 'Total #: instance.dataSource.total() # items found',
-// 			                        itemTemplate: '<b>#: data.name #</b></br>#: data.abbreviation #',
-// 			                        tagTemplate:  '<span>#:data.name#</span>',
-						            dataSource: {
-						                transport: {
-						                    read: {
-						                        url: "http://10.30.176.198:9006/ITSolWebService/payment/combobox",
-						                    }
-						                }
-						            },
-						            value: [
-						                { abbreviation: 'AB' },
-						                { abbreviation: 'BC' }
-						            ],
-						            autoClose: false,
-						        });
-						
-						        $("#filter").kendoDropDownList({
-						            change: filterTypeOnChanged
-						        });
-						
-						        var multiSelect = $("#movies").data("kendoMultiSelect"),
-						            setValue = function(e) {
-						                if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode) {
-						                    multiSelect.dataSource.filter({}); //clear applied filter before setting value
-						
-						                    multiSelect.value($("#value").val().split(","));
-						                }
-						            },
-						            setSearch = function (e) {
-						                if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode) {
-						                    multiSelect.search($("#word").val());
-						                }
-						            };
-						        function filterTypeOnChanged() {
-						            multiSelect.options.filter = $("#filter").val();
-						        }
-					    	});
-					    </script>
 					</div>
 					<!-- /.form-group -->
 				</div>
@@ -65,27 +21,6 @@
 							placeholder="Combobox multiple checkbox"> -->
 						<select id="multiCheckbox" class="form-control" multiple="multiple">
 						</select>
-						<script type="text/javascript">
-						    $(document).ready(function() {
-						    	var dropdown = $('#multiCheckbox');
-							    const url = 'http://10.30.176.198:9006/ITSolWebService/payment/combobox';
-							    $.getJSON(url, function (data) {
-							        $.each(data, function (key, entry) {
-							            dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
-							        })
-							        $('#multiCheckbox option[value=AB]').attr('selected','selected');
-							        $('#multiCheckbox option[value=BC]').attr('selected','selected');
-							        $('#multiCheckbox option[value=MB]').attr('selected','selected');
-						        	$('#multiCheckbox').multiselect({
-					                    includeSelectAllOption: true,
-					                    buttonWidth: '100%',
-					                    maxHeight: 200,
-					                    //buttonClass: 'form-control select2 select2-hidden-accessible',
-					                    numberDisplayed: 1000,
-					                });
-							    }); 
-						    });
-						</script>
 					</div>
 					<!-- /.form-group -->
 				</div>
@@ -95,16 +30,6 @@
 							style="width: 100%;max-height: 60px;" aria-hidden="true">
 							<option selected="selected">Combobox thường</option>
 						</select>
-					   	<script type="text/javascript">
-					      var dropdown = $('#normalComboBox');
-					      const url = 'http://10.30.176.198:9006/ITSolWebService/payment/combobox';
-					      $.getJSON(url, function (data) {
-					         $.each(data, function (key, entry) {
-					            dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
-					         })
-						     $('#normalComboBox option[value=AB]').attr('selected','selected');
-					      }); 
-					   	</script>
 					</div>
 					<!-- /.form-group -->
 				</div>
@@ -112,6 +37,50 @@
 			</div>
 			<!-- /.row -->
 		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+		        $("#movies").kendoMultiSelect({
+		            dataTextField: "name",
+		            dataValueField: "abbreviation",
+		            dataSource: {
+		                transport: {
+		                    read: {
+		                        url: "http://10.30.176.198:9006/ITSolWebService/payment/combobox",
+		                    }
+		                }
+		            },
+		            value: [
+		                { abbreviation: 'AB' },
+		                { abbreviation: 'BC' }
+		            ], 
+		            autoClose: false,
+		        });
+	            
+				const url = 'http://10.30.176.198:9006/ITSolWebService/payment/combobox';
+				$.getJSON(url, function (data) {
+				    $.each(data, function (key, entry) {
+				    	$('#multiCheckbox').append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+				    })
+				   	$('#multiCheckbox').multiselect({
+						includeSelectAllOption: true,
+						buttonWidth: '100%',
+						maxHeight: 200,
+						//buttonClass: 'form-control select2 select2-hidden-accessible',
+						numberDisplayed: 1000,
+					});
+
+				    $('#multiCheckbox').multiselect('select', ['AB','BC','MB']);
+				});
+			    
+				const url2 = 'http://10.30.176.198:9006/ITSolWebService/payment/combobox';
+				$.getJSON(url2, function (data) {
+				   $.each(data, function (key, entry) {
+					   $('#normalComboBox').append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+				   })
+					$('#normalComboBox').val("MB");
+				}); 
+	    	});
+		</script>
 		
 		<div class="box-footer">
 			<button type="submit" class="btn btn-green pull-right" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>

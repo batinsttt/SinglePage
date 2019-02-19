@@ -263,10 +263,28 @@
                         && this.multiple) {
 
                     if (this.selectAllNumber) {
-                        return this.allSelectedText + ' (' + options.length + ')';
+                    	var selected = '';
+                        var delimiter = this.delimiterText;
+                        options.each(function() {
+                            var label = ($(this).attr('label') !== undefined) ? $(this).attr('label') : $(this).text();
+                            selected += label + delimiter;
+                        });
+                        return selected.substr(0, selected.length - this.delimiterText.length);
+                        
+//                        return this.allSelectedText + ' (' + options.length + ')';
                     }
                     else {
-                        return this.allSelectedText;
+                    	var selected = '';
+                        var delimiter = this.delimiterText;
+
+                        options.each(function() {
+                            var label = ($(this).attr('label') !== undefined) ? $(this).attr('label') : $(this).text();
+                            selected += label + delimiter;
+                        });
+
+                        return selected.substr(0, selected.length - this.delimiterText.length);
+                        
+//                        return this.allSelectedText;
                     }
                 }
                 else if (this.numberDisplayed != 0 && options.length > this.numberDisplayed) {
