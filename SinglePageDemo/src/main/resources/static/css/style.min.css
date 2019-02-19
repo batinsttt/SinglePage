@@ -210,7 +210,14 @@ footer ol {
 }
 .dataTables_scrollBody {
 	overflow: overlay !important;
+	max-height: 380px;
 }
 .textCenter {
 	text-align: center;
+}
+.iconSize18 .fa{
+	font-size: 16px;
+}
+.colorMenu {
+	color: #00918c;
 }

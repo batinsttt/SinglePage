@@ -63,7 +63,7 @@
 			<!-- /.row -->
 		</div>
 		<div class="box-footer">
-			<button class="btn btn-green pull-right" data-toggle="modal" data-target="#myModal" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
+			<button class="btn btn-green pull-right" onclick="showModal()" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
             <button id="searchChannel"  onclick="return Service.searchChannel();" class="btn btn-blue pull-right"><i class="fa fa-search"></i>Tìm kiếm</button>
 		</div>
 	</div>
@@ -86,7 +86,6 @@
 				<thead>
 					<tr>
 						<th>STT</th>
-               			<th></th>
 						<th id="inputCol">Name</th>
 						<th>Position</th>
 						<th>Office</th>
@@ -111,27 +110,27 @@
 	      <div class="modal-content" style="overflow: hidden;">
 	        <div class="modal-header">
 	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	          <h4 class="modal-title" id="myModalLabel">Thông tin yêu cầu</h4>
 	        </div>
 	        <div class="modal-body" style="max-height: 409px; overflow-y: auto;">
 	        	<div class="form-group row">
-				    <label for="inputEmail3" class="col-sm-3 col-form-label">Mã yêu cầu</label>
+				    <label class="col-sm-3 col-form-label">Mã yêu cầu</label>
 				    <div class="col-sm-9">
-				      <input type="email" class="form-control" placeholder="Mã yêu cầu">
+				      <input type="text" class="form-control" id="requestCode" placeholder="Mã yêu cầu">
 				    </div>
-				  </div>
-				  <div class="form-group row">
-				    <label for="inputPassword3" class="col-sm-3 col-form-label">Tên yên cầu</label>
+				</div>
+				<div class="form-group row">
+				    <label  class="col-sm-3 col-form-label">Tên yên cầu</label>
 				    <div class="col-sm-9">
-				      <input type="password" class="form-control" placeholder="Tên yêu cầu">
+				      <input type="text" class="form-control" id="requestName" placeholder="Tên yêu cầu">
 				    </div>
-				 </div>
-				 <div class="form-group row">
-				    <label for="inputPassword3" class="col-sm-3 col-form-label">Nội dung</label>
+				</div>
+				<div class="form-group row">
+				    <label class="col-sm-3 col-form-label">Nội dung</label>
 				    <div class="col-sm-9">
-				      <textarea class="form-control" rows="3" placeholder="Nội dung yêu cầu"></textarea>
+				      <textarea class="form-control" rows="3" id="requestContent" placeholder="Nội dung yêu cầu"></textarea>
 				    </div>
-				 </div>	
+				</div>	
 	        </div>
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -153,11 +152,14 @@
 	      var countChecked = 1;
 	      var table = $('#example').DataTable({
 	    	  "processing":true,
-	    	   responsive: true,
+// 	    	  "language": {
+// 	    		    processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw colorMenu"></i>'
+// 	    		},
+	    	   "responsive": true,
 	    	  "autoWidth":true,
 	    	  "pagingType": "full_numbers",
 	    	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-	    	  "scrollY": 380,
+	    	  "scrollY": true,
 	          "scrollX": true,
 	          "ajax": {
 	  		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
@@ -173,7 +175,6 @@
 	                  className: 'textCenter',
 	                  orderable: false
 	              },
-	              { "data": "id" },
 	              { "data": "name" },
 	              { "data": "position" },
 	              { "data": "office" },
@@ -183,43 +184,22 @@
 	              {
 	                  data: null,
 					render: function ( data, type, row ) {
-                    	return  '<a class="edit1" href="javascript:void(0)" onclick="showModal('+data.id+')"><i class="fa fa-edit"></i></a>';
+                    	return  '<a class="iconSize18" href="javascript:void(0)" onclick="showModal('+data.id+')"><i class="fa fa-edit"></i></a>';
                 	},
-	                  className: '',
+	                  className: 'textCenter',
 	                  orderable: false
 	              },
 	              {
 	                  data: null,
-	                  defaultContent: '<a class="delete" href="javascript:;"> Delete </a>',
-	                  className: '',
+	                  render: function ( data, type, row ) {
+	                	  return  '<a class="iconSize18" href="javascript:void(0)" onclick="deleteModal('+data.id+')"><i class="fa fa-trash-o"></i></a>';
+	                   },
+	                  className: 'textCenter',
 	                  orderable: false
 	              },
 	          ],
-	          "drawCallback": function(){
-	              $('input[type="checkbox"]').iCheck({
-	                 "checkboxClass": 'icheckbox_flat-blue'
-	              });
-	           },
-	           "columnDefs": [
-	               {
-	                  "targets": 1,
-	                  "checkboxes": {
-	                     "selectRow": true,
-	                     "selectCallback": function(nodes, selected){
-	                        $('input[type="checkbox"]', nodes).iCheck('update');
-	                     },
-	                     "selectAllCallback": function(nodes, selected, indeterminate){
-	                        $('input[type="checkbox"]', nodes).iCheck('update');
-	                     }
-	                     
-	                  }
-	               }
-	            ],
-	            "select": {
-	               "style": 'multi',
-	               "selector": 'td:first-child'
-	            },
-	            "order": [[3, 'asc']]
+	           
+	           "order": [[1, 'asc']]
 	      });
 	      
 	      table.on( 'order.dt search.dt', function () {
@@ -228,28 +208,36 @@
 	          } );
 	      } ).draw();
 	      
-	      // Handle iCheck change event for "select all" control
-	      $(table.table().container()).on('ifChanged', '.dt-checkboxes-select-all input[type="checkbox"]', function(event){
-	         var col = table.column($(this).closest('th'));
-	         col.checkboxes.select(this.checked);
-	      });
-
-	      // Handle iCheck change event for checkboxes in table body
-	      $(table.table().container()).on('ifChanged', '.dt-checkboxes', function(event){
-	         var cell = table.cell($(this).closest('td'));
-	         cell.checkboxes.select(this.checked);
-	      });
-
-	      $('#addRow').on( 'click', function () {
-	         
-	      } );
-	      $('#example tbody').on( 'click', '.edit1', function () {
-	         
-	      } );
-	      $('#example tbody').on( 'click', '.cancel', function () {
-	        
-	        
-	    } );
    });
+   
+   function deleteModal(rowId){    
+	   CommonUtils.confimModalDisplay(confirmModalTitle, confirmModalMessage);
+	   $('#btn-confirm-delete').on( 'click', function () {
+	         $('#confirm-modal').modal('hide');
+	      } );
+   }
+   
+   function showModal(rowId){
+	   
+	   // Case create
+	   if(CommonUtils.isNullOrEmpty(rowId) || rowId == undefined) {
+		   $('#requestCode').val('');
+           $('#requestName').val('');
+           $('#requestContent').val('');
+           
+	   } else { // Case update
+		   $.ajax({
+	           type: 'GET',
+	           url: 'http://www.json-generator.com/api/json/get/cfKJmlyBWq?id="'+rowId+'"',
+	           success: function(response) {
+	               $('#requestCode').val(response.code);
+	               $('#requestName').val(response.name);
+	               $('#requestContent').val(response.content);
+	           }
+	       });
+	   }
+	   
+ 	  $('#myModal').modal('show');
+   }
 
 </script>

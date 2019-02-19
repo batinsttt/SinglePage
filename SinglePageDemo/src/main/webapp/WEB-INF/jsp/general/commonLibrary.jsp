@@ -11,7 +11,7 @@
  
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/font-awesome/css/font-awesome.min.css")%>">
  <!-- Ionicons -->
- <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/Ionicons/css/ionicons.min.css")%>">
+<%--  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/Ionicons/css/ionicons.min.css")%>"> --%>
  <!-- Theme style -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/AdminLTE.min.css")%>">
  <!-- AdminLTE Skins -->
