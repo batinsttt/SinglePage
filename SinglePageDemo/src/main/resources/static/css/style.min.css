@@ -236,3 +236,34 @@ footer ol {
 .dataTables_paginate .fa {
 	font-size: 20px;
 }
+
+/* QuocPC */
+.padding-5 {
+	padding: 5px !important;
+}
+.padding-10 {
+	padding: 10px !important;
+}
+.padding-15 {
+	padding: 15px !important;
+}
+.padding-top-10 {
+	padding-top: 10px !important;
+}
+.padding-bottom-10 {
+	padding-top: 10px !important;
+}
+.label-bold {
+	font-weight: 700 !important;
+}
+.mess-error {
+	padding-top: 3px;
+	color: #cc2424;
+	height: 0px;
+}
+.input-error {
+	padding-top: 3px;
+	color: #cc2424;
+	height: 0px;
+}
+/* Done QuocPC */

@@ -33,6 +33,10 @@
             .when('/service/addNewUser',{
                 templateUrl:'/service/addNewUser'
             })
+            .when('/quocDemo',{
+                templateUrl:'/quocDemo'
+            })
+
 //            .otherwise({ redirectTo:'/home'});
     });
 })();

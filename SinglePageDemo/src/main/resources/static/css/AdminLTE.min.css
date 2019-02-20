@@ -5897,6 +5897,15 @@ table.text-center th {
   text-shadow: none;
   padding: 0 10px;
 }
+.page-bar .page-breadcrumb > li > a:focus,
+.page-bar .page-breadcrumb > li > a:hover,
+.page-bar .page-breadcrumb > li > span:focus,
+.page-bar .page-breadcrumb > li > span:hover {
+  color: #00918c ;
+  font-size: 14px;
+  text-shadow: none;
+  padding: 0 10px;
+}
 .page-bar .page-breadcrumb > li > i {
   color: #aaa;
   font-size: 18px;

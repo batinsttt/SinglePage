@@ -6,6 +6,10 @@
 
 var confirmModalTitle = '<spring:message code="confirmModal.title"/>';
 var confirmModalMessage = '<spring:message code="confirmModal.message"/>';
-
+var requiredNameErr = '<spring:message code="error.name.required"/>';
+var lengthNameErr = '<spring:message code="error.name.length"/>';
+var formatPhoneErr = '<spring:message code="error.phone.format"/>';
+var formatDateErr = '<spring:message code="error.date.format"/>';
+var formatMailErr = '<spring:message code="error.mail.format"/>';
 
 </script>

@@ -10,6 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sttt.ruby.util.DateUtil;
 
+/**
+ * @author os-quocpc
+ *
+ */
+/**
+ * @author os-quocpc
+ *
+ */
+/**
+ * @author os-quocpc
+ *
+ */
 @Controller
 public class MainController {
 
@@ -101,7 +113,13 @@ public class MainController {
 	public String addNewUser(Model model) {
 		return "user/service/addNewUser";
 	}
-	
+	/*
+     * Validate form
+    */  
+   @RequestMapping(value = "/quocDemo", method = RequestMethod.GET)
+    public String userValidate(Model model) {
+        return "user/service/validateTemplate";
+    }
 //	/*
 //	 * Use's payment
 //	*/	
