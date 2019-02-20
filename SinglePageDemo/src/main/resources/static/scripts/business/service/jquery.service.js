@@ -42,11 +42,41 @@ var Service = {
 	searchChannel: function() {
 		var table1 = $('#example').DataTable();
 		table1.ajax.url("http://10.30.176.198:9006/ITSolWebService/service/trackingSearch").load();
-	},	
+	},
+	
+	/**
+	 * Get parameter for search notice error
+	 * @author IT_SOL
+	 */
+	getPramSearchNoticeError: function() {
+		var params = new Object();
+		
+		var idNamePhone = $('#idNamePhone').val().trim();
+		var customerId = $('#customerId').val().trim();
+		var namePhone = $('#namePhone').val().trim();
+		var address = $('#address').val().trim();
+		var movies = $('#movies').val();
+		var multiCheckbox = $('#multiCheckbox').val();
+		
+		params.idNamePhone = idNamePhone;
+		params.customerId = customerId;
+		params.namePhone = namePhone;
+		params.address = address;
+		params.movies = movies;
+		params.multiCheckbox = multiCheckbox;
+		
+		return params;
+	},
+	
+	/**
+	 * Execute search notice error
+	 * @author IT_SOL
+	 */
+	searchNoticeError: function() {
+		var table1 = $('#example').DataTable();
+		table1.ajax.url("http://10.30.176.198:9006/ITSolWebService/service/noticeErrorSearch").load();
+	},
 
-	
-	
-	
 	/*-----End Search channel-----*/
 	
 	

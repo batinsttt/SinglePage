@@ -284,10 +284,17 @@
 <!--            	 	<i class="fa fa-credit-card"></i> <span>Menu Ân</span> -->
 <!--          	</a> -->
 <!--         </li> -->
-        <li class="oneLevel">
-          	<a href="#/tienDemo">
-           	 	<i class="fa fa-gear custom-menu-fa"></i> <span>Menu Tiến</span>
-         	</a>
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-credit-card"></i> <span>Menu Tiến</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#/service/noticeError"><i class="fa fa-circle-o"></i> Notice error</a></li>
+            <li><a href="#/service/addNewUser"><i class="fa fa-circle-o"></i> Add new User</a></li>
+          </ul>
         </li>
         <li class="oneLevel">
           	<a href="#/quocDemo">

@@ -87,11 +87,19 @@ public class MainController {
 	}
 	
 	/*
-	 * Use's 
+	 * Notice error
 	*/	
-	@RequestMapping(value = "/tienDemo", method = RequestMethod.GET)
+	@RequestMapping(value = "/service/noticeError", method = RequestMethod.GET)
 	public String userServiceError(Model model) {
 		return "user/service/noticeError";
+	}
+
+	/*
+	 * Add new row
+	*/	
+	@RequestMapping(value = "/service/addNewUser", method = RequestMethod.GET)
+	public String addNewUser(Model model) {
+		return "user/service/addNewUser";
 	}
 	
 //	/*

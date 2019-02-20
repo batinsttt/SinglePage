@@ -30,7 +30,7 @@
 	<div class="box">
 		<div class="box-body">
 			<div class="row">
-				<div class="col-md-4">
+				<!-- <div class="col-md-4">
 					<div class="form-group">
 						<select class="form-control select2 select2-hidden-accessible"
 							style="width: 100%;" aria-hidden="true">
@@ -41,9 +41,55 @@
 							<option>Washington</option>
 						</select>
 					</div>
+					/.form-group
+				</div> -->
+				<div class="col-md-4">
+					<div class="form-group">
+						<select id="movies" data-placeholder="Select movie..."></select>
+						<script>
+					        $(document).ready(function() {
+						        $("#movies").kendoMultiSelect({
+						        	autoClose: false,
+						            dataTextField: "name",
+						            dataValueField: "abbreviation",
+						            dataSource: {
+						                transport: {
+						                    read: {
+						                        url: "http://10.30.176.198:9006/ITSolWebService/payment/combobox",
+						                    }
+						                }
+						            },
+						            /* value: [
+						                { name: "Alberta", abbreviation: 'AB' }
+						            ] */
+						        });
+						
+						        $("#filter").kendoDropDownList({
+						            change: filterTypeOnChanged
+						        });
+						
+						        var multiSelect = $("#movies").data("kendoMultiSelect"),
+						            setValue = function(e) {
+						                if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode) {
+						                    multiSelect.dataSource.filter({}); //clear applied filter before setting value
+						
+						                    multiSelect.value($("#value").val().split(","));
+						                }
+						            },
+						            setSearch = function (e) {
+						                if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode) {
+						                    multiSelect.search($("#word").val());
+						                }
+						            };
+						        function filterTypeOnChanged() {
+						            multiSelect.options.filter = $("#filter").val();
+						        }
+					    	});
+					    </script>
+					</div>
 					<!-- /.form-group -->
 				</div>
-				<div class="col-md-4">
+				<!-- <div class="col-md-4">
 					<div class="form-group">
 						<select class="form-control select2 select2-hidden-accessible"
 							style="width: 100%;" aria-hidden="true">
@@ -53,6 +99,30 @@
 							<option>Texas</option>
 							<option>Washington</option>
 						</select>
+					</div>
+					/.form-group
+				</div> -->
+				<div class="col-md-4">
+					<div class="form-group">
+						<!-- <input type="text" class="form-control" id="phone"
+							placeholder="Combobox multiple checkbox"> -->
+						<select id="multiCheckbox" class="form-control" multiple="multiple">
+						</select>
+						<script type="text/javascript">
+						    $(document).ready(function() {
+						    	var dropdown = $('#multiCheckbox');
+							    const url = 'http://10.30.176.198:9006/ITSolWebService/payment/combobox';
+							    $.getJSON(url, function (data) {
+							        $.each(data, function (key, entry) {
+							            dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+							        })
+						        	$('#multiCheckbox').multiselect({
+					                    includeSelectAllOption: true,
+					                    buttonWidth: '100%'
+					                });
+							    }); 
+						    });
+						</script>
 					</div>
 					<!-- /.form-group -->
 				</div>
@@ -109,7 +179,7 @@
 		</div>
 		<div class="box-footer">
 			<!-- <button class="btn btn-green pull-right" data-toggle="modal" data-target="#myModal" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button> -->
-            <button id="searchChannel"  onclick="return Service.searchChannel();" class="btn btn-blue pull-right"><i class="fa fa-search"></i>Tìm kiếm</button>
+            <button id="searchNoticeError"  onclick="return Service.searchNoticeError();" class="btn btn-blue pull-right"><i class="fa fa-search"></i>Tìm kiếm</button>
 		</div>
 	</div>
 	<!-- /.box -->
@@ -179,11 +249,6 @@
 	
 <script type="text/javascript">
    $(document).ready(function() {
-		var addressFm = $('#address').val().trim();
-		var params = new Object();
-		params.address = addressFm;
-		params.phone = "Đà Nẵng";
-
 	    var table = $('#example').DataTable({
 	    	  "processing":true,
 	    	  responsive: true,
@@ -191,11 +256,14 @@
 	    	  "pagingType": "full_numbers",
 	    	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 	    	  "scrollY": 380,
+	    	  "sScrollY": "auto",
 	          "scrollX": true,
 	          "ajax": {
-	  		    "url": "http://www.json-generator.com/api/json/get/cqyMaUVPYi?indent=2",
+	  		    "url": "http://10.30.176.198:9006/ITSolWebService/service/noticeError",
 	  		    "type": "GET",
-	  		  	"data": params,
+	  		    "data": function ( d ) {
+			        return Service.getPramSearchNoticeError();
+			    }
 	  		  },
 	          "columns": [
 	        	  { "data": null },
@@ -228,7 +296,7 @@
    function showModal(rowId){     
        $.ajax({
            type: 'GET',
-           url: 'http://www.json-generator.com/api/json/get/cqyMaUVPYi?indent=2',
+           url: 'http://10.30.176.198:9006/ITSolWebService/service/noticeError',
            success: function(response) {
                var dataJson = response.data;
                var res = dataJson.filter(function(row) {

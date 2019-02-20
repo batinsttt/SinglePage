@@ -27,8 +27,11 @@
             .when('/payment/eidt',{
                 templateUrl:'/payment/eidt'
             })
-            .when('/tienDemo',{
-                templateUrl:'/tienDemo'
+            .when('/service/noticeError',{
+                templateUrl:'/service/noticeError'
+            })
+            .when('/service/addNewUser',{
+                templateUrl:'/service/addNewUser'
             })
 //            .otherwise({ redirectTo:'/home'});
     });
