@@ -38,31 +38,15 @@
 
       // Add new row when click button
       $('#addRow').on( 'click', function () {
-    	  table.row.add( [
-	            '<input type="text" class="form-control" name="name-'+counter+'">',
-	            '<input type="text" class="form-control" name="position-'+counter+'">',
-	            '<input type="text" class="form-control" name="office-'+counter+'">',
-	            '<input type="text" class="form-control" name="extn-'+counter+'">',
-	            '<input type="text" class="form-control" name="startDate-'+counter+'">',
-	            '<input type="text" class="form-control" name="salary-'+counter+'">',
-	            '<a class="save" href="javascript:;">Delete</a>',
-	         ] ).draw( false );
-	         counter++;
+    	  addRow(table, counter);
+	      counter++;
       } );
       
       // Add new row when enter key press
       $(document).on("keypress", "input", function(e){
     	    if(e.which == 13 && $(this).closest("tr").is(":last-child")){
-    	    	table.row.add( [
-    	            '<input type="text" class="form-control" name="name-'+counter+'">',
-    	            '<input type="text" class="form-control" name="position-'+counter+'">',
-    	            '<input type="text" class="form-control" name="office-'+counter+'">',
-    	            '<input type="text" class="form-control" name="extn-'+counter+'">',
-    	            '<input type="text" class="form-control" name="startDate-'+counter+'">',
-    	            '<input type="text" class="form-control" name="salary-'+counter+'">',
-    	            '<a class="save" href="javascript:;">Delete</a>',
-    	         ] ).draw( false );
-    	         counter++;
+    	        addRow(table, counter);
+    	        counter++;
     	    }
     	});
 
@@ -72,6 +56,8 @@
     	  var userObject = new Object();
     	  var userArray = new Array();
     	  var index = 0;
+
+    	  // Create user object list
     	  $.each(data, function( key, value ) {
     		  var name = value.name.substring(0, value.name.indexOf("-"));
     		  userObject[name] = value.value;
@@ -82,7 +68,9 @@
     			  index = 0;
     			  userObject = new Object();
     		  }
-    		});
+    	  });
+
+    	  // Put user list to request
     	  $.ajax({
   		    type: "POST",
   		    url: "http://10.30.176.198:9006/ITSolWebService/service/addNewUser",
@@ -90,12 +78,50 @@
   		    data: JSON.stringify({ data: userArray }),
   		    contentType: "application/json; charset=utf-8",
   		    dataType: "json",
-  		    success: function(data){alert(data);},
+  		    success: function(data){},
   		    failure: function(errMsg) {
   		        alert(errMsg);
   		    }
   		  });
+    	  
+    	  table.destroy();
+
+    	  table = $('#example').DataTable({
+	          "ajax": {
+	  		    "url": "http://10.30.176.198:9006/ITSolWebService/service/addNewUser",
+	  		    "type": "GET"
+	  		  },
+	          "columns": [
+	              { "data": "name" },
+	              { "data": "position" },
+	              { "data": "office" },
+	              { "data": "extn" },
+	              { "data": "start_date" },
+	              { "data": "salary" },
+	              {
+	                  data: null,
+	                  render: function ( data, type, row ) {
+	                	  return  '<a class="iconSize18" href="javascript:void(0)" onclick="deleteModal('+data.id+')"><i class="fa fa-trash-o"></i></a>';
+	                   },
+	                  className: 'textCenter',
+	                  orderable: false
+	              }
+	          ]
+	      });
       });
    });
+
+   // Add new row function
+   function addRow(table, counter){     
+	   table.row.add( [
+           '<input type="text" class="form-control" name="name-'+counter+'">',
+           '<input type="text" class="form-control" name="position-'+counter+'">',
+           '<input type="text" class="form-control" name="office-'+counter+'">',
+           '<input type="text" class="form-control" name="extn-'+counter+'">',
+           '<input type="text" class="form-control" name="startDate-'+counter+'">',
+           '<input type="text" class="form-control" name="salary-'+counter+'">',
+           '<a class="save" href="javascript:;">Delete</a>',
+        ] ).draw( false );
+   }
 </script>
 </html>
