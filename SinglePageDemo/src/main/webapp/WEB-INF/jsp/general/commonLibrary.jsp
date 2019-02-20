@@ -47,8 +47,11 @@
 
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/multiselect/kendo.bootstrap-v4.min.css")%>">
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/multiselect/kendo.all.min.js")%>"></script>
-
 <!-- END Multiselect -->
+
+<!-- Loading bar on Top -->
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/nanobar/nanobar.js")%>"></script>
+<!-- END -->
    
 <!--    End -->
 
