@@ -108,7 +108,7 @@
 					</button>
 					<button id="refill" type="button"
 						class="btn btn-primary pull-right" style="margin-right: 5px;">
-						<i class="fa fa-download"></i> Làm lại
+						<i class="fa fa-repeat"></i> Làm lại
 					</button>
 				</div>
 			</div>

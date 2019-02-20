@@ -31,7 +31,6 @@ var CommonUtils = {
 	_PAYROLL:12,
 	_HOUR_TYPE: 13,
 	_STAFF_GROUP_NAME:14,
-	
 	/**
 	 * Show modal confirm
 	 * Input : title, message modal
@@ -80,7 +79,7 @@ var CommonUtils = {
     getRealPhoneNumber : function(phoneNumber){
     	var countryCode = "84";
     	var countryCodePlus = "+84";
-    	if(!Utils.isEmpty(phoneNumber )){
+    	if(!CommonUtils.isEmpty(phoneNumber )){
 	    	if(phoneNumber.substring(0,2) == countryCode ){
 	    		  return "0" + phoneNumber.substring(2, phoneNumber.length);
 	    	}else if(phoneNumber.substring(0,3) == countryCodePlus){
@@ -109,7 +108,7 @@ var CommonUtils = {
 			$('#' + objectId).val('');
 			return '';
 		}
-		if($('#' + objectId).val().trim().length > 0 && !Utils.isDate($('#' + objectId).val().trim(), '/')){
+		if($('#' + objectId).val().trim().length > 0 && !CommonUtils.isDate($('#' + objectId).val().trim(), '/')){
 			$('#' + objectId).focus();			
 			return format(msgErr_invalid_format_date,objectName);
 		}
@@ -144,38 +143,38 @@ var CommonUtils = {
 	getMessageOfSpecialCharactersValidateEx1: function(objectId, objectName,type){
 		var value = $(objectId).val().trim();
 		if(type == null || type == undefined){
-			type = Utils._NAME;
+			type = CommonUtils._NAME;
 		}
 		var errMsg = '';
 		if(value.length > 0){
 			switch (type) {
-			case Utils._CODE:
+			case CommonUtils._CODE:
 				if(!/^[0-9a-zA-Z-_.]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_code,objectName);
 				}
 				break;
-			case Utils._NAME:
+			case CommonUtils._NAME:
 				if(!/^[^<|>|?|\\|\'|\"|&|~#|$|%|@|*|(|)|^|`]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_name,objectName);
 				}
 				break;
-			case Utils._ADDRESS:
+			case CommonUtils._ADDRESS:
 				if(!/^[^<|>|?|\\|\'|\"|&|~]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_address,objectName);
 				}
 				break;
-			case Utils._PAYROLL:
+			case CommonUtils._PAYROLL:
 				value = value.substring(3);
 				if(!/^[0-9a-zA-Z]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_payroll,objectName);
 				}
 				break;
-			case Utils._TF_NUMBER_COMMA:
+			case CommonUtils._TF_NUMBER_COMMA:
 				if(!/^[0-9a-zA-Z_]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_tf_id_number,objectName);
 				}
 				break;
-			case Utils._NAME_CUSTYPE:
+			case CommonUtils._NAME_CUSTYPE:
 				if(!/^[^<|>|?|\\|\'|\"|&|~#|$|%|@|*|^|`]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_name,objectName);
 				}
@@ -192,48 +191,48 @@ var CommonUtils = {
 	getMessageOfSpecialCharactersValidate: function(objectId, objectName,type){
 		var value = $('#' + objectId).val().trim();
 		if(type == null || type == undefined){
-			type = Utils._DEFAULT;
+			type = CommonUtils._DEFAULT;
 		}
 		var errMsg = '';
 		if(value.length > 0){
 			switch (type) {
-			case Utils._DEFAULT:
+			case CommonUtils._DEFAULT:
 				if(!/^[^<|>|\/]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_default,objectName);
 				}
 				break;
-			case Utils._CODE:
+			case CommonUtils._CODE:
 				if(!/^[0-9a-zA-Z-_.]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_code,objectName);
 				}
 				break;
-			case Utils._NAME:
+			case CommonUtils._NAME:
 				if(!/^[^<|>|?|\\|\'|\"|&|~#|$|%|@|*|^|`]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_name,objectName);
 				}
 				break;
-			case Utils._ADDRESS:
+			case CommonUtils._ADDRESS:
 				if(!/^[^<|>|?|\\|\'|\"|&|~]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_address,objectName);
 				}
 				break;
-			case Utils._AREA:
+			case CommonUtils._AREA:
 				if(!/^[^<|>|?|\\|\'|\"|&|~]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_area,objectName);
 				}
 				break;
-			case Utils._PAYROLL:
+			case CommonUtils._PAYROLL:
 				value = value.substring(3);
 				if(!/^[0-9a-zA-Z]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_payroll,objectName);
 				}
 				break;
-			case Utils._TF_NUMBER_COMMA:
+			case CommonUtils._TF_NUMBER_COMMA:
 				if(!/^[0-9a-zA-Z_]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_tf_id_number,objectName);
 				}
 				break;
-			case Utils._TF_NUMBER:			
+			case CommonUtils._TF_NUMBER:			
 				if(!/^[0-9]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_num,objectName);
 				}
@@ -257,48 +256,48 @@ var CommonUtils = {
 	 */
 	getMessageOfSpecialCharactersValidateForValue: function(value, objectName,type){
 		if(type == null || type == undefined){
-			type = Utils._NAME;
+			type = CommonUtils._NAME;
 		}
 		var errMsg = '';
 		if(value.length > 0){
 			switch (type) {
-			case Utils._CODE:
+			case CommonUtils._CODE:
 				if(!/^[0-9a-zA-Z-_.]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_code,objectName);
 				}
 				break;
-			case Utils._NAME:
+			case CommonUtils._NAME:
 				if(!/^[^<|>|?|\\|\'|\"|&|~#|$|%|@|*|^|`]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_name,objectName);
 				}
 				break;
-			case Utils._ADDRESS:
+			case CommonUtils._ADDRESS:
 				if(!/^[^<|>|?|\\|\'|\"|&|~]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_address,objectName);
 				}
 				break;
-			case Utils._AREA:
+			case CommonUtils._AREA:
 				if(!/^[^<|>|?|\\|\'|\"|&|~]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_area,objectName);
 				}
 				break;
-			case Utils._PAYROLL:
+			case CommonUtils._PAYROLL:
 				value = value.substring(3);
 				if(!/^[0-9a-zA-Z]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_payroll,objectName);
 				}
 				break;
-			case Utils._TF_NUMBER_COMMA:
+			case CommonUtils._TF_NUMBER_COMMA:
 				if(!/^[0-9a-zA-Z_]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_tf_id_number,objectName);
 				}
 				break;
-			case Utils._TF_NUMBER:			
+			case CommonUtils._TF_NUMBER:			
 				if(!/^[0-9]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_num,objectName);
 				}
 				break;
-			case Utils._SAFE:	
+			case CommonUtils._SAFE:	
 				if(!/^[^<|>|\\|\'|\"]+$/.test(value)){
 					errMsg = format(msgErr_invalid_format_safe,objectName);
 				}
@@ -332,7 +331,7 @@ var CommonUtils = {
 		return '';
 	},
 	standardizedSequence: function(sequence){
-		if(!Utils.isEmpty(sequence)){
+		if(!CommonUtils.isEmpty(sequence)){
 			return sequence.trim();
 		}
 		return sequence;
@@ -348,19 +347,19 @@ var CommonUtils = {
         for (var i in obj) {
               if (obj.hasOwnProperty(i)) {
                     if(obj[i] instanceof Array || obj[i] instanceof Object){
-                          obj[i]=Utils.XSSObject(obj[i]);
+                          obj[i]=CommonUtils.XSSObject(obj[i]);
                     }else{
-                          obj[i]=Utils.XSSEncode(obj[i]);
+                          obj[i]=CommonUtils.XSSEncode(obj[i]);
                     }
               }
         }
         return obj;
 	},
 	showEncode: function(s, en){
-		if(!Utils.isEmpty(s)){
+		if(!CommonUtils.isEmpty(s)){
 			s = s.toString();
 			en = en || true;
-			s = Utils.XSSDeEncode(s, en);
+			s = CommonUtils.XSSDeEncode(s, en);
 			if(en){
 				s = s.replace(/</g,"&lt;");
 				s = s.replace(/>/g,"&gt;");
@@ -374,10 +373,10 @@ var CommonUtils = {
 		}
 	},
 	XSSEncode: function(s,en){
-		if(!Utils.isEmpty(s)){
+		if(!CommonUtils.isEmpty(s)){
 			s = s.toString();
 			en = en || true;
-			s = Utils.XSSDeEncode(s, en);
+			s = CommonUtils.XSSDeEncode(s, en);
 			s = s.replace(/&/g,"&amp;");
 //			s = s.replace(/\//g, "&#x2F;");
 			if(en){
@@ -397,7 +396,7 @@ var CommonUtils = {
 		}
 	},	
 	XSSDeEncode : function(s,en){//haupv3
-		if(!Utils.isEmpty(s)){
+		if(!CommonUtils.isEmpty(s)){
 			s = s.toString();
 			en = en || true;
 			s = s.replace(/&amp;/g, '&');
@@ -431,7 +430,7 @@ var CommonUtils = {
 		$.messager.alert(title, msg);
 	},
 	showMessageConfirm: function(title, msg, callback){
-		if (StringUtils.isNullOrEmpty(title)){
+		if (StringCommonUtils.isNullOrEmpty(title)){
 			title = msgXacNhan;
 		}
 		$.messager.confirm(title, msg, function(r){
@@ -450,7 +449,7 @@ var CommonUtils = {
 		}
 		
 		$('.ErrorMsgStyle').html('').hide();
-		Utils.hidePopupNotify();
+		CommonUtils.hidePopupNotify();
 		if(isDelete != undefined || isDelete != null || isDelete != false){
 			var msg;
 			if(message == null || message == '' || message == undefined) {
@@ -468,7 +467,7 @@ var CommonUtils = {
 						if(dataModel.changeCus != undefined && dataModel.changeCus == 3){
 							dataModel.changeCus = 1;
 						}
-						Utils.saveData(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
+						CommonUtils.saveData(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
 					}else{
 						$('.fancybox-inner #btnCreate').removeAttr("disabled");
 						$('.fancybox-inner #btnClose').removeAttr("disabled");
@@ -478,17 +477,17 @@ var CommonUtils = {
 				if(dataModel.changeCus != undefined && dataModel.changeCus == 3){
 					dataModel.changeCus = 1;
 				}
-				Utils.saveData(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
+				CommonUtils.saveData(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
 			}
 		} else {
-			Utils.saveData(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
+			CommonUtils.saveData(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
 		}
 		return false;
 	},
 	addOrSaveDataWithTimeOut: function(dataModel, url, xhrSave, errMsgId, callback,loading, prefix, isDelete, message, callBackFail, isShowConfirmation, isShowDivOverlay){
 		 
 		$('.ErrorMsgStyle').html('').hide();
-		Utils.hidePopupNotify();
+		CommonUtils.hidePopupNotify();
 		if(isDelete != undefined || isDelete != null || isDelete != false){
 			var msg;
 			if(message == null || message == '' || message == undefined) {
@@ -506,7 +505,7 @@ var CommonUtils = {
 						if(dataModel.changeCus != undefined && dataModel.changeCus == 3){
 							dataModel.changeCus = 1;
 						}
-						Utils.saveDataWithTimeOut(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
+						CommonUtils.saveDataWithTimeOut(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
 					}else{
 						$('.fancybox-inner #btnCreate').removeAttr("disabled");
 						$('.fancybox-inner #btnClose').removeAttr("disabled");
@@ -516,15 +515,15 @@ var CommonUtils = {
 				if(dataModel.changeCus != undefined && dataModel.changeCus == 3){
 					dataModel.changeCus = 1;
 				}
-				Utils.saveDataWithTimeOut(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
+				CommonUtils.saveDataWithTimeOut(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
 			}
 		} else {
-			Utils.saveDataWithTimeOut(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
+			CommonUtils.saveDataWithTimeOut(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail, null, isShowDivOverlay);
 		}
 		return false;
 	},
 	addOrSaveRowOnGrid: function(dataModel,url,xhrSave,gridId,errMsgId,callback,loading){
-		Utils.addOrSaveData(dataModel, url, xhrSave, errMsgId, function(data){
+		CommonUtils.addOrSaveData(dataModel, url, xhrSave, errMsgId, function(data){
 			if (gridId != null){
 				$("#"+ gridId).datagrid('reload');
 			}
@@ -551,7 +550,7 @@ var CommonUtils = {
 	 */
 	addOrSaveDataEx: function(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,message,callBackFail){
 		var data = getSimpleObject(dataModel);
-		Utils.addOrSaveData(data, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,message,callBackFail);
+		CommonUtils.addOrSaveData(data, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,message,callBackFail);
 	},
 	saveData: function(dataModel, url, xhrSave, errMsgId, callback,loading,prefix,isDelete,callBackFail,hideSuccessMsg, isShowDivOverlay){
 		var errMsg = 'errMsg';
@@ -580,8 +579,8 @@ var CommonUtils = {
 		if(dataModel == null || dataModel == undefined){
 			dataModel = new Object();
 		}
-		dataModel.token = Utils.getToken();
-		//dataModel=Utils.XSSObject(dataModel);
+		dataModel.token = CommonUtils.getToken();
+		//dataModel=CommonUtils.XSSObject(dataModel);
 		var kData = $.param(dataModel, true);
 		if(xhrSave!=null){
 			xhrSave.abort();
@@ -606,7 +605,7 @@ var CommonUtils = {
 //		    },
 			success : function(data) {				
 				$('#divOverlay_New').hide();				
-				Utils.updateTokenForJSON(data);				
+				CommonUtils.updateTokenForJSON(data);				
 				if(data.error && data.errMsg!= undefined){
 					if(prefix!= undefined && prefix!= null && prefix.length > 0){
 						$(prefix + ' #'+ errMsg).html(data.errMsg).show();
@@ -662,7 +661,7 @@ var CommonUtils = {
 					url : WEB_CONTEXT_PATH +'/check-session',
 					dataType : "json",
 					success : function(data) {
-						ReportsUtils._xhrReport = null;
+						ReportsCommonUtils._xhrReport = null;
 					},
 					error: function(XMLHttpRequest, textStatus, errorThrown) {
 						window.location.href =WEB_CONTEXT_PATH +'/home';
@@ -709,8 +708,8 @@ var CommonUtils = {
 		if(dataModel == null || dataModel == undefined){
 			dataModel = new Object();
 		}
-		dataModel.token = Utils.getToken();
-		//dataModel=Utils.XSSObject(dataModel);
+		dataModel.token = CommonUtils.getToken();
+		//dataModel=CommonUtils.XSSObject(dataModel);
 		var kData = $.param(dataModel, true);
 		if(xhrSave!=null){
 			xhrSave.abort();
@@ -735,7 +734,7 @@ var CommonUtils = {
 //		    },
 			success : function(data) {				
 				$('#divOverlay').hide();				
-				Utils.updateTokenForJSON(data);				
+				CommonUtils.updateTokenForJSON(data);				
 				if(data.error && data.errMsg!= undefined){
 					if(prefix!= undefined && prefix!= null && prefix.length > 0){
 						$(prefix + ' #'+ errMsg).html(data.errMsg).show();
@@ -795,7 +794,7 @@ var CommonUtils = {
 					url : WEB_CONTEXT_PATH+'/check-session',
 					dataType : "json",
 					success : function(data) {
-						ReportsUtils._xhrReport = null;
+						ReportsCommonUtils._xhrReport = null;
 					},
 					error: function(XMLHttpRequest, textStatus, errorThrown) {
 						window.location.href =WEB_CONTEXT_PATH +'/home';
@@ -858,7 +857,7 @@ var CommonUtils = {
 		if (callback != undefined || callback != null){
 			$.getJSON(url, dataOrCallback, function(data){
 				if (data != null){
-					data = Utils.XSSObject(data);
+					data = CommonUtils.XSSObject(data);
 				}
 				if (callback != undefined && callback != null){
 					callback.call(this, data);
@@ -867,7 +866,7 @@ var CommonUtils = {
 		}else{
 			$.getJSON(url, function(data){
 				if (data != null){
-					data = Utils.XSSObject(data);
+					data = CommonUtils.XSSObject(data);
 				}
 				if (dataOrCallback != undefined && dataOrCallback != null){
 					dataOrCallback.call(this, data);
@@ -900,7 +899,7 @@ var CommonUtils = {
 //		    },
 			success : function(data) {
 				if(callback!= null && callback!= undefined){
-					data=Utils.XSSObject(data);
+					data=CommonUtils.XSSObject(data);
 					callback.call(this,data);
 				}
 			},
@@ -976,7 +975,7 @@ var CommonUtils = {
 			success : function(data) {
 				$('#divOverlay_New').hide();
 				if(callback!= null && callback!= undefined){
-					data=Utils.XSSObject(data);
+					data=CommonUtils.XSSObject(data);
 					callback.call(this,data);
 				}
 			},
@@ -1159,8 +1158,8 @@ var CommonUtils = {
 		$("#"+id).unbind("paste");
 	},
 	bindFormatOntextfieldCurrencyFor: function(input,formatType){
-		Utils.formatCurrencyFor(input);
-		Utils.bindFormatOnTextfield(input,formatType);
+		CommonUtils.formatCurrencyFor(input);
+		CommonUtils.bindFormatOnTextfield(input,formatType);
 	},
 	bindFormatOnTextfieldInputCss: function(nameClassCss, formatType,prefix){
 		if(prefix == null || prefix == undefined){
@@ -1169,7 +1168,7 @@ var CommonUtils = {
 		$(prefix + ' ' + '.'+nameClassCss).each(function(){
 			var objectId = $(this).attr('id');
 			if(objectId!=null && objectId!=undefined && objectId.length>0){
-				Utils.bindFormatOnTextfield(objectId, formatType, prefix);
+				CommonUtils.bindFormatOnTextfield(objectId, formatType, prefix);
 			}			
 		});
 	},
@@ -1185,31 +1184,31 @@ var CommonUtils = {
 		var reg = /[^0-9]/;
 		var regAll = /[^0-9]/g;
 		switch (formatType) {
-		case Utils._TF_A_Z:
+		case CommonUtils._TF_A_Z:
 			reg = /[^A-Z]/;
 			regAll = /[^A-Za-z]/g; 
 			break;
-		case Utils._TF_NUMBER_DOT:
+		case CommonUtils._TF_NUMBER_DOT:
 			reg = /[^0-9.]/;
 			regAll = /[^0-9.]/g; 
 			break;
-		case Utils._TF_NUMBER:
+		case CommonUtils._TF_NUMBER:
 			reg = /[^0-9]/;
 			regAll = /[^0-9]/g; 
 			break;
-		case Utils._TF_NUMBER_COMMA:
+		case CommonUtils._TF_NUMBER_COMMA:
 			reg = /[^0-9,]/;
 			regAll = /[^0-9,]/g; 
 			break;
-		case Utils._TF_NUMBER_SIGN:
+		case CommonUtils._TF_NUMBER_SIGN:
 			reg = /[^0-9-]/;
 			regAll = /[^0-9-]/g; 
 			break;
-		case Utils._TF_NUMBER_CONVFACT:
+		case CommonUtils._TF_NUMBER_CONVFACT:
 			reg = /[^0-9\/]/;
 			regAll = /[^0-9\/]/g; 
 			break;
-		case Utils._TF_NUMBER_COMMA_AND_DOT:
+		case CommonUtils._TF_NUMBER_COMMA_AND_DOT:
 			reg = /[^0-9.,]/;
 			regAll = /[^0-9.,]/g; 
 			break;
@@ -1226,10 +1225,10 @@ var CommonUtils = {
 			if (e.keyCode) code = e.keyCode;
 			else if (e.which) code = e.which;
 			if(code == keyCodes.CTRL){
-				Utils._CTRL_PRESS = false;
+				CommonUtils._CTRL_PRESS = false;
 			}
 			if(code == keyCodes.SHIFT) {
-				Utils._SHIFT_PRESS = false;
+				CommonUtils._SHIFT_PRESS = false;
 			}
 		});
 		$(prefixTmp +'#' + id).bind('keydown', function(e){
@@ -1240,17 +1239,17 @@ var CommonUtils = {
 			var character = fromKeyCode(code).split(' ')[0];			
 			if ((code >=96 && code <= 105) || (code>=48 && code<=57) || code==null || code==0 || code== keyCodes.BACK_SPACE || 
 					code == keyCodes.TAB || code==keyCodes.ENTER || code==keyCodes.ESCAPE || code == keyCodes.DELETE ||
-					(Utils._SHIFT_PRESS && code == keyCodes.HOME) || code == keyCodes.SHIFT || code == keyCodes.HOME || code == keyCodes.END ||
+					(CommonUtils._SHIFT_PRESS && code == keyCodes.HOME) || code == keyCodes.SHIFT || code == keyCodes.HOME || code == keyCodes.END ||
 					code==keyCodes.CTRL || code == keyCodes.ARROW_LEFT || code == keyCodes.ARROW_RIGHT || code == keyCodes.ARROW_UP || code == keyCodes.ARROW_DOWN ||
-					(Utils._CTRL_PRESS && (character  == 'v' || character  == 'V'))){
+					(CommonUtils._CTRL_PRESS && (character  == 'v' || character  == 'V'))){
 				if(code == keyCodes.CTRL){
-					Utils._CTRL_PRESS = true;
+					CommonUtils._CTRL_PRESS = true;
 				}
 				if(code == keyCodes.SHIFT) {
-					Utils._SHIFT_PRESS = true;
+					CommonUtils._SHIFT_PRESS = true;
 				}
 				return true;
-			} else if (reg.test(character) || (Utils._SHIFT_PRESS && !/[^0-9]/.test(character))) {
+			} else if (reg.test(character) || (CommonUtils._SHIFT_PRESS && !/[^0-9]/.test(character))) {
 				return false;
 			}else{
 				return true;
@@ -1263,21 +1262,10 @@ var CommonUtils = {
 			},200);
 		});
 	},
-	compareCurrentDate:function(date) {		
-		if(date.length == 0) {
-			return false;
-		}
-		var now = new Date(sysDateFromServer);
-		var cYear = now.getFullYear();
-		var cMonth = now.getMonth() + 1;
-		var cDate = now.getDate();
-		var currentDate = cDate+'/'+cMonth+'/'+cYear;
-		return Utils.compareDate(date, currentDate);
-	},
 	formatCurrencyFor: function(idInput) {
 		$('#'+idInput).bind('keyup', function(e) {
 			var valMoneyInput = $('#'+idInput).val();
-			valMoneyInput = Utils.returnMoneyValue(valMoneyInput);
+			valMoneyInput = CommonUtils.returnMoneyValue(valMoneyInput);
 			if(isNaN(valMoneyInput) || valMoneyInput == "" || valMoneyInput == '') {
 				return false;
 			}
@@ -1287,7 +1275,7 @@ var CommonUtils = {
 		$('#'+idInput).bind('paste', function(){
 		    setTimeout(function(){
 		    	var valMoneyInput = $('#'+idInput).val();
-		        valMoneyInput = Utils.returnMoneyValue(valMoneyInput);
+		        valMoneyInput = CommonUtils.returnMoneyValue(valMoneyInput);
 		        if(isNaN(valMoneyInput) || valMoneyInput == "" || valMoneyInput == '') {
 		        	return false;
 		        }
@@ -1299,7 +1287,7 @@ var CommonUtils = {
 	formatCurrencyForInterger: function(idInput) {
 		$('#'+idInput).bind('keyup', function(e) {
 			var valMoneyInput = $('#'+idInput).val();
-			valMoneyInput = Utils.returnMoneyValue(valMoneyInput);
+			valMoneyInput = CommonUtils.returnMoneyValue(valMoneyInput);
 			if(isNaN(valMoneyInput) || valMoneyInput == "" || valMoneyInput == '') {
 				return false;
 			}
@@ -1333,10 +1321,10 @@ var CommonUtils = {
 		return value.substring(i,value.length);
 	},
 	formatFloatValueWithTailZero: function(number){
-		if (StringUtils.isNullOrEmpty(number) || isNaN(Utils.returnMoneyValue(number))){
+		if (StringCommonUtils.isNullOrEmpty(number) || isNaN(CommonUtils.returnMoneyValue(number))){
 			return parseFloat(0).toFixed(numFloat);
 		}
-		number = parseFloat(Utils.returnMoneyValue(number)).toFixed(numFloat);
+		number = parseFloat(CommonUtils.returnMoneyValue(number)).toFixed(numFloat);
 		var arr = number.split('.');
 		if (arr != null && arr.length == 2){
 			number = formatFloatValue(arr[0])+'.'+arr[1];
@@ -1396,16 +1384,16 @@ var CommonUtils = {
 		}
 	},
 	getMessageOfInvalidFormatDateEx: function(objectId, objectName,type){
-		if($('#' + objectId).val().trim().length > 0 && !Utils.isDateEx($('#' + objectId).val().trim(), '/',type)){
+		if($('#' + objectId).val().trim().length > 0 && !CommonUtils.isDateEx($('#' + objectId).val().trim(), '/',type)){
 			$('#' + objectId).focus();	
 			if(type == null || type == undefined){
-				type = Utils._DATE_DD_MM_YYYY;
+				type = CommonUtils._DATE_DD_MM_YYYY;
 			}
 		    switch (type) {
-				case Utils._DATE_DD_MM_YYYY:
+				case CommonUtils._DATE_DD_MM_YYYY:
 					return format(msgErr_invalid_format_date,objectName);
 					break;
-				case Utils._DATE_MM_YYYY:
+				case CommonUtils._DATE_MM_YYYY:
 					return format(msgErr_invalid_format_month,objectName);
 					break;
 				default:
@@ -1429,10 +1417,10 @@ var CommonUtils = {
 	    // array length should be exactly 3 (no more no less)
 	   
 	    if(type == null || type == undefined){
-			type = Utils._DATE_DD_MM_YYYY;
+			type = CommonUtils._DATE_DD_MM_YYYY;
 		}
 	    switch (type) {
-			case Utils._DATE_DD_MM_YYYY:
+			case CommonUtils._DATE_DD_MM_YYYY:
 				if (aoDate.length !== 3) {
 					return false;
 				}
@@ -1443,7 +1431,7 @@ var CommonUtils = {
 			    month = aoDate[1] - 1;
 			    year = aoDate[2] - 0;
 				break;
-			case Utils._DATE_MM_YYYY:
+			case CommonUtils._DATE_MM_YYYY:
 				if (aoDate.length !== 2) {
 					return false;
 				}
@@ -1498,7 +1486,7 @@ var CommonUtils = {
 	 * @author anhhpt
 	 * @date 06/08/2014
 	 * @description : Client Side Pagination
-	 * @exemple :  $('#dg').datagrid({loadFilter:Utils.pagerFilter});
+	 * @exemple :  $('#dg').datagrid({loadFilter:CommonUtils.pagerFilter});
 	 */	
 	pagerFilter:function(data){
 			if (typeof data.length == 'number' && typeof data.splice == 'function') { // is array
@@ -1631,11 +1619,11 @@ var CommonUtils = {
 			errMsg = 'errExcelMsg';
 		}
 		var kData = $.param(dataModel,true);
-		if(ReportsUtils._xhrReport != null){
-			ReportsUtils._xhrReport.abort();
-			ReportsUtils._xhrReport = null;
+		if(ReportsCommonUtils._xhrReport != null){
+			ReportsCommonUtils._xhrReport.abort();
+			ReportsCommonUtils._xhrReport = null;
 		}
-		ReportsUtils._xhrReport = $.ajax({
+		ReportsCommonUtils._xhrReport = $.ajax({
 			type : "POST",
 			url : url,
 			data: (kData),
@@ -1667,7 +1655,7 @@ var CommonUtils = {
 					url : WEB_CONTEXT_PATH +'/check-session',
 					dataType : "json",
 					success : function(data) {
-						ReportsUtils._xhrReport = null;
+						ReportsCommonUtils._xhrReport = null;
 					},
 					error: function(XMLHttpRequest, textStatus, errorThrown) {
 						window.location.href =WEB_CONTEXT_PATH +'/home';
@@ -1786,8 +1774,8 @@ var CommonUtils = {
 		var quantityPackage = 0; //so luong thung
 		
 		if(amount.toString().indexOf("/") >=0){
-			quantityRetail = Utils.returnMoneyValue(amount.split("/")[1]);
-			quantityPackage = Utils.returnMoneyValue(amount.split("/")[0]);	
+			quantityRetail = CommonUtils.returnMoneyValue(amount.split("/")[1]);
+			quantityPackage = CommonUtils.returnMoneyValue(amount.split("/")[0]);	
 		}else {
 			quantityRetail = amount;
 		}
@@ -1804,7 +1792,7 @@ var CommonUtils = {
 	 * @description : numDecimal co the dung numFloat la bien toan cuc lay theo cau hinh cua cty trong db roi 
 	 */
 	formatValueWithDecimal: function(value, numDecimal){
-		value = Utils.XSSEncode(value);
+		value = CommonUtils.XSSEncode(value);
 		if (value != null && parseFloat(value) > 0){
 			value = parseFloat(value).toFixed(numDecimal);
 		}
@@ -1817,7 +1805,7 @@ var CommonUtils = {
 	 */
 	getTextAndHyperLink: function(text){
 		var textContent = "";
-		if (!Utils.isEmpty(text)){
+		if (!CommonUtils.isEmpty(text)){
 			var temp = text.trim();
 			var temp1 = "";
 			var linkInd = temp.indexOf("http");
@@ -1830,7 +1818,7 @@ var CommonUtils = {
 				if (endLinkInd < 0){
 					endLinkInd = temp1.length;
 				}
-				textContent = Utils.XSSEncode(temp.substring(0, linkInd)) + "<a href='" + temp1.substring(0, endLinkInd) + "'>" + temp1.substring(0, endLinkInd) + "</a>" + Utils.XSSDeEncode(temp1.substring(endLinkInd, temp1.length));
+				textContent = CommonUtils.XSSEncode(temp.substring(0, linkInd)) + "<a href='" + temp1.substring(0, endLinkInd) + "'>" + temp1.substring(0, endLinkInd) + "</a>" + CommonUtils.XSSDeEncode(temp1.substring(endLinkInd, temp1.length));
 			} else {
 				textContent = temp;
 			}
@@ -1886,7 +1874,7 @@ var CommonUtils = {
 	},
 	changePaddingLabel: function(textLabel){
 		$('.form-label').each(function(){
-    		if (Utils.countLines($(this)) > 1) {
+    		if (CommonUtils.countLines($(this)) > 1) {
     			 $(this).addClass('noPaddingTop');
     			 $(this).css('cssText', 'padding-top: 0px !important');
     		}
@@ -1921,8 +1909,8 @@ var CommonUtils = {
 		
 		//Add new xoa dau tieng viet
 		searchLike_Map: function(data, keySearch){
-			data = Utils.delete_CoDau(data);
-			keySearch = Utils.delete_CoDau(keySearch);
+			data = CommonUtils.delete_CoDau(data);
+			keySearch = CommonUtils.delete_CoDau(keySearch);
 			var re = new RegExp(keySearch, 'gi');
 			if(data.match(re)){
 				return true;
@@ -1946,6 +1934,15 @@ var CommonUtils = {
 		    contentHTML.concat('</ul>');
 
 		    $('#breadCumb').append(contentHTML);
+		},
+		/**
+		 * Validate mail address
+		 * Input : String
+		 * Return : boolean
+		 * **/
+		isValidMail: function(mailAddress) {
+			var regex = /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+			  return regex.test(mailAddress);
 		},
 };
 function encodeChar(tst){
@@ -2298,7 +2295,64 @@ function updateRowNumWidthForDG(parentId, gridId){
 		$(gridId).datagrid('resize');
 	}
 }
-
+var dates = {
+	    convert:function(d) {
+	        // Converts the date in d to a date-object. The input can be:
+	        // a date object: returned without modification
+	        // an array : Interpreted as [year,month,day]. NOTE: month is 0-11.
+	        // a number : Interpreted as number of milliseconds
+	        // since 1 Jan 1970 (a timestamp)
+	        // a string : Any format supported by the javascript engine, like
+	        // "YYYY/MM/DD", "MM/DD/YYYY", "Jan 31 2009" etc.
+	        // an object : Interpreted as an object with year, month and date
+	        // attributes. **NOTE** month is 0-11.
+	        return (
+	            d.constructor === Date ? d :
+	            d.constructor === Array ? new Date(d[0],d[1],d[2]) :
+	            d.constructor === Number ? new Date(d) :
+	            d.constructor === String ? new Date(d) :
+	            typeof d === "object" ? new Date(d.year,d.month,d.date) :
+	            NaN
+	        );
+	    },
+	    compare:function(a,b) {
+	        // Compare two dates (could be of any type supported by the convert
+	        // function above) and returns:
+	        // -1 : if a < b
+	        // 0 : if a = b
+	        // 1 : if a > b
+	        // NaN : if a or b is an illegal date
+	        // NOTE: The code inside isFinite does an assignment (=).
+	        return (
+	            isFinite(a=this.convert(a).valueOf()) &&
+	            isFinite(b=this.convert(b).valueOf()) ?
+	            (a>b)-(a<b) :
+	            NaN
+	        );
+	    },
+	    inRange:function(d,start,end) {
+	        // Checks if date in d is between dates in start and end.
+	        // Returns a boolean or NaN:
+	        // true : if d is between start and end (inclusive)
+	        // false : if d is before start or after end
+	        // NaN : if one or more of the dates is illegal.
+	        // NOTE: The code inside isFinite does an assignment (=).
+	       return (
+	            isFinite(d=this.convert(d).valueOf()) &&
+	            isFinite(start=this.convert(start).valueOf()) &&
+	            isFinite(end=this.convert(end).valueOf()) ?
+	            start <= d && d <= end :
+	            NaN
+	        );
+	    },
+	    addDays:function(n){
+	    	var curdate = new Date(sysDateFromDB);
+	    	var time = curdate.getTime();
+	        var changedDate = new Date(time + (n * 24 * 60 * 60 * 1000));
+	        curdate.setTime(changedDate.getTime());	        
+	        return $.datepicker.formatDate('dd/mm/yy', curdate);
+	    }
+	};
 function checkNum(data) { 
 	var valid = "0123456789.";
 	var checktemp;
@@ -2341,7 +2395,7 @@ function formatCurrency(num, isInteger) {
 			isLessZero = true;
 			num = num.substring(1, num.length);
 		}
-		num = Utils.returnMoneyValue(num);
+		num = CommonUtils.returnMoneyValue(num);
 		num = num.toString().split('.');
 		var ints = num[0].split('').reverse();
 		for (var out=[],len=ints.length,i=0; i < len; i++) {
@@ -2395,7 +2449,7 @@ function formatFloatValue(value,toF, flagRemoveZeroDec){
 	if (flagRemoveZeroDec != null && flagRemoveZeroDec){
 		var result = parseFloat(value).toFixed(fixed);
 		if (value != null && value > 0){
-			result = formatCurrency(Utils.returnMoneyValue(result));
+			result = formatCurrency(CommonUtils.returnMoneyValue(result));
 		}else{
 			result = formatCurrency(result);
 		}
@@ -2680,7 +2734,7 @@ function enableSelectboxWithoutChange(id){
 }
 
 function disableCombo(id){
-	if (!StringUtils.isNullOrEmpty(id)){
+	if (!StringCommonUtils.isNullOrEmpty(id)){
 		if (id.indexOf('#') > -1){
 			$(id).combobox('disable');
 			$(id).parent().addClass('BoxDisSelect');
@@ -2708,13 +2762,13 @@ function enableComboTree(id){
 
 function showCodeAndName(code , name) {
 	if(isNullOrEmpty(code)&&!isNullOrEmpty(name)) {
-		return Utils.XSSEncode(name);
+		return CommonUtils.XSSEncode(name);
 	}
 	if(!isNullOrEmpty(code)&&isNullOrEmpty(name)) {
-		return Utils.XSSEncode(code);
+		return CommonUtils.XSSEncode(code);
 	}
 	if(!isNullOrEmpty(code)&&!isNullOrEmpty(name)) {
-		return Utils.XSSEncode(code) +  ' - ' + Utils.XSSEncode(name);
+		return CommonUtils.XSSEncode(code) +  ' - ' + CommonUtils.XSSEncode(name);
 	}
 	return '';
 }
@@ -3048,14 +3102,14 @@ function previewImportExcelFile(fileObj,formId,inputText){
 	if (fileObj.value != '') {
 		if (!/(\.xls|\.xlsx)$/i.test(fileObj.value)) {
 			$('#errExcelMsg').html(msgErr_excel_file_invalid_type).show();
-//			Utils.showMessage(msgErr_excel_file_invalid_type);//LamNH
+//			CommonUtils.showMessage(msgErr_excel_file_invalid_type);//LamNH
 			fileObj.value = '';
 			fileObj.focus();
 			document.getElementById(inputId).value ='';			
 			return false;
 		}else{
 			$('#errExcelMsg').html('').hide();
-			Utils.hideMessage();//LamNH
+			CommonUtils.hideMessage();//LamNH
 			var src = '';
 			if ($.browser.msie){
 			    var path = encodeURI(what.value);
@@ -3068,7 +3122,7 @@ function previewImportExcelFile(fileObj,formId,inputText){
 		}
 	}else{
 		$('#errExcelMsg').html(msgCommon12).show();		
-//		Utils.showMessage(msgCommon12);//LamNH
+//		CommonUtils.showMessage(msgCommon12);//LamNH
 		return false;
 	}
 	return true;
@@ -3207,7 +3261,7 @@ function convertToSimpleObject(out, obj, prefix){
         }
     } else if (obj instanceof Object){
         for(var propName in obj){
-			if (propName.toString() !== Utils.VAR_NAME){
+			if (propName.toString() !== CommonUtils.VAR_NAME){
 				var tmpPrefix = prefix + "." + propName;
 				if (!(obj[propName] instanceof Array || obj[propName] instanceof Object)){
 					out[tmpPrefix] = obj[propName];
@@ -3229,14 +3283,14 @@ function convertToSimpleObject(out, obj, prefix){
 function getPrefix(data){
 	var prefix = null;
 	try{
-		data.hasOwnProperty(Utils.VAR_NAME);
+		data.hasOwnProperty(CommonUtils.VAR_NAME);
 	} catch(e){
 		throw 'Please check your data or browser support.';
 	}
-	if (data.hasOwnProperty(Utils.VAR_NAME)){
+	if (data.hasOwnProperty(CommonUtils.VAR_NAME)){
 		try{
-			prefix = data[Utils.VAR_NAME];
-			delete data[Utils.VAR_NAME];
+			prefix = data[CommonUtils.VAR_NAME];
+			delete data[CommonUtils.VAR_NAME];
 		} catch(e){
 		}
 	} else {
@@ -3296,7 +3350,7 @@ var StaffTypeObject = {
 	NHAN_VIEN_QUAN_LY: 6,
 	KE_TOAN_CONG_TY: 7
 };
-var StringUtils = {
+var StringCommonUtils = {
 	getSubStringFromFirst: function(string, numChar){
 		string += "";
 		if (numChar != null && numChar > 0 && string != null && string.length > numChar){
@@ -3368,10 +3422,10 @@ var KeyCodes = {
 };
 
 /*
- * START OF FILE - /webapp.dms.lite.web/web/resources/scripts/utils/jquery.validate-utils.js
+ * START OF FILE - /webapp.dms.lite.web/web/resources/scripts/CommonUtils/jquery.validate-CommonUtils.js
  */
 
-var ValidateUtils = {
+var ValidateCommonUtils = {
 		binding : function(prefix,isCurrentDate,isCurrentMonth){
 			$('label.Require').each(function(){
 				$(this).html($(this).html() + '<span class="ReqiureStyle"> * </span>');
@@ -3408,13 +3462,13 @@ var ValidateUtils = {
 				if(selector.hasClass('Date')){
 					applyDateTimePicker(prefix +' input#'+objectId);
 					if(isCurrentDate){
-						selector.val(DateUtils.getCurrentDate());
+						selector.val(DateCommonUtils.getCurrentDate());
 					}
 				}
 				if(selector.hasClass('Month')){
 					applyMonthPicker(prefix +' input#'+objectId);
 					if(isCurrentMonth){
-						selector.val(DateUtils.getCurrentMonth());
+						selector.val(DateCommonUtils.getCurrentMonth());
 					}
 				}				
 			}
@@ -3432,7 +3486,7 @@ var ValidateUtils = {
 		},
 		validate : function(errMsgObject,prefix){			
 			$('.ErrorMsgStyle').html('').hide();
-//			Utils.hideMessage();//LamNH
+//			CommonUtils.hideMessage();//LamNH
 			/** Validate Input */
 			var params = new Object();	
 			params.error = false;
@@ -3449,34 +3503,34 @@ var ValidateUtils = {
 					continue;
 				}			
 				if(selector.hasClass('Require')){
-					msg = ValidateUtils.getMessageOfRequireCheck(objectId, objectName, false,true);
+					msg = ValidateCommonUtils.getMessageOfRequireCheck(objectId, objectName, false,true);
 				}	
 				if(selector.hasClass('Code') && msg.length == 0){
-					msg = ValidateUtils.getMessageOfSpecialCharactersValidate(objectId, objectName, Utils._CODE);
+					msg = ValidateCommonUtils.getMessageOfSpecialCharactersValidate(objectId, objectName, CommonUtils._CODE);
 				}
 				if(selector.hasClass('Name')&& msg.length == 0){
-					msg = ValidateUtils.getMessageOfSpecialCharactersValidate(objectId, objectName, Utils._NAME);
+					msg = ValidateCommonUtils.getMessageOfSpecialCharactersValidate(objectId, objectName, CommonUtils._NAME);
 				}
 				if(selector.hasClass('Address')&& msg.length == 0){
-					msg = ValidateUtils.getMessageOfSpecialCharactersValidate(objectId, objectName, Utils._ADDRESS);
+					msg = ValidateCommonUtils.getMessageOfSpecialCharactersValidate(objectId, objectName, CommonUtils._ADDRESS);
 				}
 				if(selector.hasClass('Email')&& msg.length == 0){
-					msg = ValidateUtils.getMessageOfInvalidEmailFormat(objectId, objectName);
+					msg = ValidateCommonUtils.getMessageOfInvalidEmailFormat(objectId, objectName);
 				}
 				if(selector.hasClass('Date')&& msg.length == 0){
-					msg = ValidateUtils.getMessageOfInvalidFormatDate(objectId, objectName,Utils._DATE_DD_MM_YYYY);
+					msg = ValidateCommonUtils.getMessageOfInvalidFormatDate(objectId, objectName,CommonUtils._DATE_DD_MM_YYYY);
 				}
 				if(selector.hasClass('Month')&& msg.length == 0){
-					msg = ValidateUtils.getMessageOfInvalidFormatDate(objectId, objectName,Utils._DATE_MM_YYYY);
+					msg = ValidateCommonUtils.getMessageOfInvalidFormatDate(objectId, objectName,CommonUtils._DATE_MM_YYYY);
 				}
 				if (selector.hasClass('NUMBER_WITHOUT_DOT') && msg.length == 0){
-					msg = ValidateUtils.getMessageOfInvalidFormatNumberWithoutDot(objectId, objectName);
+					msg = ValidateCommonUtils.getMessageOfInvalidFormatNumberWithoutDot(objectId, objectName);
 				}
 				if (selector.hasClass('TIME') && msg.length == 0){
-					msg = ValidateUtils.getMessageOfInvalidFormatTime(objectId, objectName);
+					msg = ValidateCommonUtils.getMessageOfInvalidFormatTime(objectId, objectName);
 				}
 				if(selector.hasClass('STAFF_GROUP_NAME')&& msg.length == 0){
-					msg = ValidateUtils.getMessageOfSpecialCharactersValidate(objectId, objectName, Utils._STAFF_GROUP_NAME);
+					msg = ValidateCommonUtils.getMessageOfSpecialCharactersValidate(objectId, objectName, CommonUtils._STAFF_GROUP_NAME);
 				}
 				if(selector.hasClass('FromDate')&& msg.length == 0){
 					var isToDate = $(prefix + ' input.ToDate').length == 1;
@@ -3486,12 +3540,12 @@ var ValidateUtils = {
 						var valueToDate = $(prefix + ' input.ToDate').val();
 						if(valueToDate!=null && valueToDate!='')
 						{
-							if(DateUtils.compareDate(valueFromDate, valueToDate)>0){
+							if(DateCommonUtils.compareDate(valueFromDate, valueToDate)>0){
 								msg = format('{0} '+jspValidate1+' {1}',objectName,$(prefix + ' input.ToDate').attr('name'));
 								selector.focus();
 							}
 						}else{
-							msg = ValidateUtils.getMessageOfRequireCheck(objectId, objectName, false,true);
+							msg = ValidateCommonUtils.getMessageOfRequireCheck(objectId, objectName, false,true);
 						}
 						
 					}else{
@@ -3499,7 +3553,7 @@ var ValidateUtils = {
 						var month = currentTime.getMonth() + 1;
 						var day = currentTime.getDate();
 						var year = currentTime.getFullYear();
-						if(DateUtils.compareDate(valueFromDate,day + '/' + month + '/' + year) > 0){
+						if(DateCommonUtils.compareDate(valueFromDate,day + '/' + month + '/' + year) > 0){
 							msg = format('{0} '+jspValidate2,objectName);
 							selector.focus();
 						}
@@ -3513,7 +3567,7 @@ var ValidateUtils = {
 						var month = currentTime.getMonth() + 1;
 						var day = currentTime.getDate();
 						var year = currentTime.getFullYear();
-						if(DateUtils.compareDate(valueFromDate,day + '/' + month + '/' + year) > 0){
+						if(DateCommonUtils.compareDate(valueFromDate,day + '/' + month + '/' + year) > 0){
 							msg = format('{0} '+jspValidate2,objectName);
 							selector.focus();
 						}
@@ -3521,7 +3575,7 @@ var ValidateUtils = {
 				}
 				if(msg.length>0){
 					$(errMsgObject).html(msg).show();
-//					Utils.showMessage(msg);//LamNH
+//					CommonUtils.showMessage(msg);//LamNH
 					params.error = true;
 					return params;
 				}								
@@ -3544,11 +3598,11 @@ var ValidateUtils = {
 					continue;
 				}
 				if(selector.hasClass('Require')){
-					msg = ValidateUtils.getMessageOfRequireCheck(objectId, objectName, true);
+					msg = ValidateCommonUtils.getMessageOfRequireCheck(objectId, objectName, true);
 				}
 				if(msg.length>0){
 					$(errMsgObject).html(msg).show();
-//					Utils.showMessage(msg);//LamNH
+//					CommonUtils.showMessage(msg);//LamNH
 					params.error = true;
 					return params;
 				}
@@ -3588,42 +3642,42 @@ var ValidateUtils = {
 		getMessageOfSpecialCharactersValidate: function(objectId, objectName,type){
 			var value = $('#' + objectId).val().trim();
 			if(type == null || type == undefined){
-				type = Utils._NAME;
+				type = CommonUtils._NAME;
 			}
 			var errMsg = '';
 			if(value.length > 0){
 				switch (type) {
-				case Utils._CODE:
+				case CommonUtils._CODE:
 					if(!/^[0-9a-zA-Z-_.]+$/.test(value)){
 						errMsg = format(msgErr_invalid_format_code,objectName);
 					}
 					break;
-				case Utils._NAME:
+				case CommonUtils._NAME:
 					if(!/^[^<|>|?|\\|\'|\"|&|~#|$|%|@|*|^|`]+$/.test(value)){
 						errMsg = format(msgErr_invalid_format_name,objectName);
 					}
 					break;
-				case Utils._ADDRESS:
+				case CommonUtils._ADDRESS:
 					if(!/^[^<|>|?|\\|\'|\"|&|~]+$/.test(value)){
 						errMsg = format(msgErr_invalid_format_address,objectName);
 					}
 					break;
-				case Utils._AREA:
+				case CommonUtils._AREA:
 					if(!/^[^<|>|?|\\|\'|\"|&|~]+$/.test(value)){
 						errMsg = format(msgErr_invalid_format_area,objectName);
 					}
 					break;
-				case Utils._TF_A_Z:	
+				case CommonUtils._TF_A_Z:	
 					if(!/^[A-Za-z]+$/.test(value)){
 						errMsg = format(msgErr_invalid_format_az,objectName);
 					}
 					break;
-				case Utils._SAFE:	
+				case CommonUtils._SAFE:	
 					if(!/^[^<|>|\\|\'|\"]+$/.test(value)){
 						errMsg = format(msgErr_invalid_format_safe,objectName);
 					}
 					break;	
-				case Utils._STAFF_GROUP_NAME:
+				case CommonUtils._STAFF_GROUP_NAME:
 					if(!/^[^<|>|\\|\'|\"]+$/.test(value)){
 						errMsg = format(msgChuaGiaTri,objectName);
 					}
@@ -3639,15 +3693,15 @@ var ValidateUtils = {
 		},
 		getMessageOfInvalidFormatDate: function(objectId, objectName,type){
 			if(type == null || type == undefined){
-				type = Utils._DATE_DD_MM_YYYY;
+				type = CommonUtils._DATE_DD_MM_YYYY;
 			}
-			if($('#' + objectId).val().trim().length > 0 && !DateUtils.isDate($('#' + objectId).val().trim(), '/',type)){
+			if($('#' + objectId).val().trim().length > 0 && !DateCommonUtils.isDate($('#' + objectId).val().trim(), '/',type)){
 				$('#' + objectId).focus();			
 			    switch (type) {
-					case Utils._DATE_DD_MM_YYYY:
+					case CommonUtils._DATE_DD_MM_YYYY:
 						return format(msgErr_invalid_format_date,objectName);
 						break;
-					case Utils._DATE_MM_YYYY:
+					case CommonUtils._DATE_MM_YYYY:
 						return format(msgErr_invalid_format_month,objectName);
 						break;
 					default:
@@ -3673,7 +3727,7 @@ var ValidateUtils = {
 			return '';
 		},
 		getMessageOfInvalidFormatTime: function(objectId, objectName){
-			if ($('#' + objectId).val().trim() != '' && !DateUtils.isTime($('#' + objectId).val().trim())){
+			if ($('#' + objectId).val().trim() != '' && !DateCommonUtils.isTime($('#' + objectId).val().trim())){
 				$('#' + objectId).focus();
 				return format(msgKhongPhaiKieuGio,objectName);	
 			}
@@ -3681,7 +3735,7 @@ var ValidateUtils = {
 		}
 };
 
-var DateUtils = {
+var DateCommonUtils = {
 		/**
 	     * Compare two date "dd/mm/yyyy"
 	     * Input : String
@@ -3701,7 +3755,22 @@ var DateUtils = {
 			}
 			return true;
 		},	
-		
+		/**
+	     * Compare two date "dd/mm/yyyy"
+	     * Input : String
+	     * Return : true if start < end
+	     * **/
+		compareCurrentDate:function(date) {		
+			if(date.length == 0) {
+				return false;
+			}
+			var now = new Date(sysDateFromServer);
+			var cYear = now.getFullYear();
+			var cMonth = now.getMonth() + 1;
+			var cDate = now.getDate();
+			var currentDate = cDate+'/'+cMonth+'/'+cYear;
+			return DateCommonUtils.compareDate(date, currentDate);
+		},
 		/**
 	     * Day number between two date
 	     * Input : String "dd/mm/yyyy"
@@ -3799,7 +3868,7 @@ var DateUtils = {
 	     * Return : true if is time
 	     * **/
 		isTime: function(timeStr){
-			if (!StringUtils.isNullOrEmpty(timeStr)){
+			if (!StringCommonUtils.isNullOrEmpty(timeStr)){
 				var arr = timeStr.split(':');
 				if (arr != null && arr.length == 2){
 					if (/^[0-9]+$/.test(arr[0]) && /^[0-9]+$/.test(arr[1])
@@ -3831,10 +3900,10 @@ var DateUtils = {
 		    // array length should be exactly 3 (no more no less)
 		   
 		    if(type == null || type == undefined){
-				type = Utils._DATE_DD_MM_YYYY;
+				type = CommonUtils._DATE_DD_MM_YYYY;
 			}
 		    switch (type) {
-				case Utils._DATE_DD_MM_YYYY:
+				case CommonUtils._DATE_DD_MM_YYYY:
 					if (aoDate.length !== 3) {
 						return false;
 					}
@@ -3844,7 +3913,7 @@ var DateUtils = {
 				    month = aoDate[1] - 1;
 				    year = aoDate[2] - 0;
 					break;
-				case Utils._DATE_MM_YYYY:
+				case CommonUtils._DATE_MM_YYYY:
 					if (aoDate.length !== 2) {
 						return false;
 					}
@@ -3875,7 +3944,31 @@ var DateUtils = {
 		    // date is OK, return true
 		    return true;
 		},
-		
+		// Validates that the input string is a valid date formatted as "mm/dd/yyyy"
+		isValidDate:function(dateString) {
+		    // First check for the pattern
+		    if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+		        return false;
+
+		    // Parse the date parts to integers
+		    var parts = dateString.split("/");
+		    var day = parseInt(parts[0], 10);
+		    var month = parseInt(parts[1], 10);
+		    var year = parseInt(parts[2], 10);
+
+		    // Check the ranges of month and year
+		    if(year < 1000 || year > 3000 || month == 0 || month > 12)
+		        return false;
+
+		    var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+		    // Adjust for leap years
+		    if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+		        monthLength[1] = 29;
+
+		    // Check the range of the day
+		    return day > 0 && day <= monthLength[month - 1];
+		},
 		/**
 	     * Convert string to date
 	     * Input : 
@@ -3921,7 +4014,7 @@ var DateUtils = {
 			return dStr;
 		},
 		toDateStringDDMMYY: function(d){
-			var dStr= (d.getDate().toString().length>1?d.getDate():'0'+d.getDate())+((d.getMonth()+1).toString().length>1?(d.getMonth()+1):'0'+(d.getMonth()+1))+DateUtils.getBriefYear(d);
+			var dStr= (d.getDate().toString().length>1?d.getDate():'0'+d.getDate())+((d.getMonth()+1).toString().length>1?(d.getMonth()+1):'0'+(d.getMonth()+1))+DateCommonUtils.getBriefYear(d);
 			return dStr;
 		},
 		getBriefYear: function(d){
@@ -4010,4 +4103,3 @@ var DateUtils = {
 			return kq;
 		}
 	};
-
