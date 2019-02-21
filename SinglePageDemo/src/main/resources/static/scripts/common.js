@@ -3742,7 +3742,6 @@ var DateCommonUtils = {
 	     * Return : true if start < end
 	     * **/
 		compareDate: function(startDate, endDate){
-			 
 			if(startDate.length == 0 || endDate.length == 0){
 				return true;			
 			}
@@ -4103,3 +4102,22 @@ var DateCommonUtils = {
 			return kq;
 		}
 	};
+(function ( $ ) {
+    $.fn.focusError = function(options) {
+    	var defaults = {
+        	classError: 'focus-error',
+        };
+        var settings = $.extend(defaults, options);
+        $(this).addClass(settings.classError);
+        $(this).focus();
+        return this;
+    }
+    $.fn.removeFocusError = function(options) {
+    	var defaults = {
+        	classError: 'focus-error',
+        };
+        var settings = $.extend(defaults, options);
+        $(this).removeClass(settings.classError);
+        return this;
+    }
+}( jQuery ));

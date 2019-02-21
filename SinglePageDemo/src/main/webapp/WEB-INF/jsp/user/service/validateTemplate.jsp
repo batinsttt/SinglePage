@@ -13,8 +13,8 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label class="label-bold">Họ và tên</label>
-						<input type="text" id="userName" class="form-control"
+						<label class="label-bold">Họ và tên <span class="required">*</span></label>
+						<input type="text" id="userName" class="form-control input-item"
 							maxlength="50" placeholder="<spring:message code="placeholder.name"/>"/>
 							<span class = "mess-error"></span>
 					</div>
@@ -22,7 +22,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="label-bold">Số điện thoại</label> <input
-							type="text" id="phoneNumber" class="form-control"
+							type="text" id="phoneNumber" class="form-control input-item "
 							placeholder="<spring:message code="placeholder.phone"/>"/>
 							<span class = "mess-error"></span>
 					</div>
@@ -34,7 +34,7 @@
 					<div class="form-group">
 						<label class="label-bold">Năm sinh</label>
 						<div class="input-group date">
-							<input type="text" id="birthDate" class="form-control"
+							<input type="text" id="birthDate" class="form-control input-item"
 								maxlength="10" placeholder="<spring:message code="placeholder.date"/>" />
 								<label for="birthDate" class="input-group-addon"><i class="fa fa-calendar"></i></label>
 						</div>
@@ -44,7 +44,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="label-bold">Mail</label> <input type="email"
-							id="userMail" class="form-control"
+							id="userMail" class="form-control input-item"
 							placeholder="<spring:message code="placeholder.mail"/>" /> <span
 							class="mess-error"></span>
 					</div>
@@ -55,7 +55,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="label-bold">Mật khẩu</label>
-						<input type="password" id="password" class="form-control "
+						<input type="password" id="password" class="form-control input-item"
 								maxlength="50" placeholder="<spring:message code="placeholder.password"/>" />
 						<span class="mess-error"></span>
 					</div>
@@ -63,7 +63,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="label-bold">Xác nhận Mật khẩu</label> <input type="password"
-							id="confirmPassword" class="form-control" maxlength="50"
+							id="confirmPassword" class="form-control input-item" maxlength="50"
 							placeholder="<spring:message code="placeholder.confirmPassword"/>" /> <span
 							class="mess-error"></span>
 					</div>
@@ -75,7 +75,7 @@
 					<div class="form-group">
 						<label class="label-bold">Từ ngày</label>
 						<div class="input-group date">
-							<input type="text" id="fromDate" class="form-control"
+							<input type="text" id="fromDate" class="form-control input-item"
 								maxlength="10"
 								placeholder="<spring:message code="placeholder.date"/>" /> <label
 								for="fromDate" class="input-group-addon"><i
@@ -89,7 +89,7 @@
 					<div class="form-group">
 						<label class="label-bold">Đến ngày</label>
 						<div class="input-group date">
-							<input type="text" id="toDate" class="form-control"
+							<input type="text" id="toDate" class="form-control input-item"
 								maxlength="10"
 								placeholder="<spring:message code="placeholder.date"/>" /> <label
 								for="toDate" class="input-group-addon"><i
@@ -158,14 +158,12 @@
 		$('#registerMember').click(function() {
 			$('#userName').next(".mess-error").empty();
 			$('#phoneNumber').next(".mess-error").empty();
-			//Clear mess-error message
-			$('.mess-error').each(function() {
-				$(this).empty();
-				$(this).animate({height:0},200);
-			});
+			// Remove focus and all error messages
+			clearStyleError();
 			// Get value from form
 			var userName = $('#userName').val().trim();
 			var phoneNumber = $('#phoneNumber').val().trim();
+			// Set real phone number
 			phoneNumber = CommonUtils.getRealPhoneNumber(phoneNumber);
 			$('#phoneNumber').val(phoneNumber);
 			var birthDate = $('#birthDate').val().trim();
@@ -175,57 +173,69 @@
 			
 			var isValidFromDate = true;
 			var isValidToDate = true;
-			//Validate to date
+			//Validate "to date"
 			if (!CommonUtils.isNullOrEmpty(toDate) && !DateCommonUtils.isValidDate(toDate)) {
-				$('#toDate').focus();
-				$('#toDate').parent().next(".mess-error").text(formatDateErr);
-				$('#toDate').parent().next(".mess-error").animate({height:10},200);
-				
+				isValidToDate = false;
+					$('#toDate').focusError();
+					$('#toDate').parent().next(".mess-error").text(formatDateErr);
+					$('#toDate').parent().next(".mess-error").animate({height:10},200);
 			}
-			
-			//Validate from date
+			//Validate "from date"
 			if (!CommonUtils.isNullOrEmpty(fromDate) && !DateCommonUtils.isValidDate(fromDate)) {
-				$('#fromDate').focus();
+				isValidFromDate = false;
+				$('#fromDate').focusError();
 				$('#fromDate').parent().next(".mess-error").text(formatDateErr);
 				$('#fromDate').parent().next(".mess-error").animate({height:10},200);
 			}
+			// "To date" must to be greater than "from date"
+			if (!CommonUtils.isNullOrEmpty(fromDate) && !CommonUtils.isNullOrEmpty(toDate) && isValidFromDate == true && isValidToDate == true &&  !DateCommonUtils.compareDate(fromDate,toDate)) {
+				$('#fromDate').focusError();
+				$('#fromDate').parent().next(".mess-error").text(greatFromDateErr);
+				$('#fromDate').parent().next(".mess-error").animate({height:10},200);
+			}
+			// "To date" must to be greater than current date
+			if (!CommonUtils.isNullOrEmpty(toDate) && isValidToDate == true &&  DateCommonUtils.compareCurrentDate(toDate)) {
+				$('#toDate').focusError();
+				$('#toDate').parent().next(".mess-error").text(smallCurrDateErr);
+				$('#toDate').parent().next(".mess-error").animate({height:10},200);
+			}
 			
-			//Validate from date
-			if (!CommonUtils.isNullOrEmpty(fromDate) && !DateCommonUtils.isValidDate(fromDate)) {
-				$('#fromDate').focus();
-				$('#fromDate').parent().next(".mess-error").text(formatDateErr);
+			// "From date" must to be smaller or equal than current date
+			if (!CommonUtils.isNullOrEmpty(fromDate) && isValidFromDate == true &&  !DateCommonUtils.compareCurrentDate(fromDate)) {
+				$('#fromDate').focusError();
+				$('#fromDate').parent().next(".mess-error").text(greatCurrDateErr);
 				$('#fromDate').parent().next(".mess-error").animate({height:10},200);
 			}
 			
 			//Validate mail
 			if (!CommonUtils.isNullOrEmpty(userMail) && !CommonUtils.isValidMail(userMail)) {
-				$('#userMail').focus();
+				$('#userMail').focusError();
 				$('#userMail').next(".mess-error").text(formatMailErr);
 				$('#userMail').next(".mess-error").animate({height:10},200);
 			}
 			
 			//Validate birthDate
 			if (!CommonUtils.isNullOrEmpty(birthDate) && !DateCommonUtils.isValidDate(birthDate)) {
-				$('#birthDate').focus();
+				$('#birthDate').focusError();
 				$('#birthDate').parent().next(".mess-error").text(formatDateErr);
 				$('#birthDate').parent().next(".mess-error").animate({height:10},200);
 			}
 			
 			//Validate phone number
 			if (!CommonUtils.isNullOrEmpty(phoneNumber) && !CommonUtils.isValidPhoneNumber(phoneNumber)) {
-				$('#phoneNumber').focus();
+				$('#phoneNumber').focusError();
 				$('#phoneNumber').next(".mess-error").text(formatPhoneErr);
 				$('#phoneNumber').next(".mess-error").animate({height:10},200);
 			}
 			
 			//Validate Name
 			if (CommonUtils.isNullOrEmpty(userName)) {
-				$('#userName').focus();
+				$('#userName').focusError();
 				$('#userName').next(".mess-error").text(requiredNameErr);
 				$('#userName').next(".mess-error").animate({height:10},200);
 			}
 			if (userName.length > 50) {
-				$('#userName').focus();
+				$('#userName').focusError();
 				$('#userName').next(".mess-error").text(lengthNameErr);
 				$('#userName').next(".mess-error").animate({height:10},200);
 			}
@@ -233,17 +243,25 @@
 		
 		//Click Reset
 		$('#refill').click(function() {
-			//Clear mess-error message
-			$('.mess-error').each(function() {
-				$(this).animate({height:0},200);
-			});
+			//Remove focus and all error messages
+			clearStyleError();
+			// Initial value form
 			$('#userName').val('');
 			$('#phoneNumber').val('');
 			$('#birthDate').val('');
 			$('#userMail').val('');
 		});
 	});
+	/* 
+		Remove focus and all error messages
+	*/
 	function clearStyleError() {
-		
+		// Remove all focus style
+		$('.input-item').removeFocusError();
+		//Clear mess-error message
+		$('.mess-error').each(function() {
+			$(this).empty();
+			$(this).animate({height:0},200);
+		});
 	}
 </script>

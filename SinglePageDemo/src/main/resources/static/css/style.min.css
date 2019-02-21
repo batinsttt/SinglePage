@@ -266,4 +266,10 @@ footer ol {
 	color: #cc2424;
 	height: 0px;
 }
+.required {
+	color: #cc2424;
+}
+.focus-error {
+	border-color: #dc3545 !important;
+}
 /* Done QuocPC */
