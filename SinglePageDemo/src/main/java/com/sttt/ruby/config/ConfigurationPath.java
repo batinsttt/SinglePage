@@ -9,6 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 public class ConfigurationPath {
 	
 	private static String pathCssServer;
+	private static String domainAPI;
 	@Value("${src.js.server}")
 	private String pathJsServer;
 	@Value("${src.img.server}")
@@ -52,4 +53,14 @@ public class ConfigurationPath {
 	public static String getResourceServerPath(String staticFile) {
         return pathCssServer + staticFile;
     }
+
+	
+	public static String getDomainAPI(String url) {
+		return domainAPI + url;
+	}
+	@Value("${vietel.api.domain}")
+	public void setDomainAPI(String domain) {
+		domainAPI = domain;
+	}
+	
 }

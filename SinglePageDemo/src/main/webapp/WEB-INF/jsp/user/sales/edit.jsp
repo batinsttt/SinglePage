@@ -83,28 +83,45 @@
 			}
 		});
 
+// 		$("#add").click(function() {
+// 			var data = new Object;
+// 			data.address = $("#address").val();
+// 			data.phone = $("#phone").val();
+// 			var kData =  JSON.stringify(data);
+// 			var url = 'http://10.30.176.198:9006/ITSolWebService/sales/edit'
+// 			var method = "POST";
+// 			$.ajax({
+// 				type : method,
+// 				url : url,
+// 				data :(kData),
+// 				headers: {
+// 		            'Content-Type': 'application/json'
+// 		        },
+// 				success : function(data) {				
+// 					console.log("OK");
+// 				},
+// 				error:function(XMLHttpRequest, textStatus, errorThrown) {
+// 					console.log("ERROR");
+// 				}
+// 			});
+// 		});
+		
 		$("#add").click(function() {
-			var data = new Object;
-			data.address = $("#address").val();
-			data.phone = $("#phone").val();
-			var kData =  JSON.stringify(data);
-			var url = 'http://10.30.176.198:9006/ITSolWebService/sales/edit'
-			var method = "POST";
+			var url = '/customerManager/enterpriseInfor'
+			var method = "GET";
 			$.ajax({
 				type : method,
 				url : url,
-				data :(kData),
-				headers: {
-		            'Content-Type': 'application/json'
-		        },
-				success : function(data) {				
-					console.log("OK");
+				dataType: "json",
+				success : function(data) {
+					console.log(data);
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown) {
 					console.log("ERROR");
 				}
 			});
 		});
+		
 		$("#update").click(function() {
 			var data = new Object;
 			data.address = $("#address").val();

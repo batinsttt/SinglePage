@@ -31,6 +31,10 @@ public class MainController {
 		model.addAttribute("message", "This is welcome!");
 		return "welcomePage";
 	}
+	@RequestMapping(value ="/login", method = RequestMethod.GET)
+	public String login(Model model) {
+		return "login";
+	}
 
 	/*
 	 * Use's master page
