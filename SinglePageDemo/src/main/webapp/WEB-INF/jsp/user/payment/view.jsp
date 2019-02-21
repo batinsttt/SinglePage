@@ -106,3 +106,10 @@
 		</div>
 </div>
 </section>
+
+<script type="text/javascript">
+			$(document).ready(function() {
+				var simplebar = new Nanobar();
+				simplebar.go(100);
+			});
+</script>

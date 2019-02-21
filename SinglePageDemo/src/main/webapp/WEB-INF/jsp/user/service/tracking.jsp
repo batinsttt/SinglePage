@@ -154,14 +154,6 @@
 	    	  "processing":true,
 	    	   "responsive": true,
 	    	  "autoWidth":true,
-	    	  "language": {
-	              "paginate": {
-	                  "first": "<i class='fa fa-angle-double-left'></i>",
-	                  "previous": "<i class='fa fa-angle-left'></i>",
-	                  "last": "<i class='fa fa-angle-double-right'></i>",
-	                  "next": "<i class='fa fa-angle-right'></i>",
-	              }
-	          },
 	    	  "pagingType": "full_numbers",
 	    	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 	    	  "scrollY": true,
@@ -188,11 +180,11 @@
 	              { "data": "salary" },
 	              {
 	                  data: null,
-					render: function ( data, type, row ) {
+					  render: function ( data, type, row ) {
                     	return  '<a class="iconSize18" href="javascript:void(0)" onclick="showModal('+data.id+')"><i class="fa fa-edit"></i></a>';
-                	},
+                	  },
 	                  className: 'textCenter',
-	                  orderable: false
+	                  orderable: true
 	              },
 	              {
 	                  data: null,

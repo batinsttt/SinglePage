@@ -11304,7 +11304,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sFirst": "First",
+				"sFirst": "<i class='fa fa-angle-double-left'></i>",
 	
 	
 				/**
@@ -11327,7 +11327,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sLast": "Last",
+				"sLast": "<i class='fa fa-angle-double-right'></i>",
 	
 	
 				/**
@@ -11350,7 +11350,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "<i class='fa fa-angle-right'></i>",
 	
 	
 				/**
@@ -11373,7 +11373,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "<i class='fa fa-angle-left'></i>"
 			},
 	
 			/**

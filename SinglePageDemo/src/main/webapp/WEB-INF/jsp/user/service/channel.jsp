@@ -172,13 +172,12 @@
 	  var obj = {name: "Test 1", id: 10000, list};
 	  var jsonParam = JSON.stringify(obj);
       var table = $('#example').DataTable({
-    	  "processing":true,
-    	   responsive: true,
     	  "autoWidth":true,
     	  "pagingType": "full_numbers",
     	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    	  "scrollY": 380,
+    	  "scrollY": true,
           "scrollX": true,
+          "processing":true,
           "ajax": {
   		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
   		    "contentType": "application/json",

@@ -56,14 +56,19 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		var url = 'http://10.30.176.198:9006/ITSolWebService/sales/edit'
-		var method = "GET";
+		var method = "POST";
+		var data = new Object;
+		data.address = 'Đà Nẵng Test';
+		data.phone = $("#phone").val();
+		var kData =  JSON.stringify(data);
 		$.ajax({
 			type : method,
-			url : url,
+			url : '/service/call',
 			dataType : "json",
 			headers : {
 				'Content-Type' : 'application/json; charset=utf-8'
 			},
+			data :(kData),
 			success : function(data) {
 				$("#address").val(data.address);
 				$("#phone").val(data.phone);
