@@ -2,7 +2,7 @@
 (function (root) {
   'use strict'
   // container styles
-  var css = '.nanobar{width:100%;height:4px;z-index:9999;top:0}.bar{width:0;height:50%;transition:height .3s;}'
+  var css = '.nanobar{width:100%;height:4px;z-index:9999;top:0}.bar{width:0;height:50%;transition:height .3s;background: #17afaa}'
 
   // add required css in head div
   function addCss () {
