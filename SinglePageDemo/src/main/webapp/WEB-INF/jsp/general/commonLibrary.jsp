@@ -7,7 +7,7 @@
  
  <!-- Font Awesome -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/bootstrap/dist/css/bootstrap.min.css")%>">
-<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/dataTables.bootstrap4.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/dataTables.bootstrap4.css")%>"> 
  
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/font-awesome/css/font-awesome.min.css")%>">
  <!-- Ionicons -->
@@ -17,6 +17,10 @@
  <!-- AdminLTE Skins -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/skins/_all-skins.min.css")%>">
  
+ <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/base.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/style.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/style_ex.css")%>">
+
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/components.min.css")%>">
  <!-- Morris chart -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/morris.js/morris.css")%>">
@@ -34,6 +38,8 @@
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/blue.css")%>">
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/common.css")%>">
 
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/analytics.js")%>"></script>
+
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/jquery.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/dataTables.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/dataTables.checkboxes.js")%>"></script>
@@ -47,11 +53,8 @@
 
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/multiselect/kendo.bootstrap-v4.min.css")%>">
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/multiselect/kendo.all.min.js")%>"></script>
-<!-- END Multiselect -->
 
-<!-- Loading bar on Top -->
-<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/nanobar/nanobar.js")%>"></script>
-<!-- END -->
+<!-- END Multiselect -->
    
 <!--    End -->
 
@@ -99,6 +102,9 @@
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/business/service/jquery.service.js")%>"></script>
 <!-- Common Utils -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/common.js")%>"></script>
+
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/script.js")%>"></script>
+
 <script type="text/javascript">
 $.ajaxSetup({'cache':true});
 </script>
