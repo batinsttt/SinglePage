@@ -52,6 +52,10 @@
 <!-- Loading bar on Top -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/nanobar/nanobar.js")%>"></script>
 <!-- END -->
+
+
+
+
    
 <!--    End -->
 
@@ -99,6 +103,13 @@
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/business/service/jquery.service.js")%>"></script>
 <!-- Common Utils -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/common.js")%>"></script>
+
+<!-- Material -->
+<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/material/mdb.css")%>">
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/material/mdb.js")%>"></script>
+
+
+
 <script type="text/javascript">
 $.ajaxSetup({'cache':true});
 </script>

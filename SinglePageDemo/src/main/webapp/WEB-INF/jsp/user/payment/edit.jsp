@@ -5,65 +5,97 @@
 	<!-- /.box -->
 	<div class="box">
 		<div class="box-body">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<select id="movies" data-placeholder="Select movie..."></select>
+			<fieldset class="scheduler-border" >
+	     		<legend class ="scheduler-border">Thông tin khảo sát</legend>
+	     		<div class="row paddingBottom15">
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="md-form">
+								<input type="text" id="form1" class="form-control is-invalid" required>
+					      		<label for="form1">Tên người liên hệ</label>
+					    	</div>
+						</div>
+						<!-- /.form-group -->
 					</div>
-					<!-- /.form-group -->
-				</div>
-				<!-- /.col -->
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<!-- <input type="text" class="form-control" id="phone"
-							placeholder="Combobox multiple checkbox"> -->
-						<select id="multiCheckbox" class="form-control" multiple="multiple">
-						</select>
+					<!-- /.col -->
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="md-form">
+								<input type="text" id="form1" class="form-control is-invalid" required>
+					      		<label for="form1">Số điện thoại</label>
+					    	</div>
+						</div>
+						<!-- /.form-group -->
 					</div>
-					<!-- /.form-group -->
+					<!-- /.col -->
 				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<select id="normalComboBox" class="form-control select2 select2-hidden-accessible"
-							style="width: 100%;max-height: 60px;" aria-hidden="true">
-							<option selected="selected">Combobox thường</option>
-						</select>
+				<div class="row paddingBottom15">
+					<div class="col-md-12">
+						<div class="form-group">
+							<select id="movies" data-placeholder="Select movie..."></select>
+						</div>
+						<!-- /.form-group -->
 					</div>
-					<!-- /.form-group -->
+					<!-- /.col -->
 				</div>
-				<!-- /.col -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<div class="input-group">
-		                  <input type="text" class="form-control pull-right" id="reservation">
-		                  <label for="reservation" class="input-group-addon">
-		                    <i class="fa fa-calendar"></i>
-		                  </label>
-		                </div>
+				<div class="row paddingBottom15">
+					<div class="col-md-6">
+						<div class="form-group">
+							<!-- <input type="text" class="form-control" id="phone"
+								placeholder="Combobox multiple checkbox"> -->
+							<select id="multiCheckbox" class="form-control" multiple="multiple">
+							</select>
+						</div>
+						<!-- /.form-group -->
 					</div>
-					<!-- /.form-group -->
-				</div>
-				<!-- /.col -->
-				<div class="col-md-6">
-					<div class="form-group">
-						<div class="input-group">
-		                  <input type="text" class="form-control pull-right" id="datepicker">
-		                  <label for="datepicker" class="input-group-addon">
-		                    <i class="fa fa-calendar"></i>
-		                  </label>
-		                </div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<select id="normalComboBox" class="mdb-select md-form colorful-select dropdown-primary"
+								style="width: 100%;max-height: 60px;" aria-hidden="true">
+								<option selected="selected">Combobox thường</option>
+							</select>
+							<label>Blue select</label>
+						</div>
+						<!-- /.form-group -->
 					</div>
-					<!-- /.form-group -->
+					<!-- /.col -->
 				</div>
-				<!-- /.col -->
-			</div>
+				<!-- /.row -->
+				<div class="row paddingBottom15">
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="input-group">
+			                  <input type="text" class="form-control pull-right" id="reservation">
+			                  <label for="reservation" class="input-group-addon">
+			                    <i class="fa fa-calendar"></i>
+			                  </label>
+			                </div>
+						</div>
+						<!-- /.form-group -->
+					</div>
+					<!-- /.col -->
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="input-group">
+			                  <input type="text" class="form-control pull-right" id="datepicker">
+			                  <label for="datepicker" class="input-group-addon">
+			                    <i class="fa fa-calendar"></i>
+			                  </label>
+			                </div>
+						</div>
+						<!-- /.form-group -->
+					</div>
+					<!-- /.col -->
+				</div>
+				
+			</fieldset>
 		</div>
-		<script type="text/javascript">
+		<div class="box-footer">
+			<button type="submit" class="btn btn-green pull-right" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
+            <button type="submit" class="btn btn-blue pull-right"><i class="fa fa-search"></i>Update</button>
+		</div>
+	</div>
+	<script type="text/javascript">
 			$(document).ready(function() {
 				//Date range picker
 			    $('#reservation').daterangepicker({ 
@@ -120,10 +152,4 @@
 				}); 
 	    	});
 		</script>
-		
-		<div class="box-footer">
-			<button type="submit" class="btn btn-green pull-right" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
-            <button type="submit" class="btn btn-blue pull-right"><i class="fa fa-search"></i>Update</button>
-		</div>
-</div>
 </section>
