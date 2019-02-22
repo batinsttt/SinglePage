@@ -19,7 +19,7 @@ public class CustomerController {
 	/*
 	 * Demo Post sample
 	*/	
-	@PostMapping("/service/call")
+	@PostMapping("/service3/call")
 	public String callWebservice(@RequestBody String requestBody) throws Exception {
 		String uri ="http://10.60.156.63:8762/gateway/customerManager/enterpriseInfor";
         RestTemplate restTemplate = new RestTemplate();

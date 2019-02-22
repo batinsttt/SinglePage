@@ -17,9 +17,9 @@ import org.springframework.web.client.RestTemplate;
 public class CallAjaxController {
 
 	/*
-	 * Demo Post service
+	 * Demo Post sample
 	*/	
-	@PostMapping("/service/call")
+	@PostMapping("/service222/call")
 	public String callWebservice(@RequestBody String requestBody) throws Exception {
 		String uri ="http://10.60.156.63:8762/gateway/customerManager/enterpriseInfor";
         RestTemplate restTemplate = new RestTemplate();
@@ -36,9 +36,9 @@ public class CallAjaxController {
 	}
 	
 	/*
-	 * Demo Get service
+	 * Demo Get sample
 	*/	
-	@GetMapping("/service/call")
+	@GetMapping("/service222/call")
 	public String callGetWebservice() throws Exception {
 		String uri ="http://10.60.156.63:8762/gateway/customerManager/enterpriseInfor";
         RestTemplate restTemplate = new RestTemplate();
