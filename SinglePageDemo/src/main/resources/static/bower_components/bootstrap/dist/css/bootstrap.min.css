@@ -4703,7 +4703,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 .navbar-toggle {
 	position: relative;
-	float: right;
+	float: left;
 	padding: 9px 10px;
 	margin-top: 8px;
 	margin-right: 15px;
@@ -4722,7 +4722,8 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	display: block;
 	width: 22px;
 	height: 2px;
-	border-radius: 1px
+	border-radius: 1px;
+	background-color: #fff; /* Add new */
 }
 
 .navbar-toggle .icon-bar+.icon-bar {

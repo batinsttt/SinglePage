@@ -1,6 +1,5 @@
 <%-- <%@page contentType="text/html" pageEncoding="UTF-8"%> --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page import="com.sttt.ruby.config.ConfigurationPath"%>
 <html ng-app='contentApp'>
@@ -13,18 +12,11 @@
 <jsp:include page="/WEB-INF/jsp/general/commonLibrary.jsp" />
 <jsp:include page="/WEB-INF/jsp/general/serverValue.jsp" />
 <jsp:include page="/WEB-INF/jsp/general/commonModal.jsp" />
-<jsp:include page="/WEB-INF/jsp/user/multiLanguage.jsp" />
+<jsp:include page="/WEB-INF/jsp/general/multiLanguage.jsp" />
 
-<link rel="stylesheet" id="hashone-fonts-css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=latin,latin-ext" type="text/css" media="all">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/scripts/angular.js")%>" data-semver="1.4.9"></script>
-<script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/scripts/angular-route.js")%>" data-semver="1.4.9"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/forwardUserPage.js")%>"></script>
-<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/headerController.js")%>"></script>
 
 </head>
-<body>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper" style="background-color: #f7f7f7;">
 

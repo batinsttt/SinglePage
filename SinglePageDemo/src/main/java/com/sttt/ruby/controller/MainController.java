@@ -1,135 +1,79 @@
 
 package com.sttt.ruby.controller;
 
-import java.util.Date;
+import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
-import com.sttt.ruby.util.DateUtil;
+import com.sttt.ruby.config.ConfigurationPath;
 
-/**
- * @author os-quocpc
- *
- */
-/**
- * @author os-quocpc
- *
- */
-/**
- * @author os-quocpc
- *
- */
+
 @Controller
 public class MainController {
 
-	@RequestMapping(value ="/welcome", method = RequestMethod.GET)
-	public String welcomePage(Model model) {
-		model.addAttribute("title", "Welcome");
-		model.addAttribute("message", "This is welcome!");
-		return "welcomePage";
+	@RequestMapping(value = "/login/auth", method = RequestMethod.POST)
+	public String userSalesEdit(@RequestParam("username") String username,@RequestParam("password") String password,HttpServletResponse  response) {
+		String uri = ConfigurationPath.getDomainAPI("/gateway/auth/login");
+		RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        String requestBody = "{\"username\":\""+username+"\",\"password\":\""+password+"\"}";
+        HttpEntity<String> entity = new HttpEntity<String>(requestBody,headers);
+        String json = restTemplate.postForObject(uri, entity, String.class);
+        JSONObject jsonObj = new JSONObject(json);
+        JSONArray role = (JSONArray)jsonObj.getJSONObject("user").get("roles");
+        String token = jsonObj.getJSONObject("auth").getString("token");
+        String tokenType = jsonObj.getJSONObject("auth").getString("tokenType");
+        List<Object> roles = role.toList();
+//        response.addHeader("vt.authenticate", tokenType + token);
+        Cookie newCookie = new Cookie("vt.authenticate", tokenType + token);
+        response.addCookie(newCookie);
+   
+        if(roles.contains("ROLE_LEASED_LINE_USER")) {
+        	return "user/home";
+        }
+        return "admin/adminMasterPage";
 	}
+	@RequestMapping(value = "/customerManager/enterpriseInfor", method = RequestMethod.GET)
+	public @ResponseBody String getCustomer(HttpServletRequest request, HttpServletResponse  response,Model model) {
+		String uri = ConfigurationPath.getDomainAPI("/gateway/customerManager/enterpriseInfor");
+		Cookie[] cookies = request.getCookies();
+		String autho = null;
+		for(Cookie cookie : cookies) {
+			if("vt.authenticate".equals(cookie.getName())){
+				autho = cookie.getValue();
+				break;
+			}
+		}
+		RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Authorization",autho);
+        HttpEntity<String> entity = new HttpEntity<String>(null,headers);
+        String json = restTemplate.getForObject(uri, String.class,entity);
+        return json;
+	}
+	
+	
 	@RequestMapping(value ="/login", method = RequestMethod.GET)
 	public String login(Model model) {
 		return "login";
 	}
 
-	/*
-	 * Use's master page
-	*/	
-	@RequestMapping(value = { "/", "/user" }, method = RequestMethod.GET)
-	public String userMasterPage(Model model) {
-		model.addAttribute("dates", DateUtil.toDateString(new Date(), "MM/dd/yyyy"));
-		return "user/userMasterPage";
-	}
-	
-	/*
-	 * Use's home
-	*/	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String userHome(Model model) {
-		return "user/home";
-	}
-	
-	/*
-	 * Use's service channel
-	*/	
-	@RequestMapping(value = "/service/channel", method = RequestMethod.GET)
-	public String userServiceChannel(Model model) {
-		return "user/service/channel";
-	}
-	
-	/*
-	 * Use's service Tracking
-	*/	
-	@RequestMapping(value = "/service/tracking", method = RequestMethod.GET)
-	public String userServiceTracking(Model model) {
-		return "user/service/tracking";
-	}
-	
-	/*
-	 * Use's sales edit
-	*/	
-	@RequestMapping(value = "/sales/edit", method = RequestMethod.GET)
-	public String userSalesEdit(Model model) {
-		return "user/sales/edit";
-	}
-	
-	/*
-	 * Use's sales view
-	*/	
-	@RequestMapping(value = "/sales/view", method = RequestMethod.GET)
-	public String userSalesView(Model model) {
-		model.addAttribute("dates", DateUtil.toDateString(new Date(), "MM/dd/yyyy"));
-		return "user/sales/view";
-	}
-	
-	/*
-	 * Use's sales edit
-	*/	
-	@RequestMapping(value = "/payment/view", method = RequestMethod.GET)
-	public String userPaymentView(Model model) {
-		return "user/payment/view";
-	}
-	
-	/*
-	 * Use's sales view
-	*/	
-	@RequestMapping(value = "/payment/eidt", method = RequestMethod.GET)
-	public String userPaymentEdit(Model model) {
-		return "user/payment/edit";
-	}
-	
-	/*
-	 * Notice error
-	*/	
-	@RequestMapping(value = "/service/noticeError", method = RequestMethod.GET)
-	public String userServiceError(Model model) {
-		return "user/service/noticeError";
-	}
-
-	/*
-	 * Add new row
-	*/	
-	@RequestMapping(value = "/service/addNewUser", method = RequestMethod.GET)
-	public String addNewUser(Model model) {
-		return "user/service/addNewUser";
-	}
-	/*
-     * Validate form
-    */  
-   @RequestMapping(value = "/quocDemo", method = RequestMethod.GET)
-    public String userValidate(Model model) {
-        return "user/service/validateTemplate";
-    }
-//	/*
-//	 * Use's payment
-//	*/	
-//	@RequestMapping(value = "/payment", method = RequestMethod.GET)
-//	public String userPayment(Model model) {
-//		return "user/payment/edit";
-//	}
 	
 }

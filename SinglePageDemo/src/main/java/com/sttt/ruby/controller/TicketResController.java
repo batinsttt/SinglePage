@@ -11,12 +11,12 @@ import org.springframework.web.client.RestTemplate;
 
 
 @RestController
-public class InvoiceController {
+public class TicketResController {
 
 	/*
 	 * Demo Post sample
 	*/	
-	@PostMapping("/service4/call")
+	@PostMapping("/service7/call")
 	public String callWebservice(@RequestBody String requestBody) throws Exception {
 		String uri ="http://10.60.156.63:8762/gateway/customerManager/enterpriseInfor";
         RestTemplate restTemplate = new RestTemplate();

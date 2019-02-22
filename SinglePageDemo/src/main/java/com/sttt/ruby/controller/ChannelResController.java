@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @RestController
-public class ChannelController {
+public class ChannelResController {
 
 	/*
 	 * Demo Post sample
