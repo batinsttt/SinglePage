@@ -274,3 +274,22 @@ footer ol {
 	box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25) !important;
 }
 /* Done QuocPC */
+
+/* AnNBH Custom datepicker */
+.table-condensed>tbody>tr>td, .table-condensed>tbody>tr>th, 
+.table-condensed>tfoot>tr>td, .table-condensed>tfoot>tr>th, 
+.table-condensed>thead>tr>td, .table-condensed>thead>tr>th {
+    padding: 5px;
+}
+.table-condensed{
+	font-size: 14px;
+}
+.input-group>.form-control{
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+}
+.input-group>.input-group-addon{
+	border-top-right-radius: 3px !important;
+	border-bottom-right-radius: 3px !important;
+}
+/* END AnNBH Custom datepicker */

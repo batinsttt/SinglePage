@@ -36,9 +36,46 @@
 				<!-- /.col -->
 			</div>
 			<!-- /.row -->
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="input-group">
+		                  <input type="text" class="form-control pull-right" id="reservation">
+		                  <label for="reservation" class="input-group-addon">
+		                    <i class="fa fa-calendar"></i>
+		                  </label>
+		                </div>
+					</div>
+					<!-- /.form-group -->
+				</div>
+				<!-- /.col -->
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="input-group">
+		                  <input type="text" class="form-control pull-right" id="datepicker">
+		                  <label for="datepicker" class="input-group-addon">
+		                    <i class="fa fa-calendar"></i>
+		                  </label>
+		                </div>
+					</div>
+					<!-- /.form-group -->
+				</div>
+				<!-- /.col -->
+			</div>
 		</div>
 		<script type="text/javascript">
 			$(document).ready(function() {
+				//Date range picker
+			    $('#reservation').daterangepicker({ 
+			    	timePicker: true, 
+			    	timePickerIncrement: 30, 
+			    	format: 'MM/DD/YYYY h:mm A' 
+			    });
+				
+			    $('#datepicker').datepicker({
+			        autoclose: true
+			    })
+			    
 				var simplebar = new Nanobar();
 				simplebar.go(100);
 		        $("#movies").kendoMultiSelect({
