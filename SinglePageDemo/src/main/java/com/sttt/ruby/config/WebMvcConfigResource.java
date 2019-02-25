@@ -21,7 +21,7 @@ public class WebMvcConfigResource implements WebMvcConfigurer {
 	@Bean(name = "localeResolver")
 	public LocaleResolver getLocaleResolver() {
 		CookieLocaleResolver resolver = new CookieLocaleResolver();
-		resolver.setCookieDomain("myAppLocaleCookie");
+		resolver.setCookieDomain("cookieI18N");
 		resolver.setCookieMaxAge(60 * 60);
 		resolver.setDefaultLocale(new Locale("vi"));
 		return resolver;
@@ -51,11 +51,4 @@ public class WebMvcConfigResource implements WebMvcConfigurer {
 		resolver.setExposeContextBeansAsAttributes(true);
 		return resolver;
 	}
-	
-//	@Bean
-//	public LocaleResolver localeResolver() {
-//	    SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
-//	    sessionLocaleResolver.setDefaultLocale(new Locale("vi"));
-//	    return sessionLocaleResolver;
-//	}
 }

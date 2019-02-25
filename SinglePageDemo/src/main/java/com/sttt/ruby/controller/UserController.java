@@ -36,19 +36,6 @@ public class UserController {
 		return "user/ticket/createTicket";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/*
 	 * Use's service channel
 	*/	

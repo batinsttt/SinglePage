@@ -17,49 +17,22 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<json.version>20180813</json.version>
+		<jstl.version>1.2</jstl.version>
+		<title.version>3.0.7</title.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>4.0.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery</artifactId>
-			<version>3.2.1</version>
-		</dependency>
-		
-		<dependency>
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
-		    <version>20180813</version>
+		    <version>${json.version}</version>
 		</dependency>
-
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax.servlet</groupId> -->
-<!-- 			<artifactId>jsp-api</artifactId> -->
-<!-- 			<version>2.0</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<version>${jstl.version}</version>
 		</dependency>
 
 		<dependency>
@@ -67,16 +40,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -86,37 +50,29 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
-        <!-- Tiles API -->
-        <!-- http://mvnrepository.com/artifact/org.apache.tiles/tiles-api -->
+
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-api</artifactId>
-            <version>3.0.7</version>
+            <version>${title.version}</version>
         </dependency>
  
- 
-        <!-- Tiles Core -->
-        <!-- http://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-core</artifactId>
-            <version>3.0.7</version>
+            <version>${title.version}</version>
         </dependency>
  
-        <!-- Tiles Servlet -->
-        <!-- http://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet -->
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-servlet</artifactId>
-            <version>3.0.7</version>
+            <version>${title.version}</version>
         </dependency>
  
-        <!-- Tiles JSP -->
-        <!-- http://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
-            <version>3.0.7</version>
+            <version>${title.version}</version>
         </dependency>
         <dependency>
 	   	 	<groupId>org.springframework.boot</groupId>

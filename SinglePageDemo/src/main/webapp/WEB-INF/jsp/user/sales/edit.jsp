@@ -50,11 +50,28 @@
 			<button type="submit" class="btn btn-blue pull-right" id="update">
 				<i class="fa fa-search"></i>Update
 			</button>
+			<a href="/logout">Logout</a>
 		</div>
 	</div>
 </section>
 <script type="text/javascript">
 	$(document).ready(function() {
+		var Cookie = {
+				Read : function(name) {
+					var nameEQ = name + "=";
+					var ca = document.cookie.split(";");
+
+					for (var i = 0; i < ca.length; i++) {
+						var c = ca[i];
+						while (c.charAt(0) == " ")
+							c = c.substring(1, c.length);
+						if (c.indexOf(nameEQ) == 0)
+							return c.substring(nameEQ.length, c.length);
+					}
+					return null;
+				}
+			};
+		
 		var url = 'http://10.30.176.198:9006/ITSolWebService/sales/edit'
 		var method = "POST";
 		var data = new Object;
@@ -113,6 +130,9 @@
 				type : method,
 				url : url,
 				dataType: "json",
+// 				headers: {
+// 					"Authorization": Cookie.Read("Authorization")
+// 			    },
 				success : function(data) {
 					console.log(data);
 				},
