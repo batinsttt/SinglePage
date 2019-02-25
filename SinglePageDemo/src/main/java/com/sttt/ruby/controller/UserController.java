@@ -100,11 +100,20 @@ public class UserController {
 	public String addNewUser(Model model) {
 		return "user/service/addNewUser";
 	}
-	/*
+
+    /*
      * Validate form
-    */  
-   @RequestMapping(value = "/quocDemo", method = RequestMethod.GET)
-    public String userValidate(Model model) {
+     */
+    @RequestMapping(value = "/demo/validate", method = RequestMethod.GET)
+    public String demoValidate(Model model) {
         return "user/service/validateTemplate";
+    }
+
+    /*
+     * Validate form version 2
+     */
+    @RequestMapping(value = "/demo/form", method = RequestMethod.GET)
+    public String demoForm(Model model) {
+        return "user/service/formTemplate";
     }
 }

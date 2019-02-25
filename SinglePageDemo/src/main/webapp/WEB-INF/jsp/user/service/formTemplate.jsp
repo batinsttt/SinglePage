@@ -184,7 +184,7 @@
 								</div>
 							</div>
 						</div>
-						<button type="submit" class="btn green">Validate</button>
+						<button type="submit" class="btn btn-green">Validate</button>
 						<input class="btn default" formnovalidate type="reset" name="cancel" value="Cancel">
 						<div class="row">
 						<div class="col-md-12" id="success-message"></div>
@@ -269,9 +269,6 @@
 
 			</fieldset>
 		</div>
-		
-		
-		
 	</div>
 </section>
 <script type="text/javascript">
@@ -305,10 +302,10 @@ $(document).ready(function() {
         errorClass: "help-block help-block-error",
         focusInvalid: !1,
         rules: {
+        	// userName is name of input tag
             // simple rule, converted to {required:true}
             userName: "required",
             phone: "isValidPhoneNumber",
-            // compound rule
             email: {
                 email: true
             },
@@ -320,7 +317,7 @@ $(document).ready(function() {
             {
             	required: true,
             	minlength: 8,
-            	equalTo: "#password"
+            	equalTo: "#password" // #password is name of input tag
             }
         },
         messages: {

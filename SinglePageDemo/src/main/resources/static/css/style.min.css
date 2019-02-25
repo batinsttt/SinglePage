@@ -317,17 +317,6 @@ legend.scheduler-border {
 .paddingtop15{
 	padding-top: 15px !important;
 }
-.btn {
-    outline: 0!important;
-}
-.btn, .form-control {
-    box-shadow: none!important;
-}
-.btn.green:not(.btn-outline) {
-    color: #FFF;
-    background-color: #32c5d2 !important;
-    border-color: #32c5d2
-}
 .help-block-error {
 	opacity: 1 !important;
 }
