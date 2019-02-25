@@ -38,8 +38,11 @@
             .when('/service/addNewUser',{
                 templateUrl:'/service/addNewUser'
             })
-            .when('/quocDemo',{
-                templateUrl:'/quocDemo'
+            .when('/demo/validate',{
+                templateUrl:'/demo/validate'
+            })
+            .when('/demo/form',{
+                templateUrl:'/demo/form'
             })
 
 //            .otherwise({ redirectTo:'/home'});

@@ -125,6 +125,17 @@
 <script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/scripts/angular.js")%>" data-semver="1.4.9"></script>
 <script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/scripts/angular-route.js")%>" data-semver="1.4.9"></script>
 
+<!-- Add new -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<!-- Ladda -->
+        <script src="<%=ConfigurationPath.getResourceServerPath("/ladda/spin.min.js")%>"></script>
+        <script src="<%=ConfigurationPath.getResourceServerPath("/ladda/ladda.min.js")%>"></script>
+        <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/ladda/ladda-themeless.min.css")%>">
+<!--         Jquery validation -->
+<script src="<%=ConfigurationPath.getResourceServerPath("/ladda/spin.min.js")%>"></script>
+        <script src="<%=ConfigurationPath.getResourceServerPath("/ladda/ladda.min.js")%>"></script>
+        <script src="/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
 <!------------------------------ Master page End-------------------------------->
 
 

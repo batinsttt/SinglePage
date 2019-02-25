@@ -9,10 +9,10 @@
 <meta name="description" content="Tem" />
 <link rel="icon" type="image/x-icon" href="<%=ConfigurationPath.getResourceServerPath("/images/viettel.jpg")%>">
 
-<jsp:include page="/WEB-INF/jsp/general/commonLibrary.jsp" />
+<jsp:include page="/WEB-INF/jsp/general/multiLanguage.jsp" />
 <jsp:include page="/WEB-INF/jsp/general/serverValue.jsp" />
 <jsp:include page="/WEB-INF/jsp/general/commonModal.jsp" />
-<jsp:include page="/WEB-INF/jsp/general/multiLanguage.jsp" />
+<jsp:include page="/WEB-INF/jsp/general/commonLibrary.jsp" />
 
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/forwardUserPage.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/headerController.js")%>"></script>
@@ -290,10 +290,17 @@
             <li><a href="#/service/addNewUser"><i class="fa fa-circle-o"></i> Add new User</a></li>
           </ul>
         </li>
-        <li class="oneLevel">
-          	<a href="#/quocDemo">
-           	 	<i class="fa fa-gear custom-menu-fa"></i> <span>Menu Validate Quốc</span>
-         	</a>
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-drivers-license"></i> <span>QuocPC</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#/demo/validate"><i class="fa fa-circle-o"></i>Validate Demo</a></li>
+            <li><a href="#/demo/form"><i class="fa fa-circle-o"></i>Validate version 2</a></li>
+          </ul>
         </li>
        
       </ul>
