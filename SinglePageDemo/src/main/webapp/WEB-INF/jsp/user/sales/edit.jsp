@@ -99,29 +99,6 @@
 
 			}
 		});
-
-// 		$("#add").click(function() {
-// 			var data = new Object;
-// 			data.address = $("#address").val();
-// 			data.phone = $("#phone").val();
-// 			var kData =  JSON.stringify(data);
-// 			var url = 'http://10.30.176.198:9006/ITSolWebService/sales/edit'
-// 			var method = "POST";
-// 			$.ajax({
-// 				type : method,
-// 				url : url,
-// 				data :(kData),
-// 				headers: {
-// 		            'Content-Type': 'application/json'
-// 		        },
-// 				success : function(data) {				
-// 					console.log("OK");
-// 				},
-// 				error:function(XMLHttpRequest, textStatus, errorThrown) {
-// 					console.log("ERROR");
-// 				}
-// 			});
-// 		});
 		
 		$("#add").click(function() {
 			var url = '/customerManager/enterpriseInfor'

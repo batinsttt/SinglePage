@@ -17,7 +17,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,12 +27,16 @@ import com.sttt.ruby.config.ConfigurationPath;
 import com.sttt.ruby.util.ItemJsonContants;
 import com.sttt.ruby.util.RolesContants;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class MainController {
 
 	@RequestMapping(value = "/login/auth", method = RequestMethod.POST)
 	public String userSalesEdit(@RequestParam("username") String username, @RequestParam("password") String password,HttpServletRequest request,
 			HttpServletResponse response,Model model) {
+		log.info("Begin method login");
 		String uri = ConfigurationPath.getDomainAPI("/gateway/auth/login");
 		JSONObject jsonObj = null;
 		RestTemplate restTemplate = new RestTemplate();
@@ -48,7 +51,6 @@ public class MainController {
 			List<Object> roles = role.toList();
 			String token = jsonObj.getJSONObject(ItemJsonContants.AUTH).getString(ItemJsonContants.TOKEN_TYPE)
 					+ jsonObj.getJSONObject(ItemJsonContants.AUTH).getString(ItemJsonContants.TOKEN);
-			//response.setHeader("Set-Cookie", HttpHeaders.AUTHORIZATION + "=" + (token)+";"+DateUtil.getExpiresCookie());
 			HttpSession session = request.getSession();
 			session.setAttribute(ItemJsonContants.TOKEN, token);
 			if (roles.contains(RolesContants.ROLE_LEASED_LINE_USER)) {
@@ -81,11 +83,20 @@ public class MainController {
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(false);
 		if (request.isRequestedSessionIdValid() && session != null) {
-		session.invalidate();
+			session.invalidate();
 		}
 		return "login";
 	}
 
+	@RequestMapping(value = "/checksession", method = RequestMethod.GET)
+	public String checkSession(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession(false);
+		if (request.isRequestedSessionIdValid() && session != null) {
+			session.invalidate();
+		}
+		return "login";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "login";
