@@ -1,57 +1,63 @@
-<!-- <configuration> -->
-<!-- <include resource="org/springframework/boot/logging/logback/defaults.xml" 
-	/> -->
-<!-- <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}spring.log}"/> -->
-<!-- <include resource="org/springframework/boot/logging/logback/console-appender.xml" 
-	/> -->
-
-<!-- <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
-<!-- <encoder> -->
-<!-- <pattern>${FILE_LOG_PATTERN}</pattern> -->
-<!-- </encoder> -->
-<!-- <file>${LOG_FILE}</file> -->
-<!-- <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
-<!-- <fileNamePattern>${LOG_FILE}.%d</fileNamePattern> -->
-<!-- </rollingPolicy> -->
-<!-- </appender> -->
-
-<!-- <springProfile name="dev"> -->
-<!-- <root level="INFO"> -->
-<!-- <appender-ref ref="CONSOLE" /> -->
-<!-- <appender-ref ref="FILE" /> -->
-<!-- </root> -->
-<!-- </springProfile> -->
-<!-- <springProfile name="test,prod"> -->
-<!-- <root level="INFO"> -->
-<!-- <appender-ref ref="FILE" /> -->
-<!-- </root> -->
-<!-- </springProfile> -->
-<!-- </configuration> -->
 <configuration>
 	<include
 		resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<property name="LOG_FILE"
+		value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}spring.log}" />
+	<include
+		resource="org/springframework/boot/logging/logback/console-appender.xml" />
 
-	<appender name="STDOUT"
-		class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<encoder>
-			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
-			<charset>utf8</charset>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
 		</encoder>
-	</appender>
-	<appender name="stash"
-		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<remoteHost>10.60.156.73</remoteHost>
-		<port>8514</port>
-		<includeCallerData>true</includeCallerData>
-		<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
-		<keepAliveDuration>5 minutes</keepAliveDuration>
+		<file>${LOG_FILE}</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILE}.%d</fileNamePattern>
+		</rollingPolicy>
 	</appender>
 
-	<logger name="webApp" level="all">
-		<appender-ref ref="stash" />
-		<appender-ref ref="STDOUT" />
-	</logger>
-	<root level="INFO">
-		<appender-ref ref="STDOUT" />
-	</root>
+	<springProfile name="dev">
+		<root level="INFO">
+			<appender-ref ref="CONSOLE" />
+			<appender-ref ref="FILE" />
+		</root>
+	</springProfile>
+	<springProfile name="test,prod">
+		<root level="INFO">
+			<appender-ref ref="FILE" />
+		</root>
+	</springProfile>
 </configuration>
+
+
+
+<!-- <configuration> -->
+<!-- 	<include -->
+<!-- 		resource="org/springframework/boot/logging/logback/defaults.xml" /> -->
+
+<!-- 	<appender name="STDOUT" -->
+<!-- 		class="ch.qos.logback.core.ConsoleAppender"> -->
+<!-- 		<encoder> -->
+<!-- 			<pattern>${CONSOLE_LOG_PATTERN}</pattern> -->
+<!-- 			<charset>utf8</charset> -->
+<!-- 		</encoder> -->
+<!-- 	</appender> -->
+<!-- 	<appender name="stash" -->
+<!-- 		class="net.logstash.logback.appender.LogstashTcpSocketAppender"> -->
+<!-- 		<remoteHost>10.60.156.73</remoteHost> -->
+<!-- 		<port>8514</port> -->
+<!-- 		<includeCallerData>true</includeCallerData> -->
+<!-- 		<encoder class="net.logstash.logback.encoder.LogstashEncoder" /> -->
+<!-- 		<keepAliveDuration>5 minutes</keepAliveDuration> -->
+<!-- 	</appender> -->
+
+<!-- 	<logger name="webApp" level="all"> -->
+<!-- 		<appender-ref ref="stash" /> -->
+<!-- 		<appender-ref ref="STDOUT" /> -->
+<!-- 	</logger> -->
+<!-- 	<root level="INFO"> -->
+<!-- 		<appender-ref ref="STDOUT" /> -->
+<!-- 	</root> -->
+<!-- </configuration> -->
