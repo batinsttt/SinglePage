@@ -36,7 +36,7 @@ public class MainController {
 	@RequestMapping(value = "/login/auth", method = RequestMethod.POST)
 	public String userSalesEdit(@RequestParam("username") String username, @RequestParam("password") String password,HttpServletRequest request,
 			HttpServletResponse response,Model model) {
-		log.info("Begin method login");
+//		log.info("Begin method login");
 		String uri = ConfigurationPath.getDomainAPI("/gateway/auth/login");
 		JSONObject jsonObj = null;
 		RestTemplate restTemplate = new RestTemplate();

@@ -1,6 +1,9 @@
 
 package com.sttt.ruby.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.sttt.ruby.util.ItemJsonContants;
+
 
 @RestController
 public class CallAjaxController {
@@ -19,14 +24,14 @@ public class CallAjaxController {
 	/*
 	 * Demo Post sample
 	*/	
-	@PostMapping("/service222/call")
-	public String callWebservice(@RequestBody String requestBody) throws Exception {
-		String uri ="http://10.60.156.63:8762/gateway/customerManager/enterpriseInfor";
+	@PostMapping("/CallAjax/page")
+	public String callWebservice(@RequestBody String requestBody, HttpServletRequest request) throws Exception {
+		String uri ="http://10.60.156.63:8762/gateway/invoiceManager/searchListInvoices";
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add(HttpHeaders.AUTHORIZATION, "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJGRzFGN19BRE1JTiIsImF1dGhzIjpbIlJPTEVfTEVBU0VEX0xJTkVfVVNFUiIsIlJPTEVfRlRUUF9VU0VSIl0sInVpZCI6IjYiLCJjaWQiOiI2IiwiaWF0IjoxNTUwNzE5MDQyLCJleHAiOjE1NTA3MjA0ODJ9.FVhVHkbjYYX0dqT07rptWngAX9IIpwpymoWxpsNf1Exy_PbCSFhygmsyTJp_YKWWvV6S1NPIP2xAodSIAQusaw");
-        
+        HttpSession session = request.getSession();
+		headers.set(HttpHeaders.AUTHORIZATION, (String) session.getAttribute(ItemJsonContants.TOKEN));
         HttpEntity<String> entity = new HttpEntity<String>(requestBody,headers);
         String json = restTemplate.postForObject(uri, entity, String.class);
         

@@ -64,14 +64,14 @@
 				<thead>
 					<tr>
                			<th></th>
-						<th id="inputCol">Name</th>
+<!-- 						<th id="inputCol">Name</th> -->
 						<th>Position</th>
 						<th>Office</th>
 						<th>Extn.</th>
 						<th>Start date</th>
 						<th>Salary</th>
 						<th>Edit</th>
-						<th>Delete</th>
+<!-- 						<th>Delete</th> -->
 					</tr>
 				</thead>
 			</table>
@@ -148,128 +148,82 @@
   		];
 	  var obj = {name: "Test 1", id: 10000, list};
 	  var jsonParam = JSON.stringify(obj);
-	  var table = $('#example').DataTable();
-//       var table = $('#example').DataTable({;
-// //     	  "autoWidth":true,
-// //     	  "pagingType": "full_numbers",
-// //     	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-// //     	  "scrollY": true,
-// //           "scrollX": true,
-// //           "processing":true,
-// //           "ajax": {
-// //   		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
-// //   		    "contentType": "application/json",
-// //   		    "type": "POST",
-// //   		    "data": function () {
-// //   		        return JSON.stringify(obj);
-// //   		      }
-  		   
-// //   		  },
-// //           "columns": [
-// //               { "data": "id" },
-// //               { "data": "name" },
-// //               { "data": "position" },
-// //               { "data": "office" },
-// //               { "data": "extn" },
-// //               { "data": "start_date" },
-// //               { "data": "salary" },
-// //               {
-// //                   data: null,
-// //                   defaultContent: '<a class="edit1" href="javascript:;"> Edit </a>',
-// //                   className: '',
-// //                   orderable: false
-// //               },
-// //               {
-// //                   data: null,
-// // //                   defaultContent: '<a class="delete" href="javascript:;" onclick="deleteModal()"> Delete </a>',
-// //                   render: function ( data, type, row ) {
-// //                 	  return  '<a class="edit1" href="javascript:void(0)" onclick="deleteModal('+data.id+')"><i class="fa fa-trash-o"></i></a>';
-// //                    },
-// //                   className: '',
-// //                   orderable: false
-// //               },
-// //           ],
-// //           "drawCallback": function(){
-// //               $('input[type="checkbox"]').iCheck({
-// //                  "checkboxClass": 'icheckbox_flat-blue'
-// //               });
-// //            },
-// //            "columnDefs": [
-// //                {
-// //                   "targets": 0,
-// //                   "checkboxes": {
-// //                      "selectRow": true,
-// //                      "selectCallback": function(nodes, selected){
-// //                         $('input[type="checkbox"]', nodes).iCheck('update');
-// //                      },
-// //                      "selectAllCallback": function(nodes, selected, indeterminate){
-// //                         $('input[type="checkbox"]', nodes).iCheck('update');
-// //                      }
-                     
-// //                   }
-// //                }
-// //             ],
-// //             "select": {
-// //                "style": 'multi',
-// //                "selector": 'td:first-child'
-// //             },
-// //             "order": [[1, 'asc']]
-//       });
-// //       table.columns.adjust().draw();
-//       // Handle iCheck change event for "select all" control
-//       $(table.table().container()).on('ifChanged', '.dt-checkboxes-select-all input[type="checkbox"]', function(event){
-//          var col = table.column($(this).closest('th'));
-//          col.checkboxes.select(this.checked);
-//       });
+	  var params = new Object();
+	  var page = 0;
+	  var STT = 1;
+	  var table = $('#example').DataTable({
+		  "serverSide": true,
+		   "processing": true,
+		   "bLengthChange": false,	
+		   "searching": false,
+    	   "responsive": true,
+    	  "autoWidth":true,
+    	  "pagingType": "full_numbers",
+    	  "scrollY": true,
+          "scrollX": true,
+          "ajax": {
+  		    "url": "/CallAjax/page",
+  		    "type": "POST",
+  		  	"dataType": "json",
+          	"contentType": 'application/json; charset=utf-8',
+          	"dataSrc": "invoices",
+          	"data": function () {
+  		       
+  		      params.searchType = "1";
+  			  params.doccumentNo = "601838862/KHDN_AM_HCM/02102017";
+  			  params.fromDate = "2019-02-01";
+  			  params.toDate = "2019-10-01";
+  			  params.page = page;
 
-//       // Handle iCheck change event for checkboxes in table body
-//       $(table.table().container()).on('ifChanged', '.dt-checkboxes', function(event){
-//          var cell = table.cell($(this).closest('td'));
-//          cell.checkboxes.select(this.checked);
-//       });
+  			  params.pageSize = "1";
+  				 return JSON.stringify(params);
+  		      }
+  		  },
+          "columns": [
+        	  {
+        		  data: null,
+                  defaultContent: STT,
+                  className: 'textCenter',
+                  orderable: false
+              },
+              { "data": "invoiceId" },
+              { "data": "invoiceNo" },
+              { "data": "invoiceNumber" },	
+              { "data": "invoiceSeri" },
+              { "data": "invoiceType" },
+              { "data": "buyerName" }
+//               {
+//             	  invoices: null,
+// 				  render: function ( data, type, row ) {
+//                 	return  '<a class="iconSize18" href="javascript:void(0)" onclick="showModal('+data.id+')"><i class="fa fa-edit"></i></a>';
+//             	  },
+//                   className: 'textCenter',
+//                   orderable: true
+//               },
+//               {
+//             	  invoices: null,
+//                   render: function ( data, type, row ) {
+//                 	  return  '<a class="iconSize18" href="javascript:void(0)" onclick="deleteModal('+data.id+')"><i class="fa fa-trash-o"></i></a>';
+//                    },
+//                   className: 'textCenter',
+//                   orderable: false
+//               },
+          ],
+           
+//            "order": [[1, 'asc']]
+      });
+      
+      table.on( 'order.dt search.dt', function () {
+    	  table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+              cell.innerHTML = i+1;
+          } );
+      } ).draw();
 
-//       $('#addRow').on( 'click', function () {
-//          $('#example').DataTable().row.add( [
-//             '',
-//             '<input type="text" class="form-control">',
-//             '<input type="text" class="form-control">',
-//             '<input type="text" class="form-control">',
-//             '<input type="text" class="form-control">',
-//             '<input type="text" class="form-control">',
-//             '<input type="text" class="form-control">',
-//             '<a class="save" href="javascript:;">Save</a>',
-//             '<a class="cancel" href="javascript:;">Cancel</a>'
-//          ] ).draw( false );
-//          countNew++;
-//       } );
-//       $('#example tbody').on( 'click', '.edit1', function () {
-//          var data = table.row( $(this).parents('tr') ).data();
-//          ($(this).parents('tr')).children().eq(1).html('<input type="text" style="width: '+($('thead th').eq(1).width()+23)+'px;" class="form-control form-control-sm" value="' + data['name'] + '">');
-//          ($(this).parents('tr')).children().eq(2).html('<input type="text" style="width: '+($('thead th').eq(2).width()+23)+'px;" class="form-control form-control-sm" value="' + data['position'] + '">');
-//          ($(this).parents('tr')).children().eq(3).html('<input type="text" style="width: '+($('thead th').eq(3).width()+23)+'px;" class="form-control form-control-sm" value="' + data['office'] + '">');
-//          ($(this).parents('tr')).children().eq(4).html('<input type="text" style="width: '+($('thead th').eq(4).width()+23)+'px;" class="form-control form-control-sm" value="' + data['extn'] + '">');
-//          ($(this).parents('tr')).children().eq(5).html('<input type="text" style="width: '+($('thead th').eq(5).width()+23)+'px;" class="form-control form-control-sm" value="' + data['start_date'] + '">');
-//          ($(this).parents('tr')).children().eq(6).html('<input type="text" style="width: '+($('thead th').eq(6).width()+23)+'px;" class="form-control form-control-sm" value="' + data['salary'] + '">');
-//          ($(this).parents('tr')).children().eq(8).html('<a class="cancel" href="javascript:;">Cancel</a>');
-//          ($(this).parents('tr')).children().eq(7).html('<a class="save" href="javascript:;">Save</a>');
-//       } );
-//       $('#example tbody').on( 'click', '.cancel', function () {
-//          if (countNew > 0) {
-//             $('#example').DataTable().row($(this).parents('tr')).remove().draw();
-//             countNew--;
-//          } else {
-//             var data = table.row( $(this).parents('tr') ).data();
-//             ($(this).parents('tr')).children().eq(1).html(data['name']);
-//             ($(this).parents('tr')).children().eq(2).html(data['position']);
-//             ($(this).parents('tr')).children().eq(3).html(data['office']);
-//             ($(this).parents('tr')).children().eq(4).html(data['extn']);
-//             ($(this).parents('tr')).children().eq(5).html(data['start_date']);
-//             ($(this).parents('tr')).children().eq(6).html(data['salary']);
-//             ($(this).parents('tr')).children().eq(7).html('<a class="edit1" href="javascript:;">Edit</a>');
-//             ($(this).parents('tr')).children().eq(8).html('<a class="delete" href="javascript:;">Delete</a>');
-//          }
-        
-//     } );
+	  $('#example').on( 'page.dt', function () {
+		  page = table.page.info().page + 1;
+		  STT = 10 * page - 10 + 1;
+	 } );
+
         
    });
    

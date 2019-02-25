@@ -4109,8 +4109,8 @@
 	
 		var data = _fnAjaxDataSrc( settings, json );
 		var draw            = compat( 'sEcho',                'draw' );
-		var recordsTotal    = compat( 'iTotalRecords',        'recordsTotal' );
-		var recordsFiltered = compat( 'iTotalDisplayRecords', 'recordsFiltered' );
+		var recordsTotal    = compat( 'iTotalRecords',        'totalRow' );
+		var recordsFiltered = compat( 'iTotalDisplayRecords', 'totalRow' );
 	
 		if ( draw ) {
 			// Protect against out of sequence returns
