@@ -50,7 +50,7 @@ public class MainController {
 					+ jsonObj.getJSONObject(ItemJsonContants.AUTH).getString(ItemJsonContants.TOKEN);
 			//response.setHeader("Set-Cookie", HttpHeaders.AUTHORIZATION + "=" + (token)+";"+DateUtil.getExpiresCookie());
 			HttpSession session = request.getSession();
-			session.setAttribute("token", token);
+			session.setAttribute(ItemJsonContants.TOKEN, token);
 			if (roles.contains(RolesContants.ROLE_LEASED_LINE_USER)) {
 				return "user/userMasterPage";
 			}
@@ -66,14 +66,12 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/customerManager/enterpriseInfor", method = RequestMethod.GET)
-//	public @ResponseBody String getCustomer(HttpServletRequest request, HttpServletResponse response, Model model,
-//			@RequestHeader("Authorization") String authenticate) {
 	public @ResponseBody String getCustomer(HttpServletRequest request, HttpServletResponse response, Model model) {
 		String uri = ConfigurationPath.getDomainAPI("/gateway/customerManager/enterpriseInfor");
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		HttpSession session = request.getSession();
-		headers.set(HttpHeaders.AUTHORIZATION, (String) session.getAttribute("token"));
+		headers.set(HttpHeaders.AUTHORIZATION, (String) session.getAttribute(ItemJsonContants.TOKEN));
 		HttpEntity<String> entity = new HttpEntity<String>("", headers);
 		ResponseEntity<String> json = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
 		return json.getBody();
@@ -85,13 +83,11 @@ public class MainController {
 		if (request.isRequestedSessionIdValid() && session != null) {
 		session.invalidate();
 		}
-		//handleLogOutResponse(request,response);
 		return "login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
-
 		return "login";
 	}
 }
