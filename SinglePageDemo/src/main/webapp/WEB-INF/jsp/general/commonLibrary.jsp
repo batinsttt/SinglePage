@@ -17,6 +17,10 @@
  <!-- AdminLTE Skins -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/skins/_all-skins.min.css")%>">
  
+ <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/base.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/style.css")%>">
+<link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/style_ex.css")%>">
+
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/components.min.css")%>">
  <!-- Morris chart -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/morris.js/morris.css")%>">
@@ -34,6 +38,7 @@
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/blue.css")%>">
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/common.css")%>">
 
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/analytics.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/jquery.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/dataTables.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/dataTables.checkboxes.js")%>"></script>
@@ -69,6 +74,7 @@
 
 <!-- Bootstrap 3.3.7 -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/bootstrap/dist/js/bootstrap.min.js")%>"></script>
+
 <!-- Morris.js charts -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/raphael/raphael.min.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/morris.js/morris.min.js")%>"></script>
@@ -108,6 +114,18 @@
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/material/mdb.css")%>">
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/material/mdb.js")%>"></script>
 
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/script.js")%>"></script>
+
+
+
+<!------------------------------ Master page -------------------------------->
+<link rel="stylesheet" id="hashone-fonts-css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=latin,latin-ext" type="text/css" media="all">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/scripts/angular.js")%>" data-semver="1.4.9"></script>
+<script data-require="angular.js@1.4.x" src="<%=ConfigurationPath.getResourceServerPath("/scripts/angular-route.js")%>" data-semver="1.4.9"></script>
+
+<!------------------------------ Master page End-------------------------------->
 
 
 <script type="text/javascript">

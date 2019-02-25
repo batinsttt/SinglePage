@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page import="com.sttt.ruby.config.ConfigurationPath"%>
 
-<html ng-app='contentApp'>
+<html ng-app='contentAdmin'>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
@@ -15,6 +15,7 @@
 <jsp:include page="/WEB-INF/jsp/general/multiLanguage.jsp" />
 
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/forwardAdminPage.js")%>"></script>
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/headerControllerAdmin.js")%>"></script>
 
 </head>
 
@@ -32,7 +33,7 @@
                </div>
                <div class="logo_text">
                   <a href="https://viettel.vn/">
-                  <img src="./Admin_files/logo_viettel2.png">
+                       <img class="custom_Logo-admin" src="<%=ConfigurationPath.getResourceServerPath("/images/logo_viettel2.png")%>"  alt="Viettel Solution">
                   </a>
                </div>
                <div class="navbar-left">
@@ -43,12 +44,38 @@
                   <div class="menu-shoping">
                      <div class="item-shoping">
                         <a style="" href="https://viettel.vn/doanh-nghiep" class="">
-                        <i class="mdi mdi-factory"></i>
+                        <i class="fa fa-user-o"></i>
                         <span class="des hvr-underline-from-left">Admin</span></a>
                      </div>
                   </div>
                </div>
-            </div>
+<!-- 					<div class="navbar-custom-menu" style="float: right;"> -->
+<!-- 						<ul class="nav navbar-nav"> -->
+<!-- 							User Account: style can be found in dropdown.less -->
+<!-- 							<li class="dropdown user user-menu cusDR"> -->
+<!-- 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin: 0px 5px 0px 0px;"> -->
+<%-- 									<img src="<%=ConfigurationPath.getResourceServerPath("/images/avatar_No_Image.png")%>" class="user-image" alt="User Image"> --%>
+<!-- 									<span class="userMenuA">Admin</span> -->
+<!-- 									 <i class="fa fa-angle-down userMenuA"></i> -->
+<!-- 								</a> -->
+<!-- 								<ul class="dropdown-menu" style="border: 0;"> -->
+<!-- 									Menu Footer -->
+<!-- 									<li class="BoxEditStateBottom" style="top: -18%;transform: rotate(-180deg); border-top-color: #fff;"></li> -->
+<!-- 									<li class="user-login"> -->
+<!-- 										<a href="http://dmsone.vn/account/change-pass" class="btn-flat"> -->
+<!-- 											<span class="glyphicon glyphicon-lock" style ="color:#2DA5DA !important"></span> -->
+<!-- 											Đổi mật khẩu</a> -->
+<!-- 									</li> -->
+<!-- 									<li class="user-out"> -->
+<!-- 										<a id = "btnLogout" href="#" class="btn-flat"> -->
+<!-- 											<span class="glyphicon glyphicon-log-out" style ="color:#2DA5DA !important"></span> -->
+<!-- 											Đăng xuất</a> -->
+<!-- 									</li> -->
+<!-- 								</ul> -->
+<!-- 							</li> -->
+<!-- 						</ul> -->
+<!-- 					</div> -->
+			   </div>
             <div class="clearfix"></div>
          </div>
          <div class="header-menu-main2" id="menutop-fixed" style="background-color:#00918d">
@@ -76,33 +103,12 @@
                   <ul class="nav navbar-nav navbar-left">
                      <li class="dropdown laptop">
                         <a href="https://viettel.vn/di-dong" class="dropdown-toggle disabled" data-toggle="dropdown">Quản lý tài khoản</a>
-                        <div class="dropdown-menu">
-                           <ul class="col-md-12">
-                              <li>
-                                 <a href="https://viettel.vn/di-dong/tra-truoc"> Danh sách tài khoản</a>
-                              </li>
-                           </ul>
-                        </div>
                      </li>
                      <li class="dropdown laptop">
                         <a href="https://viettel.vn/di-dong" class="dropdown-toggle disabled" data-toggle="dropdown">Quản lý sản phẩm dịch vụ</a>
-                        <div class="dropdown-menu">
-                           <ul class="col-md-12">
-                              <li>
-                                 <a href="https://viettel.vn/di-dong/tra-truoc"> Danh sách tài khoản</a>
-                              </li>
-                           </ul>
-                        </div>
                      </li>
                      <li class="dropdown laptop">
                         <a href="https://viettel.vn/di-dong" class="dropdown-toggle disabled" data-toggle="dropdown">Quản lý yêu cầu dịch vụ</a>
-                        <div class="dropdown-menu">
-                           <ul class="col-md-12">
-                              <li>
-                                 <a href="https://viettel.vn/di-dong/tra-truoc"> Danh sách tài khoản</a>
-                              </li>
-                           </ul>
-                        </div>
                      </li>
                      <li class="dropdown laptop">
                         <a href="https://viettel.vn/di-dong" class="dropdown-toggle disabled" data-toggle="dropdown">Quản lý sản khác</a>
@@ -124,10 +130,30 @@
                         </div>
                      </li>
                   </ul>
+<!--                   <ul class="nav navbar-nav navbar-right"> -->
+<!-- 			            <div class="viettel_account"> -->
+<!-- 			              <i style="color:#fff" class="fa fa-user-circle"></i> -->
+<!-- 			            </div> -->
+<!-- 			            <div class="account_option_div"> -->
+<!-- 			                              <a href="https://vietteltelecom.vn/dang-nhap">Đăng nhập</a><br> -->
+<!-- 			                <a href="https://vietteltelecom.vn/dang-ky">Đăng ký</a> -->
+<!-- 			             </div> -->
+<!-- 			   </ul> -->
                </nav>
             </div>
          </div>
       </div>
+    <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper-admin">
+    <!-- Main content -->
+    <div ng-app="contentAdmin">
+    	<ng-view></ng-view>
+    </div>
+  </div>
+    
+  <footer class="main-footer-admin" style="text-align: center;">
+    	<small>© Phát triển bởi tập đoàn Quân đội Viettel</small>
+  </footer>
    </section>
 </body>
 

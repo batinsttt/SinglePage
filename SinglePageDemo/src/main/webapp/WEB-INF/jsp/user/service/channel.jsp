@@ -1,31 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.sttt.ruby.config.ConfigurationPath"%>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-<section class="content">
-	<div class="box box-danger">
-		<div class="row">
-			<div class="col-sm-3 cus-channel-header">
-				<a href="#" style="text-align: center;"> 
-					<span><i class="fa fa-search"></i></span><br> <span>Tra cứu thông tin</span>
-				</a>
-			</div>
-			<div class="col-sm-3 cus-channel-header">
-				<a href="#"> <span><i class="fa fa-exclamation-triangle"></i></span><br>
-					<span>Báo lỗi dịch vụ</span>
-				</a>
-			</div>
-			<div class="col-sm-3 cus-channel-header">
-				<a href="#"> <span><i class="fa fa-list"></i></span><br> <span>Quản
-						lý yêu cầu</span>
-				</a>
-			</div>
-			<div class="col-sm-3 cus-channel-header">
-				<a href="#"> <span><i class="fa fa-newspaper-o"></i></span><br>
-					<span>Hóa đơn điện tử</span>
-				</a>
-			</div>
-		</div>
-	</div>
+	<!-- menu service -->
+	<jsp:include page="/WEB-INF/jsp/user/service/menuService.jsp" />
+	<!-- end menu -->
 	<!-- /.box -->
 	<div class="box">
 		<div class="box-body">
@@ -148,6 +124,7 @@
 	
 <script type="text/javascript">
    $(document).ready(function() {
+	   
 	   //Generate breadCumb
 	   var breadCumb_1 = ['DV đang sử dụng1', '#/service/channel'];
 	   var breadCumb_2 = ['DV đang sử dụng2', '#/service/tracking'];
@@ -171,84 +148,85 @@
   		];
 	  var obj = {name: "Test 1", id: 10000, list};
 	  var jsonParam = JSON.stringify(obj);
-      var table = $('#example').DataTable({
-    	  "autoWidth":true,
-    	  "pagingType": "full_numbers",
-    	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    	  "scrollY": true,
-          "scrollX": true,
-          "processing":true,
-          "ajax": {
-  		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
-  		    "contentType": "application/json",
-  		    "type": "POST",
-  		    "data": function () {
-  		        return JSON.stringify(obj);
-  		      }
+	  var table = $('#example').DataTable();
+//       var table = $('#example').DataTable({;
+// //     	  "autoWidth":true,
+// //     	  "pagingType": "full_numbers",
+// //     	  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+// //     	  "scrollY": true,
+// //           "scrollX": true,
+// //           "processing":true,
+// //           "ajax": {
+// //   		    "url": "http://10.30.176.198:9006/ITSolWebService/service/tracking",
+// //   		    "contentType": "application/json",
+// //   		    "type": "POST",
+// //   		    "data": function () {
+// //   		        return JSON.stringify(obj);
+// //   		      }
   		   
-  		  },
-          "columns": [
-              { "data": "id" },
-              { "data": "name" },
-              { "data": "position" },
-              { "data": "office" },
-              { "data": "extn" },
-              { "data": "start_date" },
-              { "data": "salary" },
-              {
-                  data: null,
-                  defaultContent: '<a class="edit1" href="javascript:;"> Edit </a>',
-                  className: '',
-                  orderable: false
-              },
-              {
-                  data: null,
-//                   defaultContent: '<a class="delete" href="javascript:;" onclick="deleteModal()"> Delete </a>',
-                  render: function ( data, type, row ) {
-                	  return  '<a class="edit1" href="javascript:void(0)" onclick="deleteModal('+data.id+')"><i class="fa fa-trash-o"></i></a>';
-                   },
-                  className: '',
-                  orderable: false
-              },
-          ],
-          "drawCallback": function(){
-              $('input[type="checkbox"]').iCheck({
-                 "checkboxClass": 'icheckbox_flat-blue'
-              });
-           },
-           "columnDefs": [
-               {
-                  "targets": 0,
-                  "checkboxes": {
-                     "selectRow": true,
-                     "selectCallback": function(nodes, selected){
-                        $('input[type="checkbox"]', nodes).iCheck('update');
-                     },
-                     "selectAllCallback": function(nodes, selected, indeterminate){
-                        $('input[type="checkbox"]', nodes).iCheck('update');
-                     }
+// //   		  },
+// //           "columns": [
+// //               { "data": "id" },
+// //               { "data": "name" },
+// //               { "data": "position" },
+// //               { "data": "office" },
+// //               { "data": "extn" },
+// //               { "data": "start_date" },
+// //               { "data": "salary" },
+// //               {
+// //                   data: null,
+// //                   defaultContent: '<a class="edit1" href="javascript:;"> Edit </a>',
+// //                   className: '',
+// //                   orderable: false
+// //               },
+// //               {
+// //                   data: null,
+// // //                   defaultContent: '<a class="delete" href="javascript:;" onclick="deleteModal()"> Delete </a>',
+// //                   render: function ( data, type, row ) {
+// //                 	  return  '<a class="edit1" href="javascript:void(0)" onclick="deleteModal('+data.id+')"><i class="fa fa-trash-o"></i></a>';
+// //                    },
+// //                   className: '',
+// //                   orderable: false
+// //               },
+// //           ],
+// //           "drawCallback": function(){
+// //               $('input[type="checkbox"]').iCheck({
+// //                  "checkboxClass": 'icheckbox_flat-blue'
+// //               });
+// //            },
+// //            "columnDefs": [
+// //                {
+// //                   "targets": 0,
+// //                   "checkboxes": {
+// //                      "selectRow": true,
+// //                      "selectCallback": function(nodes, selected){
+// //                         $('input[type="checkbox"]', nodes).iCheck('update');
+// //                      },
+// //                      "selectAllCallback": function(nodes, selected, indeterminate){
+// //                         $('input[type="checkbox"]', nodes).iCheck('update');
+// //                      }
                      
-                  }
-               }
-            ],
-            "select": {
-               "style": 'multi',
-               "selector": 'td:first-child'
-            },
-            "order": [[1, 'asc']]
-      });
-//       table.columns.adjust().draw();
-      // Handle iCheck change event for "select all" control
-      $(table.table().container()).on('ifChanged', '.dt-checkboxes-select-all input[type="checkbox"]', function(event){
-         var col = table.column($(this).closest('th'));
-         col.checkboxes.select(this.checked);
-      });
+// //                   }
+// //                }
+// //             ],
+// //             "select": {
+// //                "style": 'multi',
+// //                "selector": 'td:first-child'
+// //             },
+// //             "order": [[1, 'asc']]
+//       });
+// //       table.columns.adjust().draw();
+//       // Handle iCheck change event for "select all" control
+//       $(table.table().container()).on('ifChanged', '.dt-checkboxes-select-all input[type="checkbox"]', function(event){
+//          var col = table.column($(this).closest('th'));
+//          col.checkboxes.select(this.checked);
+//       });
 
-      // Handle iCheck change event for checkboxes in table body
-      $(table.table().container()).on('ifChanged', '.dt-checkboxes', function(event){
-         var cell = table.cell($(this).closest('td'));
-         cell.checkboxes.select(this.checked);
-      });
+//       // Handle iCheck change event for checkboxes in table body
+//       $(table.table().container()).on('ifChanged', '.dt-checkboxes', function(event){
+//          var cell = table.cell($(this).closest('td'));
+//          cell.checkboxes.select(this.checked);
+//       });
 
 //       $('#addRow').on( 'click', function () {
 //          $('#example').DataTable().row.add( [

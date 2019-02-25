@@ -31,6 +31,27 @@ public class UserController {
 	/*
 	 * Use's service channel
 	*/	
+	@RequestMapping(value = "/ticket/create", method = RequestMethod.GET)
+	public String userCreateTicket() {
+		return "user/ticket/createTicket";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * Use's service channel
+	*/	
 	@RequestMapping(value = "/service/channel", method = RequestMethod.GET)
 	public String userServiceChannel(Model model) {
 		return "user/service/channel";

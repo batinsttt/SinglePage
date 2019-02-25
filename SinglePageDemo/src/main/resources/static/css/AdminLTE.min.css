@@ -16,7 +16,7 @@ body {
 }
 
 body {
-	font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-weight: 400;
 	overflow-x: hidden;
 	overflow-y: auto
@@ -58,6 +58,15 @@ body {
 	-o-transition: -o-transform .3s ease-in-out, margin .3s ease-in-out;
 	transition: transform .3s ease-in-out, margin .3s ease-in-out;
 	margin-left: 230px;
+	z-index: 820
+}
+.content-wrapper-admin,
+.main-footer-admin {
+	-webkit-transition: -webkit-transform .3s ease-in-out, margin .3s ease-in-out;
+	-moz-transition: -moz-transform .3s ease-in-out, margin .3s ease-in-out;
+	-o-transition: -o-transform .3s ease-in-out, margin .3s ease-in-out;
+	transition: transform .3s ease-in-out, margin .3s ease-in-out;
+	margin-left: 0px;
 	z-index: 820
 }
 
@@ -104,6 +113,19 @@ body {
 	height: 30px;
 }
 
+.content-wrapper-admin {
+	min-height: 83%;
+	background-color: rgb(247, 247, 247);
+	z-index: 800
+}
+
+.main-footer-admin {
+	background: #fff;
+	padding: 10px;
+	color: #8c8b8b;
+	border-top: 1px solid #d2d6de;
+	height: 30px;
+}
 .fixed .main-header,
 .fixed .main-sidebar,
 .fixed .left-side {
@@ -170,7 +192,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-	font-family: 'Source Sans Pro', sans-serif
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
@@ -180,6 +202,11 @@ a {
 a:hover,
 a:active,
 a:focus {
+	outline: none;
+	text-decoration: none;
+	color: #00918c;
+}
+.menu-service .active {
 	outline: none;
 	text-decoration: none;
 	color: #00918c;
@@ -269,8 +296,8 @@ a:focus {
 
 .main-header .sidebar-toggle {
 	float: left;
-	padding: 11px 17px;
-	font-family: fontAwesome;
+	padding: 7px 17px;
+	font-family: Arial;
 	background: #00918c;
     color: #fff;
     font-size: 20;
@@ -320,7 +347,7 @@ a:focus {
 	line-height: 50px;
 	text-align: left;
 	width: 180px;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Arial;
 	padding: 0;
 	font-weight: 300;
 	overflow: hidden
@@ -336,6 +363,10 @@ a:focus {
 .custom_Logo {
 	width: 180px;
     height: 50px;
+}
+.custom_Logo-admin {
+    height: 17px;
+    margin-top: 5px;
 }
 .main-header .navbar-brand {
 	color: #fff
@@ -1800,7 +1831,7 @@ a:focus {
 /* 	border-top: 3px solid #d2d6de; */
 	margin-bottom: 5px;
 	width: 100%;
-	padding : 15px;
+	padding : 20px;
 /* 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); */
 	border: 1px solid #e2e5eb;
 }
@@ -2036,7 +2067,18 @@ a:focus {
 	padding: 10px;
 	position: relative
 }
-
+.box-header-md {
+    color: #444;
+    display: block;
+    padding: 0 0 10px 0;
+    position: relative;
+}
+.box-header-md label {
+	font-size: 16px !important;
+    font-weight: normal;
+    color: #656565;
+    padding: 5px 0;
+}
 .box-header.with-border {
 	border-bottom: 1px solid #f4f4f4
 }
@@ -5880,7 +5922,7 @@ table.text-center th {
 .page-bar .page-breadcrumb {
   display: inline-block;
   float: left;
-  padding: 8px 15px;
+  padding: 8px 5px;
   margin: 0;
   list-style: none;
 }
@@ -5906,7 +5948,23 @@ table.text-center th {
   text-shadow: none;
   padding: 0 10px;
 }
-.page-bar .page-breadcrumb > li > i {
+.page-bar .page-breadcrumb a::after {
+	content: "";
+	width: 0%;
+    left: 12%;
+    bottom: 0px;
+    height: 1px;
+    position: absolute;
+    background-color: #00918d;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.page-bar .page-breadcrumb a:hover::after 
+{
+    width:80%;
+}
+.page-bar .page-breadcrumb > li i {
   color: #aaa;
   font-size: 18px;
   text-shadow: none;

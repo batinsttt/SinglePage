@@ -50,3 +50,8 @@
 <!-- /.row -->
 
 </section>
+<script type="text/javascript">
+	$(document).ready(function() {
+		 $('#breadCumb').empty();
+ });
+</script>

@@ -15,6 +15,8 @@
 <jsp:include page="/WEB-INF/jsp/general/multiLanguage.jsp" />
 
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/forwardUserPage.js")%>"></script>
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/headerController.js")%>"></script>
+
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -303,22 +305,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="page-bar" id="breadCumb">
-<!-- 				<ul class="page-breadcrumb"> -->
-<!-- 					<li> -->
-<!-- 						<i class="fa fa-home"></i> -->
-<!-- 						<a href="index.html">Home</a> -->
-<!-- 						<i class="fa fa-angle-right"></i> -->
-<!-- 					</li> -->
-<!-- 					<li> -->
-<!-- 						<a href="#">Data Tables</a> -->
-<!-- 						<i class="fa fa-angle-right"></i> -->
-<!-- 					</li> -->
-<!-- 					<li> -->
-<!-- 						<a href="#">Editable Datatables</a> -->
-<!-- 					</li> -->
-<!-- 				</ul> -->
-			</div>
+    <div class="page-bar" id="breadCumb"></div>
     <!-- Main content -->
     <div ng-app="contentApp">
     	<ng-view></ng-view>

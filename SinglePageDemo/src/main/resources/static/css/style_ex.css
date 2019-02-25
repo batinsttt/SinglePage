@@ -9928,10 +9928,10 @@ hotline_bg
 
 .viettel_account 
 {
-    position:absolute;
-    right:10px;
-    top:-3px;
-    cursor:pointer;
+    position: absolute;
+    right: 0px;
+    top: 8px;
+    cursor: pointer;
 }
 
 .viettel_account i 

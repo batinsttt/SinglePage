@@ -1,14 +1,10 @@
 
 package com.sttt.ruby.controller;
 
-import java.util.List;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -28,25 +24,25 @@ public class MainController {
 
 	@RequestMapping(value = "/login/auth", method = RequestMethod.POST)
 	public String userSalesEdit(@RequestParam("username") String username,@RequestParam("password") String password,HttpServletResponse  response) {
-		String uri = ConfigurationPath.getDomainAPI("/gateway/auth/login");
-		RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        String requestBody = "{\"username\":\""+username+"\",\"password\":\""+password+"\"}";
-        HttpEntity<String> entity = new HttpEntity<String>(requestBody,headers);
-        String json = restTemplate.postForObject(uri, entity, String.class);
-        JSONObject jsonObj = new JSONObject(json);
-        JSONArray role = (JSONArray)jsonObj.getJSONObject("user").get("roles");
-        String token = jsonObj.getJSONObject("auth").getString("token");
-        String tokenType = jsonObj.getJSONObject("auth").getString("tokenType");
-        List<Object> roles = role.toList();
-//        response.addHeader("vt.authenticate", tokenType + token);
-        Cookie newCookie = new Cookie("vt.authenticate", tokenType + token);
-        response.addCookie(newCookie);
-   
-        if(roles.contains("ROLE_LEASED_LINE_USER")) {
-        	return "user/home";
-        }
+//		String uri = ConfigurationPath.getDomainAPI("/gateway/auth/login");
+//		RestTemplate restTemplate = new RestTemplate();
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//        String requestBody = "{\"username\":\""+username+"\",\"password\":\""+password+"\"}";
+//        HttpEntity<String> entity = new HttpEntity<String>(requestBody,headers);
+//        String json = restTemplate.postForObject(uri, entity, String.class);
+//        JSONObject jsonObj = new JSONObject(json);
+//        JSONArray role = (JSONArray)jsonObj.getJSONObject("user").get("roles");
+//        String token = jsonObj.getJSONObject("auth").getString("token");
+//        String tokenType = jsonObj.getJSONObject("auth").getString("tokenType");
+//        List<Object> roles = role.toList();
+////        response.addHeader("vt.authenticate", tokenType + token);
+//        Cookie newCookie = new Cookie("vt.authenticate", tokenType + token);
+//        response.addCookie(newCookie);
+//   
+//        if(roles.contains("ROLE_LEASED_LINE_USER")) {
+//        	return "user/home";
+//        }
         return "admin/adminMasterPage";
 	}
 	@RequestMapping(value = "/customerManager/enterpriseInfor", method = RequestMethod.GET)

@@ -596,7 +596,7 @@
 
 .section-01 .header-top-text2 .navbar-right
 {
-    margin-right: 20px;
+    margin-right: 0px;
     display: inline-block;
 }
 .section-01 .header-top-text2 .navbar-right a
@@ -748,13 +748,14 @@ text-align: center;
 
 .section-01 .header-top-text2 .navbar-right .menu-shoping
 {
-       padding: 4px 0;
+       padding: 0;
 }
 .section-01 .header-top-text2 .navbar-right .menu-shoping .item-shoping
 {
        display:inline;
        padding: 0 10px;
        position:relative;
+       font-size: 13px;
 }
 .section-01 .header-top-text2 .navbar-right .menu-shoping .item-shoping a.active
 {

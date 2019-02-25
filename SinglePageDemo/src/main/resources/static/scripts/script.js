@@ -680,8 +680,8 @@
     }
 
     $(window).scroll(fixDiv);
-    fixDiv();_sysfix();
-
+//    fixDiv();_sysfix();
+    	fixDiv();
     var interval;
 
     function playinterval() {

@@ -2,7 +2,7 @@
 
 (function () {
 
-    var app = angular.module('contentApp',['ngRoute']);
+    var app = angular.module('contentAdmin',['ngRoute']);
     
     app.config(function ($routeProvider){
         $routeProvider

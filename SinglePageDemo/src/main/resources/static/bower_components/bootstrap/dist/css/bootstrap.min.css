@@ -6,7 +6,7 @@
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-	font-family: sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%
 }
@@ -107,7 +107,7 @@ pre {
 }
 
 code, kbd, pre, samp {
-	font-family: monospace, monospace;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em
 }
 
@@ -1286,7 +1286,7 @@ html {
 }
 
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	line-height: 1.42857143;
 	color: #333;
@@ -1294,7 +1294,7 @@ body {
 }
 
 button, input, select, textarea {
-	font-family: inherit;
+	font-family: Arial;
 	font-size: inherit;
 	line-height: inherit
 }
@@ -1383,7 +1383,7 @@ hr {
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-	font-family: inherit;
+	font-family: Arial;
 	font-weight: 500;
 	line-height: 1.1;
 	color: inherit
@@ -1711,7 +1711,7 @@ address {
 }
 
 code, kbd, pre, samp {
-	font-family: Menlo, Monaco, Consolas, "Courier New", monospace
+	font-family: Arial;
 }
 
 code {
@@ -2821,7 +2821,7 @@ legend {
 	display: block;
 	width: 100%;
 	padding: 0;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 	font-size: 21px;
 	line-height: inherit;
 	color: #333;
@@ -6638,7 +6638,7 @@ button.close {
 	position: absolute;
 	z-index: 1070;
 	display: block;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Arial, sans-serif;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: 400;
@@ -6772,7 +6772,7 @@ button.close {
 	display: none;
 	max-width: 276px;
 	padding: 1px;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Arial, sans-serif;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
@@ -7074,7 +7074,7 @@ button.close {
 .carousel-control .icon-next, .carousel-control .icon-prev {
 	width: 20px;
 	height: 20px;
-	font-family: serif;
+	font-family: Arial;
 	line-height: 1
 }
 

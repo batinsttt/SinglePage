@@ -6,6 +6,7 @@ body, div, h1, h2, h3, h4, h5, h6, p, form, dl, dl dt, dl dd, pre {
 	margin: 0;
 	padding: 0;
 	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -295,18 +296,21 @@ footer ol {
 /* END AnNBH Custom datepicker */
 fieldset.scheduler-border {
     border: 1px dashed #a4a4a4 !important;
-    padding: 0 1.4em 1.4em 1.4em !important;
-    margin: 0 0 1.5em 0 !important;
+	padding: 0 20px 20px 20px !important;
+    margin: 0 0 15px 0 !important;
     -webkit-box-shadow:  0px 0px 0px 0px #000;
             box-shadow:  0px 0px 0px 0px #000;
 }
 legend.scheduler-border {
     text-align: left !important;
     width:auto;
-    padding:0 10px;
+    padding:0 15px 0 5px;
     border-bottom:none;
     color: #757575;
 }
 .paddingBottom15{
 	padding-bottom: 15px;
+}
+.paddingtop15{
+	padding-top: 15px !important;
 }

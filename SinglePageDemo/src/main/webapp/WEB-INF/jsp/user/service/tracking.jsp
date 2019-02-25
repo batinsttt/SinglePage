@@ -1,29 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <section class="content">
-	<div class="box box-danger">
-		<div class="row">
-			<div class="col-sm-3 cus-channel-header">
-				<a href="#" style="text-align: center;"> 
-					<span><i class="fa fa-search"></i></span><br> <span>Tra cứu thông tin</span>
-				</a>
-			</div>
-			<div class="col-sm-3 cus-channel-header">
-				<a href="#"> <span><i class="fa fa-exclamation-triangle"></i></span><br>
-					<span>Báo lỗi dịch vụ</span>
-				</a>
-			</div>
-			<div class="col-sm-3 cus-channel-header">
-				<a href="#"> <span><i class="fa fa-list"></i></span><br> <span>Quản
-						lý yêu cầu</span>
-				</a>
-			</div>
-			<div class="col-sm-3 cus-channel-header">
-				<a href="#"> <span><i class="fa fa-newspaper-o"></i></span><br>
-					<span>Hóa đơn điện tử</span>
-				</a>
-			</div>
-		</div>
-	</div>
+	<!-- menu service -->
+	<jsp:include page="/WEB-INF/jsp/user/service/menuService.jsp" />
+	<!-- end menu -->
 	<!-- /.box -->
 	<div class="box">
 		<div class="box-body">

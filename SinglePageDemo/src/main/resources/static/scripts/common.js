@@ -1924,11 +1924,13 @@ var CommonUtils = {
 		    $('#breadCumb').empty();
 		    // Add element "Home"
 		    var contentHTML = '<ul class="page-breadcrumb">' +
-		        '<li><i class="fa fa-home"></i> <a href="#">Home</a> </li>';
+		        '<li> <a href="#/home"><i class="fa fa-home"></i></a> </li>';
 		    // Add custom element
 		    arrBrCb.forEach(function(brCb) {
 		        // brCb[1] is URL, brCb[0] is text
-		        var element = '<li><i class="fa fa-angle-right"></i><a href="' + brCb[1] + '">' + brCb[0] + '</a></li>';
+		    	var hrf = brCb[1];
+		    	if(!brCb[1]) {hrf = 'javascript:void(0)';}
+		        var element = '<li><i class="fa fa-angle-right"></i><a href="' + hrf + '">' + brCb[0] + '</a></li>';
 		        contentHTML = contentHTML.concat(element);
 		    });
 		    contentHTML.concat('</ul>');

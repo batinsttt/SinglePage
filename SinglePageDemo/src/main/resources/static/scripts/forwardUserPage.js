@@ -9,6 +9,11 @@
             .when('/home',{
                 templateUrl:'/home'
             })
+            .when('/ticket/create',{
+                templateUrl:'/ticket/create'
+            })
+            
+            
             .when('/service/channel',{
                 templateUrl:'/service/channel'
             })
