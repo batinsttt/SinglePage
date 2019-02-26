@@ -20,11 +20,4 @@ public class DateUtil {
 		}
 		return dateString;
 	}
-	public static String getExpiresCookie() {
-		Date expdate= new Date();
-		expdate.setTime (expdate.getTime() + (3600 * 1000 * 2));
-		DateFormat df = new SimpleDateFormat("EEE, dd-MMM-yyyy HH:mm:ss zzz");
-		df.setTimeZone(TimeZone.getTimeZone("GMT"));
-		return "Expires=" + df.format(expdate);
-	}
 }

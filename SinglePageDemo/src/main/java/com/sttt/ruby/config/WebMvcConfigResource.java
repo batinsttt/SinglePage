@@ -6,16 +6,18 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-@SuppressWarnings("deprecation")
+import com.sttt.ruby.interceptor.AdminInterceptor;
+
 @Configuration
 public class WebMvcConfigResource implements WebMvcConfigurer {
 	@Bean(name = "localeResolver")
@@ -40,6 +42,7 @@ public class WebMvcConfigResource implements WebMvcConfigurer {
 		LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
 		localeInterceptor.setParamName("lang");
 		registry.addInterceptor(localeInterceptor).addPathPatterns("/*");
+		registry.addInterceptor(new AdminInterceptor()).addPathPatterns("*/admin/*");
 	}
 
 	@Bean
@@ -50,5 +53,15 @@ public class WebMvcConfigResource implements WebMvcConfigurer {
 		resolver.setViewClass(JstlView.class);
 		resolver.setExposeContextBeansAsAttributes(true);
 		return resolver;
+	}
+	
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
+	
+	@Bean
+	public HttpHeaders getHttpHeaders() {
+		return new HttpHeaders();
 	}
 }

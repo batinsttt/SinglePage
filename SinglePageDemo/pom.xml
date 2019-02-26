@@ -83,21 +83,10 @@
         	<artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-        	<groupId>org.projectlombok</groupId>
-        	<artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-        	<groupId>org.projectlombok</groupId>
-        	<artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-        	<groupId>org.projectlombok</groupId>
-        	<artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-        	<groupId>org.projectlombok</groupId>
-        	<artifactId>lombok</artifactId>
-        </dependency>
+           <groupId>com.viettel.mve</groupId>
+           <artifactId>mve-client</artifactId>
+           <version>1.0.0</version>
+       </dependency>
 	</dependencies>
 
 	<build>

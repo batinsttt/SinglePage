@@ -101,7 +101,7 @@
 		});
 		
 		$("#add").click(function() {
-			var url = '/customerManager/enterpriseInfor'
+			var url = '/admin/enterpriseInfor'
 			var method = "GET";
 			$.ajax({
 				type : method,
