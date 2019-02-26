@@ -311,15 +311,18 @@
 	        rules: {
 	        	// userName is name of input tag
 	            // simple rule, converted to {required:true}
+	        	userName: "required",
 	            phone: "isValidPhoneNumber",
 	            email: {
 	                email: true
 	            },
 	            password: {
+	            	required: true,
 	            	minlength: 8
 	            },
 	            confirmPass: 
 	            {
+	            	required: true,
 	            	minlength: 8,
 	            	equalTo: "#password" // #password is name of input tag
 	            }
