@@ -326,3 +326,18 @@ legend.scheduler-border {
 .margin-right-10 {
 	margin-right: 10;
 }
+.ladda-spinner {
+	border-radius: 0!important;
+}
+.ladda-spinner:active {
+	border: none !important;
+	border-radius: 0!important;
+}
+.ladda-spinner:focus {
+	border: none !important;
+	border-radius: 0!important;
+}
+.ladda-button:focus {
+	outline: none !important;
+}
+

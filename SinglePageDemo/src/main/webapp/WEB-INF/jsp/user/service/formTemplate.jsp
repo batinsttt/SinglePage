@@ -78,7 +78,7 @@
 			<fieldset class="scheduler-border">
 				<legend class="scheduler-border">Thông tin khảo sát</legend>
 				<div class="portlet-body form">
-					<form role="form" id="validationForm">
+					<form role="form" id="validationForm" class="clearfix">
 						<div class="form-body">
 							<div class="row">
 								<div class="col-md-4">
@@ -184,7 +184,7 @@
 								</div>
 							</div>
 						</div>
-						<button type="submit" id="submitBtn" class="btn btn-green ladda-button" data-style="expand-right"><span class="ladda-label">Validate</span></button>
+						<button type="submit" id="submitBtn" class="btn btn-green mt-ladda-btn ladda-button" data-style="expand-right"><span class="ladda-label">Validate</span></button>
 						<input class="btn default" id="resetBtn" type="reset" name="cancel" value="Làm lại">
 						<div class="row">
 						<div class="col-md-12" id="success-message"></div>
@@ -289,7 +289,7 @@
         }).always(function(dataOrjqXHR, textStatus, jqXHRorErrorThrown) {
             setTimeout(function() {
                 l.stop();
-            }, 500);
+            }, 300);
         });
     }
 	$(document).ready(function() {
