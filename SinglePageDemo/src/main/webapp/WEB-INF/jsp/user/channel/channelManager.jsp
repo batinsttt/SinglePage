@@ -13,7 +13,7 @@
                   <div class="row">
                      <div class="col-md-6">
                         <div class="form-group form-md-line-input form-md-floating-label">
-                           <input type="text" class="form-control" name="address" id="form_control_1">
+                           <input type="text" class="form-control" name="address" id="address">
                            <label for="form_control_1">Địa chỉ </label>
                         </div>
                      </div>
@@ -21,13 +21,13 @@
                   <div class="row">
                      <div class="col-md-6">
                         <div class="form-group form-md-line-input form-md-floating-label">
-                           <input type="text" class="form-control" name="account" id="form_control_1">
+                           <input type="text" class="form-control" name="account" id="account">
                            <label for="form_control_1">Tài khoản </label>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="form-group form-md-line-input form-md-floating-label">
-                           <select class="form-control" name="contract" id="form_control_1">
+                           <select class="form-control" name="contract" id="contract">
                               <option value=""></option>
                               <option value="2">Option 1</option>
                               <option value="3">Option 2</option>
@@ -46,8 +46,8 @@
             data-target="#myModal" style="margin-left: 10px;">
          <i class="fa fa-plus"></i>Tạo yêu cầu mới
          </button>
-         <button id="searchChannel" class="btn btn-blue pull-right"
-            onclick="return Service.searchChannel();">
+         <button id="searchChannel" class="btn btn-blue pull-right mt-ladda-btn ladda-button"
+            onclick="return Channel.searchChannel();" data-style="expand-right">
          <i class="fa fa-search"></i>Tìm kiếm
          </button>
       </div>
@@ -56,7 +56,7 @@
    <div class="box">
       <div class="portlet-body flip-scroll" style="display: block;">
          <div class="table-responsive">
-            <table id="example"
+            <table id="channelList"
                class="table table-striped table-bordered display table-hover dt-responsive">
                <thead>
                   <tr>
@@ -115,6 +115,10 @@
 <script type="text/javascript">
 	$(document).ready( function() {
 
+		// Processing top bar
+		var simplebar = new Nanobar();
+		simplebar.go(100);
+		
 		// Active menu 
 		$('.menu-service .tctt').addClass("active");
 
@@ -129,41 +133,34 @@
 		});
 		$('.modal-dialog').draggable();
 
-		var params = new Object();
-		var page = 0;
+		var page = 1;
 		var STT = 1;
-		var table = $('#example').DataTable({
-			// 		  "serverSide": true,
+		var draw = 1;
+		var table = $('#channelList').DataTable({
+			"serverSide": true,
 			"processing" : true,
 			"bLengthChange" : false,
 			"searching" : false,
+			"bSort" : false,
 			"responsive" : true,
 			"autoWidth" : true,
 			"pagingType" : "full_numbers",
 			"scrollY" : true,
 			"scrollX" : true,
 			"ajax" : {
-				"url" : "http://www.json-generator.com/api/json/get/bOqfVmSqNu?indent=2",
+				"url" : "/channel/getListChannel?draw="+draw+"",
 				"type" : "POST",
 				"dataType" : "json",
-			//           	"contentType": 'application/json; charset=utf-8',
-			//           	"dataSrc": "invoices",
-			//           	"data": function () {
-
-			//   		      params.searchType = "1";
-			//   			  params.doccumentNo = "601838862/KHDN_AM_HCM/02102017";
-			//   			  params.fromDate = "2019-02-01";
-			//   			  params.toDate = "2019-10-01";
-			//   			  params.page = page;
-
-			//   			  params.pageSize = "1";
-			//   				 return JSON.stringify(params);
-			//   		      }
+			    "contentType": 'application/json; charset=utf-8',
+			    "dataSrc": "listData",
+			    "data": function () {
+			  		return JSON.stringify(Channel.getPramSearchChannel(page));
+			  	}
 			},
 			"columns" : [
 					{
 						data : null,
-						defaultContent : STT,
+						defaultContent : "1",
 						className : 'textCenter',
 						orderable : false
 					},
@@ -178,40 +175,32 @@
 						render : function(data,
 								type, row) {
 							return '<a class="iconSize18 margin-right-10" href="javascript:void(0)" onclick="return Channel.channelDetail('+data.account+')"><i class="fa fa-edit"></i></a>'
-									+ '<a class="iconSize18 margin-right-10" href="javascript:void(0)" onclick="detail('+data.account+')"><i class="fa fa-edit"></i></a>'
-									+ '<a class="iconSize18" href="javascript:void(0)" onclick="detail('+data.account+')"><i class="fa fa-edit"></i></a>';
+									+ '<a class="iconSize18 margin-right-10" href="javascript:void(0)" onclick="detail("'+data.account+'")"><i class="fa fa-edit"></i></a>'
+									+ '<a class="iconSize18" href="javascript:void(0)" onclick="detail("'+data.account+'")"><i class="fa fa-edit"></i></a>';
 						},
 						className : 'textCenter',
-						orderable : true
+						orderable : false
 					}
 			
 			],
 
 		});
 
-		table.on('order.dt search.dt', function() {
-			table.column(0, {
-				search : 'applied',
-				order : 'applied'
-			}).nodes().each(function(cell, i) {
-				cell.innerHTML = i + 1;
-			});
-		}).draw();
+// 		table.on('order.dt search.dt', function() {
+// 			table.column(0, {
+// 				search : 'applied',
+// 				order : 'applied'
+// 			}).nodes().each(function(cell, i) {
+// 				cell.innerHTML = i + 1;
+// 			});
+// 		}).draw();
 
-		$('#example').on('page.dt', function() {
+		$('#channelList').on('page.dt', function() {
 			page = table.page.info().page + 1;
-			STT = 10 * page - 10 + 1;
+			draw = draw + 1;
+// 			STT = 10 * page - 10 + 1;
 		});
 
 	});
 
-	function deleteModal(rowId) {
-		$('#confirm-modal').modal('show');
-		$('#btn-confirm-delete').attr('href', "#/home");
-		$('#btn-confirm-delete').on('click', function() {
-
-			$('#confirm-modal').modal('hide');
-		});
-
-	}
 </script>

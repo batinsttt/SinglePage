@@ -29,6 +29,14 @@ public class UserController {
 	}
 	
 	/*
+	 * Use's home
+	*/	
+	@RequestMapping(value = "/channelManager", method = RequestMethod.GET)
+	public String channelManager() {
+		return "user/channel/channelManager";
+	}
+	
+	/*
 	 * Use's service channel
 	*/	
 	@RequestMapping(value = "/ticket/create", method = RequestMethod.GET)
@@ -36,6 +44,10 @@ public class UserController {
 		return "user/ticket/createTicket";
 	}
 	
+	
+	
+	
+//	======================================== demo ===============
 	/*
 	 * Use's service channel
 	*/	

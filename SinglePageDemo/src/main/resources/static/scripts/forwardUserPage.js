@@ -12,6 +12,9 @@
             .when('/channel',{
                 templateUrl:'/channelManager'
             })
+             .when('/channel/detail',{
+                templateUrl:'/channel/detail'
+            })
             .when('/ticket/create',{
                 templateUrl:'/ticket/create'
             })

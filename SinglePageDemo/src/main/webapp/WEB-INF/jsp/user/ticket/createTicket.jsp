@@ -78,7 +78,7 @@
 			<fieldset class="scheduler-border">
 				<legend class="scheduler-border">Thông tin khảo sát</legend>
 				<div class="portlet-body form">
-					<form role="form" id="validationForm">
+					<form role="form" id="validationForm" class="clearfix">
 						<div class="form-body">
 							<div class="row">
 								<div class="col-md-4">
@@ -184,8 +184,8 @@
 								</div>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-green">Validate</button>
-						<input class="btn default" formnovalidate type="reset" name="cancel" value="Cancel">
+						<button type="submit" id="submitBtn" class="btn btn-green mt-ladda-btn ladda-button" data-style="expand-right"><span class="ladda-label">Validate</span></button>
+						<input class="btn default" id="resetBtn" type="reset" name="cancel" value="Làm lại">
 						<div class="row">
 						<div class="col-md-12" id="success-message"></div>
 						</div>
@@ -271,83 +271,98 @@
 		</div>
 	</div>
 </section>
-<script type="text/javascript">
-function getAjax() {
-    var url = 'http://10.30.176.198:9006/ITSolWebService/service/tracking';
-    $.ajax({
-        url: url,
-        success: function(result) {
-        	console.log(result);
-        	var data = JSON.stringify(result);
-            $("#success-message").text(data);
-        }
-    });
-}
-$(document).ready(function() {
-    $('.menu-service .qlyc').addClass("active");
-
-    /* Generate breadCumb*/
-    var breadCumb_1 = ['DV đang sử dụng', false];
-    var breadCumb_2 = ['Kênh truyền', '#/service/channel'];
-    var breadCumb_3 = ['Quản lý yêu cầu', '#/ticket/create'];
-    CommonUtils.genBreadCumb(breadCumb_1, breadCumb_2, breadCumb_3);
-    /*  end */
-
-    var e = $("#validationForm"),
-        r = $(".alert-danger", e),
-        i = $(".alert-success", e);
-
-    e.validate({
-        errorElement: "span",
-        errorClass: "help-block help-block-error",
-        focusInvalid: !1,
-        rules: {
-        	// userName is name of input tag
-            // simple rule, converted to {required:true}
-            userName: "required",
-            phone: "isValidPhoneNumber",
-            email: {
-                email: true
+<script type = "text/javascript" >
+    function getAjax() {
+        var l = Ladda.create(document.querySelector('#submitBtn'));
+        l.start();
+        var url = 'http://10.30.176.198:9006/ITSolWebService/service/tracking';
+        var submit = $('#submitBtn');
+        $.ajax({
+            url: url,
+            success: function(result) {
+                var data = JSON.stringify(result);
+                $("#success-message").text(data);
             },
-            password: {
-            	required: true,
-            	minlength: 8
-            },
-            confirmPass: 
-            {
-            	required: true,
-            	minlength: 8,
-            	equalTo: "#password" // #password is name of input tag
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                $("#success-message").text('Không kết nối được server.');
             }
-        },
-        messages: {
-        	userName: {
-        		required: jQuery.validator.format(requiredNameErr),
-            },
-            email: {
-            	email: jQuery.validator.format(formatMailErr),
-            },
-            password: {
-            	required: jQuery.validator.format("Vui lòng nhập mật khẩu."),
-            	minlength: jQuery.validator.format("Mật khẩu có độ dài tối thiểu là 8 ký tự.")
-            },
-            confirmPass: 
-            {
-            	required: jQuery.validator.format("Vui lòng nhập mật khẩu xác nhận."),
-            	minlength: jQuery.validator.format("Mật khẩu có độ dài tối thiểu là 8 ký tự."),
-            	equalTo: jQuery.validator.format("Vui lòng nhập ký tự giống mật khẩu.")
-            }
-        },
-        invalidHandler: function(event, validator) {},
-        submitHandler: function(form) {
-            getAjax();
-        },
-        highlight: function(e) {
-            $(e).closest(".form-group").addClass("has-error")
-        },
-        unhighlight: function(e) {
-            $(e).closest(".form-group").removeClass("has-error")
-        }
-    });
-});
+        }).always(function(dataOrjqXHR, textStatus, jqXHRorErrorThrown) {
+            setTimeout(function() {
+                l.stop();
+            }, 300);
+        });
+    }
+	$(document).ready(function() {
+		
+		// Processing top bar
+		var simplebar = new Nanobar();
+		simplebar.go(100);
+		
+		// Active menu
+	    $('.menu-service .qlyc').addClass("active");
+	
+	    /* Generate breadCumb*/
+	    var breadCumb_1 = ['DV đang sử dụng', false];
+	    var breadCumb_2 = ['Kênh truyền', '#/service/channel'];
+	    var breadCumb_3 = ['Quản lý yêu cầu', '#/ticket/create'];
+	    CommonUtils.genBreadCumb(breadCumb_1, breadCumb_2, breadCumb_3);
+	    /*  end */
+	    // Select form
+	    var form = $("#validationForm");
+	    // Validation
+	    var validator = form.validate({
+	        errorElement: "span",
+	        errorClass: "help-block help-block-error",
+	        focusInvalid: true,
+	        rules: {
+	            // userName is name of input tag
+	            // simple rule, converted to {required:true}
+	            userName: "required",
+	            phone: "isValidPhoneNumber",
+	            email: {
+	                email: true
+	            },
+	            password: {
+	                required: true,
+	                minlength: 8
+	            },
+	            confirmPass: {
+	                required: true,
+	                minlength: 8,
+	                equalTo: "#password" // #password is name of input tag
+	            }
+	        },
+	        messages: {
+	            userName: {
+	                required: jQuery.validator.format(requiredNameErr),
+	            },
+	            email: {
+	                email: jQuery.validator.format(formatMailErr),
+	            },
+	            password: {
+	                required: jQuery.validator.format("Vui lòng nhập mật khẩu."),
+	                minlength: jQuery.validator.format("Mật khẩu có độ dài tối thiểu là 8 ký tự.")
+	            },
+	            confirmPass: {
+	                required: jQuery.validator.format("Vui lòng nhập mật khẩu xác nhận."),
+	                minlength: jQuery.validator.format("Mật khẩu có độ dài tối thiểu là 8 ký tự."),
+	                equalTo: jQuery.validator.format("Vui lòng nhập ký tự giống mật khẩu.")
+	            }
+	        },
+	        invalidHandler: function(event, validator) {},
+	        submitHandler: function(form) {
+	            getAjax();
+	        },
+	        highlight: function(e) {
+	            $(e).closest(".form-group").addClass("has-error")
+	        },
+	        unhighlight: function(e) {
+	            $(e).closest(".form-group").removeClass("has-error")
+	        }
+	    });
+	    //Click Reset
+	    $('#resetBtn').click(function() {
+	        validator.resetForm();
+	    });
+	}); 
 </script>
