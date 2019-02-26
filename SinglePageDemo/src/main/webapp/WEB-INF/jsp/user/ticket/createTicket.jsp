@@ -78,24 +78,24 @@
 			<fieldset class="scheduler-border">
 				<legend class="scheduler-border">Thông tin khảo sát</legend>
 				<div class="portlet-body form">
-					<form role="form">
+					<form role="form" id="validationForm">
 						<div class="form-body">
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group form-md-line-input form-md-floating-label">
-										<input type="text" class="form-control" id="form_control_1">
-										<label for="form_control_1">Tên người liên hệ <span class="required">*</span></label>
+										<input type="text" class="form-control" name="userName" id="userName">
+										<label for="userName">Tên người liên hệ <span class="required">*</span></label>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group form-md-line-input form-md-floating-label">
-										<input type="text" class="form-control" id="form_control_1">
-										<label for="form_control_1">Số điện thoại <span class="required">*</span></label>
+										<input type="text" class="form-control" name="phone" id="phone">
+										<label for="phone">Số điện thoại <span class="required">*</span></label>
 									</div>
 								</div>
 							</div>
 							
-							<div class="row">
+							<div class="row padding-top-20">
 								<div class="col-md-4">
 									<div class="form-group form-md-line-input form-md-floating-label">
 					                  <select class="form-control edited" id="form_control_1">
@@ -137,13 +137,27 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group form-md-line-input form-md-floating-label">
-										<input type="text" class="form-control" id="form_control_1">
-										<label for="form_control_1">Địa chỉ lắp đặt chi tiết <span class="required">*</span></label>
+										<input type="text" class="form-control" id="email" name="email">
+										<label for="form_control_1">Email <span class="required">*</span></label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group form-md-line-input form-md-floating-label">
+										<input type="password" class="form-control" id="password" name="password">
+										<label for="form_control_1">Password <span class="required">*</span></label>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-md-line-input form-md-floating-label">
+										<input type="password" class="form-control" id="cfrmPass" name="confirmPass">
+										<label for="form_control_1">Confirm Password <span class="required">*</span></label>
 									</div>
 								</div>
 							</div>
 							
-							<div class="row">
+							<div class="row padding-top-20">
 								<div class="col-md-4">
 									<div class="form-group form-md-line-input form-md-floating-label">
 					                  <select class="form-control edited" id="form_control_1">
@@ -169,7 +183,11 @@
 					               </div>
 								</div>
 							</div>
-							
+						</div>
+						<button type="submit" class="btn btn-green">Validate</button>
+						<input class="btn default" formnovalidate type="reset" name="cancel" value="Cancel">
+						<div class="row">
+						<div class="col-md-12" id="success-message"></div>
 						</div>
 					</form>
 				</div>
@@ -251,19 +269,85 @@
 
 			</fieldset>
 		</div>
-		
 	</div>
 </section>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('.menu-service .qlyc').addClass("active");
+function getAjax() {
+    var url = 'http://10.30.176.198:9006/ITSolWebService/service/tracking';
+    $.ajax({
+        url: url,
+        success: function(result) {
+        	console.log(result);
+        	var data = JSON.stringify(result);
+            $("#success-message").text(data);
+        }
+    });
+}
+$(document).ready(function() {
+    $('.menu-service .qlyc').addClass("active");
 
-		/* Generate breadCumb*/
-		var breadCumb_1 = [ 'DV đang sử dụng', false ];
-		var breadCumb_2 = [ 'Kênh truyền', '#/service/channel' ];
-		var breadCumb_3 = [ 'Quản lý yêu cầu', '#/ticket/create' ];
-		CommonUtils.genBreadCumb(breadCumb_1, breadCumb_2, breadCumb_3);
-		/*  end */
+    /* Generate breadCumb*/
+    var breadCumb_1 = ['DV đang sử dụng', false];
+    var breadCumb_2 = ['Kênh truyền', '#/service/channel'];
+    var breadCumb_3 = ['Quản lý yêu cầu', '#/ticket/create'];
+    CommonUtils.genBreadCumb(breadCumb_1, breadCumb_2, breadCumb_3);
+    /*  end */
 
-	});
+    var e = $("#validationForm"),
+        r = $(".alert-danger", e),
+        i = $(".alert-success", e);
+
+    e.validate({
+        errorElement: "span",
+        errorClass: "help-block help-block-error",
+        focusInvalid: !1,
+        rules: {
+        	// userName is name of input tag
+            // simple rule, converted to {required:true}
+            userName: "required",
+            phone: "isValidPhoneNumber",
+            email: {
+                email: true
+            },
+            password: {
+            	required: true,
+            	minlength: 8
+            },
+            confirmPass: 
+            {
+            	required: true,
+            	minlength: 8,
+            	equalTo: "#password" // #password is name of input tag
+            }
+        },
+        messages: {
+        	userName: {
+        		required: jQuery.validator.format(requiredNameErr),
+            },
+            email: {
+            	email: jQuery.validator.format(formatMailErr),
+            },
+            password: {
+            	required: jQuery.validator.format("Vui lòng nhập mật khẩu."),
+            	minlength: jQuery.validator.format("Mật khẩu có độ dài tối thiểu là 8 ký tự.")
+            },
+            confirmPass: 
+            {
+            	required: jQuery.validator.format("Vui lòng nhập mật khẩu xác nhận."),
+            	minlength: jQuery.validator.format("Mật khẩu có độ dài tối thiểu là 8 ký tự."),
+            	equalTo: jQuery.validator.format("Vui lòng nhập ký tự giống mật khẩu.")
+            }
+        },
+        invalidHandler: function(event, validator) {},
+        submitHandler: function(form) {
+            getAjax();
+        },
+        highlight: function(e) {
+            $(e).closest(".form-group").addClass("has-error")
+        },
+        unhighlight: function(e) {
+            $(e).closest(".form-group").removeClass("has-error")
+        }
+    });
+});
 </script>
