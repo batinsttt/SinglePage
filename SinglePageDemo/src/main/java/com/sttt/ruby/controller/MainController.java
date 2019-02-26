@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import com.sttt.ruby.BusinessException;
 import com.sttt.ruby.config.ConfigurationPath;
 import com.sttt.ruby.service.AuthService;
 import com.viettel.mve.client.constant.RoleDefine;
 import com.viettel.mve.client.request.auth.LoginRequest;
 import com.viettel.mve.client.response.auth.LoginResponse;
 
+import exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller

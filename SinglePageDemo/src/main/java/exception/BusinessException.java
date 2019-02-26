@@ -1,4 +1,4 @@
-package com.sttt.ruby;
+package exception;
 
 public class BusinessException extends Exception{
 
