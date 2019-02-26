@@ -107,6 +107,14 @@
 
 <!-- Business js -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/business/service/jquery.service.js")%>"></script>
+
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/business/channel/jquery.channel.js")%>"></script>
+
+
+
+
+
+
 <!-- Common Utils -->
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/common.js")%>"></script>
 

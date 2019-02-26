@@ -244,8 +244,19 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#/service/channel"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
+            <li><a href="#/channel"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
             <li><a href="#/service/tracking"><i class="fa fa-circle-o"></i> Vtracking</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-drivers-license"></i> <span>Màn hình demo</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#/service/channel"><i class="fa fa-circle-o"></i> Kênh truyền</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -292,7 +303,7 @@
         </li>
         <li class="treeview">
           <a href="">
-            <i class="fa fa-drivers-license"></i> <span>QuocPC</span>
+            <i class="fa fa-drivers-license"></i> <span>Menu Quốc</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-down pull-right"></i>
             </span>

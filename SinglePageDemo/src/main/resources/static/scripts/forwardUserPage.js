@@ -9,11 +9,21 @@
             .when('/home',{
                 templateUrl:'/home'
             })
+            .when('/channel',{
+                templateUrl:'/channelManager'
+            })
             .when('/ticket/create',{
                 templateUrl:'/ticket/create'
             })
             
             
+            
+            
+            
+            
+            
+            
+//            =============== area demo =============================
             .when('/service/channel',{
                 templateUrl:'/service/channel'
             })
