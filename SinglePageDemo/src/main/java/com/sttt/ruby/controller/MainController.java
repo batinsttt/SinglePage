@@ -79,7 +79,7 @@ public class MainController {
 
 	@RequestMapping(value = "/admin/enterpriseInfor", method = RequestMethod.GET)
 	public @ResponseBody String getCustomer(HttpServletRequest request, HttpServletResponse response, Model model) {
-		String uri = ConfigurationPath.getDomainAPI("/gateway/customerManager/enterpriseInfor");
+		String uri = ConfigurationPath.getDomainAPI("/customerManager/enterpriseInfor");
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		HttpSession session = request.getSession();

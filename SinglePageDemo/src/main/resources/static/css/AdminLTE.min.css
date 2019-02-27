@@ -295,7 +295,7 @@ a:focus {
 .main-header .sidebar-toggle {
 	float: left;
 	padding: 7px 17px;
-	font-family: Arial;
+	font-family: fontAwesome;
 	background: #00918c;
     color: #fff;
     font-size: 20;

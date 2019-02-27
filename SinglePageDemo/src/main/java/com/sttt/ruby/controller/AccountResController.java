@@ -14,7 +14,7 @@ import com.sttt.ruby.config.ConfigurationPath;
 @RestController
 public class AccountResController {
 
-	public static final String ENTER_PRISE = "/gateway/customerManager/enterpriseInfor";
+	public static final String ENTER_PRISE = "/customerManager/enterpriseInfor";
 	/*
 	 * Demo Post sample
 	*/	
