@@ -48,17 +48,6 @@
 						</div>
 						<!-- /.form-group -->
 					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<select id="normalComboBox" class="mdb-select md-form colorful-select dropdown-primary"
-								style="width: 100%;max-height: 60px;" aria-hidden="true">
-								<option selected="selected">Combobox thường</option>
-							</select>
-							<label>Blue select</label>
-						</div>
-						<!-- /.form-group -->
-					</div>
-					<!-- /.col -->
 				</div>
 				<!-- /.row -->
 				<div class="row paddingBottom15">

@@ -294,6 +294,7 @@ footer ol {
 	border-bottom-right-radius: 3px !important;
 }
 /* END AnNBH Custom datepicker */
+/* AnNBH Custom fieldset */
 fieldset.scheduler-border {
     border: 1px dashed #a4a4a4 !important;
 	padding: 0 20px 20px 20px !important;
@@ -308,6 +309,117 @@ legend.scheduler-border {
     border-bottom:none;
     color: #757575;
 }
+/* END AnNBH Custom fieldset */
+/* AnNBH Custom page Login */
+#PageLogin .main-sidebar{
+    background-color: white;
+}
+#PageLogin .sidebar a{
+    color: #656565;
+}
+#PageLogin .sidebar {
+    padding-top: 10px;
+    border: 1px solid #e2e5eb;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+	margin: 40px 0;
+}
+#PageLogin .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li.menu-open>a {
+    color: #00918c !important;
+    background: white !important;
+}
+#PageLogin .main-sidebar {
+    min-height: 10%;
+    width: 1100px;
+   	padding-top: 0px;
+	position: unset;
+	margin: 70 auto;
+	display: flex;
+}
+#PageLogin .sidebar-menu>li.active>a {
+    border-left-color: #00918c;
+    border-left-width: thick;
+}
+#PageLogin .sidebar-menu>li {
+   	text-align: center;
+}
+#PageLogin .sidebar-menu>li>a>.fa{
+    padding-right: 0px !important;
+}
+#PageLogin .main-header {
+    position: unset;
+    display: inline-block;
+}
+.sideLogin{
+	width: 450px;
+	padding: 45px;
+	background-color: #00918c;
+	color: white;
+	box-shadow: 0px 0px 15px 5px #80808033;
+    z-index: 1000;
+}
+.sideLogin .sideLoginBot{
+	padding-top: 230px;
+    padding-left: 20px;
+}
+.sideLogin .sideLoginBot .fa{
+	font-size: 20px;
+    padding-right: 10px;
+}
+.sideLogin h3{
+	font-weight: bold;
+}
+.formLogin{
+	width: 468px;
+	padding: 0 30px;
+	margin: 40 auto;
+    border: 1px solid #e2e5eb;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.formLogin .input-group .input-group-addon{
+    border-top-width: 0px;
+    border-right-width: 0px;
+}
+.btnLogin{
+	font-size: 50px !important;
+    border-radius: 50% !important;
+    margin: 15px auto !important;
+    display: -webkit-box !important;
+}
+.paddingTopBot{
+	text-align: center;
+    padding-bottom: 25px;
+    padding-top: 10px;
+}
+.formLogin .has-error .help-block{
+    padding-top: 40px;
+}
+@media (max-width:1075px) {
+	.sidebar {
+		display: none;
+	}
+}
+@media (max-width:930px) {
+	.sideLogin {
+		display: none;
+	}
+}
+@media (max-width:520px) {
+	.formLogin{
+		margin-left: 240px;
+	    border: 1px solid #e2e5eb;
+	    border-radius: 10px;
+	}
+}
+/* END AnNBH Custom page Login */
+/* AnNBH Custom img captcha */
+canvas{
+  /*prevent interaction with the canvas*/
+  pointer-events:none;
+  margin-top: -13px;
+}
+/* END AnNBH Custom img captcha */
 .paddingBottom15{
 	padding-bottom: 15px;
 }
