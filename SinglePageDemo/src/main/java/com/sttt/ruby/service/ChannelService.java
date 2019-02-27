@@ -50,7 +50,7 @@ public class ChannelService {
 		HttpEntity<SearchListSubcriberRequest> entity = new HttpEntity<SearchListSubcriberRequest>(channelRequest, headers);
 
 		// Call API
-		ResponseEntity<SearchListSubcriberResponse> channelResponse = restTemplate.exchange(UriGateWay.CHAN_LIST,
+		ResponseEntity<SearchListSubcriberResponse> channelResponse = restTemplate.exchange(UriGateWay.CHANNEL_LISTSUBCRIBERS,
 				HttpMethod.POST, entity, SearchListSubcriberResponse.class);
 
 		channelResponse.getBody().setCurrentPage(draw);
@@ -71,7 +71,7 @@ public class ChannelService {
 		HttpEntity<GetSubcriberDetailRequest> entity = new HttpEntity<GetSubcriberDetailRequest>(channelRequest, headers);
 
 		// Call API
-		ResponseEntity<GetSubcriberDetailResponse> channelResponse = restTemplate.exchange(UriGateWay.CHAN_LIST,
+		ResponseEntity<GetSubcriberDetailResponse> channelResponse = restTemplate.exchange(UriGateWay.CHANNEL_DETAIL,
 				HttpMethod.POST, entity, GetSubcriberDetailResponse.class);
 
 		JSONObject result = new JSONObject(channelResponse.getBody());
