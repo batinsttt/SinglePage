@@ -324,7 +324,9 @@ legend.scheduler-border {
     border-top-left-radius: 10px;
 	margin: 40px 0;
 }
-#PageLogin .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li.menu-open>a {
+#PageLogin .sidebar-menu>li:hover>a,
+#PageLogin .skin-blue .sidebar-menu>li.active>a,
+#PageLogin .skin-blue .sidebar-menu>li.menu-open>a {
     color: #00918c !important;
     background: white !important;
 }
