@@ -338,33 +338,33 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <script type="text/javascript">
-$(document).ready(function() {
-	var url = 'http://10.30.176.198:9006/ITSolWebService/notify/show';
-	var method = "GET";
-	$.ajax({
-		type : method,
-		url : url,
-		dataType : "json",
-		headers : {
-			'Content-Type' : 'application/json; charset=utf-8'
-		},
-		success : function(data) {
-			console.log(data);
-			$("#number").text(data[0].number);
-			for(var i = 0; i < data[0].number; i++){
-				if(i == 0){
-					$("#menuNotify").prepend("<li class='header'><i class='fa fa-bell-o'></i>"+data[0].notify[i].error+"</li>");
-				} else {
-					$("#subMenu").append("<li><a href='/error?id="+data[0].id+"'><i class='fa fa-users text-aqua'></i>"+data[0].notify[i].error+"</a></li>");
-				}
+// $(document).ready(function() {
+// 	var url = 'http://10.30.176.198:9006/ITSolWebService/notify/show';
+// 	var method = "GET";
+// 	$.ajax({
+// 		type : method,
+// 		url : url,
+// 		dataType : "json",
+// 		headers : {
+// 			'Content-Type' : 'application/json; charset=utf-8'
+// 		},
+// 		success : function(data) {
+// 			console.log(data);
+// 			$("#number").text(data[0].number);
+// 			for(var i = 0; i < data[0].number; i++){
+// 				if(i == 0){
+// 					$("#menuNotify").prepend("<li class='header'><i class='fa fa-bell-o'></i>"+data[0].notify[i].error+"</li>");
+// 				} else {
+// 					$("#subMenu").append("<li><a href='/error?id="+data[0].id+"'><i class='fa fa-users text-aqua'></i>"+data[0].notify[i].error+"</a></li>");
+// 				}
 				
-			}
-			$("#menuNotify").append("<li class='footer'><a href='#'>View All Notifications<i class='fa fa-angle-right'></i></a></li>");
-		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
+// 			}
+// 			$("#menuNotify").append("<li class='footer'><a href='#'>View All Notifications<i class='fa fa-angle-right'></i></a></li>");
+// 		},
+// 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 
-		}
-	});
-});
+// 		}
+// 	});
+// });
 </script>
 </html>
