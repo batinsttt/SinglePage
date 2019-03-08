@@ -15,17 +15,25 @@
              .when('/channel/detail',{
                 templateUrl:'/channel/detail'
             })
-            .when('/ticket/create',{
-                templateUrl:'/ticket/create'
+            .when('/ticket/tickets',{
+                //templateUrl:'/ticket/create',
+                templateUrl:'/ticket/tickets'
             })
             
-            
-            
-            
-            
-            
-            
-            
+            .when('/ticket/blockOpenChannel',{
+                //templateUrl:'/ticket/create',
+                templateUrl:'/ticket/blockOpenChannel'
+            })
+            .when('/ticket/createRequestChangeOther',{
+                templateUrl:'/ticket/createRequestChangeOther'
+            })
+            .when('/ticket/createRequestChangeOtherDetail',{
+                templateUrl:'/ticket/createRequestChangeOtherDetail'
+            })
+            // =============== area for service error report =============================
+            .when('/problem',{
+                templateUrl:'/problem'
+            })
 //            =============== area demo =============================
             .when('/service/channel',{
                 templateUrl:'/service/channel'
@@ -51,13 +59,18 @@
             .when('/service/addNewUser',{
                 templateUrl:'/service/addNewUser'
             })
+            .when('/service/createservicehandl',{
+                templateUrl:'/service/createservicehandl'
+            })
             .when('/demo/validate',{
                 templateUrl:'/demo/validate'
             })
             .when('/demo/form',{
                 templateUrl:'/demo/form'
             })
-
+            .when('/account/changePass',{
+                templateUrl:'/account/changePass'
+            })
 //            .otherwise({ redirectTo:'/home'});
     });
 })();

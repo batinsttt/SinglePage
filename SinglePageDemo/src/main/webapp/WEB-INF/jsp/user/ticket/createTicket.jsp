@@ -5,7 +5,7 @@
 	src="<%=ConfigurationPath.getResourceServerPath("/scripts/app.js")%>"></script>
 <section class="content">
 	<!-- menu service -->
-	<jsp:include page="/WEB-INF/jsp/user/service/menuService.jsp" />
+	<jsp:include page="/WEB-INF/jsp/user/channel/menuService.jsp" />
 	<!-- end menu -->
 	<!-- /.box -->
 	<div class="box">

@@ -9839,7 +9839,22 @@ jQuery.extend( {
 			if ( isSuccess ) {
 				deferred.resolveWith( callbackContext, [ success, statusText, jqXHR ] );
 			} else {
+				$( document ).ajaxError(function( event, request, settings ) {
+					$.ajax({
+							type : "POST",
+							url : '/checkSessionToAjax',
+							success : function(data) {
+								if(data == "true" || data) {
+									window.location.href = "/account/login";
+								}
+							},
+							error: function(XMLHttpRequest, textStatus, errorThrown) {
+							}
+						});	
+					});
 				deferred.rejectWith( callbackContext, [ jqXHR, statusText, error ] );
+				
+//				
 			}
 
 			// Status-dependent callbacks

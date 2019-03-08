@@ -8,10 +8,15 @@ public class ConfigurationPath {
 	
 	private static String pathCssServer;
 	private static String domainAPI;
+	private static int errorsCountLimit;
+	private static int requestTimeoutMax;
+	private static String localAPI;
 	@Value("${src.js.server}")
 	private String pathJsServer;
+
 	@Value("${src.img.server}")
 	private String pathImgServer;
+
 	@Value("${svn.revision.number}")
 	private String versionServer;
 
@@ -52,13 +57,37 @@ public class ConfigurationPath {
         return pathCssServer + staticFile;
     }
 
-	
+	public static int getErrorsCountLimit() {
+		return errorsCountLimit;
+	}
+
+	@Value("${errors.count.limit}")
+	public void setErrorsCountLimit(int errorsCount) {
+		errorsCountLimit = errorsCount;
+	}
+
+	public static int getRequestTimeoutMax() {
+		return requestTimeoutMax;
+	}
+
+	@Value("${server.servlet.request.timeout}")
+	public void setRequestTimeoutMax(int timeoutMax) {
+		requestTimeoutMax = timeoutMax;
+	}
+
 	public static String getDomainAPI(String url) {
 		return domainAPI + url;
 	}
 	@Value("${vietel.api.domain}")
 	public void setDomainAPI(String domain) {
 		domainAPI = domain;
+	}
+	@Value("${local.api.domain}")
+	public void setLocalAPI(String local) {
+		localAPI = local;
+	}
+	public static String getLocalAPI(String url) {
+		return localAPI + url;
 	}
 	
 }

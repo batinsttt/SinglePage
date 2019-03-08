@@ -11,8 +11,8 @@
 
 <jsp:include page="/WEB-INF/jsp/general/multiLanguage.jsp" />
 <jsp:include page="/WEB-INF/jsp/general/serverValue.jsp" />
-<jsp:include page="/WEB-INF/jsp/general/commonModal.jsp" />
 <jsp:include page="/WEB-INF/jsp/general/commonLibrary.jsp" />
+<jsp:include page="/WEB-INF/jsp/general/commonModal.jsp" />
 
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/forwardUserPage.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/headerController.js")%>"></script>
@@ -38,7 +38,7 @@
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
      <div class="tile-Content">
-     	 <spring:message code="user.menu.searchService" text="default text" />
+     	 <p id="titlePage"><spring:message code="user.menu.searchService" text="default text" /></p>
      </div>
 
       <div class="navbar-custom-menu">
@@ -301,6 +301,11 @@
             <li><a href="#/service/addNewUser"><i class="fa fa-circle-o"></i> Add new User</a></li>
           </ul>
         </li>
+        <li class="active oneLevel">
+          	<a href="#/account/changePass">
+           	 	<i class="fa fa-home" style="font-size: 18px;"></i> <span>Đổi mật khẩu</span>
+         	</a>
+        </li>
         <li class="treeview">
           <a href="">
             <i class="fa fa-drivers-license"></i> <span>Menu Quốc</span>
@@ -338,6 +343,12 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <script type="text/javascript">
+// $(document).ready(function() {
+// $('input[type=radio][name=subcriber]').change(function() {
+//  	console.log($(this).parent().parent().next().next().text());
+//  	console.log($(this).parent().parent().next().next().next().text());
+// 	});
+// });
 // $(document).ready(function() {
 // 	var url = 'http://10.30.176.198:9006/ITSolWebService/notify/show';
 // 	var method = "GET";

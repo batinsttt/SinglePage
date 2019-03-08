@@ -1749,7 +1749,7 @@
 		 * sZeroRecords - assuming that is given.
 		 */
 		if ( ! lang.sEmptyTable && zeroRecords &&
-			defaults.sEmptyTable === "No data available in table" )
+			defaults.sEmptyTable === datatablesEmpty )
 		{
 			_fnMap( lang, lang, 'sZeroRecords', 'sEmptyTable' );
 		}
@@ -4123,9 +4123,10 @@
 		_fnClearTable( settings );
 		settings._iRecordsTotal   = parseInt(recordsTotal, 10);
 		settings._iRecordsDisplay = parseInt(recordsFiltered, 10);
-	
-		for ( var i=0, ien=data.length ; i<ien ; i++ ) {
-			_fnAddData( settings, data[i] );
+		if(data != null) {
+			for ( var i=0, ien=data.length ; i<ien ; i++ ) {
+				_fnAddData( settings, data[i] );
+			}
 		}
 		settings.aiDisplay = settings.aiDisplayMaster.slice();
 	
@@ -11396,7 +11397,8 @@
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
+//			"sEmptyTable": "No data available in table",
+			"sEmptyTable": datatablesEmpty,
 	
 	
 			/**
@@ -11428,7 +11430,8 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+//			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": datatablesShowing + " _START_ " + datatablesOf + " _TOTAL_ " + datatablesEntries,
 	
 	
 			/**
@@ -11449,7 +11452,8 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+//			"sInfoEmpty": "Showing 0 entries",
+			"sInfoEmpty": datatablesShowing + " 0 " + datatablesEntries,
 	
 	
 			/**
@@ -11727,7 +11731,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "No matching records found"
+			"sZeroRecords": datatablesEmpty
 		},
 	
 	

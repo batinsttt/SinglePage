@@ -1,8 +1,6 @@
 
 package com.sttt.ruby.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,61 +10,26 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.sttt.ruby.config.ConfigurationPath;
+import com.sttt.ruby.exception.BusinessException;
 import com.sttt.ruby.service.AuthService;
-import com.viettel.mve.client.constant.RoleDefine;
-import com.viettel.mve.client.request.auth.LoginRequest;
 import com.viettel.mve.client.response.auth.LoginResponse;
 
-import exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 
-@Controller
+@RestController
 @Slf4j
 public class MainController {
 
 	@Autowired
 	AuthService authService;
-	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String userSalesEdit(@ModelAttribute LoginRequest loginRequest,HttpServletRequest request, HttpServletResponse response,Model model) {
-		LoginResponse loginResponse = null;
-		try {
-			loginResponse = authService.login(loginRequest);
-			if(loginResponse != null) {
-				List<String> roles = loginResponse.getUser().getRoles();
-				HttpSession session = request.getSession();
-				session.setAttribute("user",loginResponse);
-				if (roles.contains(RoleDefine.SystemRole.SYS_ADMIN.getCode())) {
-					return "user/adminMasterPage";
-				} else if (roles.contains(RoleDefine.SystemRole.ENTERPRISE_ADMIN.getCode())) {
-					return "user/userMasterPage";
-				} else if (roles.contains(RoleDefine.SystemRole.ENTERPRISE_REPORT.getCode())) {
-					return "login";
-				} else {
-					return "login";
-				}
-			} else {
-				throw new BusinessException();
-			}
-			
-		} catch(NullPointerException ex) {
-			model.addAttribute("message", loginResponse.getMessage());
-			return "login";
-		}
-		catch( BusinessException ex) {
-			model.addAttribute("message","Loi he thong");
-			return "login";
-		}
-	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
@@ -103,4 +66,9 @@ public class MainController {
 	public String login() {
 		return "login";
 	}
+	@RequestMapping(value = "exception", method = RequestMethod.GET)
+	public String exception() throws Exception {
+		throw new Exception();
+	}
+	
 }

@@ -14,7 +14,8 @@
 				</a>
 			</div>
 			<div class="col-sm-3 cus-channel-header">
-				<a href="#/ticket/create" class="qlyc">
+				<a href="#/ticket/tickets" class="qlyc">
+<!-- 				<a href="#/ticket/tickets" class="qlyc"> -->
 					<span><i class="fa fa-list"></i></span><br> 
 					<span>Quản lý yêu cầu</span>
 				</a>

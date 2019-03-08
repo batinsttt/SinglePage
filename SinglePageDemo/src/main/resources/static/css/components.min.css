@@ -1,3 +1,6 @@
+body {
+	font-family: SVN-Neue Kabel;
+}
 .modal {
 	z-index: 10050;
 	outline: 0
@@ -19899,9 +19902,57 @@ body.stop-scrolling {
     box-shadow:none;
     padding-left:0;
     padding-right:0;
-    font-size:14px;
-    font-weight: 500;
+    font-size:13px;
+    font-weight: 600;
 }
+
+/* .md-radio input#radio53:focus + label::before { */
+/*     border: 3px solid #333; */
+/* } */
+
+/* .md-radio input[type=radio]:focus + label>.inc { */
+/* 	border: 3px solid #333 !important; */
+/* 	    opacity: 1; */
+/* } */
+
+/* .md-radio label:focus>.radioFocus { */
+/* 	border: 1px solid #333 !important; */
+/* 	opacity: 1; */
+/* } */
+.md-radio .radioFocus:focus{
+	border: 1px solid #0EB2AD !important;
+	opacity: 1;
+    top: 3px;
+}
+
+.radioFocus {
+	height: 20px;
+    width: 18px;
+    top: 3px;
+    opacity: 0;
+}
+.md-checkbox .checkboxFocus:focus{
+	border: 2px solid #0EB2AD !important;
+	opacity: 1;
+    top: 3px;
+}
+
+.checkboxFocus {
+	height: 19px;
+    width: 18px;
+    top: 2px;
+    opacity: 0;
+}
+
+
+.form-group.form-md-line-input .form-control:focus{
+    border-bottom: 2px solid #0EB2AD;
+}
+/* no padding for select */
+/* .form-group.form-md-line-input select.edited { */
+/* 	border-bottom: 0px; */
+/* 	margin-left: -5px; */
+/* } */
 .form-group.form-md-line-input .form-control::-moz-placeholder{
     color:#999;
     opacity:1
@@ -19976,17 +20027,17 @@ body.stop-scrolling {
 .form-group.form-md-line-input .form-control[disabled],.form-group.form-md-line-input .form-control[readonly],fieldset[disabled] .form-group.form-md-line-input .form-control{
     background:0 0;
     cursor:not-allowed;
-    border-bottom:1px dashed #c2cad8
+    color: #b3b3b3;
 }
 .form-group.form-md-line-input.form-md-floating-label .form-control~label{
-    font-size:16px;
-    top:25px;
-    transition:.2s ease all;
-    color:#999
+    font-size: 14px;
+    top: 20px;
+    transition: .2s ease all;
+    color: #999
 }
 .form-group.form-md-line-input.form-md-floating-label .form-control.edited~label,.form-group.form-md-line-input.form-md-floating-label .form-control.focus:not([readonly])~label,.form-group.form-md-line-input.form-md-floating-label .form-control.form-control-static~label,.form-group.form-md-line-input.form-md-floating-label .form-control:focus:not([readonly])~label,.form-group.form-md-line-input.form-md-floating-label .form-control[readonly]~label{
     top:0;
-    font-size:13px
+    font-size:12px
 }
 .form-group.form-md-line-input.form-md-floating-label .form-control.input-sm~label{
     font-size:14px;
@@ -20040,7 +20091,7 @@ body.stop-scrolling {
     top:-1px
 }
 .form-group.form-md-line-input>.input-icon>label{
-    margin-top:-20px
+/*     margin-top:-20px */
 }
 .form-group.form-md-line-input>.input-icon.right .form-control{
     padding-left:0;
@@ -20050,6 +20101,10 @@ body.stop-scrolling {
     left:auto;
     right:8px;
     margin:11px 2px 10px 10px
+}
+.form-group.form-md-line-input>.input-icon.right.date>i{
+	right: 0px !important;
+    margin: 11px 0px 10px 10px !important;
 }
 .form-horizontal .form-group.form-md-line-input .input-group>.form-control-focus,.form-horizontal .form-group.form-md-line-input .input-group>.input-group-control>.form-control-focus,.form-horizontal .form-group.form-md-line-input .input-icon>.form-control-focus{
     left:0!important;
@@ -20167,6 +20222,73 @@ body.stop-scrolling {
 .form-md-checkboxes,.form-md-radios{
     padding-top:5px
 }
+.input-icon>i {
+	color: #ccc;
+	position: absolute;
+	margin: 11px 2px 4px 10px;
+	z-index: 3;
+	width: 16px;
+	font-size: 16px;
+	text-align: center;
+	left: 0
+}
+
+.modal .input-icon>i {
+	z-index: 10055
+}
+
+.has-success .input-icon>i {
+	color: #36c6d3
+}
+
+.has-warning .input-icon>i {
+	color: #F1C40F
+}
+
+.has-info .input-icon>i {
+	color: #659be0
+}
+
+.has-error .input-icon>i {
+	color: #ed6b75
+}
+
+.input-icon.right {
+	left: auto;
+	right: 0
+}
+
+.input-icon.right>.form-control {
+	padding-right: 33px;
+	padding-left: 12px
+}
+
+.input-group .input-icon.right>.form-control {
+	-webkit-border-radius: 0 4px 4px 0;
+	-moz-border-radius: 0 4px 4px 0;
+	-ms-border-radius: 0 4px 4px 0;
+	-o-border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0
+}
+
+.input-icon.right>i {
+	left: auto;
+	right: 8px;
+	float: right
+}
+.input-icon.right>i.active {
+	color : #17afaa;
+}
+
+.input-icon.input-icon-lg>i {
+	margin-top: 16px
+}
+
+.input-icon.input-icon-sm>i {
+	margin-top: 8px;
+	font-size: 13px
+}
+
 .md-checkbox{
     position:relative
 }

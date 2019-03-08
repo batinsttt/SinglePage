@@ -77,7 +77,7 @@
         counter++;
     } );
      
-     $('#save').click( function() {
+    function channelDetail(rowId) {
      	var data = table.$('input').serializeArray();
      	var results = convertArray(data,6,"-");
 	 	var kData =  JSON.stringify(results);
@@ -96,6 +96,11 @@
 				console.log("ERROR");
 			}
 		});
+		
+		
+		
+		
+		
 		table.destroy();
 		$('#example').DataTable({
 			"ajax":{

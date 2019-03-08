@@ -2,7 +2,7 @@
    pageEncoding="UTF-8"%>
 <section class="content">
    <!-- menu service -->
-   <jsp:include page="/WEB-INF/jsp/user/service/menuService.jsp" />
+   <jsp:include page="/WEB-INF/jsp/user/channel/menuService.jsp" />
    <!-- end menu -->
    <!-- /.box -->
    <div class="box">
@@ -11,7 +11,7 @@
             <form role="form">
                <div class="form-body">
                   <div class="row">
-                     <div class="col-md-6">
+                     <div class="col-md-12">
                         <div class="form-group form-md-line-input form-md-floating-label">
                            <input type="text" class="form-control" name="address" id="address">
                            <label for="form_control_1">Địa chỉ </label>
@@ -19,13 +19,38 @@
                      </div>
                   </div>
                   <div class="row">
-                     <div class="col-md-6">
+                     <div class="col-md-6 form_paddRightCol6">
                         <div class="form-group form-md-line-input form-md-floating-label">
                            <input type="text" class="form-control" name="account" id="account">
                            <label for="form_control_1">Tài khoản </label>
                         </div>
                      </div>
-                     <div class="col-md-6">
+                     <div class="col-md-6 form_paddLeftCol6">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                           <select class="form-control" name="contract" id="contract">
+                              <option value=""></option>
+                              <option value="2">Option 1</option>
+                              <option value="3">Option 2</option>
+                              <option value="4">Option 3</option>
+                           </select>
+                           <label for="form_control_1">Hợp đồng </label>
+                        </div>
+                     </div>
+                  </div>
+                   <div class="row">
+                     <div class="col-md-4 form_paddRightCol4">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                           <input type="text" class="form-control" name="account" id="account">
+                           <label for="form_control_1">Tài khoản </label>
+                        </div>
+                     </div>
+                     <div class="col-md-4 form_paddRightLeftCol4">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                           <input type="text" class="form-control" name="account" id="account">
+                           <label for="form_control_1">Tài khoản </label>
+                        </div>
+                     </div>
+                     <div class="col-md-4 form_paddLeftCol4">
                         <div class="form-group form-md-line-input form-md-floating-label">
                            <select class="form-control" name="contract" id="contract">
                               <option value=""></option>
@@ -42,9 +67,11 @@
          </div>
       </div>
       <div class="box-footer">
-         <button class="btn btn-green pull-right" data-toggle="modal"
-            data-target="#myModal" style="margin-left: 10px;">
-         <i class="fa fa-plus"></i>Tạo yêu cầu mới
+         <button class="btn btn-green pull-right" id="showError" style="margin-left: 10px;">
+         <i class="fa fa-plus"></i>Show error message from API
+         </button>
+         <button class="btn btn-green pull-right" id="showSuccess" style="margin-left: 10px;">
+         <i class="fa fa-plus"></i>Show success API
          </button>
          <button id="searchChannel" class="btn btn-blue pull-right mt-ladda-btn ladda-button"
             onclick="return Channel.searchChannel();" data-style="expand-right">
@@ -56,8 +83,7 @@
    <div class="box">
       <div class="portlet-body flip-scroll" style="display: block;">
          <div class="table-responsive">
-            <table id="channelList"
-               class="table table-striped table-bordered display table-hover dt-responsive">
+            <table id="channelList" class="table table-striped table-bordered display table-hover dt-responsive width100">
                <thead>
                   <tr>
                      <th>STT</th>
@@ -115,23 +141,13 @@
 <script type="text/javascript">
 	$(document).ready( function() {
 
-		// Processing top bar
-		var simplebar = new Nanobar();
-		simplebar.go(100);
+		// Processing top bar -> Drag modal -> active menu
+		CommonUtils.pageLoadInit("tctt");
 		
-		// Active menu 
-		$('.menu-service .tctt').addClass("active");
-
 		//Generate breadCumb
 		var breadCumb_1 = [ 'Dịch vụ đang sử dụng', false ];
 		var breadCumb_2 = [ 'Kênh truyền', '#/channel' ];
 		CommonUtils.genBreadCumb(breadCumb_1, breadCumb_2);
-
-		$('.modal-content').resizable({
-			minHeight : 300,
-			minWidth : 300
-		});
-		$('.modal-dialog').draggable();
 
 		var page = 1;
 		var STT = 1;
@@ -157,18 +173,28 @@
 			  		return JSON.stringify(Channel.getPramSearchChannel(page));
 			  	}
 			},
+			
 			"columns" : [
+					{ 
+						"data": null,"sortable": false, 
+				        render: function (data, type, row, meta) {
+				                 return meta.row + meta.settings._iDisplayStart + 1;
+				                },
+				        className : 'textCenter'
+				    },
 					{
-						data : null,
-						defaultContent : "1",
-						className : 'textCenter',
-						orderable : false
+// 						"data" : "account"
+						"data": null,
+				         render: function (data) {
+				                 return CommonUtils.XSSEncode(data.account);
+				                }
 					},
 					{
-						"data" : "account"
-					},
-					{
-						"data" : "address"
+// 						"data" : "address"
+						"data": null,
+							render: function (data) {
+				                 return CommonUtils.XSSEncode(data.address);
+				                }
 					},
 					{
 						data : null,
@@ -186,20 +212,22 @@
 
 		});
 
-// 		table.on('order.dt search.dt', function() {
-// 			table.column(0, {
-// 				search : 'applied',
-// 				order : 'applied'
-// 			}).nodes().each(function(cell, i) {
-// 				cell.innerHTML = i + 1;
-// 			});
-// 		}).draw();
-
 		$('#channelList').on('page.dt', function() {
 			page = table.page.info().page + 1;
 			draw = draw + 1;
-// 			STT = 10 * page - 10 + 1;
 		});
+		
+		$('#showError').click(function() {
+			CommonUtils.showAPIErrorMessage("You have some form errors! ");
+		
+		});
+		
+		$('#showSuccess').click(function() {
+			CommonUtils.showAPISuccessMessage("You have create request successfully ");
+	
+	});
+		
+		
 
 	});
 

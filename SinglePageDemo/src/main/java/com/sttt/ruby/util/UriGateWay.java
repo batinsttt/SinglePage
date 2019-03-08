@@ -29,6 +29,7 @@ public class UriGateWay {
 	public static final String TICKET_CREATE= ConfigurationPath.getDomainAPI("/ticketManager/createTicket");
 	public static final String TICKET_DETAIL= ConfigurationPath.getDomainAPI("/ticket/showDetail");
 	public static final String TICKET_CREATEREQUESTCHANGEBANDWIDTH= ConfigurationPath.getDomainAPI("/ticket/requestChangeBandwidth");
+	
 	public static final String TICKET_CREATEREQUESBLOCKCHANNEL= ConfigurationPath.getDomainAPI("/ticket/requestBlockAccount");
 	public static final String TICKET_CREATEREQUESTCHANGECONTRACT= ConfigurationPath.getDomainAPI("/ticket/requestChangeContract");
 	public static final String TICKET_CREATEREQUESTCHANGECUSTOMERINFO= ConfigurationPath.getDomainAPI("/ticket/requestChangeCustomerInfo");
@@ -38,7 +39,8 @@ public class UriGateWay {
 	public static final String TICKET_CANCELREQUEST= ConfigurationPath.getDomainAPI("/ticketManager/cancelTicket");
 	public static final String TICKET_DETAILNEWREQUESTFTTH= ConfigurationPath.getDomainAPI("/ticketManager/detailTicket");
 	public static final String TICKET_CREATEREQUESTCHANGEPACKAGE= ConfigurationPath.getDomainAPI("/ticket/requestChangePackage");
-	public static final String PROBLEM_LISTPROBLEMS= ConfigurationPath.getDomainAPI("/problem/searchListProblems");
+	public static final String TICKET_RATINGTICKET= ConfigurationPath.getDomainAPI("/leasedLineTicket/ratingTicket");
+	public static final String PROBLEM_LISTPROBLEMS= ConfigurationPath.getDomainAPI("/leasedLineTicket/searchListProblems");
 	public static final String PROBLEM_CREATEREQUESTPROBLEM= ConfigurationPath.getDomainAPI("/problem/createProblem");
 	public static final String PROBLEM_DETAILPROBLEM= ConfigurationPath.getDomainAPI("/problem/getDetailProblem");
 	public static final String PROBLEM_RATEPROBLEM= ConfigurationPath.getDomainAPI("/problem/rate");
@@ -46,6 +48,8 @@ public class UriGateWay {
 	public static final String INVOICE_DETAILINVOICE= ConfigurationPath.getDomainAPI("/invoice/getDetailInvoice");
 	public static final String INVOICE_DOWNLOADDECLARATIONTABLE= ConfigurationPath.getDomainAPI("/invoice/downloadInvoice");
 	public static final String INVOICE_DOWNLOADINVOICEPDF= ConfigurationPath.getDomainAPI("/invoice/downloadPDF");
-
+	
+	public static final String LOCAL_TICKET_LISTTICKETS= ConfigurationPath.getLocalAPI("/ticket/searchListTickets");
+	public static final String LOCAL_TICKET_INITBLOCKACCOUNT= ConfigurationPath.getLocalAPI("/ticket/blockAccountList");
 	
 }

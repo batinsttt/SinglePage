@@ -2,11 +2,87 @@ body {
 	color: #656565;
 }
 
+@font-face {
+    font-family: 'SVN-Neue Kabel',
+    src: url('font/SVN-NeueKabelLightItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelLightItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelMedium.woff2') format('woff2'),
+		url('font/SVN-NeueKabelMedium.woff') format('woff'),		 
+		url('font/SVN-NeueKabelBookItalic.woff2') format('woff2'),
+		url('font/SVN-NeueKabelBookItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelBoldItalic.woff2') format('woff2'),
+		url('font/SVN-NeueKabelBoldItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelBlack.woff2') format('woff2'),
+		url('font/SVN-NeueKabelBlack.woff') format('woff'),
+		url('font/SVN-NeueKabelBook.woff2') format('woff2'),
+		url('font/SVN-NeueKabelBook.woff') format('woff'),
+		url('font/SVN-NeueKabel.woff2') format('woff2'),
+		url('font/SVN-NeueKabel.woff') format('woff'),
+		url('font/SVN-NeueKabelExtraLight.woff2') format('woff2'),
+	 	url('font/SVN-NeueKabelExtraLight.woff') format('woff'),
+		url('font/SVN-NeueKabelExtraBoldItalic.woff2') format('woff2'),
+		url('font/SVN-NeueKabelExtraBoldItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelThin.woff2') format('woff2'),
+		url('font/SVN-NeueKabelThin.woff') format('woff'),
+		url('font/SVN-NeueKabelItalic.woff2') format('woff2'),
+		url('font/SVN-NeueKabelItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelExtraLightItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelExtraLightItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelLight.woff2') format('woff2'),
+        url('font/SVN-NeueKabelLight.woff') format('woff'),
+		url('font/SVN-NeueKabelExtraBold.woff2') format('woff2'),
+        url('font/SVN-NeueKabelExtraBold.woff') format('woff'),
+		url('font/SVN-NeueKabelBlackItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelBlackItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelBold.woff2') format('woff2'),
+        url('font/SVN-NeueKabelBold.woff') format('woff'),
+		url('font/SVN-NeueKabelThinItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelThinItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelMediumItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelMediumItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelExtraBoldItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelExtraBoldItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelThinItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelThinItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelExtraLight.woff2') format('woff2'),
+        url('font/SVN-NeueKabelExtraLight.woff') format('woff'),
+		url('font/SVN-NeueKabelLightItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelLightItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelLight.woff2') format('woff2'),
+        url('font/SVN-NeueKabelLight.woff') format('woff'),
+		 url('font/SVN-NeueKabelBlack.woff2') format('woff2'),
+        url('font/SVN-NeueKabelBlack.woff') format('woff'),
+		url('font/SVN-NeueKabelBookItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelBookItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelBlackItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelBlackItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelItalic.woff') format('woff'),		
+		url('font/SVN-NeueKabelBook.woff2') format('woff2'),
+        url('font/SVN-NeueKabelBook.woff') format('woff'),
+		url('font/SVN-NeueKabelBold.woff2') format('woff2'),
+        url('font/SVN-NeueKabelBold.woff') format('woff'),
+		url('font/SVN-NeueKabelExtraBold.woff2') format('woff2'),
+        url('font/SVN-NeueKabelExtraBold.woff') format('woff'),
+		url('font/SVN-NeueKabel.woff2') format('woff2'),
+        url('font/SVN-NeueKabel.woff') format('woff'),
+		url('font/SVN-NeueKabelExtraLightItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelExtraLightItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelMediumItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelMediumItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelThin.woff2') format('woff2'),
+        url('font/SVN-NeueKabelThin.woff') format('woff'),
+		url('font/SVN-NeueKabelBoldItalic.woff2') format('woff2'),
+        url('font/SVN-NeueKabelBoldItalic.woff') format('woff'),
+		url('font/SVN-NeueKabelMedium.woff2') format('woff2'),
+        url('font/SVN-NeueKabelMedium.woff') format('woff')
+}
+
 body, div, h1, h2, h3, h4, h5, h6, p, form, dl, dl dt, dl dd, pre {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: SVN-Neue Kabel;
 }
 
 
@@ -29,7 +105,106 @@ body, div, h1, h2, h3, h4, h5, h6, p, form, dl, dl dt, dl dd, pre {
   text-align: left;
   vertical-align: middle;
 }
+/* ================= Toggle Button ==============*/
+.tg-list-item {
+	margin: 0 2em;
+}
 
+.tgl {
+	display: none;
+}
+
+.tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl+.tgl-btn
+	{
+	box-sizing: border-box;
+}
+
+.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection,
+	.tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection,
+	.tgl+.tgl-btn::-moz-selection {
+	background: none;
+}
+
+.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection,
+	.tgl *:after::selection, .tgl *:before::selection, .tgl+.tgl-btn::selection
+	{
+	background: none;
+}
+
+.tgl+.tgl-btn {
+	outline: 0;
+	display: block;
+	width: 4em;
+	height: 2em;
+	position: relative;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.tgl+.tgl-btn:after, .tgl+.tgl-btn:before {
+	position: relative;
+	display: block;
+	content: "";
+	width: 50%;
+	height: 100%;
+}
+
+.tgl+.tgl-btn:after {
+	left: 0;
+}
+
+.tgl+.tgl-btn:before {
+	display: none;
+}
+
+.tgl:checked+.tgl-btn:after {
+	left: 50%;
+}
+
+.tgl-ios+.tgl-btn {
+	background: #fbfbfb;
+	border-radius: 2em;
+	padding: 2px;
+	transition: all .4s ease;
+	border: 1px solid #e8eae9;
+}
+
+.tgl-ios+.tgl-btn:after {
+	border-radius: 2em;
+	background: #fbfbfb;
+	transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding
+		0.3s ease, margin 0.3s ease;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.tgl-ios+.tgl-btn:hover:after {
+	will-change: padding;
+}
+
+.tgl-ios+.tgl-btn:active {
+	box-shadow: inset 0 0 0 2em #e8eae9;
+}
+
+.tgl-ios+.tgl-btn:active:after {
+	padding-right: .8em;
+}
+
+.tgl-ios:checked+.tgl-btn {
+	background: #86d993;
+}
+
+.tgl-ios:checked+.tgl-btn:active {
+	box-shadow: none;
+}
+
+.tgl-ios:checked+.tgl-btn:active:after {
+	margin-left: -.8em;
+}
+
+/* ================= End Toggle Button ==============*/
 /* footer footnotes */
 footer ol {
   border-top: 1px solid #eee;
@@ -127,9 +302,6 @@ footer ol {
 	.marBottom5 {
 		margin-bottom: 5px;
 	}
-	.dataTables_scrollHeadInner, .table-bordered{
-/* 		width: auto !important; */
-	}
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -137,33 +309,82 @@ footer ol {
 	.marBottom5 {
 		margin-bottom: 5px;
 	}
-	.dataTables_scrollHeadInner, .table-bordered{
-/* 		width: auto !important; */
-	}
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-	.dataTables_scrollHeadInner, .table-bordered{
-/* 		width: auto !important; */
-	}
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-	.dataTables_scrollHeadInner, .table-bordered{
-		width: 100% !important;
+	.form_paddLeftCol6 {
+		padding-left: 40 !important;
 	}
+	.form_paddRightCol6 {
+		padding-right: 40 !important;
+	}
+	
+	.form_paddLeftCol4 {
+		padding-left: 30 !important;
+	}
+	.form_paddRightCol4 {
+		padding-right: 30 !important;
+	}
+	.form_paddRightLeftCol4 {
+		padding-right: 30 !important;
+		padding-left: 30 !important;
+	}
+	
+	.form_paddLeftCol3 {
+		padding-left: 20 !important;
+	}
+	.form_paddRightCol3 {
+		padding-right: 20 !important;
+	}
+	.form_paddRightLeftCol3 {
+		padding-right: 20 !important;
+		padding-left: 20 !important;
+	}
+	
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-	.dataTables_scrollHeadInner, .table-bordered{
-		width: 100% !important;
+	
+	.form_paddLeftCol6 {
+		padding-left: 40 !important;
+	}
+	.form_paddRightCol6 {
+		padding-right: 40 !important;
+	}
+	
+	.form_paddLeftCol4 {
+		padding-left: 30 !important;
+	}
+	.form_paddRightCol4 {
+		padding-right: 30 !important;
+	}
+	.form_paddRightLeftCol4 {
+		padding-right: 30 !important;
+		padding-left: 30 !important;
+	}
+	
+	.form_paddLeftCol3 {
+		padding-left: 20 !important;
+	}
+	.form_paddRightCol3 {
+		padding-right: 20 !important;
+	}
+	.form_paddRightLeftCol3 {
+		padding-right: 20 !important;
+		padding-left: 20 !important;
 	}
 }
 
 /* Custom new style here -------------------------start ------------------ */
+.width100 {
+	width: 100% !important;
+}
 .cus-home-img img{
 	width : 100%;
 	max-height: 200px;
@@ -186,10 +407,10 @@ footer ol {
 }
 .tile-Content {
 	float: left;
-	font-size: 16px !important;
+	font-size: 19px !important;
     font-weight: normal;
     color: #656565;
-    padding: 15px;
+    padding: 5px 15px;
 }
 .custom-search {
 	padding-left: 10px;
@@ -206,7 +427,12 @@ footer ol {
 	text-align: center;
 }
 .cus-channel-header .fa{
-	font-size: 28px;
+	font-size: 30px;
+}
+.cus-channel-header a{
+	font-size: 16px;
+    font-weight: 600;
+    color: #888;
 }
 
 .form-group label {
@@ -235,7 +461,7 @@ footer ol {
 	height: 40px;
 }
 .dataTables_paginate .fa {
-	font-size: 20px;
+	font-size: 21px;
 }
 
 /* QuocPC */
@@ -371,6 +597,9 @@ legend.scheduler-border {
 .sideLogin h3{
 	font-weight: bold;
 }
+.sideLogin .sideLoginFooter{
+	padding-left: 50px;
+}
 .formLogin{
 	width: 468px;
 	padding: 0 30px;
@@ -398,7 +627,7 @@ legend.scheduler-border {
     padding-top: 40px;
 }
 @media (max-width:1075px) {
-	.sidebar {
+	#PageLogin .sidebar {
 		display: none;
 	}
 }
@@ -440,6 +669,9 @@ canvas{
 .margin-right-10 {
 	margin-right: 10;
 }
+.margin-left-10 {
+	margin-right: 10;
+}
 .ladda-spinner {
 	border-radius: 0!important;
 }
@@ -454,4 +686,179 @@ canvas{
 .ladda-button:focus {
 	outline: none !important;
 }
+
+/* ================= Area AnNBH ==============*/
+#validationFormRequestChangeOther .form-group.form-md-line-input .input-group .help-block {
+    margin-top: 40px;
+}
+#validationFormRequestChangeOther .form-group.form-md-line-input .form-control[readonly] {
+    border-bottom: 1px solid #c2cad8 ;
+}
+#validationFormRequestChangeOther .form-group.form-md-line-input.has-error .form-control {
+    border-bottom: 1px solid #e73d4a;
+}
+#validationFormRequestChangeOther .input-group-addon>button {
+    margin-top: -10px;
+}
+#tableCRCO td>.md-radio {
+	margin-top: -5px;
+    margin-left: 10px;
+}
+form>fieldset>legend.nav-tabs-lengend {
+    padding: 0px 0px 32px 0px;
+}
+form>fieldset.nav-tabs-fieldset {
+	border: 1px dashed #1ca5a0 !important;
+}
+.tablink {
+	float: left;
+	border-radius: 0px !important;
+}
+/* =============== End Area AnNBH ============*/
+
+/* ================= Area TinTB ==============*/
+.paddingright10 {
+	padding: 0px 10px 0px 0px !important;
+}
+.paddingleft10 {
+	padding: 0px 0px 0px 10px !important;
+}
+.marginrigh20{
+	margin-right: 20px !important;
+}
+.defaultborder{
+	border-radius: unset;
+}
+.titleEvaluation h5{
+	text-align: center !important;
+	font-weight:bold;
+}
+
+.starEvaluation{
+    margin-bottom: 40px !important;
+    margin-left: 140px !important;
+}
+
+.inptutEvaluation{
+    width: 50% !important;
+    margin: auto !important;
+}
+#popupEvaluation .modal-dialog{
+	width: 35% !important;
+}
+#popupCreateRequest .modal-body{
+	padding:0px !important;
+}
+
+#popupCreateRequest .list-group{
+	margin:0px !important;
+}
+
+/* ================= End TinTB ==============*/
+/* ================= Area QuocPC ==============*/
+.padding-left-right-0 {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+.padding-left-right-15 {
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+.padding-top-0 {
+	padding-top: 0px !important;
+}
+.padding-top-20 {
+	padding-top: 20px !important;
+}
+.padding-left-0 {
+	padding-left: 0px !important;
+}
+.padding-right-0 {
+	padding-right: 0px !important;
+}
+.padding-right-0 {
+	padding-right: 0px !important;
+}
+.padding-right-40 {
+	padding-right: 40px !important;
+}
+.padding-left-right-20 {
+	padding-right: 20px !important;
+	padding-right: 20px !important;
+}
+.margin-bottom-0 {
+	margin-bottom: 0px !important;
+}
+.margin-right-0 {
+	margin-right: 0px !important;
+}
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+.clear-float {
+	clear: both;
+}
+#requestBlockChannelForm .input-group .form-control {
+	height: 30px;
+}
+@media ( min-width : 992px) {
+	.padding-right-rs-30 {
+		padding-right: 30px !important;
+	}
+}
+@media ( max-width : 991px) {
+	.padding-right-rs-30 {
+		padding-right: 0px !important;
+	}
+}
+
+/* ================= End QuocPC ==============*/
+/* ================= Area TienT ==============*/
+.login-background {
+	background-color: #ffffff;
+}
+
+.formLogin .form-group.has-error {
+	    margin: 0 0 25px !important;
+}
+
+.row .form-group.has-error {
+	    margin: 0 0 25px !important;
+}
+
+.login-title {
+	font-size: 18px;
+}
+
+.display-none {
+	display: none;
+}
+
+.captcha-position {
+	position: absolute;
+	padding-top: 10px;
+}
+
+.btnLogin-padding {
+	padding: 0px 12px;
+}
+
+.login-modal-body {
+	max-height: 465px;
+	overflow-y: auto;
+}
+.row .input-group-addon {
+    border-top-width: 0px !important;
+    border-right-width: 0px !important;
+}
+.box .box-changePass-padding {
+    padding-top: 20px;
+    padding-right: 28%;
+    padding-bottom: 20px;
+    padding-left: 28%;
+}
+/* ================= End TienT ==============*/
 

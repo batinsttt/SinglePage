@@ -2,6 +2,7 @@
  * JavaScript file create by ITSOL_DN
 */
 var CommonUtils = {
+	TABLE_LENGTH : 10,	
 	VAR_NAME: "_varname_",
 	_SAVE_TYPE_CREATE: 1,
 	_SAVE_TYPE_UPDATE: 0,
@@ -31,21 +32,128 @@ var CommonUtils = {
 	_PAYROLL:12,
 	_HOUR_TYPE: 13,
 	_STAFF_GROUP_NAME:14,
-	/**
-	 * Show modal confirm
-	 * Input : title, message modal
-	 * Return : display modal 
-	 * **/
+	
+	/* Common load page initial*/
+	pageLoadInit: function(activeId){
+
+		// Active menu 
+		$('.menu-service .'+activeId).addClass("active");
+		
+		/* Load processing top bar */
+ 		var simplebar = new Nanobar();
+ 		simplebar.go(100);
+ 		
+ 		/* Drag modal */
+ 		$('.modal-content').resizable({
+			minHeight : 300,
+			minWidth : 300
+		});
+		$('.modal-dialog').draggable();
+		
+		// Tab focus checked radio md
+		$('.radioFocus').keypress(function(event) {			
+		    var keycode = (event.keyCode ? event.keyCode : event.which);		
+			    if (keycode == 32) {	
+			    	$(this).parent().parent().children('input[type=radio]').click();
+			    }   		
+		});
+		
+		// Tab focus checked checkbox md
+		$('.checkboxFocus').keypress(function(event) {			
+		    var keycode = (event.keyCode ? event.keyCode : event.which);		
+			    if (keycode == 32) {	
+			    	$(this).parent().parent().children('input[type=checkbox]').click();
+			    }   		
+		});
+	},
+
+	/* XSS*/
+	XSSEncode: function(s){
+		if(!Utils.isEmpty(s)){
+			s = s.toString();
+//			s = Utils.XSSDeEncode(s, en);
+			
+			s = s.replace(/&/g,"&amp;");
+			s = s.replace(/\//g, "&#x2F;");
+			s = s.replace(/'/g,"&#39;"); 
+			s = s.replace(/"/g,"&quot;");
+			s = s.replace(/</g,"&lt;");
+			s = s.replace(/>/g,"&gt;");
+//			s = s.replace(/'/g,"&#39;");
+//			s = s.replace(/"/g,"&#34;");
+//			s = s.replace(/</g,"&#60;");
+//			s = s.replace(/>/g,"&#62;");
+				
+			return s;
+		}else{
+			return s;
+		}
+	},
+	
+	
+	XSSDeEncode : function(s){
+		if(!Utils.isEmpty(s)){
+			s = s.toString();
+			
+			s = s.replace(/&amp;/g, '&');
+			s = s.replace(/&#x2F;/g, '/');
+			s = s.replace(/&#39;/gi, "'");
+			s = s.replace(/&quot;/gi, '"');
+			s = s.replace(/&lt;/gi,'<');
+			s = s.replace(/&gt;/gi,'>');
+//			s = s.replace(/&#39;/gi, "'");
+//			s = s.replace(/&#34;/gi,'"');
+//			s = s.replace(/&#60;/gi, '<');
+//			s = s.replace(/&#62;/gi, '>');
+			
+			return s;
+		}else{
+			return s;
+		}
+	},
+	
+	/***************************************************************************
+	 * Show modal confirm Input : title, message modal Return : display modal
+	 **************************************************************************/
 	confimModalDisplay: function(title, message){
 		$('#myModaltitle').text(title);
 		$('#myModalmsg').text(message);
 		$('#confirm-modal').modal('show');
 	},
-	/**
-	 * Validate phone number
-	 * Input : String
-	 * Return : String 
-	 * **/
+	
+	notificationModalDisplay: function(message){
+		$('#notificationMsg').text(changePassSuccess);
+		$('#notification-modal').modal('show');
+	},
+	
+	/***************************************************************************
+	 * Show error message from API Input : title, message modal Return : display
+	 * modal
+	 **************************************************************************/
+	showAPIErrorMessage: function(message){
+		$('#messageErrorAPI').text(message);
+		$('#errorAPI').show();
+		setTimeout(function(){ 
+			$('#errorAPI').hide();
+			$('#messageErrorAPI').text('');
+		}, 5000);
+	},
+	
+	/***************************************************************************
+	 * Show success message from API Input : title, message modal Return :
+	 * display modal
+	 **************************************************************************/
+	showAPISuccessMessage: function(message){
+		$('#messageSuccessAPI').text(message);
+		$('#successAPI').show();
+		setTimeout(function(){ 
+			$('#successAPI').hide();
+			$('#messageSuccessAPI').text('');
+		}, 5000);
+	},
+	/***************************************************************************
+	 * Validate phone number Input : String Return : String
+	 **************************************************************************/
 	formatPhoneNumberVietNam:function(value){
 		var result = '0';
 		var pos = value.search("84");
@@ -57,12 +165,50 @@ var CommonUtils = {
 		
 		return value;
 	},
-	
-	/**
-	 * Validate phone number
-	 * Input : String
-	 * Return : true if is phone 
-	 * **/
+		showDialogEvaluation:function(value){
+		
+		$( "input[name='rating']" ).attr("checked", false);
+		
+		$("#sendEvaluation").attr("disabled","disabled");
+		
+		$('#note').val("");
+		
+		$("input[name='rating']").change(function() {
+			$("#sendEvaluation").removeAttr("disabled");
+		});
+		
+		$('#sendEvaluation').click(function(){
+			var data = new Object;
+			var radioValue = $("input[name='rating']:checked"). val();
+			data.ticketId = value; 
+			data.point = radioValue;
+			data.note = $('#node').val();
+			
+			var kData =  JSON.stringify(data);
+			$.ajax({
+				type : method,
+				url : 'ticket/ratingTicket',
+				dataType : "json",
+				headers : {
+					'Content-Type' : 'application/json; charset=utf-8'
+				},
+				data :(kData),
+				success : function(data) {
+					console.log('success');
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log('error');
+				}
+			});
+		});
+		
+		$('#information').text(String.format(informationEvaluation,value));
+		$("#popupEvaluation").modal();
+		return false;
+	},
+	/***************************************************************************
+	 * Validate phone number Input : String Return : true if is phone
+	 **************************************************************************/
     isValidPhoneNumber: function(phoneNumber) {
         phoneNumber = phoneNumber.trim();
         try {
@@ -71,11 +217,9 @@ var CommonUtils = {
             return false;
         }
     },
-    /**
-     * Custom phone number
-     * Input : String
-	 * Return : String
-     * **/
+    /***************************************************************************
+	 * Custom phone number Input : String Return : String
+	 **************************************************************************/
     getRealPhoneNumber : function(phoneNumber){
     	var countryCode = "84";
     	var countryCodePlus = "+84";
@@ -89,11 +233,9 @@ var CommonUtils = {
     	return phoneNumber;
     },
 	
-    /**
-     * Check is null or blank
-     * Input : String
-     * Return : true if null or blank
-     * **/
+    /***************************************************************************
+	 * Check is null or blank Input : String Return : true if null or blank
+	 **************************************************************************/
 	isNullOrEmpty: function(stringInput){
 		stringInput += "";
 		var result = true;
@@ -249,6 +391,7 @@ var CommonUtils = {
 	
 	/**
 	 * check for value, not element id
+	 * 
 	 * @param objectId
 	 * @param objectName
 	 * @param type
@@ -378,14 +521,18 @@ var CommonUtils = {
 			en = en || true;
 			s = CommonUtils.XSSDeEncode(s, en);
 			s = s.replace(/&/g,"&amp;");
-//			s = s.replace(/\//g, "&#x2F;");
+// s = s.replace(/\//g, "&#x2F;");
 			if(en){
-				s = s.replace(/'/g,"&#39;"); //no HTML equivalent as &apos is not cross browser supported
+				s = s.replace(/'/g,"&#39;"); // no HTML equivalent as &apos
+												// is not cross browser
+												// supported
 				s = s.replace(/"/g,"&quot;");
 				s = s.replace(/</g,"&lt;");
 				s = s.replace(/>/g,"&gt;");
 			}else{
-				s = s.replace(/'/g,"&#39;"); //no HTML equivalent as &apos is not cross browser supported
+				s = s.replace(/'/g,"&#39;"); // no HTML equivalent as &apos
+												// is not cross browser
+												// supported
 				s = s.replace(/"/g,"&#34;");
 				s = s.replace(/</g,"&#60;");
 				s = s.replace(/>/g,"&#62;");
@@ -395,23 +542,27 @@ var CommonUtils = {
 			return s;
 		}
 	},	
-	XSSDeEncode : function(s,en){//haupv3
+	XSSDeEncode : function(s,en){// haupv3
 		if(!CommonUtils.isEmpty(s)){
 			s = s.toString();
 			en = en || true;
 			s = s.replace(/&amp;/g, '&');
 			s = s.replace(/&#x2F;/g, '/');
-//			if(en){
-				s = s.replace(/&#39;/gi, "'"); //no HTML equivalent as &apos is not cross browser supported
+// if(en){
+				s = s.replace(/&#39;/gi, "'"); // no HTML equivalent as &apos
+												// is not cross browser
+												// supported
 				s = s.replace(/&quot;/gi, '"');
 				s = s.replace(/&lt;/gi,'<');
 				s = s.replace(/&gt;/gi,'>');
-//			}else{
-				s = s.replace(/&#39;/gi, "'"); //no HTML equivalent as &apos is not cross browser supported
+// }else{
+				s = s.replace(/&#39;/gi, "'"); // no HTML equivalent as &apos
+												// is not cross browser
+												// supported
 				s = s.replace(/&#34;/gi,'"');
 				s = s.replace(/&#60;/gi, '<');
 				s = s.replace(/&#62;/gi, '>');
-//			}
+// }
 			return s;
 		}else{
 			return s;
@@ -535,6 +686,7 @@ var CommonUtils = {
 	},
 	/**
 	 * use new data format
+	 * 
 	 * @author tuannd20
 	 * @param dataModel
 	 * @param url
@@ -580,13 +732,13 @@ var CommonUtils = {
 			dataModel = new Object();
 		}
 		dataModel.token = CommonUtils.getToken();
-		//dataModel=CommonUtils.XSSObject(dataModel);
+		// dataModel=CommonUtils.XSSObject(dataModel);
 		var kData = $.param(dataModel, true);
 		if(xhrSave!=null){
 			xhrSave.abort();
 		}		
 		if (isShowDivOverlay != null && isShowDivOverlay == false){
-			/**No show*/
+			/** No show */
 		}else{
 			$('#divOverlay_New').show();
 		}
@@ -600,25 +752,27 @@ var CommonUtils = {
 			data :(kData),
 			dataType : "json",
 			
-//			headers: {
-//		        "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
-//		    },
+// headers: {
+// "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
+// },
 			success : function(data) {				
 				$('#divOverlay_New').hide();				
 				CommonUtils.updateTokenForJSON(data);				
 				if(data.error && data.errMsg!= undefined){
 					if(prefix!= undefined && prefix!= null && prefix.length > 0){
 						$(prefix + ' #'+ errMsg).html(data.errMsg).show();
-						/*var tmout = setTimeout(function(){
-							$(prefix + ' #'+ errMsg).html('').hide();
-						}, 7000);*/
+						/*
+						 * var tmout = setTimeout(function(){ $(prefix + ' #'+
+						 * errMsg).html('').hide(); }, 7000);
+						 */
 					}else{
 						if ($('#'+ errMsg) != undefined && $('#'+ errMsg) != null){
 							$('#'+ errMsg).html(escapeSpecialChar(data.errMsg)).show();
 						}
-						/*var tmout = setTimeout(function(){
-							$('#'+ errMsg).html('').hide();
-						}, 7000);*/
+						/*
+						 * var tmout = setTimeout(function(){ $('#'+
+						 * errMsg).html('').hide(); }, 7000);
+						 */
 					}
 					if(callBackFail!=null && callBackFail!=undefined){
 						callBackFail.call(this,data);
@@ -709,13 +863,13 @@ var CommonUtils = {
 			dataModel = new Object();
 		}
 		dataModel.token = CommonUtils.getToken();
-		//dataModel=CommonUtils.XSSObject(dataModel);
+		// dataModel=CommonUtils.XSSObject(dataModel);
 		var kData = $.param(dataModel, true);
 		if(xhrSave!=null){
 			xhrSave.abort();
 		}		
 		if (isShowDivOverlay != null && isShowDivOverlay == false){
-			/**No show*/
+			/** No show */
 		}else{
 			$('#divOverlay').show();
 		}
@@ -729,25 +883,27 @@ var CommonUtils = {
 			data :(kData),
 			dataType : "json",
 			timeout : 30000,
-//			headers: {
-//		        "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
-//		    },
+// headers: {
+// "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
+// },
 			success : function(data) {				
 				$('#divOverlay').hide();				
 				CommonUtils.updateTokenForJSON(data);				
 				if(data.error && data.errMsg!= undefined){
 					if(prefix!= undefined && prefix!= null && prefix.length > 0){
 						$(prefix + ' #'+ errMsg).html(data.errMsg).show();
-						/*var tmout = setTimeout(function(){
-							$(prefix + ' #'+ errMsg).html('').hide();
-						}, 7000);*/
+						/*
+						 * var tmout = setTimeout(function(){ $(prefix + ' #'+
+						 * errMsg).html('').hide(); }, 7000);
+						 */
 					}else{
 						if ($('#'+ errMsg) != undefined && $('#'+ errMsg) != null){
 							$('#'+ errMsg).html(escapeSpecialChar(data.errMsg)).show();
 						}
-						/*var tmout = setTimeout(function(){
-							$('#'+ errMsg).html('').hide();
-						}, 7000);*/
+						/*
+						 * var tmout = setTimeout(function(){ $('#'+
+						 * errMsg).html('').hide(); }, 7000);
+						 */
 					}
 					if(callBackFail!=null && callBackFail!=undefined){
 						callBackFail.call(this,data);
@@ -821,9 +977,11 @@ var CommonUtils = {
 			if(url.startsWith(WEB_CONTEXT_PATH) == false || url.startsWith(WEB_CONTEXT_PATH) =='false'){
 				url = WEB_CONTEXT_PATH  + url;
 			}
-    	}/*else if(url.startsWith(WEB_CONTEXT_PATH) == false || url.startsWith(WEB_CONTEXT_PATH) =='false'){
-    		url = WEB_CONTEXT_PATH  + url;
-    	}*/
+    	}/*
+			 * else if(url.startsWith(WEB_CONTEXT_PATH) == false ||
+			 * url.startsWith(WEB_CONTEXT_PATH) =='false'){ url =
+			 * WEB_CONTEXT_PATH + url; }
+			 */
 		
 		var rt = 'POST';
 		var kData = $.param(params, true);
@@ -880,9 +1038,11 @@ var CommonUtils = {
 			if(url.startsWith(WEB_CONTEXT_PATH) == false || url.startsWith(WEB_CONTEXT_PATH) =='false'){
 				url = WEB_CONTEXT_PATH  + url;
 			}
-    	}/*else if(url.startsWith(WEB_CONTEXT_PATH) == false || url.startsWith(WEB_CONTEXT_PATH) =='false'){
-    		url = WEB_CONTEXT_PATH  + url;
-    	}*/
+    	}/*
+			 * else if(url.startsWith(WEB_CONTEXT_PATH) == false ||
+			 * url.startsWith(WEB_CONTEXT_PATH) =='false'){ url =
+			 * WEB_CONTEXT_PATH + url; }
+			 */
 		
 		var rt = 'POST';
 		var kData = $.param(params, true);
@@ -894,9 +1054,9 @@ var CommonUtils = {
 			url : url,
 			data :(kData),
 			dataType : "json",
-//			headers: {
-//		        "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
-//		    },
+// headers: {
+// "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
+// },
 			success : function(data) {
 				if(callback!= null && callback!= undefined){
 					data=CommonUtils.XSSObject(data);
@@ -914,9 +1074,11 @@ var CommonUtils = {
 			if(url.startsWith(WEB_CONTEXT_PATH) == false || url.startsWith(WEB_CONTEXT_PATH) =='false'){
 				url = WEB_CONTEXT_PATH  + url;
 			}
-    	}/*else if(url.startsWith(WEB_CONTEXT_PATH) == false || url.startsWith(WEB_CONTEXT_PATH) =='false'){
-    		url = WEB_CONTEXT_PATH  + url;
-    	}*/
+    	}/*
+			 * else if(url.startsWith(WEB_CONTEXT_PATH) == false ||
+			 * url.startsWith(WEB_CONTEXT_PATH) =='false'){ url =
+			 * WEB_CONTEXT_PATH + url; }
+			 */
 		
 		
 		var rt = 'POST';
@@ -950,9 +1112,11 @@ var CommonUtils = {
 			if(url.startsWith(WEB_CONTEXT_PATH) == false || url.startsWith(WEB_CONTEXT_PATH) =='false'){
 				url = WEB_CONTEXT_PATH  + url;
 			}
-    	}/*else if(url.startsWith(WEB_CONTEXT_PATH) == false || url.startsWith(WEB_CONTEXT_PATH) =='false'){
-    		url = WEB_CONTEXT_PATH  + url;
-    	}*/
+    	}/*
+			 * else if(url.startsWith(WEB_CONTEXT_PATH) == false ||
+			 * url.startsWith(WEB_CONTEXT_PATH) =='false'){ url =
+			 * WEB_CONTEXT_PATH + url; }
+			 */
 		
 		var rt = 'POST';
 		var kData = $.param(params, true);
@@ -969,9 +1133,9 @@ var CommonUtils = {
 			url : url,
 			data :(kData),
 			dataType : "json",
-//			headers: {
-//		        "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
-//		    },
+// headers: {
+// "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
+// },
 			success : function(data) {
 				$('#divOverlay_New').hide();
 				if(callback!= null && callback!= undefined){
@@ -1313,7 +1477,8 @@ var CommonUtils = {
 		if (value != null && parseFloat(value) >= 0 && parseFloat(value) < 1){
 			return parseFloat(value).toString();
 		}
-		for(i=0;i<value.length-1;i++){//Nếu tất cả từ 0 -> length-2 là 0 thì lấy số cuối 
+		for(i=0;i<value.length-1;i++){// Nếu tất cả từ 0 -> length-2 là 0 thì
+										// lấy số cuối
 			if(value[i]!='0'){
 				break;
 			}
@@ -1465,7 +1630,7 @@ var CommonUtils = {
 	/**
 	 * @author anhhpt
 	 * @date 06/08/2014
-	 * @description : sort order 'asc' by key 
+	 * @description : sort order 'asc' by key
 	 */
 	sortMap:function(myObj){
 		var resul = new Map();
@@ -1486,10 +1651,11 @@ var CommonUtils = {
 	 * @author anhhpt
 	 * @date 06/08/2014
 	 * @description : Client Side Pagination
-	 * @exemple :  $('#dg').datagrid({loadFilter:CommonUtils.pagerFilter});
+	 * @exemple : $('#dg').datagrid({loadFilter:CommonUtils.pagerFilter});
 	 */	
 	pagerFilter:function(data){
-			if (typeof data.length == 'number' && typeof data.splice == 'function') { // is array
+			if (typeof data.length == 'number' && typeof data.splice == 'function') { // is
+																						// array
 				data = {
 					total : data.length,
 					rows : data
@@ -1520,7 +1686,7 @@ var CommonUtils = {
 	/**
 	 * @author anhhpt
 	 * @date 06/08/2014
-	 * @description : import file excel 
+	 * @description : import file excel
 	 */	
 	uploadExcel:function(callback,params,formId,tit,fileObject,prefix,errMsgId,pFakefilepc){
 		var frm = 'importFrm';
@@ -1574,7 +1740,7 @@ var CommonUtils = {
 			    			var fileNameFail = $('#fileNameFail').html();
 			    			var message =format(msgErr_result_import_excel,(obj.totalRow - obj.numFail),obj.numFail);		    		
 			    			if(obj.numFail > 0){
-//			    				message+= ' <a href="'+ fileNameFail +'">'+msgCommon5+'</a>';
+// message+= ' <a href="'+ fileNameFail +'">'+msgCommon5+'</a>';
 			    				message+= ' <a href="'+WEB_CONTEXT_PATH+'/commons/downloadFile?file='+ fileNameFail +'">'+msgCommon5+'</a>';
 			    			}
 			    			if(obj.totalRow==0 && obj.numFail==0){
@@ -1612,7 +1778,7 @@ var CommonUtils = {
 	/**
 	 * @author anhhpt
 	 * @date 06/08/2014
-	 * @description : export file excel 
+	 * @description : export file excel
 	 */	
 	exportExcel : function(dataModel,url,errMsg,msg){
 		if(errMsg == null || errMsg == undefined){
@@ -1628,9 +1794,9 @@ var CommonUtils = {
 			url : url,
 			data: (kData),
 			dataType: "json",
-//			headers: {
-//		        "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
-//		    },
+// headers: {
+// "Content-type":"application/x-www-form-urlencoded;charset=utf-8"
+// },
 			success : function(data) {
 				hideLoadingIcon();
 				if(data.error && data.errMsg!= undefined){
@@ -1639,11 +1805,12 @@ var CommonUtils = {
 					if(data.hasData!= undefined && !data.hasData) {
 						$('#'+ errMsg).html(msg).show();
 					} else{
-//						window.location.href = data.view;
-						//Begin anhdt10 - fix attt - dua ra acoutn dowload
+// window.location.href = data.view;
+						// Begin anhdt10 - fix attt - dua ra acoutn dowload
 						window.location.href =WEB_CONTEXT_PATH + "/commons/downloadFile?file="+data.view;
-						//End anhdt10
-						setTimeout(function(){ //Set timeout để đảm bảo file load lên hoàn tất
+						// End anhdt10
+						setTimeout(function(){ // Set timeout để đảm bảo file
+												// load lên hoàn tất
 	                        CommonSearch.deleteFileExcelExport(data.view);
 						},500000);
 					}
@@ -1669,10 +1836,8 @@ var CommonUtils = {
 	 * @author anhhpt
 	 * @date 06/08/2014
 	 * @description : compare 2 house with format hh:mm
-	 * @return :  
-	 * 			-1 : fromHouse < toHouse
-	 * 			 0 : fromHouse = toHouse
-	 * 			 1 : fromHouse > toHouse
+	 * @return : -1 : fromHouse < toHouse 0 : fromHouse = toHouse 1 : fromHouse >
+	 *         toHouse
 	 */	
 	compareHouse:function(fromHouse,toHouse){
 		
@@ -1760,8 +1925,7 @@ var CommonUtils = {
 	/**
 	 * @author anhhpt
 	 * @date 06/08/2014
-	 * @params : 
-	 * 	input : 1,645/2,000
+	 * @params : input : 1,645/2,000
 	 * @return : 99999
 	 */
 	getQuantityWithCurrency:function(amount,convfact){
@@ -1770,8 +1934,8 @@ var CommonUtils = {
 			return 0;
 		}
 		
-		var quantityRetail = 0; //so luong le 
-		var quantityPackage = 0; //so luong thung
+		var quantityRetail = 0; // so luong le
+		var quantityPackage = 0; // so luong thung
 		
 		if(amount.toString().indexOf("/") >=0){
 			quantityRetail = CommonUtils.returnMoneyValue(amount.split("/")[1]);
@@ -1787,9 +1951,10 @@ var CommonUtils = {
 	/**
 	 * @author anhhpt
 	 * @date 06/08/2014
-	 * @params :  value: 1645, numDecimal:3
+	 * @params : value: 1645, numDecimal:3
 	 * @return : 1645.000
-	 * @description : numDecimal co the dung numFloat la bien toan cuc lay theo cau hinh cua cty trong db roi 
+	 * @description : numDecimal co the dung numFloat la bien toan cuc lay theo
+	 *              cau hinh cua cty trong db roi
 	 */
 	formatValueWithDecimal: function(value, numDecimal){
 		value = CommonUtils.XSSEncode(value);
@@ -1800,6 +1965,7 @@ var CommonUtils = {
 	},
 	/**
 	 * Tra ve text va hyperlink tu 1 chuoi
+	 * 
 	 * @author trungtm6
 	 * @date 24/03/2015
 	 */
@@ -1827,6 +1993,7 @@ var CommonUtils = {
 	},
 	/**
 	 * Resize cho table khi dong mo menu bar
+	 * 
 	 * @author quocpc
 	 * @date 10/10/2018
 	 */
@@ -1907,7 +2074,7 @@ var CommonUtils = {
 		},
 		// End
 		
-		//Add new xoa dau tieng viet
+		// Add new xoa dau tieng viet
 		searchLike_Map: function(data, keySearch){
 			data = CommonUtils.delete_CoDau(data);
 			keySearch = CommonUtils.delete_CoDau(keySearch);
@@ -1919,33 +2086,74 @@ var CommonUtils = {
 			}
 		},
 		// End
-		genBreadCumb: function(...arrBrCb) {
+		/***********************************************************************
+		 * Auto generate BreadCumbs Input : Array Return : void
+		 **********************************************************************/
+		genBreadCumb: function(breadArr) {
 			// Clean children of container div
 		    $('#breadCumb').empty();
 		    // Add element "Home"
 		    var contentHTML = '<ul class="page-breadcrumb">' +
 		        '<li> <a href="#/home"><i class="fa fa-home"></i></a> </li>';
 		    // Add custom element
-		    arrBrCb.forEach(function(brCb) {
+		    breadArr.forEach(function(brCb) {
 		        // brCb[1] is URL, brCb[0] is text
-		    	var hrf = brCb[1];
-		    	if(!brCb[1]) {hrf = 'javascript:void(0)';}
-		        var element = '<li><i class="fa fa-angle-right"></i><a href="' + hrf + '">' + brCb[0] + '</a></li>';
+		    	var hrf = brCb.value;
+		    	if(!brCb.value) {hrf = 'javascript:void(0)';}
+		        var element = '<li><i class="fa fa-angle-right"></i><a href="' + hrf + '">' + brCb.key + '</a></li>';
 		        contentHTML = contentHTML.concat(element);
 		    });
 		    contentHTML.concat('</ul>');
 
 		    $('#breadCumb').append(contentHTML);
 		},
-		/**
-		 * Validate mail address
-		 * Input : String
-		 * Return : boolean
-		 * **/
+		/***********************************************************************
+		 * Validate mail address Input : String Return : boolean
+		 **********************************************************************/
 		isValidMail: function(mailAddress) {
 			var regex = /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 			  return regex.test(mailAddress);
 		},
+		/***********************************************************************
+		 * Auto add or remove class "edited" of input item Input : array Return :
+		 * void
+		 **********************************************************************/
+//		autoAddStyleEdited: function(...arrItem) {
+			autoAddStyleEdited: function(arrItem) {
+		    arrItem.forEach(function(item) {
+		        var valueOfItem = $(item).val();
+		        if (CommonUtils.isNullOrEmpty(valueOfItem)) {
+		            $(item).removeClass('edited');
+		        } else {
+		            $(item).addClass('edited');
+		        }
+		    });
+		},
+		/** Create captcha image **/
+		createCaptcha: function(captchaId, screenId) {
+	    	var url = '/account/captcha';
+			var method = "GET";
+			$.ajax({
+				type : method,
+				url : url,
+				data: {
+					"screenId": screenId
+				},
+				success : function(data) {
+					$("#"+captchaId).attr("src", "data:image/jpg;charset=utf-8;base64," + data)
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {}
+			});
+	    },
+	    /** Reset values in form **/
+		resetElementsValue: function(formId) {
+			var elements = "#"+formId+" input, #"+formId+" select, #"+formId+" textarea";
+			$(elements).each(function(){
+				 var input = $(this);
+				 input.val("");
+				 input.removeClass("edited");
+		    });
+	    }
 };
 function encodeChar(tst){
 	var result = "";
@@ -2046,8 +2254,9 @@ function applyMonthPicker(selector,prefix) {
 	var addHtml = '<a class="CalendarLink" ><img  src="' + WEB_CONTEXT_PATH + '/resources/images/calenda_blue.svg" width="15" height="16" /></a>';
 	$(uPrefix + '#'+selector).after(addHtml);
 	$(uPrefix + '#'+selector).monthpicker(options);
-//	$(uPrefix + '#'+selector).monthpicker().bind('monthpicker-change-year', function (e, year) {
-//	});
+// $(uPrefix + '#'+selector).monthpicker().bind('monthpicker-change-year',
+// function (e, year) {
+// });
 	$(uPrefix + '#'+selector).next().bind('click', function () {
 		$(uPrefix + '#'+selector).monthpicker('show');
 	});
@@ -2392,7 +2601,7 @@ function formatCurrency(num, isInteger) {
 		num = num.toString();
 		var sub = '-';
 		var isLessZero = false;
-//		if (num.contains('-')){
+// if (num.contains('-')){
 		if (num.indexOf('-') != -1){
 			isLessZero = true;
 			num = num.substring(1, num.length);
@@ -2472,7 +2681,7 @@ function formatFloatValue(value,toF, flagRemoveZeroDec){
 		if(parseInt(last,10)==0){
 			return formatCurrency(strResult[0]);
 		}else{
-//			last = last.replace('0','');
+// last = last.replace('0','');
 			return formatCurrency(strResult[0]) + '.' + last;
 		}
 		
@@ -2999,7 +3208,7 @@ function formatQuantityEx_Possitive(amount,convfact){
 function NextAndPrevTextField(e,selector,clazz){	
 	var index = $('input.'+clazz).index(selector);	
 	var shiftKey = e.shiftKey && e.keyCode == keyCodes.TAB;	
-	//Co the them keyCodes.ENTER vo 
+	// Co the them keyCodes.ENTER vo
 	if((e.keyCode == keyCodes.ARROW_DOWN)){	
 		++index;
 		var nextSelector = $('input.'+clazz).eq(index);
@@ -3104,14 +3313,14 @@ function previewImportExcelFile(fileObj,formId,inputText){
 	if (fileObj.value != '') {
 		if (!/(\.xls|\.xlsx)$/i.test(fileObj.value)) {
 			$('#errExcelMsg').html(msgErr_excel_file_invalid_type).show();
-//			CommonUtils.showMessage(msgErr_excel_file_invalid_type);//LamNH
+// CommonUtils.showMessage(msgErr_excel_file_invalid_type);//LamNH
 			fileObj.value = '';
 			fileObj.focus();
 			document.getElementById(inputId).value ='';			
 			return false;
 		}else{
 			$('#errExcelMsg').html('').hide();
-			CommonUtils.hideMessage();//LamNH
+			CommonUtils.hideMessage();// LamNH
 			var src = '';
 			if ($.browser.msie){
 			    var path = encodeURI(what.value);
@@ -3124,7 +3333,7 @@ function previewImportExcelFile(fileObj,formId,inputText){
 		}
 	}else{
 		$('#errExcelMsg').html(msgCommon12).show();		
-//		CommonUtils.showMessage(msgCommon12);//LamNH
+// CommonUtils.showMessage(msgCommon12);//LamNH
 		return false;
 	}
 	return true;
@@ -3244,6 +3453,7 @@ function getQuantity(amount,convfact){
 
 /**
  * convert complex object to simple object, key-value only
+ * 
  * @author tuannd20
  * @param out
  * @param obj
@@ -3277,6 +3487,7 @@ function convertToSimpleObject(out, obj, prefix){
 
 /**
  * get prefix to convert data
+ * 
  * @author tuannd20
  * @param data
  * @returns
@@ -3306,6 +3517,7 @@ function getPrefix(data){
 
 /**
  * get converted object
+ * 
  * @author tuannd20
  * @param data
  * @returns {___anonymous63762_63763}
@@ -3424,7 +3636,8 @@ var KeyCodes = {
 };
 
 /*
- * START OF FILE - /webapp.dms.lite.web/web/resources/scripts/CommonUtils/jquery.validate-CommonUtils.js
+ * START OF FILE -
+ * /webapp.dms.lite.web/web/resources/scripts/CommonUtils/jquery.validate-CommonUtils.js
  */
 
 var ValidateCommonUtils = {
@@ -3488,7 +3701,7 @@ var ValidateCommonUtils = {
 		},
 		validate : function(errMsgObject,prefix){			
 			$('.ErrorMsgStyle').html('').hide();
-//			CommonUtils.hideMessage();//LamNH
+// CommonUtils.hideMessage();//LamNH
 			/** Validate Input */
 			var params = new Object();	
 			params.error = false;
@@ -3500,7 +3713,7 @@ var ValidateCommonUtils = {
 				var objectName = selector.attr('name');
 				var objectValue = selector.val().trim();
 				params[objectId] = objectValue;
-				//eval(format('params."{0}" = "{1}";',objectId,objectValue));
+				// eval(format('params."{0}" = "{1}";',objectId,objectValue));
 				if(selector.is(':hidden') && objectId != "shopName"){
 					continue;
 				}			
@@ -3561,7 +3774,7 @@ var ValidateCommonUtils = {
 						}
 					}
 				}
-				//hoatv13: Class CompareDate is a compare 2 date. 
+				// hoatv13: Class CompareDate is a compare 2 date.
 				if(selector.hasClass('CompareDate') && msg.length == 0){
 					var valueFromDate = selector.val().trim();
 					if(valueFromDate!=null && valueFromDate!=''){
@@ -3577,7 +3790,7 @@ var ValidateCommonUtils = {
 				}
 				if(msg.length>0){
 					$(errMsgObject).html(msg).show();
-//					CommonUtils.showMessage(msg);//LamNH
+// CommonUtils.showMessage(msg);//LamNH
 					params.error = true;
 					return params;
 				}								
@@ -3604,7 +3817,7 @@ var ValidateCommonUtils = {
 				}
 				if(msg.length>0){
 					$(errMsgObject).html(msg).show();
-//					CommonUtils.showMessage(msg);//LamNH
+// CommonUtils.showMessage(msg);//LamNH
 					params.error = true;
 					return params;
 				}
@@ -3738,11 +3951,10 @@ var ValidateCommonUtils = {
 };
 
 var DateCommonUtils = {
-		/**
-	     * Compare two date "dd/mm/yyyy"
-	     * Input : String
-	     * Return : true if start < end
-	     * **/
+		/***********************************************************************
+		 * Compare two date "dd/mm/yyyy" Input : String Return : true if start <
+		 * end
+		 **********************************************************************/
 		compareDate: function(startDate, endDate){
 			if(startDate.length == 0 || endDate.length == 0){
 				return true;			
@@ -3756,11 +3968,10 @@ var DateCommonUtils = {
 			}
 			return true;
 		},	
-		/**
-	     * Compare two date "dd/mm/yyyy"
-	     * Input : String
-	     * Return : true if start < end
-	     * **/
+		/***********************************************************************
+		 * Compare two date "dd/mm/yyyy" Input : String Return : true if start <
+		 * end
+		 **********************************************************************/
 		compareCurrentDate:function(date) {		
 			if(date.length == 0) {
 				return false;
@@ -3772,11 +3983,10 @@ var DateCommonUtils = {
 			var currentDate = cDate+'/'+cMonth+'/'+cYear;
 			return DateCommonUtils.compareDate(date, currentDate);
 		},
-		/**
-	     * Day number between two date
-	     * Input : String "dd/mm/yyyy"
-	     * Return : Mumber [Day number]
-	     * **/
+		/***********************************************************************
+		 * Day number between two date Input : String "dd/mm/yyyy" Return :
+		 * Mumber [Day number]
+		 **********************************************************************/
 		betweenTwoDate: function(startDate, endDate){
 			 
 			if(startDate.length == 0 || endDate.length == 0){
@@ -3791,11 +4001,10 @@ var DateCommonUtils = {
 			return Math.round(Math.abs((endDateObj.getTime() - startDateObj.getTime())/(oneDay)));;
 		},
 		
-		/**
-	     * Get current date from server side
-	     * Input : 
-	     * Return : Current date "dd/mm/yyyy"
-	     * **/
+		/***********************************************************************
+		 * Get current date from server side Input : Return : Current date
+		 * "dd/mm/yyyy"
+		 **********************************************************************/
 		getCurrentDateServerString: function(){
 			var currentTime = new Date(sysDateFromServer);
 			var month = currentTime.getMonth() + 1;
@@ -3810,11 +4019,9 @@ var DateCommonUtils = {
 			return day + '/' + month + '/' + year;
 		},
 		
-		/**
-	     * Get current month from server side
-	     * Input : 
-	     * Return : Current date "mm"
-	     * **/
+		/***********************************************************************
+		 * Get current month from server side Input : Return : Current date "mm"
+		 **********************************************************************/
 		getCurrentMonthServerString: function(){
 			var currentTime = new Date(sysDateFromServer);
 			var month = currentTime.getMonth() + 1;
@@ -3825,22 +4032,19 @@ var DateCommonUtils = {
 			return month;
 		},
 		
-		/**
-	     * Get current year from server side
-	     * Input : 
-	     * Return : Current date "yyyy"
-	     * **/
+		/***********************************************************************
+		 * Get current year from server side Input : Return : Current date
+		 * "yyyy"
+		 **********************************************************************/
 		getCurrentYearServerString: function(){
 			var currentTime = new Date(sysDateFromServer);
 			var year = currentTime.getFullYear();
 			return year;
 		},
 		
-		/**
-	     * Get last day of week
-	     * Input : 
-	     * Return : Current date "dd/mm/yyyy"
-	     * **/
+		/***********************************************************************
+		 * Get last day of week Input : Return : Current date "dd/mm/yyyy"
+		 **********************************************************************/
 		getLastWeek : function(){
 			var d = new Date(sysDateFromServer);
 			var previousWeek= new Date(d.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -3848,9 +4052,12 @@ var DateCommonUtils = {
 			return lastWeek;
 		},
 		
-		/** Compare two month
-		 * @param startMonth,endMonth	 
-		 * return -1 (startMonth < endMonth) : 0 (startMonth = endMonth): 1 (startMonth > endMonth)
+		/**
+		 * Compare two month
+		 * 
+		 * @param startMonth,endMonth
+		 *            return -1 (startMonth < endMonth) : 0 (startMonth =
+		 *            endMonth): 1 (startMonth > endMonth)
 		 */
 		compareMonth: function(startMonth, endMonth){
 			if(startMonth.length == 0 || endMonth.length == 0){
@@ -3863,11 +4070,9 @@ var DateCommonUtils = {
 			return dates.compare(startDateObj,endDateObj);
 		},
 		
-		/**
-	     * Check is time mm:ss
-	     * Input : 
-	     * Return : true if is time
-	     * **/
+		/***********************************************************************
+		 * Check is time mm:ss Input : Return : true if is time
+		 **********************************************************************/
 		isTime: function(timeStr){
 			if (!StringCommonUtils.isNullOrEmpty(timeStr)){
 				var arr = timeStr.split(':');
@@ -3881,11 +4086,9 @@ var DateCommonUtils = {
 			return false;
 		},
 		
-		/**
-	     * Check date's format
-	     * Input : 
-	     * Return : true if format is correct
-	     * **/
+		/***********************************************************************
+		 * Check date's format Input : Return : true if format is correct
+		 **********************************************************************/
 		isDate:function(txtDate, separator, type) {
 		    var aoDate,           // needed for creating array and object
 		        ms,               // date in milliseconds
@@ -3908,7 +4111,8 @@ var DateCommonUtils = {
 					if (aoDate.length !== 3) {
 						return false;
 					}
-					 // define month, day and year from array (expected format is m/d/yyyy)
+					 // define month, day and year from array (expected
+						// format is m/d/yyyy)
 				    // subtraction will cast variables to integer implicitly
 				    day = aoDate[0] - 0; // because months in JS start from 0
 				    month = aoDate[1] - 1;
@@ -3932,7 +4136,8 @@ var DateCommonUtils = {
 		    }
 		    // convert input date to milliseconds
 		    ms = (new Date(year, month, day)).getTime();
-		    // initialize Date() object from milliseconds (reuse aoDate variable)
+		    // initialize Date() object from milliseconds (reuse aoDate
+			// variable)
 		    aoDate = new Date();
 		    aoDate.setTime(ms);
 		    // compare input date and parts from Date() object
@@ -3945,7 +4150,8 @@ var DateCommonUtils = {
 		    // date is OK, return true
 		    return true;
 		},
-		// Validates that the input string is a valid date formatted as "mm/dd/yyyy"
+		// Validates that the input string is a valid date formatted as
+		// "mm/dd/yyyy"
 		isValidDate:function(dateString) {
 		    // First check for the pattern
 		    if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
@@ -3970,11 +4176,9 @@ var DateCommonUtils = {
 		    // Check the range of the day
 		    return day > 0 && day <= monthLength[month - 1];
 		},
-		/**
-	     * Convert string to date
-	     * Input : 
-	     * Return : date
-	     * **/
+		/***********************************************************************
+		 * Convert string to date Input : Return : date
+		 **********************************************************************/
 		convertDate : function(txtDate, separator){
 			// if separator is not defined then set '/'
 		    if (separator == undefined) {
@@ -3986,7 +4190,8 @@ var DateCommonUtils = {
 		    if (aoDate.length !== 3) {
 		        return false;
 		    }
-		    // define month, day and year from array (expected format is m/d/yyyy)
+		    // define month, day and year from array (expected format is
+			// m/d/yyyy)
 		    // subtraction will cast variables to integer implicitly
 		    day = aoDate[0] - 0; // because months in JS start from 0
 		    month = aoDate[1] - 1;
@@ -3997,7 +4202,8 @@ var DateCommonUtils = {
 		    }
 		    // convert input date to milliseconds
 		    ms = (new Date(year, month, day)).getTime();
-		    // initialize Date() object from milliseconds (reuse aoDate variable)
+		    // initialize Date() object from milliseconds (reuse aoDate
+			// variable)
 		    aoDate = new Date();
 		    aoDate.setTime(ms);
 		    // compare input date and parts from Date() object
@@ -4067,9 +4273,14 @@ var DateCommonUtils = {
 				var currentDate =new Date(sysDateFromServer);
 				dateTmp = new Date (currentDate.getFullYear(),0,1);
 			} else{
-				dateTmp = new Date(year.toString(),0,1); // toString first so it parses correctly year numbers
+				dateTmp = new Date(year.toString(),0,1); // toString first so
+															// it parses
+															// correctly year
+															// numbers
 			}
-			var daysToFirstDay = (1 - dateTmp.getDay()); // Note that this can be also negative
+			var daysToFirstDay = (1 - dateTmp.getDay()); // Note that this
+															// can be also
+															// negative
 			var firstDayOfFirstWeek = new Date(dateTmp.getTime() + daysToFirstDay * 86400000);
 			var firstDate = new Date(firstDayOfFirstWeek.getTime() + (7 * (week - 1) * 86400000));
 			return toDateString(firstDate);
@@ -4091,7 +4302,7 @@ var DateCommonUtils = {
 			var datediff = d2.getTime() - d1.getTime();
 		    return (datediff / (24*60*60*1000));   
 		},
-		/** Phep tru 2 ngay **/
+		/** Phep tru 2 ngay * */
 		subDateForDay : function(){
 			var fDate = $('#'+idDate).val();
 			var arrFDate = fDate.split('/');

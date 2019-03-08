@@ -6,13 +6,14 @@
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: SVN-Neue Kabel;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%
 }
 
 body {
-	margin: 0
+	margin: 0;
+	font-family: SVN-Neue Kabel;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
@@ -2528,7 +2529,7 @@ th {
 	max-width: 100%;
 	margin-bottom: 1rem;
 	background-color: transparent;
-	font-size: 13px;
+	font-size: 14px;
 }
 
 .table th{
@@ -2558,6 +2559,9 @@ th {
 .dataTables_scrollHeadInner .table-bordered{
 	border: 0px !important;
 	border-left: 1px solid #32c5d2 !important;
+}
+.dataTables_scroll {
+/* 	min-height: 120px; */
 }
 
 /* End */
@@ -2878,9 +2882,9 @@ output {
 .form-control {
 	display: block;
 	width: 100%;
-	height: 34px;
+	height: 30px;
 	padding: 6px 12px;
-	font-size: 14px;
+	font-size: 13px;
 	line-height: 1.42857143;
 	color: #555;
 	background-color: #fff;
@@ -5183,7 +5187,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 .pagination>li>a, .pagination>li>span {
 	position: relative;
 	float: left;
-	padding: 6px 12px;
+	padding: 5px 10px;
 	margin-left: -1px;
 	line-height: 1.42857143;
 	color: #337ab7;
@@ -5224,7 +5228,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover,
 	.pagination>.disabled>span, .pagination>.disabled>span:focus,
 	.pagination>.disabled>span:hover {
-	color: #777;
+	color: #ddd;
 	cursor: not-allowed;
 	background-color: #fff;
 	border-color: #ddd
@@ -5506,7 +5510,8 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 	padding: 15px;
 	margin-bottom: 20px;
 	border: 1px solid transparent;
-	border-radius: 4px
+	border-radius: 4px;
+	width: 400px;
 }
 
 .alert h4 {
@@ -5580,9 +5585,9 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 }
 
 .alert-danger {
-	color: #a94442;
-	background-color: #f2dede;
-	border-color: #ebccd1
+	color: #e73d4a !important;
+	background-color: #fbe1e3 !important;
+	border-color: #fbe1e3 !important
 }
 
 .alert-danger hr {
@@ -6465,21 +6470,24 @@ a.list-group-item-danger.active, a.list-group-item-danger.active:focus,
 
 .close {
 	float: right;
-	font-size: 21px;
-	font-weight: 700;
+	font-size: 25px;
+	font-weight: normal;
 	line-height: 1;
-	color: #000;
-	text-shadow: 0 1px 0 #fff;
+	    color: #fff;
+/* 	text-shadow: 0 1px 0 #fff; */
 	filter: alpha(opacity = 20);
-	opacity: .2
+	opacity: 0.9;
+	
 }
 
 .close:focus, .close:hover {
-	color: #000;
+	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
 	filter: alpha(opacity = 50);
-	opacity: .5
+	text-shadow: 0 1px 0 #fff;
+	opacity: 1;
+	outline: 0
 }
 
 button.close {
@@ -6570,7 +6578,8 @@ button.close {
 
 .modal-header {
 	padding: 15px;
-	border-bottom: 1px solid #e5e5e5
+	border-bottom: 1px solid #e5e5e5;
+	background-color: #00918c;
 }
 
 .modal-header .close {
@@ -6581,6 +6590,7 @@ button.close {
 	margin: 0;
 	line-height: 1.42857143;
 	text-align: center;
+	color : #fff;
 }
 
 .modal-body {
@@ -6590,7 +6600,7 @@ button.close {
 
 .modal-footer {
 	padding: 15px;
-	text-align: right;
+	text-align: center;
 	border-top: 1px solid #e5e5e5
 }
 

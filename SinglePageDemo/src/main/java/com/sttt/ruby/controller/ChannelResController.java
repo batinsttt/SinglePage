@@ -43,5 +43,9 @@ public class ChannelResController {
 		        
 		return resultJson;
 	}
-	
+	@PostMapping("/channel/listSubcribers")
+	public String getListSubcribers(@RequestBody SearchListSubcriberRequest subcriberRequest, HttpServletRequest request) throws Exception {
+		String resultJson = channelService.getListSubcribersJson(subcriberRequest, request);
+		return resultJson;
+	}
 }

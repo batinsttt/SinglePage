@@ -1,115 +1,183 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<section class="content">
-	<!-- menu service -->
-	<jsp:include page="/WEB-INF/jsp/user/service/menuService.jsp" />
-	<!-- end menu -->
-	<!-- /.box -->
-	<div class="box">
-		<div class="box-body">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<input type="text" class="form-control" id="address"
-							placeholder="Địa chỉ">
-					</div>
-					<!-- /.form-group -->
-				</div>
-				<!-- /.col -->
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<input type="text" class="form-control" id="phone"
-							placeholder="Điện thoại">
-					</div>
-					<!-- /.form-group -->
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<select class="form-control select2 select2-hidden-accessible"
-							style="width: 100%;" aria-hidden="true">
-							<option selected="selected">Hợp đồng</option>
-							<option>Alaska</option>
-							<option>Tennessee</option>
-							<option>Texas</option>
-							<option>Washington</option>
-						</select>
-					</div>
-					<!-- /.form-group -->
-				</div>
-				<!-- /.col -->
-			</div>
-			<!-- /.row -->
-		</div>
-		<div class="box-footer">
-			<button class="btn btn-green pull-right" data-toggle="modal" data-target="#myModal" style="margin-left: 10px;"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
-            <button id="searchChannel" class="btn btn-blue pull-right" onclick="return Service.searchChannel();"><i class="fa fa-search"></i>Tìm kiếm</button>
-		</div>
-	</div>
-	<!-- /.box -->
-	<div class="box">
-		<div class="portlet box green">
-         	<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-cogs"></i>Responsive Flip Scroll Tables
-				</div>
-			<div class="tools">
-				<a href="javascript:;" class="collapse" data-original-title=""
-					title="Show or Hide table"> </a> <a href="javascript:;"
-					class="reload" data-original-title="" title="Reload data"> </a>
-			</div>
-		</div>
-		<div class="portlet-body flip-scroll" style="display: block;">
-		 <div class="table-responsive"> 
-			<table id="example" class="table table-striped table-bordered display table-hover dt-responsive">
-				<thead>
-					<tr>
-               			<th></th>
-<!-- 						<th id="inputCol">Name</th> -->
-						<th>Position</th>
-						<th>Office</th>
-						<th>Extn.</th>
-						<th>Start date</th>
-						<th>Salary</th>
-						<th>Edit</th>
-<!-- 						<th>Delete</th> -->
-					</tr>
-				</thead>
-			</table>
-			</div>
-		</div>
-	</div>
-</div>
 
+			
+		
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<section class="content">
+   <!-- menu service -->
+   <jsp:include page="/WEB-INF/jsp/user/channel/menuService.jsp" />
+   <!-- end menu -->
+   <!-- /.box -->
+   <div class="box">
+      <div class="box-body">
+         <div class="portlet-body form">
+            <form role="form">
+               <div class="form-body">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                           <input type="text" class="form-control" name="address" id="address">
+                           <label for="form_control_1">Địa chỉ </label>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 form_paddRightCol6">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                           <input type="text" class="form-control" name="account" id="account">
+                           <label for="form_control_1">Tài khoản </label>
+                        </div>
+                     </div>
+                     <div class="col-md-6 form_paddLeftCol6">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                           <select class="form-control" name="contract" id="contract">
+                              <option value=""></option>
+                              <option value="2">Option 1</option>
+                              <option value="3">Option 2</option>
+                              <option value="4">Option 3</option>
+                           </select>
+                           <label for="form_control_1">Hợp đồng </label>
+                        </div>
+                     </div>
+                  </div>
+                   <div class="row">
+                     <div class="col-md-4 form_paddRightCol4">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                           <input type="text" class="form-control" name="account" id="account">
+                           <label for="form_control_1">Tài khoản </label>
+                        </div>
+                     </div>
+                     <div class="col-md-4" style="padding: 20px;">
+                     	<div class="md-radio-inline">
+							<div class="md-radio">
+								<input type="radio" tabindex="0" id="radio53" name="radio1" class="md-radiobtn"> 
+									<label for="radio53" > 
+									<span></span>
+									<span class="check"></span> 
+									<span class="boxForm"></span>
+									<span class="radioFocus" tabindex="0"></span>
+									Option 1
+								</label>
+							</div>
+							<div class="md-radio">
+								<input type="radio" id="radio54" name="radio1"
+									class="md-radiobtn"> <label for="radio54"> 
+									<span></span>
+									<span class="check"></span> <span class="boxForm"></span>
+									<span class="radioFocus" tabindex="0"></span>
+									Option 2
+								</label>
+							</div>
+						</div>
+						</div>
+						<div class="col-md-4">
+									<div class="form-group form-md-checkboxes paddingtop15">
+										<div class="md-checkbox-inline">
+											<div class="md-checkbox">
+												<input type="checkbox" id="checkbox14" class="md-check">
+												<label for="checkbox14"> 
+												<span></span>
+												<span class="check"></span> 
+												<span class="boxForm"></span>
+												<span class="checkboxFocus" tabindex="0"></span>
+													 Địa chỉ lắp đặt
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+                     
+                   </div>
+                     <div class="row">
+                    	 <div class="col-md-6">
+							<div class="form-group form-md-line-input form-md-floating-label">
+								<div class="input-icon right date">
+                                     <input type="text" class="form-control" name="fromdate" id="fromdate">
+                                     <label for="fromdate">Thời gian</label>
+                                     <i class="fa fa-calendar"></i>
+                                 </div>
+							</div>
+							
+						 </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <div class="box-footer">
+         <button class="btn btn-green pull-right" id="showError" style="margin-left: 10px;">
+         <i class="fa fa-plus"></i>Show error message from API
+         </button>
+         <button class="btn btn-green pull-right" id="showSuccess" style="margin-left: 10px;">
+         <i class="fa fa-plus"></i>Show success API
+         </button>
+         <button id="searchChannel" class="btn btn-blue pull-right mt-ladda-btn ladda-button"
+            onclick="return Channel.searchChannel();" data-style="expand-right">
+         <i class="fa fa-search"></i>Tìm kiếm
+         </button>
+      </div>
+      <div class="box-footer" style="margin-top: 30px;">
+      		<button class="btn btn-green pull-right ladda-button margin-left-10" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>Tạo yêu cầu mới</button>
+            <button id="searchChannel" class="btn btn-blue pull-right ladda-button margin-left-10" onclick="return Service.searchChannel();"><i class="fa fa-search"></i>Tìm kiếm</button>
+            <button id="searchChannel" class="btn btn-green pull-right ladda-button margin-left-10" ><i class="fa fa-location-arrow"></i>Gửi đánh giá</button>
+		    <button id="searchChannel" class="btn btn-blue pull-right ladda-button margin-left-10" ><i class="fa fa-mail-reply-all"></i>Quay lại</button>
+		    <button id="searchChannel" class="btn btn-orange pull-right ladda-button margin-left-10" ><i class="fa fa-warning"></i>Danh sách cảnh báo</button>
+		    <button id="searchChannel" class="btn btn-green pull-right ladda-button margin-left-10" ><span class="glyphicon glyphicon-download-alt"></span>Tạo bảng kê theo mã số thuế</button>
+			<button id="searchChannel" class="btn btn-orange pull-right ladda-button margin-left-10" ><i class="fa fa-warning"></i>Danh sách cảnh báo</button>
+      </div>
+   <!-- /.box -->
+   <div class="box">
+      <div class="portlet-body flip-scroll" style="display: block;">
+         <div class="table-responsive">
+            <table id="channelList" class="table table-striped table-bordered display table-hover width100">
+               <thead>
+                  <tr>
+                     <th>STT</th>
+                     <th>Tài khoản</th>
+                     <th>Địa chỉ</th>
+                     <th>Tài khoản</th>
+                     <th>Địa chỉ</th>
+                     <th>Tài khoản</th>
+                     <th>Địa chỉ</th>
+                     <th>Tài khoản</th>
+                     <th>Địa chỉ</th>
+                     <th>Thao tác</th>
+                  </tr>
+               </thead>
+            </table>
+         </div>
+      </div>
+   </div>
 </section>
-	<!-- Modal modal-sm modal-md modal-lg -->
+<!-- Modal modal-sm modal-md modal-lg -->
 	 <!-- Modal -->
 	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	    <div class="modal-dialog">
 	      <div class="modal-content" style="overflow: hidden;">
 	        <div class="modal-header">
 	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	          <h4 class="modal-title" id="myModalLabel">Thông tin yêu cầu</h4>
 	        </div>
 	        <div class="modal-body" style="max-height: 409px; overflow-y: auto;">
 	        	<div class="form-group row">
-				    <label for="inputEmail3" class="col-sm-3 col-form-label">Mã yêu cầu</label>
+				    <label class="col-sm-3 col-form-label">Mã yêu cầu</label>
 				    <div class="col-sm-9">
-				      <input type="email" class="form-control" placeholder="Mã yêu cầu">
+				      <input type="text" class="form-control" id="requestCode" placeholder="Mã yêu cầu">
 				    </div>
-				  </div>
-				  <div class="form-group row">
-				    <label for="inputPassword3" class="col-sm-3 col-form-label">Tên yên cầu</label>
+				</div>
+				<div class="form-group row">
+				    <label  class="col-sm-3 col-form-label">Tên yên cầu</label>
 				    <div class="col-sm-9">
-				      <input type="password" class="form-control" placeholder="Tên yêu cầu">
+				      <input type="text" class="form-control" id="requestName" placeholder="Tên yêu cầu">
 				    </div>
-				 </div>
-				 <div class="form-group row">
-				    <label for="inputPassword3" class="col-sm-3 col-form-label">Nội dung</label>
+				</div>
+				<div class="form-group row">
+				    <label class="col-sm-3 col-form-label">Nội dung</label>
 				    <div class="col-sm-9">
-				      <textarea class="form-control" rows="3" placeholder="Nội dung yêu cầu"></textarea>
+				      <textarea class="form-control" rows="3" id="requestContent" placeholder="Nội dung yêu cầu"></textarea>
 				    </div>
-				 </div>	
+				</div>	
 	        </div>
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -122,120 +190,183 @@
 	  </div>
 	  <!-- /.modal -->
 	<!-- 	End modal -->
-	
+
 <script type="text/javascript">
-   $(document).ready(function() {
-	   
-	   //Generate breadCumb
-	   var breadCumb_1 = ['DV đang sử dụng1', '#/service/channel'];
-	   var breadCumb_2 = ['DV đang sử dụng2', '#/service/tracking'];
-	   var breadCumb_3 = ['DV đang sử dụng3', '#/sales/edit'];
-	   CommonUtils.genBreadCumb(breadCumb_1, breadCumb_2, breadCumb_3);
+	$(document).ready( function() {
+
+		$(window).bind('keypress',function(event){
+			if (event.keyCode == 13 && $('#myModal').is(':hidden') && !($("button").is(":focus")) && !($("a").is(":focus"))) {
+	 			$('#showSuccess').click();
+	 		}
+	   	});
 		
-	   $('.modal-content').resizable({
-			minHeight: 300,
-			minWidth: 300
+		$('#fromdate').daterangepicker({ 
+	    	timePicker: true, 
+	    	timePickerIncrement: 30,
+// 	    	autoUpdateInput: false,
+	    	timePicker24Hour: true,
+			locale: {
+			      format: 'DD/MM/YYYY H:mm'
+			    }
+	    });
+		$('#fromdate').val('');
+		$('#fromdate').on('apply.daterangepicker', function(ev, picker) {
+		      $(this).addClass('edited');
+		  });
+		
+		// Processing top bar -> Drag modal -> active menu
+		CommonUtils.pageLoadInit("tctt");
+		
+		//Generate breadCumb
+// 		var breadCumb_1 = [ 'Dịch vụ đang sử dụng', false ];
+// 		var breadCumb_2 = [ 'Kênh truyền', '#/channel' ];
+
+		var breadCumb_1 = new Object();
+		breadCumb_1.key = 'Dịch vụ đang sử dụng';
+		breadCumb_1.value = false;
+		
+		var breadCumb_2 = new Object();
+		breadCumb_2.key = 'Kênh truyền';
+		breadCumb_2.value = '#/channel';
+		
+		var breadArr = new Array();
+		breadArr.push(breadCumb_1);
+		breadArr.push(breadCumb_2);
+		
+		CommonUtils.genBreadCumb(breadArr);
+
+		$(window).resize(function() {
+			setTimeout(function() {
+				$('#channelList').DataTable().columns.adjust();
+			 }, 500);
 		});
-		$('.modal-dialog').draggable();
 		
-      var nEditing = null;
-      var nNew = false;
-      var countNew = 0;
-      var countChecked = 1;
-      var list = [
-  	    { date: '12/1/2011', reading: 3, id: 20055 },
-  	    { date: '13/1/2011', reading: 5, id: 20053 },
-  	    { date: '14/1/2011', reading: 6, id: 45652 }
-  		];
-	  var obj = {name: "Test 1", id: 10000, list};
-	  var jsonParam = JSON.stringify(obj);
-	  var params = new Object();
-	  var page = 0;
-	  var STT = 1;
-	  var table = $('#example').DataTable({
-		  "serverSide": true,
-		   "processing": true,
-		   "bLengthChange": false,	
-		   "searching": false,
-    	   "responsive": true,
-    	  "autoWidth":true,
-    	  "pagingType": "full_numbers",
-    	  "scrollY": true,
-          "scrollX": true,
-          "ajax": {
-  		    "url": "/CallAjax/page",
-  		    "type": "POST",
-  		  	"dataType": "json",
-          	"contentType": 'application/json; charset=utf-8',
-          	"dataSrc": "invoices",
-          	"data": function () {
-  		       
-  		      params.searchType = "1";
-  			  params.doccumentNo = "601838862/KHDN_AM_HCM/02102017";
-  			  params.fromDate = "2019-02-01";
-  			  params.toDate = "2019-10-01";
-  			  params.page = page;
+		var page = 1;
+		var STT = 1;
+		var draw = 1;
+		var table = $('#channelList').DataTable({
+			"serverSide": true,
+			"pageLength": 10,
+			"processing" : true,
+			"bLengthChange" : false,
+			"searching" : false,
+			"bSort" : false,
+			"responsive" : true,
+			"autoWidth" : true,
+			"pagingType" : "full_numbers",
+			"scrollY" : true,
+			"scrollX" : true,
+			"ajax" : {
+				"url" : "/channel/getListChannel?draw="+draw+"",
+				"type" : "POST",
+				"dataType" : "json",
+			    "contentType": 'application/json; charset=utf-8',
+			    "dataSrc": "listData",
+			    "data": function () {
+			  		return JSON.stringify(Channel.getPramSearchChannel(page));
+			  	}
+			},
+			
+			"columns" : [
+					{ 
+						"data": null,"sortable": false, 
+				        render: function (data, type, row, meta) {
+				                 return meta.row + meta.settings._iDisplayStart + 1;
+				                },
+				        className : 'textCenter'
+				    },
+					{
+// 						"data" : "account"
+						"data": null,
+				         render: function (data) {
+				                 return CommonUtils.XSSEncode(data.account);
+				                }
+					},
+					{
+// 						"data" : "address"
+						"data": null,
+							render: function (data) {
+				                 return CommonUtils.XSSEncode(data.address);
+				                }
+					},
+					{
+// 						"data" : "account"
+						"data": null,
+				         render: function (data) {
+				                 return CommonUtils.XSSEncode(data.account);
+				                }
+					},
+					{
+// 						"data" : "address"
+						"data": null,
+							render: function (data) {
+				                 return CommonUtils.XSSEncode(data.address);
+				                }
+					},
+					{
+// 						"data" : "account"
+						"data": null,
+				         render: function (data) {
+				                 return CommonUtils.XSSEncode(data.account);
+				                }
+					},
+					{
+// 						"data" : "address"
+						"data": null,
+							render: function (data) {
+				                 return CommonUtils.XSSEncode(data.address);
+				                }
+					},
+					{
+// 						"data" : "account"
+						"data": null,
+				         render: function (data) {
+				                 return CommonUtils.XSSEncode(data.account);
+				                }
+					},
+					{
+// 						"data" : "address"
+						"data": null,
+							render: function (data) {
+				                 return CommonUtils.XSSEncode(data.address);
+				                }
+					},
+					{
+						data : null,
+						render : function(data,
+								type, row) {
+							return '<a class="iconSize18 margin-right-10" href="javascript:void(0)" onclick="return Channel.channelDetail('+data.account+')"><i class="fa fa-edit"></i></a>';
+						},
+						className : 'textCenter',
+						orderable : false
+					}
+			
+			],
 
-  			  params.pageSize = "1";
-  				 return JSON.stringify(params);
-  		      }
-  		  },
-          "columns": [
-        	  {
-        		  data: null,
-                  defaultContent: STT,
-                  className: 'textCenter',
-                  orderable: false
-              },
-              { "data": "invoiceId" },
-              { "data": "invoiceNo" },
-              { "data": "invoiceNumber" },	
-              { "data": "invoiceSeri" },
-              { "data": "invoiceType" },
-              { "data": "buyerName" }
-//               {
-//             	  invoices: null,
-// 				  render: function ( data, type, row ) {
-//                 	return  '<a class="iconSize18" href="javascript:void(0)" onclick="showModal('+data.id+')"><i class="fa fa-edit"></i></a>';
-//             	  },
-//                   className: 'textCenter',
-//                   orderable: true
-//               },
-//               {
-//             	  invoices: null,
-//                   render: function ( data, type, row ) {
-//                 	  return  '<a class="iconSize18" href="javascript:void(0)" onclick="deleteModal('+data.id+')"><i class="fa fa-trash-o"></i></a>';
-//                    },
-//                   className: 'textCenter',
-//                   orderable: false
-//               },
-          ],
-           
-//            "order": [[1, 'asc']]
-      });
-      
-      table.on( 'order.dt search.dt', function () {
-    	  table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-              cell.innerHTML = i+1;
-          } );
-      } ).draw();
+		});
 
-	  $('#example').on( 'page.dt', function () {
-		  page = table.page.info().page + 1;
-		  STT = 10 * page - 10 + 1;
-	 } );
+		
+		$('#channelList').on('page.dt', function() {
+			page = table.page.info().page + 1;
+			draw = draw + 1;
+		});
+		
+		$('#showError').click(function() {
+			CommonUtils.showAPIErrorMessage("You have some form errors! ");
+		
+		});
+		
+		$('#showSuccess').click(function() {
+			CommonUtils.showAPISuccessMessage("You have create request successfully ");
+	
+	});
+		
+		
+		
+		
+		
 
-        
-   });
-   
-   function deleteModal(rowId){    
-	   $('#confirm-modal').modal('show');
-	   $('#btn-confirm-delete').attr('href', "#/home");
-	   $('#btn-confirm-delete').on( 'click', function () {
-		   	
-	         $('#confirm-modal').modal('hide');
-	      } );
-       
-   }
- 
+	});
+
 </script>
+		

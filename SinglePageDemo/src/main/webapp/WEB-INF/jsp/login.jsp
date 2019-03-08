@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.sttt.ruby.config.ConfigurationPath"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
 <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script> -->
 
 <html>
@@ -9,7 +11,8 @@
 		<jsp:include page="/WEB-INF/jsp/general/commonModal.jsp" />
 		<jsp:include page="/WEB-INF/jsp/general/multiLanguage.jsp" />
 	</head>
-	<body id="PageLogin" class="hold-transition skin-blue sidebar-mini" onload="createCaptcha()">
+<!-- 	<body id="PageLogin" class="hold-transition skin-blue sidebar-mini" onload="createCaptcha()"> -->
+	<body id="PageLogin" class="hold-transition skin-blue sidebar-mini">
 	
 	<!-- <form action="/login/auth" method="post">
 		<input type = "text" name="username" id ="username"/>
@@ -70,13 +73,14 @@
 			   <span><h3>My Viettel Enterpise</h3></span>
 			</div>
 			<div class="formLogin">   
-				<form role="form" id="validationFormLogin" onsubmit="validateCaptcha()">
+<!-- 				<form role="form" id="validationFormLogin" onsubmit="validateCaptcha()"> -->
+				<form role="form" id="validationFormLogin" action="/login" method="post">
 			   		<span><h3 style="text-align: center;">Đăng nhập</h3></span>
 			   		<div class="portlet-body form">
 						<div class="form-body">
 							<div class="col-md-12">
 								<div class="form-group form-md-line-input form-md-floating-label input-group right-addon">
-									<input type="text" class="form-control" id="userName" name="userName">
+									<input type="text" class="form-control" id="username" name="username">
 									<a href="#" class="input-group-addon">Quên tài khoản?</a>
 									<label for="form_control_1">Tên đăng nhập <span class="required">*</span></label>
 								</div>
@@ -224,53 +228,53 @@
     				}
     			});
     		}); */
-    		var e = $("#validationFormLogin"),
-            r = $(".alert-danger", e),
-            i = $(".alert-success", e);
+//     		var e = $("#validationFormLogin"),
+//             r = $(".alert-danger", e),
+//             i = $(".alert-success", e);
 
-	        e.validate({
-	            errorElement: "span",
-	            errorClass: "help-block help-block-error",
-	            focusInvalid: !1,
-	            rules: {
-	            	// userName is name of input tag
-	                // simple rule, converted to {required:true}
-	                userName: "required",
-	                password: {
-	                	required: true,
-	                	minlength: 8
-	                },
-	                maXacNhan: {
-	                	required: true,
-	                	minlength: 8,
-	                	equalTo: code // #password is name of input tag
-	                }
-	            },
-	            messages: {
-	            	userName: {
-	            		required: jQuery.validator.format("Vui lòng nhập tài khoản"),
-	                },
-	                password: {
-	                	required: jQuery.validator.format("Vui lòng nhập mật khẩu."),
-	                	minlength: jQuery.validator.format("Mật khẩu có độ dài tối thiểu là 8 ký tự.")
-	                },
-	                maXacNhan: 
-	                {
-	                	required: jQuery.validator.format("Vui lòng nhập mã xác nhận."),
-	                	equalTo: jQuery.validator.format("Mã xác nhận không đúng.")
-	                }
-	            },
-	            invalidHandler: function(event, validator) {},
-	            submitHandler: function(form) {
-	                getAjax();
-	            },
-	            highlight: function(e) {
-	                $(e).closest(".form-group").addClass("has-error")
-	            },
-	            unhighlight: function(e) {
-	                $(e).closest(".form-group").removeClass("has-error")
-	            }
-	        });
+// 	        e.validate({
+// 	            errorElement: "span",
+// 	            errorClass: "help-block help-block-error",
+// 	            focusInvalid: !1,
+// 	            rules: {
+// 	            	// userName is name of input tag
+// 	                // simple rule, converted to {required:true}
+// 	                userName: "required",
+// 	                password: {
+// 	                	required: true,
+// 	                	minlength: 8
+// 	                },
+// 	                maXacNhan: {
+// 	                	required: true,
+// 	                	minlength: 8,
+// 	                	equalTo: code // #password is name of input tag
+// 	                }
+// 	            },
+// 	            messages: {
+// 	            	userName: {
+// 	            		required: jQuery.validator.format("Vui lòng nhập tài khoản"),
+// 	                },
+// 	                password: {
+// 	                	required: jQuery.validator.format("Vui lòng nhập mật khẩu."),
+// 	                	minlength: jQuery.validator.format("Mật khẩu có độ dài tối thiểu là 8 ký tự.")
+// 	                },
+// 	                maXacNhan: 
+// 	                {
+// 	                	required: jQuery.validator.format("Vui lòng nhập mã xác nhận."),
+// 	                	equalTo: jQuery.validator.format("Mã xác nhận không đúng.")
+// 	                }
+// 	            },
+// 	            invalidHandler: function(event, validator) {},
+// 	            submitHandler: function(form) {
+// 	                getAjax();
+// 	            },
+// 	            highlight: function(e) {
+// 	                $(e).closest(".form-group").addClass("has-error")
+// 	            },
+// 	            unhighlight: function(e) {
+// 	                $(e).closest(".form-group").removeClass("has-error")
+// 	            }
+// 	        });
 	        
 
     	});

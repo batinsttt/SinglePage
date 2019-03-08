@@ -30,8 +30,13 @@
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css")%>">
  <!-- Daterange picker -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/bootstrap-daterangepicker/daterangepicker.css")%>">
+ 
+  <!-- time Picker -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+ 
  <!-- bootstrap wysihtml5 - text editor -->
  <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/scripts/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")%>">
+
 
 <!-- checkbox datatables---------------------------------->
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/bower_components/dataTables/dataTables.checkboxes.css")%>">
@@ -44,7 +49,9 @@
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/dataTables.checkboxes.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/dataTables.bootstrap4.js")%>"></script>
 <script src="<%=ConfigurationPath.getResourceServerPath("/bower_components/datatables/icheck.js")%>"></script>
-
+<!-- time picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <!-- Multiselect -->
 <link rel="stylesheet" href="<%=ConfigurationPath.getResourceServerPath("/css/multiselect/bootstrap-multiselect.css")%>">
 
@@ -110,7 +117,7 @@
 
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/business/channel/jquery.channel.js")%>"></script>
 
-
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/business/account/jquery.account.js")%>"></script>
 
 
 
@@ -123,6 +130,8 @@
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/material/mdb.js")%>"></script>
 
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/script.js")%>"></script>
+
+<script src="<%=ConfigurationPath.getResourceServerPath("/scripts/business/ticket/jquery.ticket.js")%>"></script>
 
 
 

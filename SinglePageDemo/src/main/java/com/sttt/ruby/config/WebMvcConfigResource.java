@@ -42,7 +42,7 @@ public class WebMvcConfigResource implements WebMvcConfigurer {
 		LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
 		localeInterceptor.setParamName("lang");
 		registry.addInterceptor(localeInterceptor).addPathPatterns("/*");
-		//registry.addInterceptor(new AdminInterceptor());
+		registry.addInterceptor(new AdminInterceptor()).excludePathPatterns(new String[] {"/account/login","/reload/login", "/checkSessionToAjax", "/account/countErrors", "/account/captcha","/bower_components/**","/css/**","/images/**","/jquery-validation/**","/ladda/**","/scripts/**"});
 	}
 
 	@Bean

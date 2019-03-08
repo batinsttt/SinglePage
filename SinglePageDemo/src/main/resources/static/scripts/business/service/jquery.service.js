@@ -15,6 +15,7 @@ var Service = {
 	},
 	_WAITING : "WAITING",
 	_REJECT : "REJECT",
+	_FORM_DATA : null,
 	
 /*=========================== Business service ===========================*/
 	
@@ -123,4 +124,78 @@ var Service = {
 		}
 		return searchUrl;
 	},
+	deleteFileUpload : function(key){
+		_FORM_DATA.delete(key);
+		var data = new Array();
+		var index = 0;
+		var array = 0;
+		var dataTemp;
+		for (var value of _FORM_DATA.values()) {
+		   console.log(value.name);
+		   dataTemp = new Object();
+		   dataTemp.stt =""+(++index);
+		   dataTemp.filename = value.name;
+		   data[array++] = dataTemp;
+		}
+		var table = $('#attachments').DataTable();
+		table.clear();
+
+		// Add updated data
+		table.rows.add(data);
+
+		// Redraw table
+		table.draw();
+	},
+	makeFile : function(){
+		var input = document.getElementById("addAttachments");
+		_FORM_DATA = new FormData();
+		var data = new Array();
+		var index = 0;
+		var array = 0;
+		var dataTemp;
+		for (var i = 0; i < input.files.length; i++) {
+		    console.log(input.files[i].name);
+		   _FORM_DATA.set(''+(i+1), input.files[i]);
+		   dataTemp = new Object();
+		   dataTemp.stt =""+(++index);
+		   dataTemp.filename = input.files[i].name;
+		   data[array++] = dataTemp;
+		}
+//		for (var value of _FORM_DATA.values()) {
+//			   dataTemp = new Object();
+//			   dataTemp.stt =""+(index++);
+//			   dataTemp.filename = value.name;
+//			   dataMain[array++] = dataTemp;
+//			}
+		var table = $('#attachments').DataTable();
+		table.clear();
+
+		// Add updated data
+		table.rows.add(data);
+
+		// Redraw table
+		table.draw();
+//		var table = $('#attachments').DataTable({
+//			"bLengthChange" : false,
+//			"searching" : false,
+//			"bSort" : false,
+//			"responsive" : true,
+//			"autoWidth" : true,
+//			"pagingType" : "full_numbers",
+//			"scrollY" : true,
+//			"scrollX" : true,
+//            data: data,
+//            columns: [
+//                { data: 'stt' },
+//                { data: 'filename' },
+//                {
+//                    data: null,
+//                    render: function (data, type, row) {
+//                    	console.log(data.stt);
+//                        return '<button type="button" class="btn btn-blue pull-right ladda-button margin-left-10" onclick="Service.deleteFileUpload('+""+data.stt+');"><i class="fa fa-mail-reply-all"></i>Xoa</button>';
+//                    }
+//                }
+//            ]
+//        });
+	}
 };

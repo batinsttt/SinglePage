@@ -53,8 +53,8 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		 $('#breadCumb').empty();
-		// Processing top bar
-			var simplebar = new Nanobar();
-			simplebar.go(100);
+			
+			// Processing top bar -> Drag modal -> active menu
+			CommonUtils.pageLoadInit();
  });
 </script>

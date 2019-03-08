@@ -1,26 +1,23 @@
 package com.sttt.ruby.service;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.sttt.ruby.util.ItemJsonContants;
 import com.sttt.ruby.util.UriGateWay;
 import com.viettel.mve.client.request.leaseline.GetSubcriberDetailRequest;
 import com.viettel.mve.client.request.leaseline.SearchListSubcriberRequest;
 import com.viettel.mve.client.response.leaseline.GetSubcriberDetailResponse;
 import com.viettel.mve.client.response.leaseline.SearchListSubcriberResponse;
 
-import exception.BusinessException;
+import com.sttt.ruby.exception.BusinessException;
 
 @Service
 public class ChannelService {
@@ -29,7 +26,7 @@ public class ChannelService {
 	private RestTemplate restTemplate;
 
 	@Autowired
-	private HttpHeaders headers;
+	private CommonService commonService;
 
 	/**
 	 * @param channelRequest
@@ -38,14 +35,9 @@ public class ChannelService {
 	 * @return json
 	 * @throws BusinessException
 	 */
-	public String getListChannelJson(SearchListSubcriberRequest channelRequest, HttpServletRequest request, int draw)
-			throws BusinessException {
+	public String getListChannelJson(SearchListSubcriberRequest channelRequest, HttpServletRequest request, int draw) throws Exception {
 
-		headers.setContentType(MediaType.APPLICATION_JSON);
-
-		// Add token to header
-		HttpSession session = request.getSession();
-		headers.set(HttpHeaders.AUTHORIZATION, (String) session.getAttribute(ItemJsonContants.TOKEN));
+		HttpHeaders headers = commonService.getHeaders(request);
 
 		HttpEntity<SearchListSubcriberRequest> entity = new HttpEntity<SearchListSubcriberRequest>(channelRequest, headers);
 
@@ -60,13 +52,9 @@ public class ChannelService {
 	}
 	
 	public String getDetailChannelJson(GetSubcriberDetailRequest channelRequest, HttpServletRequest request)
-			throws BusinessException {
+			throws Exception {
 
-		headers.setContentType(MediaType.APPLICATION_JSON);
-
-		// Add token to header
-		HttpSession session = request.getSession();
-		headers.set(HttpHeaders.AUTHORIZATION, (String) session.getAttribute(ItemJsonContants.TOKEN));
+		HttpHeaders headers = commonService.getHeaders(request);
 
 		HttpEntity<GetSubcriberDetailRequest> entity = new HttpEntity<GetSubcriberDetailRequest>(channelRequest, headers);
 
@@ -78,5 +66,19 @@ public class ChannelService {
 
 		return result.toString();
 	}
+	
+	public String  getListSubcribersJson(SearchListSubcriberRequest subcriberRequest, HttpServletRequest request)
+			throws Exception {
+		HttpHeaders headers = commonService.getHeaders(request);
 
+		HttpEntity<SearchListSubcriberRequest> entity = new HttpEntity<SearchListSubcriberRequest>(subcriberRequest, headers);
+
+		// Call API
+		ResponseEntity<SearchListSubcriberResponse> channelResponse = restTemplate.exchange(UriGateWay.CHANNEL_LISTSUBCRIBERS,
+				HttpMethod.POST, entity, SearchListSubcriberResponse.class);
+
+		JSONObject result = new JSONObject(channelResponse.getBody());
+
+		return result.toString();
+	}
 }
