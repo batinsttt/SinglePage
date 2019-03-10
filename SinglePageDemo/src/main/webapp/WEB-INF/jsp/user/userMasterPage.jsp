@@ -10,8 +10,8 @@
 <link rel="icon" type="image/x-icon" href="<%=ConfigurationPath.getResourceServerPath("/images/viettel.jpg")%>">
 
 <jsp:include page="/WEB-INF/jsp/general/multiLanguage.jsp" />
-<jsp:include page="/WEB-INF/jsp/general/serverValue.jsp" />
 <jsp:include page="/WEB-INF/jsp/general/commonLibrary.jsp" />
+<jsp:include page="/WEB-INF/jsp/general/serverValue.jsp" />
 <jsp:include page="/WEB-INF/jsp/general/commonModal.jsp" />
 
 <script src="<%=ConfigurationPath.getResourceServerPath("/scripts/forwardUserPage.js")%>"></script>

@@ -540,15 +540,22 @@ legend.scheduler-border {
 #PageLogin .main-sidebar{
     background-color: white;
 }
-#PageLogin .sidebar a{
+#PageLogin .sidebar li{
+    padding: 10px 0 !important;
+    
+}
+#PageLogin .sidebar li a{
     color: #656565;
+    padding: 5px !important;
+    
 }
 #PageLogin .sidebar {
-    padding-top: 10px;
+    padding-top: 0px;
     border: 1px solid #e2e5eb;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
 	margin: 40px 0;
+	background-color: #fff;
 }
 #PageLogin .sidebar-menu>li:hover>a,
 #PageLogin .skin-blue .sidebar-menu>li.active>a,
@@ -567,16 +574,30 @@ legend.scheduler-border {
 #PageLogin .sidebar-menu>li.active>a {
     border-left-color: #00918c;
     border-left-width: thick;
+     color: #00918c !important;
+    background: white !important;
 }
 #PageLogin .sidebar-menu>li {
    	text-align: center;
 }
 #PageLogin .sidebar-menu>li>a>.fa{
     padding-right: 0px !important;
+    font-size: 20px !important;
 }
+
 #PageLogin .main-header {
     position: unset;
     display: inline-block;
+    padding: 10px 0;
+}
+.loginHeadTitle {
+	font-size: 30px;
+	font-weight: 700;
+	text-shadow: 0 1px 0 #999999, 0 2px 0 #888888, 0 3px 0 #777777, 0 4px 0 #666666, 0 5px 0 #555555, 0 6px 0 #444444, 0 7px 0 #333333, 0 8px 7px rgba(0, 0, 0, 0.4), 0 9px 10px rgba(0, 0, 0, 0.2);
+}
+.loginTextBox {
+	position: absolute;
+	font-size: 17px;
 }
 .sideLogin{
 	width: 450px;
@@ -600,6 +621,10 @@ legend.scheduler-border {
 .sideLogin .sideLoginFooter{
 	padding-left: 50px;
 }
+.loginButton {
+	text-align: center;
+    padding: 10px 0;
+}
 .formLogin{
 	width: 468px;
 	padding: 0 30px;
@@ -607,6 +632,7 @@ legend.scheduler-border {
     border: 1px solid #e2e5eb;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
+    background: #fff;
 }
 .formLogin .input-group .input-group-addon{
     border-top-width: 0px;
@@ -620,7 +646,7 @@ legend.scheduler-border {
 }
 .paddingTopBot{
 	text-align: center;
-    padding-bottom: 25px;
+    padding-bottom: 10px;
     padding-top: 10px;
 }
 .formLogin .has-error .help-block{
@@ -651,6 +677,13 @@ canvas{
   margin-top: -13px;
 }
 /* END AnNBH Custom img captcha */
+
+.loginBG {
+	background-color: #F9F9F9 !important;
+}
+
+
+
 .paddingBottom15{
 	padding-bottom: 15px;
 }

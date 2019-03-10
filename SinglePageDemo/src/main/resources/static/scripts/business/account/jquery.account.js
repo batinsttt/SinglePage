@@ -7,6 +7,7 @@ var Account = {
 	_countType: null,
 	_isShowDlg: false,
 	_loading: true,
+	isSubmitLogin : null,
 	
 	documentReady: function() {
 
@@ -21,12 +22,12 @@ var Account = {
 
 		$("ul li a").click(function() {
 			if($("ul #dangNhap").hasClass('active')){
-    			$("#side1").css("display","block");
-    			$("#side2").css("display","none");
+    			$('#changeContent1').text(loginChangeBoxDN1);
+    			$('#changeContent2').text(loginChangeBoxDN2);
     		}
     		if($("ul #giaiPhap").hasClass('active')){
-    			$("#side1").css("display","none");
-    			$("#side2").css("display","block");
+    			$('#changeContent1').text(loginChangeBoxGP1);
+    			$('#changeContent2').text(loginChangeBoxGP2);
     		}
 	    });
 
@@ -58,6 +59,8 @@ var Account = {
             	Account.countErrorsAjax(false);
             },
             submitHandler: function(form) {
+            	Account.isSubmitLogin = Ladda.create(document.querySelector('#loginSubmit'));
+            	Account.isSubmitLogin.start();
                 Account.getAjax();
             },
             highlight: function(e) {
@@ -99,6 +102,7 @@ var Account = {
 			data : (params),
 			dataType : "json",
 			success : function(data) {
+				Account.isSubmitLogin.stop();
 				Account.displayCaptchaBlock(data.isErrorsCountOverLimit);
 
 				if (typeof data.errorCode != 'undefined') {
@@ -122,7 +126,9 @@ var Account = {
 					}
 				}
 			},
-			error:function(XMLHttpRequest, textStatus, errorThrown) {}
+			error:function(XMLHttpRequest, textStatus, errorThrown) {
+				Account.isSubmitLogin.stop();
+			}
 		});
     },
 

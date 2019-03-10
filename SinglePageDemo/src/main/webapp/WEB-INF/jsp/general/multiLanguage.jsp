@@ -57,4 +57,11 @@ var repeatPasswordNotEqual = '<spring:message code="error.equal.changePass.form.
 var changePassSuccess = '<spring:message code="changePass.notification.success"/>';
 
 /* ================= End TienT ==============*/
+ 
+var loginChangeBoxDN1 = '<spring:message code="login.tab.content3"/>';
+var loginChangeBoxDN2 = '<spring:message code="login.tab.content4"/>';
+var loginChangeBoxGP1 = '<spring:message code="login.tab.contentGP1"/>';
+var loginChangeBoxGP2 = '<spring:message code="login.tab.contentGP2"/>';
+ 
+
 </script>
